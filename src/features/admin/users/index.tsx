@@ -24,6 +24,7 @@ import {
   KycL2Status,
   UserAccountStatus,
 } from './types';
+import AdminUsersToolbar from './components/AdminUsersToolbar';
 import { filterAdminUsers } from './utils';
 
 export default function AdminUsersView({
@@ -758,40 +759,12 @@ export default function AdminUsersView({
   // Normal List View
   return (
     <div id="admin_users_view" className="glass-card p-4 md:p-5 rounded-2xl border border-white/5 bg-[#141119] space-y-4 animate-fadeIn select-none flex-grow flex flex-col md:min-h-[calc(100vh-140px)] pb-3">
-      <div className="flex flex-col lg:flex-row justify-between items-stretch lg:items-center gap-3.5 border-b border-white/5 pb-3.5">
-        <div>
-          <h3 className="text-sm md:text-base font-black text-white tracking-tight flex items-center gap-2">
-            <Users className="w-4 h-4 text-[#cfbcff]" />
-            <span>用户列表</span>
-          </h3>
-          <p className="text-[11px] text-[#cbc4d2]/50 mt-0.5 leading-tight">
-            对超级同盟会员代表的状态实施权限管控与对账。点击“查看”可审核 L2 证照，执行全局深层对账与纠偏。
-          </p>
-        </div>
-
-        {/* Dynamic Search inputs */}
-        <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto">
-          <div className="relative flex-grow sm:flex-grow-0">
-            <input 
-              type="text" 
-              value={userSearchText} 
-              onChange={(e) => setUserSearchText(e.target.value)} 
-              placeholder="搜索昵称 / 邮箱 / UID..." 
-              className="bg-[#211f24] border border-white/10 rounded-xl px-3 py-1.5 text-xs text-white placeholder-white/35 focus:ring-1 focus:ring-[#cfbcff] outline-none pl-8 w-full sm:w-48 transition-all"
-            />
-            <Search className="w-3.5 h-3.5 text-white/40 absolute left-2.5 top-1/2 -translate-y-1/2" />
-          </div>
-          <select 
-            value={kycFilter} 
-            onChange={(e) => setKycFilter(e.target.value as any)}
-            className="bg-[#211f24] border border-white/10 rounded-xl px-3 py-1.5 text-xs text-white font-bold cursor-pointer font-sans focus:outline-none transition-all"
-          >
-            <option value="all">全部 KYC 状态</option>
-            <option value="pending">仅待 L2 终审</option>
-            <option value="verified">L2 审核通过</option>
-          </select>
-        </div>
-      </div>
+      <AdminUsersToolbar
+        searchText={userSearchText}
+        kycFilter={kycFilter}
+        onSearchTextChange={setUserSearchText}
+        onKycFilterChange={setKycFilter}
+      />
 
       {/* Users list table - Full layout for desktop density */}
       <div className="space-y-4">
