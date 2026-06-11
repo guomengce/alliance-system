@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Google AI Studio App</title>
+    <script>
+      (function() {
+        try {
+          var originalFetch = window.fetch;
+          if (!originalFetch && typeof globalThis !== 'undefined') {
+            originalFetch = globalThis.fetch;
+          }
+          
+          var fetchStorage = originalFetch;
+
+          var descriptor = {
+            get: function() {
+              return fetchStorage;
+            },
+            set: function(newValue) {
+              fetchStorage = newValue;
+            },
+            configurable: true,
+            enumerable: true
+          };
+
+          try {
+            Object.defineProperty(window, 'fetch', descriptor);
+          } catch (e) {
+            // Shadowing on window failed, try on Window.prototype
+            try {
+              var proto = window.constructor ? window.constructor.prototype : Window.prototype;
+              if (proto) {
+                Object.defineProperty(proto, 'fetch', descriptor);
+              }
+            } catch (protoErr) {
+              console.warn("Prototype patch failed:", protoErr);
+            }
+          }
+
+          if (typeof globalThis !== 'undefined' && globalThis !== window) {
+            try {
+              Object.defineProperty(globalThis, 'fetch', descriptor);
+            } catch (gtErr) {
+              console.warn("globalThis patch failed:", gtErr);
+            }
+          }
+        } catch (e) {
+          console.error('Fetch patch top-level error:', e);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

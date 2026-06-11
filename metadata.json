@@ -1,0 +1,6 @@
+{
+  "name": "Alliance System",
+  "description": "An institutional-grade decentralized financial management console, featuring multi-tab dashboard tracking for total assets, member center, wallets, subscription packages, commission rewards, team structures, queues, notifications, and settings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
