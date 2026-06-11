@@ -35,7 +35,7 @@ import NotificationsView from './NotificationsView';
 import SettingsView from './SettingsView';
 
 import AdminDashboardView from './AdminDashboardView';
-import AdminUsersView from './AdminUsersView';
+import AdminUsersView from '../features/admin/users';
 import AdminPlansView from './AdminPlansView';
 import AdminOrdersView from './AdminOrdersView';
 import AdminCommissionsView from './AdminCommissionsView';
