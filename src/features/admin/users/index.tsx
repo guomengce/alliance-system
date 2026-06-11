@@ -15,23 +15,26 @@ import {
   Users,
   Coins
 } from 'lucide-react';
-import { DownlineMember } from '../../../types';
-
-interface AdminUsersViewProps {
-  downlines: DownlineMember[];
-  onUpdateDownlines: (members: DownlineMember[]) => void;
-}
+import {
+  AdminUserTab,
+  AdminUsersViewProps,
+  DownlineMember,
+  KycFilter,
+  KycL1Status,
+  KycL2Status,
+  UserAccountStatus,
+} from './types';
 
 export default function AdminUsersView({
   downlines,
   onUpdateDownlines
 }: AdminUsersViewProps) {
   const [userSearchText, setUserSearchText] = useState<string>('');
-  const [kycFilter, setKycFilter] = useState<'all' | 'pending' | 'verified'>('all');
+  const [kycFilter, setKycFilter] = useState<KycFilter>('all');
   
   // Local state for tracking which user is being edited inline
   const [editingUser, setEditingUser] = useState<DownlineMember | null>(null);
-  const [activeTab, setActiveTab] = useState<'profile' | 'wallet' | 'team'>('profile');
+  const [activeTab, setActiveTab] = useState<AdminUserTab>('profile');
   const [teamSearchText, setTeamSearchText] = useState<string>('');
 
   // Form states for inline editing
@@ -40,7 +43,7 @@ export default function AdminUsersView({
   const [formPhone, setFormPhone] = useState('');
   const [formSponsor, setFormSponsor] = useState('');
   const [formPassword, setFormPassword] = useState('');
-  const [formStatus, setFormStatus] = useState<'normal' | 'frozen' | 'disabled'>('normal');
+  const [formStatus, setFormStatus] = useState<UserAccountStatus>('normal');
   const [formRegDate, setFormRegDate] = useState('');
   const [formTier, setFormTier] = useState('');
   const [formUsdt, setFormUsdt] = useState<number>(0);
@@ -51,8 +54,8 @@ export default function AdminUsersView({
   const [formVolume, setFormVolume] = useState<number>(0);
 
   // KYC States matching client definitions
-  const [formKycL1, setFormKycL1] = useState<'verified' | 'unverified'>('verified');
-  const [formKycL2, setFormKycL2] = useState<'verified' | 'pending' | 'unverified'>('unverified');
+  const [formKycL1, setFormKycL1] = useState<KycL1Status>('verified');
+  const [formKycL2, setFormKycL2] = useState<KycL2Status>('unverified');
 
   // KYC Auditor Actions
   const handleKycAudit = (uid: string, accept: boolean) => {
