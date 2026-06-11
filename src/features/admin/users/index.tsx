@@ -24,7 +24,7 @@ import {
   KycL2Status,
   UserAccountStatus,
 } from './types';
-import AdminUsersList from './components/AdminUsersList';
+import List from './components/List';
 import { filterAdminUsers } from './utils';
 
 export default function AdminUsersView({
@@ -758,7 +758,7 @@ export default function AdminUsersView({
 
   // Normal List View
   return (
-    <AdminUsersList
+    <List
       filteredDownlines={filteredDownlines}
       searchText={userSearchText}
       kycFilter={kycFilter}

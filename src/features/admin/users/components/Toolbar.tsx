@@ -2,19 +2,19 @@ import React from 'react';
 import { Search, Users } from 'lucide-react';
 import { KycFilter } from '../types';
 
-interface AdminUsersToolbarProps {
+interface ToolbarProps {
   searchText: string;
   kycFilter: KycFilter;
   onSearchTextChange: (value: string) => void;
   onKycFilterChange: (value: KycFilter) => void;
 }
 
-export default function AdminUsersToolbar({
+export default function Toolbar({
   searchText,
   kycFilter,
   onSearchTextChange,
   onKycFilterChange,
-}: AdminUsersToolbarProps) {
+}: ToolbarProps) {
   return (
     <div className="flex flex-col lg:flex-row justify-between items-stretch lg:items-center gap-3.5 border-b border-white/5 pb-3.5">
       <div>
