@@ -24,6 +24,7 @@ import {
   KycL2Status,
   UserAccountStatus,
 } from './types';
+import { filterAdminUsers } from './utils';
 
 export default function AdminUsersView({
   downlines,
@@ -150,6 +151,8 @@ export default function AdminUsersView({
     alert(`用户 UID: ${editingUser.uid} 的档案信息及资产设置已成功修改并刷新！`);
     setEditingUser(null);
   };
+
+  const filteredDownlines = filterAdminUsers(downlines, userSearchText, kycFilter);
 
   // If in inline editing mode, output the beautiful spacious details panel
   if (editingUser) {
@@ -794,24 +797,7 @@ export default function AdminUsersView({
       <div className="space-y-4">
         {/* Mobile-first card list */}
         <div className="block md:hidden space-y-3">
-          {downlines
-            .filter(d => {
-              if (userSearchText) {
-                const search = userSearchText.toLowerCase();
-                return d.uid.toLowerCase().includes(search) || 
-                       d.tier.toLowerCase().includes(search) ||
-                       (d.nickname && d.nickname.toLowerCase().includes(search)) ||
-                       (d.email && d.email.toLowerCase().includes(search)) ||
-                       (d.phone && d.phone.toLowerCase().includes(search));
-              }
-              return true;
-            })
-            .filter(d => {
-              if (kycFilter === 'verified') return d.kycL2 === 'verified' || d.tier.includes('认证');
-              if (kycFilter === 'pending') return d.kycL2 === 'pending';
-              return true;
-            })
-            .map(d => (
+          {filteredDownlines.map(d => (
               <div key={d.uid} className="bg-[#1c1825]/60 border border-white/5 p-4 rounded-2xl space-y-3 font-sans">
                 <div className="flex justify-between items-start">
                   <div className="flex items-center gap-2.5">
@@ -898,24 +884,7 @@ export default function AdminUsersView({
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5">
-              {downlines
-                .filter(d => {
-                  if (userSearchText) {
-                    const search = userSearchText.toLowerCase();
-                    return d.uid.toLowerCase().includes(search) || 
-                           d.tier.toLowerCase().includes(search) ||
-                           (d.nickname && d.nickname.toLowerCase().includes(search)) ||
-                           (d.email && d.email.toLowerCase().includes(search)) ||
-                           (d.phone && d.phone.toLowerCase().includes(search));
-                  }
-                  return true;
-                })
-                .filter(d => {
-                  if (kycFilter === 'verified') return d.kycL2 === 'verified' || d.tier.includes('认证');
-                  if (kycFilter === 'pending') return d.kycL2 === 'pending';
-                  return true;
-                })
-                .map(d => (
+              {filteredDownlines.map(d => (
                   <tr key={d.uid} className="hover:bg-white/[0.02] transition-colors">
                     <td className="py-3 px-4 text-white">
                       <div className="flex items-center gap-3">
