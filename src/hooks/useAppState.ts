@@ -12,8 +12,8 @@ export function useAppState() {
   const [portalMode, setPortalMode] = useState<'client' | 'admin'>('client');
   const [adminRole, setAdminRole] = useState<'SUPER_ADMIN' | 'FINANCE_DIR' | 'RISK_OFFICER' | 'OPERATOR' | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [loginEmail, setLoginEmail] = useState<string>('client@alliance.com');
-  const [loginPassword, setLoginPassword] = useState<string>('password123');
+  const [loginEmail, setLoginEmail] = useState<string>('ppyybb888@gmail.com');
+  const [loginPassword, setLoginPassword] = useState<string>('admin1234');
   const [nickname, setNickname] = useState<string>('Alliance Super Agent');
   const [email, setEmail] = useState<string>('ppyybb888@gmail.com');
 
