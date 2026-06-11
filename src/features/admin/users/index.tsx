@@ -24,7 +24,7 @@ import {
   KycL2Status,
   UserAccountStatus,
 } from './types';
-import AdminUsersToolbar from './components/AdminUsersToolbar';
+import AdminUsersList from './components/AdminUsersList';
 import { filterAdminUsers } from './utils';
 
 export default function AdminUsersView({
@@ -758,180 +758,15 @@ export default function AdminUsersView({
 
   // Normal List View
   return (
-    <div id="admin_users_view" className="glass-card p-4 md:p-5 rounded-2xl border border-white/5 bg-[#141119] space-y-4 animate-fadeIn select-none flex-grow flex flex-col md:min-h-[calc(100vh-140px)] pb-3">
-      <AdminUsersToolbar
-        searchText={userSearchText}
-        kycFilter={kycFilter}
-        onSearchTextChange={setUserSearchText}
-        onKycFilterChange={setKycFilter}
-      />
-
-      {/* Users list table - Full layout for desktop density */}
-      <div className="space-y-4">
-        {/* Mobile-first card list */}
-        <div className="block md:hidden space-y-3">
-          {filteredDownlines.map(d => (
-              <div key={d.uid} className="bg-[#1c1825]/60 border border-white/5 p-4 rounded-2xl space-y-3 font-sans">
-                <div className="flex justify-between items-start">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-full bg-[#cfbcff]/10 border border-[#cfbcff]/20 text-[#cfbcff] flex items-center justify-center font-extrabold text-xs">
-                      {d.avatarLetter || (d.nickname ? d.nickname.charAt(0).toUpperCase() : 'U')}
-                    </div>
-                    <div>
-                      <p className="font-extrabold text-xs text-white leading-tight">{d.nickname || '未设置昵称'}</p>
-                      <p className="font-mono text-[9px] text-[#cbc4d2]/50 mt-0.5">UID: {d.uid}</p>
-                    </div>
-                  </div>
-                  <span className="font-mono text-[9px] font-semibold text-[#cfbcff] bg-[#cfbcff]/5 px-2 py-0.5 rounded border border-[#cfbcff]/10">
-                    Sponsor: {d.sponsor || '999001'}
-                  </span>
-                </div>
-                
-                <div className="grid grid-cols-2 gap-2 text-[11px] border-t border-b border-white/5 py-2 font-sans">
-                  <div>
-                    <span className="text-white/40 text-[9px] block">联系方式</span>
-                    <p className="text-white font-mono font-bold mt-0.5">{d.phone || '暂无绑定手机'}</p>
-                    <p className="text-[#cbc4d2]/50 font-mono text-[10px] truncate">{d.email || d.uid + '@alliance.com'}</p>
-                  </div>
-                  <div>
-                    <span className="text-white/40 text-[9px] block">下级/业绩</span>
-                    <p className="font-bold text-[#cfbcff] font-mono text-xs mt-0.5">{d.nodeSize} 个下级</p>
-                    <p className="text-emerald-400 font-bold font-mono text-[10px]">USDT {d.volume.toLocaleString()}</p>
-                  </div>
-                </div>
-
-                <div className="flex justify-between items-center text-[11px] font-sans">
-                  <div className="flex-1 min-w-0 pr-2">
-                    <span className="text-white/40 text-[9px] block">KYC 状态 / 注册时间</span>
-                    <div className="mt-1 space-y-1">
-                      <div className="flex flex-wrap items-center gap-1.5">
-                        {d.kycL2 === 'verified' ? (
-                          <span className="text-[9px] font-black text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded-md whitespace-nowrap">L2 级</span>
-                        ) : d.kycL2 === 'pending' ? (
-                          <div className="flex items-center gap-1">
-                            <span className="text-[9px] font-black text-amber-500 bg-amber-500/10 px-1.5 py-0.5 rounded-md animate-pulse whitespace-nowrap">L2 待审</span>
-                            <button 
-                              onClick={() => handleKycAudit(d.uid, true)}
-                              className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-1.5 py-0.5 rounded text-[8px] font-bold hover:bg-emerald-500/35 transition-all cursor-pointer whitespace-nowrap"
-                            >
-                              批准
-                            </button>
-                          </div>
-                        ) : d.kycL1 === 'verified' || d.kycL1 === undefined ? (
-                          <span className="text-[9px] font-black text-[#cfbcff] bg-[#cfbcff]/10 px-1.5 py-0.5 rounded-md whitespace-nowrap">L1 级</span>
-                        ) : (
-                          <span className="text-[9px] font-black text-gray-500 bg-white/5 px-1.5 py-0.5 rounded-md whitespace-nowrap">未核验</span>
-                        )}
-                      </div>
-                      
-                      <div className="text-[#cbc4d2]/45 font-mono text-[9px] pt-1">
-                        注册时间: {d.registrationDate}
-                      </div>
-                    </div>
-                  </div>
-
-                  <button 
-                    onClick={() => handleStartEditing(d)}
-                    className="bg-gradient-to-r from-[#6750a4]/40 to-[#cfbcff]/20 text-[#cfbcff] text-[10px] font-bold py-1.5 px-3 border border-[#cfbcff]/20 rounded-xl cursor-pointer flex items-center gap-1 shrink-0"
-                  >
-                    <Edit className="w-3" />
-                    查看
-                  </button>
-                </div>
-              </div>
-            ))}
-        </div>
-
-        {/* Desktop Layout table */}
-        <div className="hidden md:block overflow-x-auto border border-white/5 rounded-2xl bg-[#1c1825]/40 p-1">
-          <table className="w-full text-left text-xs">
-            <thead>
-              <tr className="border-b border-white/5 text-[#cbc4d2]/50 font-bold tracking-wider bg-white/[0.01]">
-                <th className="py-3 px-4">用户昵称 / UID 账号</th>
-                <th className="py-3 px-4">联系方式 (手机 / 邮箱)</th>
-                <th className="py-3 px-4">直属推荐关系</th>
-                <th className="py-3 px-4">注册并激活日期</th>
-                <th className="py-3 px-4">下级/业绩</th>
-                <th className="py-3 px-4">KYC状态</th>
-                <th className="py-3 px-4 text-center">操作</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-white/5">
-              {filteredDownlines.map(d => (
-                  <tr key={d.uid} className="hover:bg-white/[0.02] transition-colors">
-                    <td className="py-3 px-4 text-white">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-[#cfbcff]/10 border border-[#cfbcff]/20 text-[#cfbcff] flex items-center justify-center font-extrabold text-xs select-none">
-                          {d.avatarLetter || (d.nickname ? d.nickname.charAt(0).toUpperCase() : 'U')}
-                        </div>
-                        <div>
-                          <p className="font-extrabold text-xs text-white leading-tight">{d.nickname || '未设置昵称'}</p>
-                          <p className="font-mono text-[10px] text-[#cbc4d2]/50 mt-0.5">UID: {d.uid}</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td className="py-3 px-4">
-                      <p className="text-white font-mono text-[11px] font-bold">{d.phone || '暂无绑定手机'}</p>
-                      <p className="text-[#cbc4d2]/50 font-mono text-[10px] mt-0.5">{d.email || d.uid + '@alliance.com'}</p>
-                    </td>
-                    <td className="py-3 px-4">
-                      <span className="font-mono text-xs font-semibold text-[#cfbcff] bg-[#cfbcff]/5 px-2 py-0.5 rounded border border-[#cfbcff]/10">
-                        {d.sponsor || '999001 (SYS)'}
-                      </span>
-                    </td>
-                    <td className="py-3.5 px-4 text-[#cbc4d2]/70 font-mono">{d.registrationDate}</td>
-                    <td className="py-3.5 px-4">
-                      <p className="font-bold text-[#cfbcff] font-mono text-xs">{d.nodeSize} 个下级</p>
-                      <p className="text-emerald-400 font-bold font-mono text-[10px] mt-0.5">USDT {d.volume.toLocaleString()}</p>
-                    </td>
-                    <td className="py-3 px-4 font-sans">
-                      <div className="flex items-center gap-1.5">
-                        {d.kycL2 === 'verified' ? (
-                          <span className="inline-block text-[10px] font-black text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-md">
-                            L2 级
-                          </span>
-                        ) : d.kycL2 === 'pending' ? (
-                          <div className="flex items-center gap-1.5">
-                            <span className="inline-block text-[10px] font-black text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-md animate-pulse">
-                              L2 待审
-                            </span>
-                            <button 
-                              onClick={() => handleKycAudit(d.uid, true)}
-                              className="p-1 px-1.5 bg-emerald-500/20 text-emerald-400 font-extrabold border border-emerald-500/30 rounded text-[9px] font-bold hover:bg-emerald-500/30 transition-all cursor-pointer"
-                              title="一键快速审批通过"
-                            >
-                              审核
-                            </button>
-                          </div>
-                        ) : d.kycL1 === 'verified' || d.kycL1 === undefined ? (
-                          <span className="inline-block text-[10px] font-black text-[#cfbcff] bg-[#cfbcff]/10 px-2 py-0.5 rounded-md">
-                            L1 级
-                          </span>
-                        ) : (
-                          <span className="inline-block text-[10px] font-black text-gray-500 bg-white/5 px-2 py-0.5 rounded-md">
-                            未核验
-                          </span>
-                        )}
-                      </div>
-                    </td>
-                    <td className="py-3.5 px-4 text-center">
-                      <div className="flex items-center justify-center gap-2.5">
-                        <button 
-                          onClick={() => handleStartEditing(d)}
-                          className="bg-gradient-to-r from-[#6750a4]/40 to-[#cfbcff]/20 hover:brightness-110 active:scale-95 transition-all text-[#cfbcff] text-xs font-bold py-1.5 px-3 border border-[#cfbcff]/20 rounded-xl cursor-pointer flex items-center gap-1.5 shadow-sm"
-                        >
-                          <Edit className="w-3.5" />
-                          查看
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+    <AdminUsersList
+      filteredDownlines={filteredDownlines}
+      searchText={userSearchText}
+      kycFilter={kycFilter}
+      onSearchTextChange={setUserSearchText}
+      onKycFilterChange={setKycFilter}
+      onStartEditing={handleStartEditing}
+      onKycAudit={handleKycAudit}
+    />
   );
+
 }
