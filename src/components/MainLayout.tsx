@@ -34,20 +34,20 @@ import QueueView from './QueueView';
 import NotificationsView from './NotificationsView';
 import SettingsView from './SettingsView';
 
-import AdminDashboardView from './AdminDashboardView';
+import AdminDashboardView from '../features/admin/dashboard';
 import AdminUsersView from '../features/admin/users';
-import AdminPlansView from './AdminPlansView';
-import AdminOrdersView from './AdminOrdersView';
-import AdminCommissionsView from './AdminCommissionsView';
-import AdminQueueView from './AdminQueueView';
-import AdminSettlementView from './AdminSettlementView';
-import AdminFinanceView from './AdminFinanceView';
-import AdminParametersView from './AdminParametersView';
-import AdminBroadcastView from './AdminBroadcastView';
-import AdminRbacView from './AdminRbacView';
-import AdminReportsView from './AdminReportsView';
-import AdminLogsView from './AdminLogsView';
-import AdminProfileView from './AdminProfileView';
+import AdminPlansView from '../features/admin/plans';
+import AdminOrdersView from '../features/admin/orders';
+import AdminCommissionsView from '../features/admin/commissions';
+import AdminQueueView from '../features/admin/queue';
+import AdminSettlementView from '../features/admin/settlement';
+import AdminFinanceView from '../features/admin/finance';
+import AdminParametersView from '../features/admin/parameters';
+import AdminBroadcastView from '../features/admin/broadcast';
+import AdminRbacView from '../features/admin/rbac';
+import AdminReportsView from '../features/admin/reports';
+import AdminLogsView from '../features/admin/logs';
+import AdminProfileView from '../features/admin/profile';
 
 import { useAppContext } from '../context/AppContext';
 
