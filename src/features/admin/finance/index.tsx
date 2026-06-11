@@ -1,6 +1,6 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { Sliders, Search, Download, Wallet, Coins, ArrowUpRight, ArrowDownLeft, CheckCircle2, ShieldAlert, Eye, X, UserX, AlertCircle, RefreshCw, PenTool, Activity, ShieldCheck, Languages } from 'lucide-react';
-import { Transaction, DownlineMember } from '../../../types';
+import { Transaction, DownlineMember } from '@/src/types';
 
 interface AdminFinanceViewProps {
   pendingWithdrawals: Transaction[];
@@ -1079,4 +1079,3 @@ export default function AdminFinanceView({
     </div>
   );
 }
-

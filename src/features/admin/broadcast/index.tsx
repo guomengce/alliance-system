@@ -1,6 +1,6 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { MessageSquare, Sliders } from 'lucide-react';
-import { NotificationItem } from '../../../types';
+import { NotificationItem } from '@/src/types';
 
 interface AdminBroadcastViewProps {
   onAddNotification: (notification: NotificationItem) => void;
@@ -136,4 +136,3 @@ export default function AdminBroadcastView({ onAddNotification }: AdminBroadcast
     </div>
   );
 }
-

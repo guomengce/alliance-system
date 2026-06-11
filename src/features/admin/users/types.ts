@@ -1,4 +1,4 @@
-import { DownlineMember } from '../../../types';
+import { DownlineMember } from '@/src/types';
 
 export type KycFilter = 'all' | 'pending' | 'verified';
 export type AdminUserTab = 'profile' | 'wallet' | 'team';

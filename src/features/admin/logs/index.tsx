@@ -1,4 +1,4 @@
-﻿import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import { 
   Activity, 
   AlertCircle, 
@@ -22,7 +22,7 @@ import {
   Globe 
 } from 'lucide-react';
 
-import { Transaction, DownlineMember } from '../../../types';
+import { Transaction, DownlineMember } from '@/src/types';
 
 interface AdminLog {
   id: string;
@@ -753,4 +753,3 @@ export default function AdminLogsView({ transactions = [], downlines = [] }: Adm
     </div>
   );
 }
-
