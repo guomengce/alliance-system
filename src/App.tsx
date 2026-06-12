@@ -1,8 +1,8 @@
 import React from 'react';
 import { AnimatePresence } from 'motion/react';
 import { AppProvider, useAppContext } from './context/AppContext';
-import LoginView from './components/LoginView';
-import MainLayout from './components/MainLayout';
+import LoginView from './features/auth';
+import MainLayout from './layouts/MainLayout';
 
 function AppContent() {
   const state = useAppContext();
