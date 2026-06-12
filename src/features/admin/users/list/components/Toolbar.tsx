@@ -1,6 +1,6 @@
 import React from 'react';
 import { Search, Users } from 'lucide-react';
-import { KycFilter } from '../types';
+import { KycFilter } from '../../types';
 
 interface ToolbarProps {
   searchText: string;

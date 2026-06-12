@@ -1,8 +1,8 @@
 import React from 'react';
 import { DownlineMember, KycFilter } from '../types';
-import Toolbar from './Toolbar';
-import MobileCard from './MobileCard';
-import DesktopTable from './DesktopTable';
+import Toolbar from './components/Toolbar';
+import MobileCard from './components/MobileCard';
+import DesktopTable from './components/DesktopTable';
 
 interface ListProps {
   filteredDownlines: DownlineMember[];

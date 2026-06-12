@@ -8,8 +8,8 @@ import {
   KycL2Status,
   UserAccountStatus,
 } from './types';
-import List from './components/List';
-import DetailsPanel from './components/DetailsPanel';
+import DetailsPanel from './detail';
+import List from './list';
 import { filterAdminUsers } from './utils';
 
 export default function AdminUsersView({

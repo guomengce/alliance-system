@@ -1,6 +1,6 @@
 import React from 'react';
 import { Edit } from 'lucide-react';
-import { DownlineMember } from '../types';
+import { DownlineMember } from '../../types';
 
 interface DesktopTableProps {
   users: DownlineMember[];
