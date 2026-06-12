@@ -24,15 +24,15 @@ import {
 } from 'lucide-react';
 
 import Sidebar from './Sidebar';
-import HomeView from './HomeView';
-import MemberView from './MemberView';
-import WalletView from './WalletView';
-import SubscribeView from './SubscribeView';
-import CommissionView from './CommissionView';
-import TeamView from './TeamView';
-import QueueView from './QueueView';
-import NotificationsView from './NotificationsView';
-import SettingsView from './SettingsView';
+import HomeView from '../features/client/home';
+import MemberView from '../features/client/member';
+import WalletView from '../features/client/wallet';
+import SubscribeView from '../features/client/subscribe';
+import CommissionView from '../features/client/commission';
+import TeamView from '../features/client/team';
+import QueueView from '../features/client/queue';
+import NotificationsView from '../features/client/notifications';
+import SettingsView from '../features/client/settings';
 
 import AdminDashboardView from '../features/admin/dashboard';
 import AdminUsersView from '../features/admin/users';

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import PageView from './PageView';
-import AlertBanner from './AlertBanner';
+import PageView from '../../../components/PageView';
+import AlertBanner from '../../../components/AlertBanner';
 import { 
   Settings, 
   ShieldAlert, 

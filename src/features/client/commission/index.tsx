@@ -14,9 +14,9 @@ import {
   ChevronRight,
   Zap
 } from 'lucide-react';
-import { Transaction } from '../types';
-import PageView from './PageView';
-import AlertBanner from './AlertBanner';
+import { Transaction } from '../../../types';
+import PageView from '../../../components/PageView';
+import AlertBanner from '../../../components/AlertBanner';
 
 interface CommissionViewProps {
   cumulativeCommissions: number;

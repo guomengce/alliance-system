@@ -12,8 +12,8 @@ import {
   CheckCircle,
   MoreHorizontal
 } from 'lucide-react';
-import { NotificationItem } from '../types';
-import PageView from './PageView';
+import { NotificationItem } from '../../../types';
+import PageView from '../../../components/PageView';
 
 interface NotificationsViewProps {
   notifications: NotificationItem[];

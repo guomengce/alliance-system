@@ -15,8 +15,8 @@ import {
   Plus,
   Activity
 } from 'lucide-react';
-import { Transaction } from '../types';
-import PageView from './PageView';
+import { Transaction } from '../../../types';
+import PageView from '../../../components/PageView';
 
 interface HomeViewProps {
   usdtBalance: number;

@@ -18,9 +18,9 @@ import {
   Search,
   Filter
 } from 'lucide-react';
-import { Transaction } from '../types';
-import PageView from './PageView';
-import AlertBanner from './AlertBanner';
+import { Transaction } from '../../../types';
+import PageView from '../../../components/PageView';
+import AlertBanner from '../../../components/AlertBanner';
 import { AnimatePresence, motion } from 'motion/react';
 
 interface QueueViewProps {

@@ -12,7 +12,7 @@ import {
   TrendingUp,
   UserPlus
 } from 'lucide-react';
-import PageView from './PageView';
+import PageView from '../../../components/PageView';
 
 interface MemberViewProps {
   uid: string;

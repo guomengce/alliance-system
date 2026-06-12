@@ -20,8 +20,8 @@ import {
   QrCode,
   UserCheck
 } from 'lucide-react';
-import { DownlineMember } from '../types';
-import PageView from './PageView';
+import { DownlineMember } from '../../../types';
+import PageView from '../../../components/PageView';
 
 interface TeamViewProps {
   downlines: DownlineMember[];
@@ -448,4 +448,3 @@ export default function TeamView({ downlines }: TeamViewProps) {
     </PageView>
   );
 }
-

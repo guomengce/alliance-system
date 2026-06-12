@@ -18,10 +18,10 @@ import {
   Copy,
   AlertTriangle
 } from 'lucide-react';
-import { Transaction } from '../types';
-import PageView from './PageView';
-import AlertBanner from './AlertBanner';
-import MetricCard from './MetricCard';
+import { Transaction } from '../../../types';
+import PageView from '../../../components/PageView';
+import AlertBanner from '../../../components/AlertBanner';
+import MetricCard from '../../../components/MetricCard';
 
 interface WalletViewProps {
   usdtBalance: number;
