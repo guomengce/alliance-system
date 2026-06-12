@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Workspace from './components/Workspace';
+import DetailView from './detail';
+import ListView from './list';
 import type { OrderDetail } from './types';
 import { INITIAL_ORDERS, filterAllocations } from './utils';
 
@@ -32,14 +33,24 @@ export default function AdminOrdersView() {
     ? filterAllocations(selectedOrder.commissionAllocations, detailSearchQuery)
     : [];
 
+  if (selectedOrder) {
+    return (
+      <DetailView
+        selectedOrder={selectedOrder}
+        setSelectedOrder={setSelectedOrder}
+        detailSearchQuery={detailSearchQuery}
+        setDetailSearchQuery={setDetailSearchQuery}
+        filteredAllocations={filteredAllocations}
+        onUpdateOrderStatus={handleUpdateOrderStatus}
+      />
+    );
+  }
+
   return (
-    <Workspace
+    <ListView
       orders={orders}
-      selectedOrder={selectedOrder}
       setSelectedOrder={setSelectedOrder}
-      detailSearchQuery={detailSearchQuery}
       setDetailSearchQuery={setDetailSearchQuery}
-      filteredAllocations={filteredAllocations}
       exportMockCSV={exportMockCSV}
       onUpdateOrderStatus={handleUpdateOrderStatus}
     />
