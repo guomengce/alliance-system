@@ -29,13 +29,19 @@ export interface OrderDetail {
   commissionAllocations: CommissionAllocation[];
 }
 
-export interface WorkspaceProps {
-  orders: OrderDetail[];
-  selectedOrder: OrderDetail | null;
+export interface DetailViewProps {
+  selectedOrder: OrderDetail;
   setSelectedOrder: Dispatch<SetStateAction<OrderDetail | null>>;
   detailSearchQuery: string;
   setDetailSearchQuery: Dispatch<SetStateAction<string>>;
   filteredAllocations: CommissionAllocation[];
+  onUpdateOrderStatus: (orderId: string, status: OrderDetail['status']) => void;
+}
+
+export interface ListViewProps {
+  orders: OrderDetail[];
+  setSelectedOrder: Dispatch<SetStateAction<OrderDetail | null>>;
+  setDetailSearchQuery: Dispatch<SetStateAction<string>>;
   exportMockCSV: () => void;
   onUpdateOrderStatus: (orderId: string, status: OrderDetail['status']) => void;
 }
