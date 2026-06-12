@@ -1,5 +1,5 @@
 import { Eye } from 'lucide-react';
-import type { MobileCardProps } from '../types';
+import type { MobileCardProps } from '../../types';
 
 export function MobileCard({ roster: r, onOpenDetails }: MobileCardProps) {
   return (

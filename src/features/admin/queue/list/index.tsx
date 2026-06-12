@@ -1,7 +1,7 @@
 import { Activity, Lock, ShieldCheck } from 'lucide-react';
 import type { RosterViewProps } from '../types';
-import { DesktopTable } from './DesktopTable';
-import { MobileCard } from './MobileCard';
+import { DesktopTable } from './components/DesktopTable';
+import { MobileCard } from './components/MobileCard';
 
 export function RosterView({ lockedRoster, onOpenDetails }: RosterViewProps) {
   return (

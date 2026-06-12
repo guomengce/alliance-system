@@ -1,5 +1,5 @@
 import { Eye } from 'lucide-react';
-import type { DesktopTableProps } from '../types';
+import type { DesktopTableProps } from '../../types';
 
 export function DesktopTable({ lockedRoster, onOpenDetails }: DesktopTableProps) {
   return (

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { DetailsView } from './components/DetailsView';
-import { RosterView } from './components/RosterView';
+import { DetailsView } from './detail';
+import { RosterView } from './list';
 import type { QueueRoster } from './types';
 import {
   createCalibrationTrigger,
