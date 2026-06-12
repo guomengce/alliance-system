@@ -1,23 +1,13 @@
 import React from 'react';
-import Sidebar from './Sidebar';
 import { useAppContext } from '../../context/AppContext';
-import AdminMobileDrawer from './AdminMobileDrawer';
-import ContentRouter from './ContentRouter';
-import DesktopHeader from './DesktopHeader';
-import GlobalAlertDialog from './GlobalAlertDialog';
-import MobileHeader from './MobileHeader';
+import AdminLayout from '../AdminLayout';
+import ClientLayout from '../ClientLayout';
 
 export default function MainLayout() {
   const state = useAppContext();
   const {
     triggerGlobalAlert,
-    portalMode,
-    nickname,
-    currentUid,
-    activeTab,
-    setActiveTab,
-    unreadNotificationsCount,
-    onLogout
+    portalMode
   } = state;
 
   React.useEffect(() => {
@@ -48,32 +38,5 @@ export default function MainLayout() {
     };
   }, [triggerGlobalAlert]);
 
-  return (
-    <div key="portal" className="flex min-h-screen">
-      <Sidebar
-        activeTab={activeTab}
-        setActiveTab={(tab) => {
-          setActiveTab(tab);
-        }}
-        uid={currentUid}
-        nickname={nickname}
-        unreadCount={unreadNotificationsCount}
-        onLogout={onLogout}
-        portalMode={portalMode}
-      />
-
-      <MobileHeader state={state} />
-      <AdminMobileDrawer state={state} />
-
-      <div className="flex-1 flex flex-col min-w-0 md:pl-[280px]">
-        <DesktopHeader state={state} />
-
-        <main className="p-6 pt-24 md:pt-6 min-h-[calc(100vh-4rem)] pb-24 md:pb-8 max-w-7xl xl:max-w-[1500px] 2xl:max-w-[1720px] mx-auto w-full flex flex-col justify-start">
-          <ContentRouter state={state} />
-        </main>
-      </div>
-
-      <GlobalAlertDialog state={state} />
-    </div>
-  );
+  return portalMode === 'admin' ? <AdminLayout state={state} /> : <ClientLayout state={state} />;
 }
