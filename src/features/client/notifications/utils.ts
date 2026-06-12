@@ -1,11 +1,11 @@
-import type { NotificationItem } from '../../../types';
+﻿import type { NotificationItem } from '../../../types';
 import type { NotificationCategory } from './types';
 
 export const NOTIFICATION_CATEGORIES: NotificationCategory[] = [
-  { id: 'all', label: '鍏ㄩ儴娑堟伅' },
-  { id: 'commission', label: '浣ｉ噾鍒嗙孩' },
-  { id: 'order', label: '璁㈠崟鎵ц' },
-  { id: 'system', label: '绯荤粺鍏憡' },
+  { id: 'all', label: '全部消息' },
+  { id: 'commission', label: '佣金分红' },
+  { id: 'order', label: '订单执行' },
+  { id: 'system', label: '系统公告' },
 ];
 
 export function filterNotificationsByCategory(
@@ -24,3 +24,4 @@ export function hasUnreadNotifications(
 ) {
   return notifications.filter(n => n.category === categoryId && n.isUnread).length > 0;
 }
+

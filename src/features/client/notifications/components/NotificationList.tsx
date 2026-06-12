@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'motion/react';
+﻿import { AnimatePresence, motion } from 'motion/react';
 import { Bell } from 'lucide-react';
 import type { NotificationListProps } from '../types';
 import NotificationCard from './NotificationCard';
@@ -25,10 +25,11 @@ export default function NotificationList({
             className="text-center py-16 bg-[#1a1620]/60 rounded-2xl border border-white/5 text-[#cbc4d2]/50 font-medium text-xs flex flex-col items-center justify-center gap-2"
           >
             <Bell className="w-8 h-8 opacity-30 text-[#cfbcff]" />
-            鏆傛棤绗﹀悎璇ュ垎绫荤殑绯荤粺閫氱煡娑堟伅鍘嗗彶
+            暂无符合该分类的系统通知消息历史
           </motion.div>
         )}
       </AnimatePresence>
     </div>
   );
 }
+
