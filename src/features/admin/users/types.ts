@@ -12,3 +12,12 @@ export interface AdminUsersViewProps {
 }
 
 export type { DownlineMember };
+
+
+export interface TeamMember {
+  uid: string;
+  name: string;
+  level: string;
+  nodes: string;
+  volume: string;
+}

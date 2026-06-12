@@ -3,6 +3,7 @@ import { Edit } from 'lucide-react';
 import { DownlineMember } from '../types';
 
 interface MobileCardProps {
+  key?: React.Key;
   user: DownlineMember;
   onStartEditing: (user: DownlineMember) => void;
   onKycAudit: (uid: string, accept: boolean) => void;
