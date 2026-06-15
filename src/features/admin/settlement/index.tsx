@@ -1,19 +1,18 @@
-import { useState } from 'react';
 import { Workspace } from './components/Workspace';
-import type { AdminSettlementViewProps, SettlementItem, SettleLog } from './types';
-import {
-  createSettleLog,
-  INITIAL_SETTLEMENT_LOGS,
-  INITIAL_SETTLEMENT_TRANSACTIONS
-} from './utils';
+import { useSettlementState } from './hooks/useSettlementState';
+import type { AdminSettlementViewProps, SettlementItem } from './types';
+import { createSettleLog } from './utils';
 
 export default function AdminSettlementView({ onUpdateBalances }: AdminSettlementViewProps) {
-  const [settlementLogs, setSettlementLogs] = useState<SettleLog[]>(INITIAL_SETTLEMENT_LOGS);
-
-  const [settlementTransactions, setSettlementTransactions] = useState<SettlementItem[]>(INITIAL_SETTLEMENT_TRANSACTIONS);
-
-  const [manualSettleLoading, setManualSettleLoading] = useState<boolean>(false);
-  const [selectedTx, setSelectedTx] = useState<SettlementItem | null>(null);
+  const {
+    manualSettleLoading,
+    selectedTx,
+    setManualSettleLoading,
+    setSelectedTx,
+    setSettlementLogs,
+    setSettlementTransactions,
+    settlementTransactions
+  } = useSettlementState();
 
   // D+1 manual retry / override stalled nodes
   const handleResolveException = (txId: string) => {

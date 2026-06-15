@@ -1,10 +1,10 @@
-import { useState } from 'react';
 import PageView from '../../../components/PageView';
 import CategoryTabs from './components/CategoryTabs';
 import HeaderActions from './components/HeaderActions';
 import NotificationList from './components/NotificationList';
+import { useNotificationsState } from './hooks/useNotificationsState';
 import type { NotificationsViewProps } from './types';
-import { NOTIFICATION_CATEGORIES, filterNotificationsByCategory } from './utils';
+import { NOTIFICATION_CATEGORIES } from './utils';
 
 export default function NotificationsView({
   notifications,
@@ -12,8 +12,11 @@ export default function NotificationsView({
   onClearNotifications,
   onToggleRead
 }: NotificationsViewProps) {
-  const [activeCategory, setActiveCategory] = useState<string>('all');
-  const filteredNotifications = filterNotificationsByCategory(notifications, activeCategory);
+  const {
+    activeCategory,
+    filteredNotifications,
+    setActiveCategory
+  } = useNotificationsState({ notifications });
 
   return (
     <PageView>

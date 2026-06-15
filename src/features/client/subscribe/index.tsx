@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Workspace from './components/Workspace';
+import { useSubscribeState } from './hooks/useSubscribeState';
 import type { Plan, Purchase, SubscribeViewProps } from './types';
-import { INITIAL_PURCHASES, PLANS } from './utils';
 
 export default function SubscribeView({
   usdtBalance,
@@ -11,31 +11,23 @@ export default function SubscribeView({
   onUpdateBalances,
   onAddTransaction
 }: SubscribeViewProps) {
-  const plans = PLANS;
-  const [selectedPlan, setSelectedPlan] = useState<Plan>(plans[4]); // default is Plan E
-  const [amountInput, setAmountInput] = useState<number>(50000);
-  const [successMsg, setSuccessMsg] = useState<string>('');
-  const [errorMsg, setErrorMsg] = useState<string>('');
-  const [copiedId, setCopiedId] = useState<string>('');
-  const [detailModalItem, setDetailModalItem] = useState<Purchase | null>(null);
-  
-  // Custom mock history with interactive additions matching homepage styles
-  const [purchases, setPurchases] = useState<Purchase[]>(INITIAL_PURCHASES);
-
-  // Timers to clean notices
-  useEffect(() => {
-    if (successMsg) {
-      const timer = setTimeout(() => setSuccessMsg(''), 6000);
-      return () => clearTimeout(timer);
-    }
-  }, [successMsg]);
-
-  useEffect(() => {
-    if (errorMsg) {
-      const timer = setTimeout(() => setErrorMsg(''), 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [errorMsg]);
+  const {
+    amountInput,
+    copiedId,
+    detailModalItem,
+    errorMsg,
+    plans,
+    purchases,
+    selectedPlan,
+    setAmountInput,
+    setCopiedId,
+    setDetailModalItem,
+    setErrorMsg,
+    setPurchases,
+    setSelectedPlan,
+    setSuccessMsg,
+    successMsg
+  } = useSubscribeState();
 
   const handleSelectPlan = (plan: Plan) => {
     setSelectedPlan(plan);

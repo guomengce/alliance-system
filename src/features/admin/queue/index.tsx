@@ -1,26 +1,27 @@
-import { useState } from 'react';
 import { DetailsView } from './detail';
 import { RosterView } from './list';
+import { useQueueState } from './hooks/useQueueState';
 import type { QueueRoster } from './types';
-import {
-  createCalibrationTrigger,
-  filterTriggerHistory,
-  INITIAL_LOCKED_ROSTER
-} from './utils';
+import { createCalibrationTrigger } from './utils';
 
 export default function AdminQueueView() {
-  const [lockedRoster, setLockedRoster] = useState<QueueRoster[]>(INITIAL_LOCKED_ROSTER);
-
-  const [selectedRoster, setSelectedRoster] = useState<QueueRoster | null>(null);
-
-  // States for manual calibration form
-  const [calibCurrent, setCalibCurrent] = useState<number>(0);
-  const [calibUnlocked, setCalibUnlocked] = useState<number>(0);
-  const [calibOriginal, setCalibOriginal] = useState<number>(0);
-  const [isEditingData, setIsEditingData] = useState(false);
-
-  // Search filter for unlock triggers records detail
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const {
+    calibCurrent,
+    calibOriginal,
+    calibUnlocked,
+    filteredHistory,
+    isEditingData,
+    lockedRoster,
+    searchQuery,
+    selectedRoster,
+    setCalibCurrent,
+    setCalibOriginal,
+    setCalibUnlocked,
+    setIsEditingData,
+    setLockedRoster,
+    setSearchQuery,
+    setSelectedRoster
+  } = useQueueState();
 
   const handleOpenDetails = (roster: QueueRoster) => {
     setSelectedRoster(roster);
@@ -67,10 +68,6 @@ export default function AdminQueueView() {
     alert(`【人工数据对账校准成功】\n会员 UID: ${selectedRoster?.uid} 数据校对生效！\n仍锁仓已修正为 ${calibCurrent} USDT，已解锁修正为 ${calibUnlocked} USDT。`);
   };
 
-  // Filter history based on local search input
-  const filteredHistory = selectedRoster
-    ? filterTriggerHistory(selectedRoster.triggerHistory, searchQuery)
-    : [];
 
   // RENDER DEDICATED INDEPENDENT DETAILS VIEW FOR THE SELECTED SUITE
   if (selectedRoster) {

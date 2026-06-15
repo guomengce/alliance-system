@@ -1,45 +1,52 @@
-import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { Workspace } from './components/Workspace';
-import type { AccountStatus, AdminAccount, RbacTab, RolePermission } from './types';
+import { useRbacState } from './hooks/useRbacState';
+import type { AdminAccount, RolePermission } from './types';
 import {
   generatePassword,
-  INITIAL_ADMIN_USERS,
-  INITIAL_ROLES,
   isValidEmail,
   normalizeRoleCode,
   PERMISSION_INVENTORY
 } from './utils';
 
 export default function AdminRbacView() {
-  // System roles initial list
-  const [roles, setRoles] = useState<RolePermission[]>(INITIAL_ROLES);
-
-  // Admin user accounts list
-  const [adminUsers, setAdminUsers] = useState<AdminAccount[]>(INITIAL_ADMIN_USERS);
-
-  // Active view states
-  const [activeTab, setActiveTab] = useState<RbacTab>('accounts');
-  const [selectedRoleCode, setSelectedRoleCode] = useState<string>('SUPER_ADMIN');
-  const [isNewAccountModalOpen, setIsNewAccountModalOpen] = useState(false);
-  const [isNewRoleModalOpen, setIsNewRoleModalOpen] = useState(false);
-
-  // Form states for creating account
-  const [newUsername, setNewUsername] = useState('');
-  const [newNickname, setNewNickname] = useState('');
-  const [newEmail, setNewEmail] = useState('');
-  const [newRole, setNewRole] = useState('OPERATOR');
-
-  // Form states for creating role
-  const [newRoleName, setNewRoleName] = useState('');
-  const [newRoleCode, setNewRoleCode] = useState('');
-
-  // Form states for editing account
-  const [editingAccount, setEditingAccount] = useState<AdminAccount | null>(null);
-  const [editNickname, setEditNickname] = useState('');
-  const [editEmail, setEditEmail] = useState('');
-  const [editRole, setEditRole] = useState('OPERATOR');
-  const [editStatus, setEditStatus] = useState<AccountStatus>('active');
+  const {
+    activeRoleObj,
+    activeTab,
+    adminUsers,
+    editEmail,
+    editNickname,
+    editRole,
+    editStatus,
+    editingAccount,
+    isNewAccountModalOpen,
+    isNewRoleModalOpen,
+    newEmail,
+    newNickname,
+    newRole,
+    newRoleCode,
+    newRoleName,
+    newUsername,
+    roles,
+    selectedRoleCode,
+    setActiveTab,
+    setAdminUsers,
+    setEditEmail,
+    setEditNickname,
+    setEditRole,
+    setEditStatus,
+    setEditingAccount,
+    setIsNewAccountModalOpen,
+    setIsNewRoleModalOpen,
+    setNewEmail,
+    setNewNickname,
+    setNewRole,
+    setNewRoleCode,
+    setNewRoleName,
+    setNewUsername,
+    setRoles,
+    setSelectedRoleCode
+  } = useRbacState();
 
   const handleOpenEditAccount = (u: AdminAccount) => {
     setEditingAccount(u);
@@ -202,7 +209,6 @@ export default function AdminRbacView() {
     }
   };
 
-  const activeRoleObj = roles.find(r => r.roleCode === selectedRoleCode) || roles[0];
 
   return (
     <Workspace

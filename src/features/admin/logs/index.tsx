@@ -1,5 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import Workspace from './components/Workspace';
+import { useLogsState } from './hooks/useLogsState';
 import type { AdminLog, AdminLogsViewProps } from './types';
 
 const initialLogs: AdminLog[] = [
@@ -114,13 +115,22 @@ const initialLogs: AdminLog[] = [
 ];
 
 export default function AdminLogsView({ transactions = [], downlines = [] }: AdminLogsViewProps) {
-  const [extraLogs, setExtraLogs] = useState<AdminLog[]>([]);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedSeverity, setSelectedSeverity] = useState<string>('All');
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
-  const [activeDetailLog, setActiveDetailLog] = useState<AdminLog | null>(null);
-  const [simulatedCount, setSimulatedCount] = useState<number>(0);
-  const [isExporting, setIsExporting] = useState(false);
+  const {
+    activeDetailLog,
+    extraLogs,
+    isExporting,
+    searchQuery,
+    selectedCategory,
+    selectedSeverity,
+    setActiveDetailLog,
+    setExtraLogs,
+    setIsExporting,
+    setSearchQuery,
+    setSelectedCategory,
+    setSelectedSeverity,
+    setSimulatedCount,
+    simulatedCount
+  } = useLogsState();
 
   // Map and merge dynamic active models (downline member profiles & financial transactions ledger)
   const logs = useMemo(() => {
