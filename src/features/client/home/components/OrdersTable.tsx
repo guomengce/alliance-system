@@ -3,7 +3,7 @@ import type { OrdersTableProps } from '../types';
 
 export default function OrdersTable({
   orders,
-  setActiveTab,
+  onNavigateToTab,
   onQuickAction
 }: OrdersTableProps) {
   return (
@@ -47,7 +47,7 @@ export default function OrdersTable({
                 </td>
                 <td className="px-6 py-4 text-right">
                   <button 
-                    onClick={() => setActiveTab('subscribe')}
+                    onClick={() => onNavigateToTab('subscribe')}
                     className="text-xs text-[#cfbcff] font-bold hover:underline"
                   >
                     详情
@@ -90,7 +90,7 @@ export default function OrdersTable({
 
             <div className="text-right pt-2 border-t border-white/5">
               <button 
-                onClick={() => setActiveTab('subscribe')}
+                onClick={() => onNavigateToTab('subscribe')}
                 className="text-xs text-[#cfbcff] font-bold hover:underline"
               >
                 详情

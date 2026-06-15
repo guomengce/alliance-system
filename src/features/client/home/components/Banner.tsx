@@ -1,6 +1,6 @@
 import type { BannerProps } from '../types';
 
-export default function Banner({ setActiveTab }: BannerProps) {
+export default function Banner({ onNavigateToTab }: BannerProps) {
   return (
     <div className="relative w-full h-[260px] rounded-2xl overflow-hidden glass-card group">
       <div className="absolute inset-0 bg-gradient-to-r from-[#6750a4] via-[#4d4465]/60 to-transparent z-10"></div>
@@ -21,7 +21,7 @@ export default function Banner({ setActiveTab }: BannerProps) {
           尊享机构级理财与团队裂变收益，开启您的去中心化金融新纪元。
         </p>
         <button 
-          onClick={() => setActiveTab('subscribe')}
+          onClick={() => onNavigateToTab('subscribe')}
           className="w-fit bg-[#cfbcff] text-[#381e72] px-8 py-3 rounded-xl font-bold hover:shadow-lg hover:shadow-[#cfbcff]/20 transition-all active:scale-95 duration-200"
         >
           立即认购

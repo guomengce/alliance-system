@@ -1,7 +1,11 @@
 import { ShieldCheck } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import type { NavigationProps } from './types';
 
-export default function DesktopSidebar({ activeTab, setActiveTab, menuItems }: NavigationProps) {
+export default function DesktopSidebar({ menuItems }: NavigationProps) {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   return (
     <aside className="fixed left-0 top-0 h-screen w-[280px] hidden md:flex flex-col bg-[#110e16]/80 backdrop-blur-3xl border-r border-white/5 shadow-2xl py-6 px-4 gap-4 z-50">
       <div className="flex items-center gap-3 px-3 mb-8">
@@ -21,12 +25,12 @@ export default function DesktopSidebar({ activeTab, setActiveTab, menuItems }: N
       <nav className="flex-1 space-y-1 overflow-y-auto pr-1">
         {menuItems.map((item) => {
           const IconComponent = item.icon;
-          const isActive = activeTab === item.id;
+          const isActive = location.pathname === item.path;
 
           return (
             <button
               key={item.id}
-              onClick={() => setActiveTab(item.id)}
+              onClick={() => navigate(item.path)}
               className={`w-full flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all duration-300 group ${
                 isActive
                   ? 'bg-[#6750a4] text-white font-bold shadow-lg shadow-[#6750a4]/15'
@@ -46,4 +50,3 @@ export default function DesktopSidebar({ activeTab, setActiveTab, menuItems }: N
     </aside>
   );
 }
-

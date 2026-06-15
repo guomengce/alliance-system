@@ -1,0 +1,159 @@
+import type { ReactElement, ReactNode } from 'react';
+import { useNavigate } from 'react-router-dom';
+import CommissionView from '../features/client/commission';
+import HomeView from '../features/client/home';
+import MemberView from '../features/client/member';
+import NotificationsView from '../features/client/notifications';
+import QueueView from '../features/client/queue';
+import SettingsView from '../features/client/settings';
+import SubscribeView from '../features/client/subscribe';
+import TeamView from '../features/client/team';
+import WalletView from '../features/client/wallet';
+import { useAppContext } from '../context/AppContext';
+import type { AppStateContext } from '../layouts/MainLayout/types';
+import { getRouteByTab } from './routes';
+
+type ClientRouteElementFactory = (state: AppStateContext, helpers: ClientRouteHelpers) => ReactElement;
+
+interface ClientRouteHelpers {
+  navigateToTab: (tab: string) => void;
+  handleQuickAction: (actionType: string) => void;
+}
+
+const routePageFrame = (children: ReactNode): ReactElement => (
+  <div className="flex flex-col flex-grow w-full">
+    {children}
+  </div>
+);
+
+const clientRouteElementFactories: Record<string, ClientRouteElementFactory> = {
+  home: (state, { navigateToTab, handleQuickAction }) => routePageFrame(
+    <HomeView
+      usdtBalance={state.usdtBalance}
+      trooBalance={state.trooBalance}
+      lockedQueueAmount={state.lockedQueueAmount}
+      cumulativeCommissions={state.cumulativeCommissions}
+      arrivedCommissions={state.arrivedCommissions}
+      failedCommissions={state.failedCommissions}
+      yesterdayRevenue={state.yesterdayRevenue}
+      remainingCredit={state.commissionPoolRemaining}
+      totalCredit={state.commissionPoolLimit}
+      creditUsedPercent={state.creditUsedPercent}
+      transactions={state.transactions}
+      onNavigateToTab={navigateToTab}
+      onQuickAction={handleQuickAction}
+      onRaiseCredit={state.handleRaiseCredit}
+    />
+  ),
+  member: (state) => routePageFrame(
+    <MemberView
+      uid={state.currentUid}
+      nickname={state.nickname}
+      joinDate="2023-10-24"
+      onUpdateNickname={state.onUpdateNickname}
+      onRaiseCredit={state.handleRaiseCredit}
+      remainingCredit={state.commissionPoolRemaining}
+      totalCredit={state.commissionPoolLimit}
+    />
+  ),
+  wallet: (state) => routePageFrame(
+    <WalletView
+      usdtBalance={state.usdtBalance}
+      trooBalance={state.trooBalance}
+      lockedQueueAmount={state.lockedQueueAmount}
+      transactions={state.transactions}
+      onAddTransaction={state.handleAddTransaction}
+      onUpdateBalances={state.handleUpdateBalances}
+    />
+  ),
+  subscribe: (state) => routePageFrame(
+    <SubscribeView
+      usdtBalance={state.usdtBalance}
+      commissionPoolLimit={state.commissionPoolLimit}
+      commissionPoolRemaining={state.commissionPoolRemaining}
+      onUpdateCommissionPool={(limitDiff: number, remainingDiff: number) => {
+        if (limitDiff !== 0) state.setCommissionPoolLimit((prev: number) => prev + limitDiff);
+        if (remainingDiff !== 0) state.setCommissionPoolRemaining((prev: number) => prev + remainingDiff);
+      }}
+      onUpdateBalances={state.handleUpdateBalances}
+      onAddTransaction={state.handleAddTransaction}
+    />
+  ),
+  commission: (state, { navigateToTab }) => routePageFrame(
+    <CommissionView
+      cumulativeCommissions={state.cumulativeCommissions}
+      pendingBalance={state.pendingBalance}
+      arrivedCommissions={state.arrivedCommissions}
+      failedCommissions={state.failedCommissions}
+      commissionPoolLimit={state.commissionPoolLimit}
+      commissionPoolRemaining={state.commissionPoolRemaining}
+      onWithdrawCommissions={state.handleWithdrawCommissions}
+      onAddTransaction={state.handleAddTransaction}
+      onIncreaseLimit={(amount: number) => {
+        state.setCommissionPoolLimit((prev: number) => prev + amount);
+        state.setCommissionPoolRemaining((prev: number) => prev + amount);
+      }}
+      onNavigateToSubscribe={() => navigateToTab('subscribe')}
+    />
+  ),
+  team: (state) => routePageFrame(
+    <TeamView downlines={state.downlines} />
+  ),
+  queue: (state) => routePageFrame(
+    <QueueView
+      usdtBalance={state.usdtBalance}
+      lockedQueueAmount={state.lockedQueueAmount}
+      originalLockedQueue={state.originalLockedQueue}
+      releasedQueueAmount={state.releasedQueueAmount}
+      commissionPoolLimit={state.commissionPoolLimit}
+      commissionPoolRemaining={state.commissionPoolRemaining}
+      onUpdateBalances={state.handleUpdateBalances}
+      onAddTransaction={state.handleAddTransaction}
+      onExecuteSimulation={state.handleDirectSimulation}
+    />
+  ),
+  notifications: (state) => routePageFrame(
+    <NotificationsView
+      notifications={state.notifications}
+      onMarkAllRead={state.onMarkAllRead}
+      onClearNotifications={state.onClearNotifications}
+      onToggleRead={state.onToggleRead}
+    />
+  ),
+  settings: (state) => routePageFrame(
+    <SettingsView
+      nickname={state.nickname}
+      email={state.email}
+      onUpdateNickname={state.onUpdateNickname}
+      onUpdateEmail={state.onUpdateEmail}
+      onLogout={state.onLogout}
+    />
+  )
+};
+
+interface ClientRouteElementProps {
+  tab: string;
+}
+
+export function ClientRouteElement({ tab }: ClientRouteElementProps) {
+  const state = useAppContext();
+  const navigate = useNavigate();
+  const renderRouteElement = clientRouteElementFactories[tab];
+
+  const navigateToTab = (targetTab: string) => {
+    const route = getRouteByTab(targetTab);
+    if (route) {
+      navigate(route.path);
+    }
+  };
+
+  const handleQuickAction = (actionType: string) => {
+    if (actionType === 'recharge') {
+      navigateToTab('wallet');
+    } else if (actionType === 'orders' || actionType === 'queue') {
+      navigateToTab('queue');
+    }
+  };
+
+  return renderRouteElement ? renderRouteElement(state, { navigateToTab, handleQuickAction }) : null;
+}

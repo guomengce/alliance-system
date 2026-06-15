@@ -237,13 +237,6 @@ export function useAppState() {
     setIsAuthenticated(false);
   };
 
-  const handleQuickAction = (actionType: string) => {
-    if (actionType === 'recharge') {
-      setActiveTab('wallet');
-    } else if (actionType === 'orders' || actionType === 'queue') {
-      setActiveTab('queue');
-    }
-  };
 
   const onMarkAllRead = () => {
     setNotifications(prev => prev.map(n => ({ ...n, isUnread: false })));
@@ -353,7 +346,6 @@ export function useAppState() {
     onUpdateEmail,
     onToggle2FA,
     onLogout,
-    handleQuickAction,
     onMarkAllRead,
     onClearNotifications,
     onToggleRead

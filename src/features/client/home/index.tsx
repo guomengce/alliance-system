@@ -20,7 +20,7 @@ export default function HomeView({
   totalCredit,
   creditUsedPercent,
   transactions,
-  setActiveTab,
+  onNavigateToTab,
   onQuickAction,
   onRaiseCredit
 }: HomeViewProps) {
@@ -41,7 +41,7 @@ export default function HomeView({
   return (
     <PageView>
       {/* Banner / Promotional Carousel */}
-      <Banner setActiveTab={setActiveTab} />
+      <Banner onNavigateToTab={onNavigateToTab} />
 
       {/* Stats Grid */}
       <AssetsAndCredit
@@ -67,19 +67,19 @@ export default function HomeView({
         chartHeight={chartHeight}
         yesterdayDateStr={yesterdayDateStr}
         setHoveredIndex={setHoveredIndex}
-        setActiveTab={setActiveTab}
+        onNavigateToTab={onNavigateToTab}
       />
 
       {/* Quick Actions Grid */}
       <QuickActions
-        setActiveTab={setActiveTab}
+        onNavigateToTab={onNavigateToTab}
         onQuickAction={onQuickAction}
       />
 
       {/* My Orders Table */}
       <OrdersTable
         orders={MY_ORDERS}
-        setActiveTab={setActiveTab}
+        onNavigateToTab={onNavigateToTab}
         onQuickAction={onQuickAction}
       />
     </PageView>

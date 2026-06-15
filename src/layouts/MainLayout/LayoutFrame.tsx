@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
+import { AnimatePresence } from 'motion/react';
+import { Outlet, useLocation } from 'react-router-dom';
 import Sidebar from './Sidebar';
-import ContentRouter from './ContentRouter';
 import DesktopHeader from './DesktopHeader';
 import GlobalAlertDialog from './GlobalAlertDialog';
 import MobileHeader from './MobileHeader';
@@ -12,12 +13,11 @@ interface LayoutFrameProps {
 }
 
 export default function LayoutFrame({ state, children }: LayoutFrameProps) {
+  const location = useLocation();
   const {
     portalMode,
     nickname,
     currentUid,
-    activeTab,
-    setActiveTab,
     unreadNotificationsCount,
     onLogout
   } = state;
@@ -25,10 +25,6 @@ export default function LayoutFrame({ state, children }: LayoutFrameProps) {
   return (
     <div key="portal" className="flex min-h-screen">
       <Sidebar
-        activeTab={activeTab}
-        setActiveTab={(tab) => {
-          setActiveTab(tab);
-        }}
         uid={currentUid}
         nickname={nickname}
         unreadCount={unreadNotificationsCount}
@@ -43,7 +39,11 @@ export default function LayoutFrame({ state, children }: LayoutFrameProps) {
         <DesktopHeader state={state} />
 
         <main className="p-6 pt-24 md:pt-6 min-h-[calc(100vh-4rem)] pb-24 md:pb-8 max-w-7xl xl:max-w-[1500px] 2xl:max-w-[1720px] mx-auto w-full flex flex-col justify-start">
-          <ContentRouter state={state} />
+          <AnimatePresence mode="wait">
+            <div key={location.pathname} className="flex flex-col flex-grow w-full">
+              <Outlet />
+            </div>
+          </AnimatePresence>
         </main>
       </div>
 
