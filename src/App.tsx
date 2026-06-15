@@ -29,7 +29,7 @@ function AppContent() {
     if (activeTab !== route.tab) {
       setActiveTab(route.tab);
     }
-  }, [activeTab, location.pathname, portalMode, setActiveTab, setPortalMode]);
+  }, [location.pathname, portalMode, setActiveTab, setPortalMode]);
 
   React.useEffect(() => {
     if (!isAuthenticated) return;
@@ -38,7 +38,7 @@ function AppContent() {
     if (location.pathname !== activeRoute.path) {
       navigate(activeRoute.path);
     }
-  }, [activeTab, isAuthenticated, location.pathname, navigate, portalMode]);
+  }, [activeTab, isAuthenticated, navigate, portalMode]);
 
   return (
     <div id="app_root" className="min-h-screen bg-[#0c0a0f] text-[#e6e0e9] antialiased">
