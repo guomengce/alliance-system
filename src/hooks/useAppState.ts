@@ -70,9 +70,6 @@ export function useAppState() {
   // Verification standard
   const [twoFAEnabled, setTwoFAEnabled] = useState<boolean>(true);
 
-  // Applet active tab selector
-  const [activeTab, setActiveTab ] = useState<string>('home');
-
   // Transaction Ledger, User downlines, notification items list states
   const [transactions, setTransactions] = useState<Transaction[]>(initialTransactions);
   const [notifications, setNotifications] = useState<NotificationItem[]>(initialNotifications);
@@ -321,8 +318,6 @@ export function useAppState() {
     setRemainingCredit,
     twoFAEnabled,
     setTwoFAEnabled,
-    activeTab,
-    setActiveTab,
     transactions,
     setTransactions,
     notifications,

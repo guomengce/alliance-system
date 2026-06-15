@@ -1,7 +1,6 @@
 import { ReactNode, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import { useAppContext } from '../../context/AppContext';
-import { getRouteByPath, type PortalMode } from '../routes';
+import type { PortalMode } from '../routes';
 
 interface PortalGuardProps {
   children: ReactNode;
@@ -9,20 +8,13 @@ interface PortalGuardProps {
 }
 
 export default function PortalGuard({ children, portalMode }: PortalGuardProps) {
-  const state = useAppContext();
-  const location = useLocation();
+  const { portalMode: currentPortalMode, setPortalMode } = useAppContext();
 
   useEffect(() => {
-    const route = getRouteByPath(location.pathname);
-
-    if (state.portalMode !== portalMode) {
-      state.setPortalMode(portalMode);
+    if (currentPortalMode !== portalMode) {
+      setPortalMode(portalMode);
     }
-
-    if (route && state.activeTab !== route.tab) {
-      state.setActiveTab(route.tab);
-    }
-  }, [location.pathname, portalMode, state]);
+  }, [currentPortalMode, portalMode, setPortalMode]);
 
   return children;
 }

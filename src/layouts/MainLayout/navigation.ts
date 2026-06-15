@@ -30,34 +30,6 @@ export const ADMIN_MOBILE_MENU_ITEMS = [
   { id: 'admin-logs', label: '日志管理', icon: Terminal, path: '/admin/logs' }
 ];
 
-export const CLIENT_TAB_LABELS: Record<string, string> = {
-  home: '首页',
-  member: '会员中心',
-  wallet: '钱包',
-  subscribe: '认购',
-  commission: '佣金',
-  team: '团队',
-  queue: '队列',
-  notifications: '通知中心',
-  settings: '设定'
-};
-
-export const ADMIN_TAB_LABELS: Record<string, string> = {
-  'admin-dashboard': '仪表盘',
-  'admin-users': '用户管理',
-  'admin-plans': '套餐管理',
-  'admin-orders': '订单管理',
-  'admin-commissions': '佣金管理',
-  'admin-queue': '排队管理',
-  'admin-settlement': '结算管理',
-  'admin-finance': '财务管理',
-  'admin-parameters': '参数配置',
-  'admin-broadcast': '通知管理',
-  'admin-rbac': '权限管理',
-  'admin-reports': '数据报表',
-  'admin-logs': '日志管理',
-  'admin-profile': '个人安全中心'
-};
 
 export const MOBILE_LANG_OPTIONS = [
   { code: 'zh', label: '绠€浣撲腑鏂?' },

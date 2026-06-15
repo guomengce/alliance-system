@@ -15,12 +15,12 @@ const stripPortalPrefix = (path: string, prefix: '/admin' | '/client'): string =
 
 export const adminRouteObjects: RouteObject[] = ADMIN_ROUTE_ENTRIES.map((entry) => ({
   path: stripPortalPrefix(entry.path, '/admin'),
-  element: <AdminRouteElement tab={entry.tab} />
+  element: <AdminRouteElement routeId={entry.routeId} />
 }));
 
 export const clientRouteObjects: RouteObject[] = CLIENT_ROUTE_ENTRIES.map((entry) => ({
   path: stripPortalPrefix(entry.path, '/client'),
-  element: <ClientRouteElement tab={entry.tab} />
+  element: <ClientRouteElement routeId={entry.routeId} />
 }));
 
 export const appRouteObjects: RouteObject[] = [

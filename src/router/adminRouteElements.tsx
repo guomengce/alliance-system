@@ -91,12 +91,12 @@ const adminRouteElementFactories: Record<string, AdminRouteElementFactory> = {
 };
 
 interface AdminRouteElementProps {
-  tab: string;
+  routeId: string;
 }
 
-export function AdminRouteElement({ tab }: AdminRouteElementProps) {
+export function AdminRouteElement({ routeId }: AdminRouteElementProps) {
   const state = useAppContext();
-  const renderRouteElement = adminRouteElementFactories[tab];
+  const renderRouteElement = adminRouteElementFactories[routeId];
 
   return renderRouteElement ? renderRouteElement(state) : null;
 }

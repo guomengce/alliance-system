@@ -11,12 +11,12 @@ import TeamView from '../features/client/team';
 import WalletView from '../features/client/wallet';
 import { useAppContext } from '../context/AppContext';
 import type { AppStateContext } from '../layouts/MainLayout/types';
-import { getRouteByTab } from './routes';
+import { getRouteByRouteId } from './routes';
 
 type ClientRouteElementFactory = (state: AppStateContext, helpers: ClientRouteHelpers) => ReactElement;
 
 interface ClientRouteHelpers {
-  navigateToTab: (tab: string) => void;
+  navigateToRoute: (routeId: string) => void;
   handleQuickAction: (actionType: string) => void;
 }
 
@@ -27,7 +27,7 @@ const routePageFrame = (children: ReactNode): ReactElement => (
 );
 
 const clientRouteElementFactories: Record<string, ClientRouteElementFactory> = {
-  home: (state, { navigateToTab, handleQuickAction }) => routePageFrame(
+  home: (state, { navigateToRoute, handleQuickAction }) => routePageFrame(
     <HomeView
       usdtBalance={state.usdtBalance}
       trooBalance={state.trooBalance}
@@ -40,7 +40,7 @@ const clientRouteElementFactories: Record<string, ClientRouteElementFactory> = {
       totalCredit={state.commissionPoolLimit}
       creditUsedPercent={state.creditUsedPercent}
       transactions={state.transactions}
-      onNavigateToTab={navigateToTab}
+      onNavigateToRoute={navigateToRoute}
       onQuickAction={handleQuickAction}
       onRaiseCredit={state.handleRaiseCredit}
     />
@@ -79,7 +79,7 @@ const clientRouteElementFactories: Record<string, ClientRouteElementFactory> = {
       onAddTransaction={state.handleAddTransaction}
     />
   ),
-  commission: (state, { navigateToTab }) => routePageFrame(
+  commission: (state, { navigateToRoute }) => routePageFrame(
     <CommissionView
       cumulativeCommissions={state.cumulativeCommissions}
       pendingBalance={state.pendingBalance}
@@ -93,7 +93,7 @@ const clientRouteElementFactories: Record<string, ClientRouteElementFactory> = {
         state.setCommissionPoolLimit((prev: number) => prev + amount);
         state.setCommissionPoolRemaining((prev: number) => prev + amount);
       }}
-      onNavigateToSubscribe={() => navigateToTab('subscribe')}
+      onNavigateToSubscribe={() => navigateToRoute('subscribe')}
     />
   ),
   team: (state) => routePageFrame(
@@ -132,16 +132,16 @@ const clientRouteElementFactories: Record<string, ClientRouteElementFactory> = {
 };
 
 interface ClientRouteElementProps {
-  tab: string;
+  routeId: string;
 }
 
-export function ClientRouteElement({ tab }: ClientRouteElementProps) {
+export function ClientRouteElement({ routeId }: ClientRouteElementProps) {
   const state = useAppContext();
   const navigate = useNavigate();
-  const renderRouteElement = clientRouteElementFactories[tab];
+  const renderRouteElement = clientRouteElementFactories[routeId];
 
-  const navigateToTab = (targetTab: string) => {
-    const route = getRouteByTab(targetTab);
+  const navigateToRoute = (targetRouteId: string) => {
+    const route = getRouteByRouteId(targetRouteId);
     if (route) {
       navigate(route.path);
     }
@@ -149,11 +149,11 @@ export function ClientRouteElement({ tab }: ClientRouteElementProps) {
 
   const handleQuickAction = (actionType: string) => {
     if (actionType === 'recharge') {
-      navigateToTab('wallet');
+      navigateToRoute('wallet');
     } else if (actionType === 'orders' || actionType === 'queue') {
-      navigateToTab('queue');
+      navigateToRoute('queue');
     }
   };
 
-  return renderRouteElement ? renderRouteElement(state, { navigateToTab, handleQuickAction }) : null;
+  return renderRouteElement ? renderRouteElement(state, { navigateToRoute, handleQuickAction }) : null;
 }

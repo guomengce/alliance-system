@@ -1,7 +1,8 @@
 import { Bell, Languages, Settings, ShieldCheck } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import type { AppStateContext, LangCode } from './types';
-import { ADMIN_TAB_LABELS, CLIENT_TAB_LABELS, DESKTOP_LANG_OPTIONS } from './navigation';
+import { DESKTOP_LANG_OPTIONS } from './navigation';
+import { getRouteByPath } from '../../router/routes';
 
 interface DesktopHeaderProps {
   state: AppStateContext;
@@ -9,11 +10,12 @@ interface DesktopHeaderProps {
 
 export default function DesktopHeader({ state }: DesktopHeaderProps) {
   const navigate = useNavigate();
+  const location = useLocation();
+  const currentRoute = getRouteByPath(location.pathname);
   const {
     portalMode,
     nickname,
     currentUid,
-    activeTab,
     unreadNotificationsCount,
     isLangDropdownOpen,
     setIsLangDropdownOpen,
@@ -25,11 +27,11 @@ export default function DesktopHeader({ state }: DesktopHeaderProps) {
     <div className="hidden md:flex sticky top-0 bg-[#0c0a0f]/80 backdrop-blur-3xl z-30 h-16 border-b border-white/5 select-none animate-fadeIn items-center justify-between px-8 w-full">
       <div className="flex items-center gap-3">
         <div className="px-3 py-1.5 bg-[#1c1822] rounded-full border border-white/5 text-xs text-[#cbc4d2]/70 tracking-wide flex items-center gap-1.5 font-sans font-extrabold shadow-sm">
-          {CLIENT_TAB_LABELS[activeTab] && <span className="text-[#cfbcff]">{CLIENT_TAB_LABELS[activeTab]}</span>}
-          {activeTab.startsWith('admin-') && (
+          {currentRoute?.portalMode === 'client' && <span className="text-[#cfbcff]">{currentRoute.label}</span>}
+          {currentRoute?.portalMode === 'admin' && (
             <span className="text-[#cfbcff] font-black flex items-center gap-1.5 uppercase text-[11px]">
               <ShieldCheck className="w-4 h-4 text-[#cfbcff]" />
-              管理后台 ▸ {ADMIN_TAB_LABELS[activeTab] || '系统管理控制台'}
+              管理后台 ▸ {currentRoute.label || '系统管理控制台'}
             </span>
           )}
         </div>
