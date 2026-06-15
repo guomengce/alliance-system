@@ -1,30 +1,24 @@
-import React, { useState } from 'react';
 import MetricGrid from './components/MetricGrid';
 import StatusHeader from './components/StatusHeader';
 import TrendPanel from './components/TrendPanel';
 import TrooPricePanel from './components/TrooPricePanel';
+import { useDashboardState } from './hooks/useDashboardState';
 import type { AdminDashboardViewProps } from './types';
-import {
-  COMPANY_USDT,
-  TROO_CHART_HEIGHT,
-  TROO_CHART_WIDTH,
-  getAdminTrooMarketData,
-  getAreaPath,
-  getLinePath,
-  getTrooChartPoints
-} from './utils';
+import { COMPANY_USDT } from './utils';
 
 export default function AdminDashboardView({ usdtBalance, lockedQueueAmount }: AdminDashboardViewProps) {
-  const [trooPriceUSD] = useState<number>(0.125);
-  const [hoveredChartIndex, setHoveredChartIndex] = useState<number | null>(null);
-  const [hoveredTrooIndex, setHoveredTrooIndex] = useState<number | null>(null);
-
-  const adminTrooMarketData = getAdminTrooMarketData(trooPriceUSD);
-  const trooPoints = getTrooChartPoints(adminTrooMarketData, trooPriceUSD);
-  const trooLinePath = getLinePath(trooPoints);
-  const trooAreaPath = getAreaPath(trooLinePath);
-  const activeTrooIndex = hoveredTrooIndex !== null ? hoveredTrooIndex : adminTrooMarketData.length - 1;
-  const activeTrooData = adminTrooMarketData[activeTrooIndex];
+  const {
+    activeTrooData,
+    hoveredChartIndex,
+    hoveredTrooIndex,
+    setHoveredChartIndex,
+    setHoveredTrooIndex,
+    trooAreaPath,
+    trooChartHeight,
+    trooChartWidth,
+    trooLinePath,
+    trooPoints
+  } = useDashboardState();
 
   return (
     <div id="admin_dashboard_page" className="space-y-6 select-none animate-fadeIn flex-grow flex flex-col pb-4 h-full">
@@ -37,8 +31,8 @@ export default function AdminDashboardView({ usdtBalance, lockedQueueAmount }: A
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-grow">
         <TrooPricePanel
           activeTrooData={activeTrooData}
-          trooChartHeight={TROO_CHART_HEIGHT}
-          trooChartWidth={TROO_CHART_WIDTH}
+          trooChartHeight={trooChartHeight}
+          trooChartWidth={trooChartWidth}
           trooAreaPath={trooAreaPath}
           trooLinePath={trooLinePath}
           trooPoints={trooPoints}

@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
 import ApiPanel from './components/ApiPanel';
 import CommissionPanel from './components/CommissionPanel';
 import LimitsPanel from './components/LimitsPanel';
-import type { CommissionLevels } from './types';
-import { DEFAULT_API_PRICE_URL, DEFAULT_COMMISSION_LEVELS } from './utils';
+import { useParametersState } from './hooks/useParametersState';
 
 export default function AdminParametersView() {
-  const [commissionLevels, setCommissionLevels] = useState<CommissionLevels>(DEFAULT_COMMISSION_LEVELS);
-  const [withdrawalFee, setWithdrawalFee] = useState<number>(15);
-  const [l1UnlockRatio, setL1UnlockRatio] = useState<number>(10);
-  const [apiPriceUrl, setApiPriceUrl] = useState<string>(DEFAULT_API_PRICE_URL);
+  const {
+    apiPriceUrl,
+    commissionLevels,
+    l1UnlockRatio,
+    setApiPriceUrl,
+    setCommissionLevels,
+    setL1UnlockRatio,
+    setWithdrawalFee,
+    withdrawalFee
+  } = useParametersState();
 
   return (
     <div id="admin_parameters_view" className="glass-card p-5 md:p-6 rounded-2xl border border-white/5 bg-[#141119] space-y-6 animate-fadeIn flex-grow flex flex-col md:min-h-[calc(100vh-140px)] pb-4">

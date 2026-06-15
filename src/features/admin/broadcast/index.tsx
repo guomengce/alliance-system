@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
 import BroadcastForm from './components/BroadcastForm';
 import TemplatePanel from './components/TemplatePanel';
+import { useBroadcastState } from './hooks/useBroadcastState';
 import type { AdminBroadcastViewProps } from './types';
 import {
-  INITIAL_BROADCAST_BODY,
-  INITIAL_BROADCAST_TITLE,
-  INITIAL_NOTIFICATION_TEMPLATE,
   createBroadcastNotification,
   getBroadcastTargetLabel
 } from './utils';
 
 export default function AdminBroadcastView({ onAddNotification }: AdminBroadcastViewProps) {
-  const [notificationTemplate, setNotificationTemplate] = useState<string>(INITIAL_NOTIFICATION_TEMPLATE);
-  const [broadcastTitle, setBroadcastTitle] = useState<string>(INITIAL_BROADCAST_TITLE);
-  const [broadcastBody, setBroadcastBody] = useState<string>(INITIAL_BROADCAST_BODY);
-  const [broadcastTarget, setBroadcastTarget] = useState<string>('all');
+  const {
+    broadcastBody,
+    broadcastTarget,
+    broadcastTitle,
+    notificationTemplate,
+    setBroadcastBody,
+    setBroadcastTarget,
+    setBroadcastTitle,
+    setNotificationTemplate
+  } = useBroadcastState();
 
   const handleSendBroadcast = () => {
     if (!broadcastTitle || !broadcastBody) return alert('标题和内容不能为空');
