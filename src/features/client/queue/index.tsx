@@ -1,4 +1,4 @@
-ï»¿import React, { useState } from 'react';
+import { useState } from 'react';
 import { Unlock } from 'lucide-react';
 import PageView from '../../../components/PageView';
 import AlertBanner from '../../../components/AlertBanner';
@@ -7,8 +7,8 @@ import OrdersList from './components/OrdersList';
 import ProgressVisualization from './components/ProgressVisualization';
 import ReleaseLogList from './components/ReleaseLogList';
 import UnlockMechanismNotice from './components/UnlockMechanismNotice';
-import type { OrderStatusFilter, QueueOrderItem, QueueViewProps, ReleaseLogItem } from './types';
-import { filterOrders, getProgressPercent } from './utils';
+import { useQueueState } from './hooks/useQueueState';
+import type { QueueOrderItem, QueueViewProps, ReleaseLogItem } from './types';
 
 export default function QueueView({
   usdtBalance,
@@ -31,387 +31,316 @@ export default function QueueView({
   const [orders, setOrders] = useState<QueueOrderItem[]>([
     {
       id: 'ORD-102456',
-      name: 'ç†è´¢æ–¹æ¡ˆ A å¥—é¤ (å·²è´­)',
+      name: 'Àí²Æ·½°¸ A Ì×²Í (ÒÑ¹º)',
       amount: 10000.00,
       originalLock: 3100.00,
       released: 0.00,
       remainingLock: 3100.00,
       status: 'queueing',
-      statusLabel: 'æ’é˜Ÿä¸­',
+      statusLabel: 'ÅÅ¶ÓÖĞ',
       unlockHistory: []
     },
     {
       id: 'ORD-209182',
-      name: 'é’»çŸ³æˆé•¿è®¡åˆ’ Cä¸TROOè®¤è´­ (å·²å®Œæˆ)',
+      name: '×êÊ¯³É³¤¼Æ»® CÓëTROOÈÏ¹º (ÒÑÍê³É)',
       amount: 20000.00,
       originalLock: 6200.00,
       released: 6200.00,
       remainingLock: 0.00,
       status: 'released',
-      statusLabel: 'å·²å…¨éƒ¨è§£é”å¹¶ä¹°å…¥',
+      statusLabel: 'ÒÑÈ«²¿½âËø²¢ÂòÈë',
       unlockHistory: [
-        { id: 'ULK-101', time: '2023-11-21 14:02', triggerSource: 'L1ç›´æ¨ä¸‹çº¿ (UID: 10425) è®¤è´­æ–¹æ¡ˆ A (10k USDT)', unlockedAmount: 1000.00, trooBought: 10000 },
-        { id: 'ULK-102', time: '2023-11-22 09:41', triggerSource: 'L1ç›´æ¨ä¸‹çº¿ (UID: 10294) è®¤è´­æ–¹æ¡ˆ C (30k USDT)', unlockedAmount: 3000.00, trooBought: 30000 },
-        { id: 'ULK-103', time: '2023-11-23 18:15', triggerSource: 'L1ç›´æ¨ä¸‹çº¿ (UID: 11029) è®¤è´­æ–¹æ¡ˆ B (22k USDT)', unlockedAmount: 2200.00, trooBought: 22000 }
+        { id: 'ULK-101', time: '2023-11-21 14:02', triggerSource: 'L1Ö±ÍÆÏÂÏß (UID: 10425) ÈÏ¹º·½°¸ A (10k USDT)', unlockedAmount: 1000.00, trooBought: 10000 },
+        { id: 'ULK-102', time: '2023-11-22 09:41', triggerSource: 'L1Ö±ÍÆÏÂÏß (UID: 10294) ÈÏ¹º·½°¸ C (30k USDT)', unlockedAmount: 3000.00, trooBought: 30000 },
+        { id: 'ULK-103', time: '2023-11-23 18:15', triggerSource: 'L1Ö±ÍÆÏÂÏß (UID: 11029) ÈÏ¹º·½°¸ B (22k USDT)', unlockedAmount: 2200.00, trooBought: 22000 }
       ]
     },
     {
       id: 'ORD-312948',
-      name: 'è‡³å°Šåˆ›ä¸–ç†è´¢è®¡åˆ’ Bå¥—é¤ (æ™ºèƒ½é”ä»“)',
+      name: 'ÖÁ×ğ´´ÊÀÀí²Æ¼Æ»® BÌ×²Í (ÖÇÄÜËø²Ö)',
       amount: 50000.00,
       originalLock: 15500.00,
       released: 3100.00,
       remainingLock: 12400.00,
       status: 'partially_released',
-      statusLabel: 'éƒ¨åˆ†è§£é”ä¸­',
+      statusLabel: '²¿·Ö½âËøÖĞ',
       unlockHistory: [
-        { id: 'ULK-201', time: '2023-11-24 10:30', triggerSource: 'L1ç›´æ¨ä¸‹çº¿ (UID: 10425) è®¤è´­æ–¹æ¡ˆ B (31k USDT)', unlockedAmount: 3100.00, trooBought: 31000 }
+        { id: 'ULK-201', time: '2023-11-24 10:30', triggerSource: 'L1Ö±ÍÆÏÂÏß (UID: 10425) ÈÏ¹º·½°¸ B (31k USDT)', unlockedAmount: 3100.00, trooBought: 31000 }
       ]
     },
     {
       id: 'ORD-482931',
-      name: 'ç™½é“¶å¢å€¼è®¡åˆ’ PROç‰ˆ (æ™ºèƒ½é˜Ÿåˆ—)',
+      name: '°×ÒøÔöÖµ¼Æ»® PRO°æ (ÖÇÄÜ¶ÓÁĞ)',
       amount: 5000.00,
       originalLock: 1550.00,
       released: 1550.00,
       remainingLock: 0.00,
       status: 'released',
-      statusLabel: 'å·²å…¨éƒ¨è§£é”å¹¶ä¹°å…¥',
+      statusLabel: 'ÒÑÈ«²¿½âËø²¢ÂòÈë',
       unlockHistory: [
-        { id: 'ULK-301', time: '2023-11-21 15:55', triggerSource: 'L1ç›´æ¨ä¸‹çº¿ (UID: 10082) è®¤è´­æ–¹æ¡ˆ A (15.5k USDT)', unlockedAmount: 1550.00, trooBought: 15500 }
+        { id: 'ULK-301', time: '2023-11-21 15:55', triggerSource: 'L1Ö±ÍÆÏÂÏß (UID: 10082) ÈÏ¹º·½°¸ A (15.5k USDT)', unlockedAmount: 1550.00, trooBought: 15500 }
       ]
     },
     {
       id: 'ORD-519283',
-      name: 'é»„é‡‘ç¨³å®šæˆé•¿æ–¹æ¡ˆ C-2å‹',
+      name: '»Æ½ğÎÈ¶¨³É³¤·½°¸ C-2ĞÍ',
       amount: 15000.00,
       originalLock: 4650.00,
       released: 0.00,
       remainingLock: 4650.00,
       status: 'queueing',
-      statusLabel: 'æ’é˜Ÿä¸­',
+      statusLabel: 'ÅÅ¶ÓÖĞ',
       unlockHistory: []
     },
     {
       id: 'ORD-628491',
-      name: 'æ–°äººä½“éªŒä¸“å±å¢ç›Šæ–¹æ¡ˆ (æ’é˜Ÿåˆ’è½¬)',
+      name: 'ĞÂÈËÌåÑé×¨ÊôÔöÒæ·½°¸ (ÅÅ¶Ó»®×ª)',
       amount: 2000.00,
       originalLock: 620.00,
       released: 310.00,
       remainingLock: 310.00,
       status: 'partially_released',
-      statusLabel: 'éƒ¨åˆ†è§£é”ä¸­',
+      statusLabel: '²¿·Ö½âËøÖĞ',
       unlockHistory: [
-        { id: 'ULK-401', time: '2023-11-25 11:24', triggerSource: 'L1ç›´æ¨ä¸‹çº¿ (UID: 10222) è®¤è´­ä½“éªŒæ–¹æ¡ˆ (3.1k USDT)', unlockedAmount: 310.00, trooBought: 3100 }
+        { id: 'ULK-401', time: '2023-11-25 11:24', triggerSource: 'L1Ö±ÍÆÏÂÏß (UID: 10222) ÈÏ¹ºÌåÑé·½°¸ (3.1k USDT)', unlockedAmount: 310.00, trooBought: 3100 }
       ]
     },
     {
       id: 'ORD-739102',
-      name: 'è‡³å°Šåˆ›ä¸–ç†è´¢è®¡åˆ’ Aå¥—é¤ (æ”¶ç›ŠåŠ æˆ)',
+      name: 'ÖÁ×ğ´´ÊÀÀí²Æ¼Æ»® AÌ×²Í (ÊÕÒæ¼Ó³É)',
       amount: 30000.00,
       originalLock: 9300.00,
       released: 0.00,
       remainingLock: 9300.00,
       status: 'queueing',
-      statusLabel: 'æ’é˜Ÿä¸­',
+      statusLabel: 'ÅÅ¶ÓÖĞ',
       unlockHistory: []
     },
     {
       id: 'ORD-840192',
-      name: 'é«˜å‡€å€¼æ ¸å¿ƒè®¤è´­ Cå¥—é¤ (å·²åŒæ­¥)',
+      name: '¸ß¾»ÖµºËĞÄÈÏ¹º CÌ×²Í (ÒÑÍ¬²½)',
       amount: 100000.00,
       originalLock: 31000.00,
       released: 31000.00,
       remainingLock: 0.00,
       status: 'released',
-      statusLabel: 'å·²å…¨éƒ¨è§£é”å¹¶ä¹°å…¥',
+      statusLabel: 'ÒÑÈ«²¿½âËø²¢ÂòÈë',
       unlockHistory: [
-        { id: 'ULK-801', time: '2023-11-26 10:15', triggerSource: 'L1ç›´æ¨ä¸‹çº¿ (UID: 10394) è®¤è´­é¡¶çº§ç†è´¢ (150k USDT)', unlockedAmount: 15000.00, trooBought: 150000 },
-        { id: 'ULK-802', time: '2023-11-27 15:40', triggerSource: 'L1ç›´æ¨ä¸‹çº¿ (UID: 10582) è®¤è´­è´¢å¯Œå¥—é¤ (160k USDT)', unlockedAmount: 16000.00, trooBought: 160000 }
+        { id: 'ULK-801', time: '2023-11-26 10:15', triggerSource: 'L1Ö±ÍÆÏÂÏß (UID: 10394) ÈÏ¹º¶¥¼¶Àí²Æ (150k USDT)', unlockedAmount: 15000.00, trooBought: 150000 },
+        { id: 'ULK-802', time: '2023-11-27 15:40', triggerSource: 'L1Ö±ÍÆÏÂÏß (UID: 10582) ÈÏ¹º²Æ¸»Ì×²Í (160k USDT)', unlockedAmount: 16000.00, trooBought: 160000 }
       ]
     },
     {
       id: 'ORD-910294',
-      name: 'å‰æ²¿æ¢ç´¢æ”¶ç›Šå‹ Bå¥—é¤ (æ™ºèƒ½ä¹°å…¥)',
+      name: 'Ç°ÑØÌ½Ë÷ÊÕÒæĞÍ BÌ×²Í (ÖÇÄÜÂòÈë)',
       amount: 40000.00,
       originalLock: 12400.00,
       released: 2400.00,
       remainingLock: 10000.00,
       status: 'partially_released',
-      statusLabel: 'éƒ¨åˆ†è§£é”ä¸­',
+      statusLabel: '²¿·Ö½âËøÖĞ',
       unlockHistory: [
-        { id: 'ULK-901', time: '2023-11-28 11:15', triggerSource: 'L1ç›´æ¨ä¸‹çº¿ (UID: 10118) è®¤è´­ä¸­çº§ç†è´¢ (24k USDT)', unlockedAmount: 2400.00, trooBought: 24000 }
+        { id: 'ULK-901', time: '2023-11-28 11:15', triggerSource: 'L1Ö±ÍÆÏÂÏß (UID: 10118) ÈÏ¹ºÖĞ¼¶Àí²Æ (24k USDT)', unlockedAmount: 2400.00, trooBought: 24000 }
       ]
     },
     {
       id: 'ORD-101192',
-      name: 'ç§‹å­£åˆ›æ”¶æ˜Ÿç«è®¡åˆ’ A(å°å¾®ç†è´¢)',
+      name: 'Çï¼¾´´ÊÕĞÇ»ğ¼Æ»® A(Ğ¡Î¢Àí²Æ)',
       amount: 8000.00,
       originalLock: 2480.00,
       released: 0.00,
       remainingLock: 2480.00,
       status: 'queueing',
-      statusLabel: 'æ’é˜Ÿä¸­',
+      statusLabel: 'ÅÅ¶ÓÖĞ',
       unlockHistory: []
     },
     {
       id: 'ORD-115938',
-      name: 'è”ç›Ÿæ™ºé€‰é•¿æœŸæˆé•¿è®¡åˆ’ D(å®Œå…¨è¦†ç›–)',
+      name: 'ÁªÃËÖÇÑ¡³¤ÆÚ³É³¤¼Æ»® D(ÍêÈ«¸²¸Ç)',
       amount: 50000.00,
       originalLock: 15500.00,
       released: 15500.00,
       remainingLock: 0.00,
       status: 'released',
-      statusLabel: 'å·²å…¨éƒ¨è§£é”å¹¶ä¹°å…¥',
+      statusLabel: 'ÒÑÈ«²¿½âËø²¢ÂòÈë',
       unlockHistory: [
-        { id: 'ULK-111', time: '2023-11-28 14:02', triggerSource: 'L1ç›´æ¨ä¸‹çº¿ (UID: 10425) è®¤è´­æˆé•¿ C (155k USDT)', unlockedAmount: 15500.00, trooBought: 155000 }
+        { id: 'ULK-111', time: '2023-11-28 14:02', triggerSource: 'L1Ö±ÍÆÏÂÏß (UID: 10425) ÈÏ¹º³É³¤ C (155k USDT)', unlockedAmount: 15500.00, trooBought: 155000 }
       ]
     },
     {
       id: 'ORD-129482',
-      name: 'è´¢å¯Œæ–¹èˆŸç¨³å¥å‹ C-3å¥—é¤ (èµ„äº§é…ç½®)',
+      name: '²Æ¸»·½ÖÛÎÈ½¡ĞÍ C-3Ì×²Í (×Ê²úÅäÖÃ)',
       amount: 12000.00,
       originalLock: 3720.00,
       released: 1200.00,
       remainingLock: 2520.00,
       status: 'partially_released',
-      statusLabel: 'éƒ¨åˆ†è§£é”ä¸­',
+      statusLabel: '²¿·Ö½âËøÖĞ',
       unlockHistory: [
-        { id: 'ULK-121', time: '2023-11-29 09:30', triggerSource: 'L1ç›´æ¨ä¸‹çº¿ (UID: 10425) è´­ä¹°ç™½é“¶æ–¹æ¡ˆ (12k USDT)', unlockedAmount: 1200.00, trooBought: 12000 }
+        { id: 'ULK-121', time: '2023-11-29 09:30', triggerSource: 'L1Ö±ÍÆÏÂÏß (UID: 10425) ¹ºÂò°×Òø·½°¸ (12k USDT)', unlockedAmount: 1200.00, trooBought: 12000 }
       ]
     },
     {
       id: 'ORD-135831',
-      name: 'è‡³å°Šåˆ›ä¸–ç†è´¢è®¡åˆ’ A-1ç‰¹æƒ ç‰ˆ',
+      name: 'ÖÁ×ğ´´ÊÀÀí²Æ¼Æ»® A-1ÌØ»İ°æ',
       amount: 25000.00,
       originalLock: 7750.00,
       released: 0.00,
       remainingLock: 7750.00,
       status: 'queueing',
-      statusLabel: 'æ’é˜Ÿä¸­',
+      statusLabel: 'ÅÅ¶ÓÖĞ',
       unlockHistory: []
     },
     {
       id: 'ORD-149209',
-      name: 'æ–°å…´å¸‚åœºä¸“å±çº¢åˆ©å¥—é¤ B(ç²¾é€‰é…ç½®)',
+      name: 'ĞÂĞËÊĞ³¡×¨ÊôºìÀûÌ×²Í B(¾«Ñ¡ÅäÖÃ)',
       amount: 18000.00,
       originalLock: 5580.00,
       released: 0.00,
       remainingLock: 5580.00,
       status: 'queueing',
-      statusLabel: 'æ’é˜Ÿä¸­',
+      statusLabel: 'ÅÅ¶ÓÖĞ',
       unlockHistory: []
     },
     {
       id: 'ORD-159481',
-      name: 'é»‘é‡‘é˜ç§äº«ç†è´¢ä¸“å±æ–¹æ¡ˆ Dçº§',
+      name: 'ºÚ½ğ¸óË½ÏíÀí²Æ×¨Êô·½°¸ D¼¶',
       amount: 150000.00,
       originalLock: 46500.00,
       released: 46500.00,
       remainingLock: 0.00,
       status: 'released',
-      statusLabel: 'å·²å…¨éƒ¨è§£é”å¹¶ä¹°å…¥',
+      statusLabel: 'ÒÑÈ«²¿½âËø²¢ÂòÈë',
       unlockHistory: [
-        { id: 'ULK-151', time: '2023-11-30 16:50', triggerSource: 'L1ç›´æ¨ä¸‹çº¿ (UID: 10294) è®¤è´­è‡³å°Šå¤§æ»¡è´¯è®¡åˆ’ (465k USDT)', unlockedAmount: 46500.00, trooBought: 465000 }
+        { id: 'ULK-151', time: '2023-11-30 16:50', triggerSource: 'L1Ö±ÍÆÏÂÏß (UID: 10294) ÈÏ¹ºÖÁ×ğ´óÂú¹á¼Æ»® (465k USDT)', unlockedAmount: 46500.00, trooBought: 465000 }
       ]
     },
     {
       id: 'ORD-168291',
-      name: 'å‰ç»è¡Œä¸šå…ˆé”‹è®¤è´­æ–¹æ¡ˆ A',
+      name: 'Ç°Õ°ĞĞÒµÏÈ·æÈÏ¹º·½°¸ A',
       amount: 10000.00,
       originalLock: 3100.00,
       released: 310.00,
       remainingLock: 2790.00,
       status: 'partially_released',
-      statusLabel: 'éƒ¨åˆ†è§£é”ä¸­',
+      statusLabel: '²¿·Ö½âËøÖĞ',
       unlockHistory: [
-        { id: 'ULK-161', time: '2023-12-01 10:11', triggerSource: 'L1ç›´æ¨ä¸‹çº¿ (UID: 10082) è´­ä¹°ä½“éªŒå¢ç›Šæ–¹æ¡ˆ (3.1k USDT)', unlockedAmount: 310.00, trooBought: 3100 }
+        { id: 'ULK-161', time: '2023-12-01 10:11', triggerSource: 'L1Ö±ÍÆÏÂÏß (UID: 10082) ¹ºÂòÌåÑéÔöÒæ·½°¸ (3.1k USDT)', unlockedAmount: 310.00, trooBought: 3100 }
       ]
     }
   ]);
 
-  // 3. Timeline Logs matching "ä¹°å…¥/è§£é”è®°å½•" in screenshot
+  // 3. Timeline Logs matching "ÂòÈë/½âËø¼ÇÂ¼" in screenshot
   const [releaseLogs, setReleaseLogs] = useState<ReleaseLogItem[]>([
     {
       id: 'LOG-001',
       date: '2023-11-20 14:30',
-      desc: 'ç³»ç»Ÿåˆå§‹çŠ¶æ€åŒæ­¥ï¼šæ–¹æ¡ˆ A é¦–æœŸ 70% å¯¹åº” TROO æ•°é‡å·²å³åˆ»æˆäº¤ä¹°å…¥ã€‚'
+      desc: 'ÏµÍ³³õÊ¼×´Ì¬Í¬²½£º·½°¸ A Ê×ÆÚ 70% ¶ÔÓ¦ TROO ÊıÁ¿ÒÑ¼´¿Ì³É½»ÂòÈë¡£'
     },
     {
       id: 'LOG-002',
       date: '2023-11-20 14:31',
-      desc: '31% å·²å­˜å…¥æ’é˜Ÿé”å®šé˜Ÿåˆ—ï¼Œç­‰å¾…æ¨èä¸‹çº¿è®¤è´­è§£é”å¹¶ä¹°å…¥ TROOã€‚'
+      desc: '31% ÒÑ´æÈëÅÅ¶ÓËø¶¨¶ÓÁĞ£¬µÈ´ıÍÆ¼öÏÂÏßÈÏ¹º½âËø²¢ÂòÈë TROO¡£'
     },
     {
       id: 'LOG-003',
       date: '2023-11-21 14:02',
-      desc: 'ç›´æ¨ä¸‹çº¿ (UID: 10425) è®¤è´­æ–¹æ¡ˆ A æˆåŠŸã€‚è§¦å‘è®¢å• ORD-209182 é¦–è½®é¢åº¦ 1,000.00 USDT è§£é”å¹¶åŒæ­¥å®Œæˆ TROO æ™ºèƒ½å¢æŒåˆ’è½¬ã€‚'
+      desc: 'Ö±ÍÆÏÂÏß (UID: 10425) ÈÏ¹º·½°¸ A ³É¹¦¡£´¥·¢¶©µ¥ ORD-209182 Ê×ÂÖ¶î¶È 1,000.00 USDT ½âËø²¢Í¬²½Íê³É TROO ÖÇÄÜÔö³Ö»®×ª¡£'
     },
     {
       id: 'LOG-004',
       date: '2023-11-21 15:55',
-      desc: 'ç›´æ¨ä¸‹çº¿ (UID: 10082) æˆåŠŸè®¤è´­ã€‚è§¦å‘ç™½é“¶å¢å€¼è®¡åˆ’ ORD-482931 å…¨é¢è§£å¥—ï¼Œé‡Šæ”¾ 1,550.00 USDT å¯¹åº”ä¹°ç›˜ä¹°å…¥ 15,500 TROOã€‚'
+      desc: 'Ö±ÍÆÏÂÏß (UID: 10082) ³É¹¦ÈÏ¹º¡£´¥·¢°×ÒøÔöÖµ¼Æ»® ORD-482931 È«¶î½âÌ×£¬ÊÍ·Å 1,550.00 USDT ¶ÔÓ¦ÂòÅÌÂòÈë 15,500 TROO¡£'
     },
     {
       id: 'LOG-005',
       date: '2023-11-22 09:41',
-      desc: 'ç›´æ¨ä¸‹çº¿ (UID: 10294) å®Œæˆé’»çŸ³æ–¹æ¡ˆ C è®¤è´­ã€‚è§£é”åˆ’æè®¢å• ORD-209182 éƒ¨åˆ†é”å®š 3,000.00 USDTï¼Œè´­ä¹° 30,000 TROOã€‚'
+      desc: 'Ö±ÍÆÏÂÏß (UID: 10294) Íê³É×êÊ¯·½°¸ C ÈÏ¹º¡£½âËø»®Ìá¶©µ¥ ORD-209182 ²¿·ÖËø¶¨ 3,000.00 USDT£¬¹ºÂò 30,000 TROO¡£'
     },
     {
       id: 'LOG-006',
       date: '2023-11-23 18:15',
-      desc: 'ç›´æ¨ä¸‹çº¿ (UID: 11029) è®¤è´­æ–¹æ¡ˆ B å®Œæˆã€‚è®¢å• ORD-209182 å‰©ä½™é”å®šé¢åº¦ 2,200.00 USDT å®Œå…¨è§£é”ï¼Œæœ¬è®¢å•æ€»è®¡ 6,200.00 USDT æˆäº¤è¾¾æˆã€‚'
+      desc: 'Ö±ÍÆÏÂÏß (UID: 11029) ÈÏ¹º·½°¸ B Íê³É¡£¶©µ¥ ORD-209182 Ê£ÓàËø¶¨¶î¶È 2,200.00 USDT ÍêÈ«½âËø£¬±¾¶©µ¥×Ü¼Æ 6,200.00 USDT ³É½»´ï³É¡£'
     },
     {
       id: 'LOG-007',
       date: '2023-11-24 10:30',
-      desc: 'ç›´æ¨ä¸‹çº¿ (UID: 10425) è®¤è´­æ–¹æ¡ˆ B (31k USDT) è§¦å‘è‡³å°Šé¦–æœŸè§£é”ã€‚é‡Šæ”¾ ORD-312948 å¹¶ä¹°å…¥ 31,000 TROOã€‚'
+      desc: 'Ö±ÍÆÏÂÏß (UID: 10425) ÈÏ¹º·½°¸ B (31k USDT) ´¥·¢ÖÁ×ğÊ×ÆÚ½âËø¡£ÊÍ·Å ORD-312948 ²¢ÂòÈë 31,000 TROO¡£'
     },
     {
       id: 'LOG-008',
       date: '2023-11-25 11:24',
-      desc: 'ç›´æ¨ä¸‹çº¿ (UID: 10222) è®¤è´­ä½“éªŒæ–¹æ¡ˆ 3.1k USDT è¾¾æˆã€‚æ ¹æ®å…¬å¼é‡Šæ”¾ ORD-628491 é¢åº¦ 310.00 USDT å¹¶è®°å…¥é“¾ä¸Šå‡­è¯ã€‚'
+      desc: 'Ö±ÍÆÏÂÏß (UID: 10222) ÈÏ¹ºÌåÑé·½°¸ 3.1k USDT ´ï³É¡£¸ù¾İ¹«Ê½ÊÍ·Å ORD-628491 ¶î¶È 310.00 USDT ²¢¼ÇÈëÁ´ÉÏÆ¾Ö¤¡£'
     },
     {
       id: 'LOG-009',
       date: '2023-11-26 10:15',
-      desc: 'å¤šé€šé“æ ¸éªŒï¼šç›´æ¨ä¸‹çº¿ (UID: 10394) è®¤è´­é«˜çº§å¥—é¤ï¼ŒORD-840192 è·å¾—é¦–è½®å¤§é¢è§£é” 15,000.00 USDT å¹¶æˆåŠŸå¹¶ç½‘ä¹°å…¥ã€‚'
+      desc: '¶àÍ¨µÀºËÑé£ºÖ±ÍÆÏÂÏß (UID: 10394) ÈÏ¹º¸ß¼¶Ì×²Í£¬ORD-840192 »ñµÃÊ×ÂÖ´ó¶î½âËø 15,000.00 USDT ²¢³É¹¦²¢ÍøÂòÈë¡£'
     },
     {
       id: 'LOG-010',
       date: '2023-11-27 15:40',
-      desc: 'ç›´æ¨ä¸‹çº¿ (UID: 10582) è®¤è´­è´¢å¯Œå¥—é¤éªŒè¯ã€‚ORD-840192 å°¾æ¬¾é”å®š 16,000.00 USDT å…¨é¢è§£å¥—ï¼Œè¯¥æ™ºèƒ½æ± çŠ¶æ€æ ‡è®°ä¸ºå®Œå…¨å·²æˆäº¤ã€‚'
+      desc: 'Ö±ÍÆÏÂÏß (UID: 10582) ÈÏ¹º²Æ¸»Ì×²ÍÑéÖ¤¡£ORD-840192 Î²¿îËø¶¨ 16,000.00 USDT È«¶î½âÌ×£¬¸ÃÖÇÄÜ³Ø×´Ì¬±ê¼ÇÎªÍêÈ«ÒÑ³É½»¡£'
     },
     {
       id: 'LOG-011',
       date: '2023-11-28 11:15',
-      desc: 'ä¸‹çº¿ç”¨æˆ· (UID: 10118) æ–°å¢è´­ä¹°å®Œæˆï¼Œè§¦å‘ ORD-910294 ç²¾ç»„æ™ºèƒ½åŒ¹é…è§£é” 2,400.00 USDTï¼Œæˆäº¤ 24,000 TROO è‚¡ç¥¨æƒç›Šã€‚'
+      desc: 'ÏÂÏßÓÃ»§ (UID: 10118) ĞÂÔö¹ºÂòÍê³É£¬´¥·¢ ORD-910294 ¾«×éÖÇÄÜÆ¥Åä½âËø 2,400.00 USDT£¬³É½» 24,000 TROO ¹ÉÆ±È¨Òæ¡£'
     },
     {
       id: 'LOG-012',
       date: '2023-11-28 14:02',
-      desc: 'å¤§é¢é—ªå…‘è­¦æŠ¥ï¼šL1å±‚ç”¨æˆ· (UID: 10425) è®¤è´­æè‡´è¦†ç›–æˆé•¿è®¡åˆ’ C æˆåŠŸï¼Œè®¢å• ORD-115938 åœ¨å‡ ç§’å†…ä¸€æ¬¡æ€§å…¨é¢è§£å¥—ï¼Œé‡Šæ”¾å€¼è¾¾ 15,500.00 USDTã€‚'
+      desc: '´ó¶îÉÁ¶Ò¾¯±¨£ºL1²ãÓÃ»§ (UID: 10425) ÈÏ¹º¼«ÖÂ¸²¸Ç³É³¤¼Æ»® C ³É¹¦£¬¶©µ¥ ORD-115938 ÔÚ¼¸ÃëÄÚÒ»´ÎĞÔÈ«¶î½âÌ×£¬ÊÍ·ÅÖµ´ï 15,500.00 USDT¡£'
     },
     {
       id: 'LOG-013',
       date: '2023-11-29 09:30',
-      desc: 'ç›´æ¨ä¸‹çº¿ (UID: 10425) è´­ä¹° 12k æ–¹æ¡ˆï¼Œè§¦å‘ ORD-129482 æŒ‰æ¯”ä¾‹è§£é”å¹¶ä¹°å…¥ 12,000 TROOï¼Œç³»ç»Ÿä¿æŒå®‰å…¨ç¨³å®šè¾“å‡ºã€‚'
+      desc: 'Ö±ÍÆÏÂÏß (UID: 10425) ¹ºÂò 12k ·½°¸£¬´¥·¢ ORD-129482 °´±ÈÀı½âËø²¢ÂòÈë 12,000 TROO£¬ÏµÍ³±£³Ö°²È«ÎÈ¶¨Êä³ö¡£'
     },
     {
       id: 'LOG-014',
       date: '2023-11-30 16:50',
-      desc: 'è¶…çº§å¤§æˆè®¢å•é€šå‘Šï¼ç›´æ¨ä¸‹çº¿ (UID: 10294) è®¤è´­å¤§æ»¡è´¯è®¡åˆ’ 465k USDTã€‚é»‘é‡‘é˜ä¸“å± ORD-159481 ä¸€æ¬¡æ€§è§£é”å®Œæˆ 46,500.00 USDTï¼Œä¹°å…¥ 465,000 è‚¡ TROO å¤´å¯¸ã€‚'
+      desc: '³¬¼¶´ó³É¶©µ¥Í¨¸æ£¡Ö±ÍÆÏÂÏß (UID: 10294) ÈÏ¹º´óÂú¹á¼Æ»® 465k USDT¡£ºÚ½ğ¸ó×¨Êô ORD-159481 Ò»´ÎĞÔ½âËøÍê³É 46,500.00 USDT£¬ÂòÈë 465,000 ¹É TROO Í·´ç¡£'
     },
     {
       id: 'LOG-015',
       date: '2023-12-01 10:11',
-      desc: 'å…ˆé”‹è®¤è´­è§¦å‘ï¼šç›´æ¨ä¸‹çº¿ (UID: 10082) æˆåŠŸåŠ æƒè®¤è´­ï¼Œè§¦å‘ ORD-168291 è§£é” 310.00 USDTï¼ŒTROO å¢é…ä¸­ã€‚'
+      desc: 'ÏÈ·æÈÏ¹º´¥·¢£ºÖ±ÍÆÏÂÏß (UID: 10082) ³É¹¦¼ÓÈ¨ÈÏ¹º£¬´¥·¢ ORD-168291 ½âËø 310.00 USDT£¬TROO ÔöÅäÖĞ¡£'
     },
     {
       id: 'LOG-016',
       date: '2023-12-01 18:00',
-      desc: 'å…¨æœæ—¥ç»“æœºåˆ¶æ ¡éªŒï¼šè‡ªåŠ¨æ’é˜Ÿè´­ä¹°åˆçº¦æ‰€æœ‰å‚æ•°åŒ¹é…æˆåŠŸï¼Œæœ¬æ—¶æ®µè§£é”è®°å½•ä¸æˆäº¤é‡å®Œå…¨å¯¹é½ã€‚'
+      desc: 'È«·şÈÕ½á»úÖÆĞ£Ñé£º×Ô¶¯ÅÅ¶Ó¹ºÂòºÏÔ¼ËùÓĞ²ÎÊıÆ¥Åä³É¹¦£¬±¾Ê±¶Î½âËø¼ÇÂ¼Óë³É½»Á¿ÍêÈ«¶ÔÆë¡£'
     }
   ]);
 
-  // Notice alert banner on visual clearing
-  const [alertSuccess, setAlertSuccess] = useState<{
-    show: boolean;
-    unlockedSum: number;
-    uid: string;
-  }>({ show: false, unlockedSum: 0, uid: '' });
-
-  // Inline messaging state replace window.alert
-  const [infoMessage, setInfoMessage] = useState('');
-
-  // Track visible counts and active detail selection popup modal
-  const [visibleOrdersCount, setVisibleOrdersCount] = useState(10);
-  const [visibleLogsCount, setVisibleLogsCount] = useState(10);
-  const [loadingMoreOrders, setLoadingMoreOrders] = useState(false);
-  const [loadingMoreLogs, setLoadingMoreLogs] = useState(false);
-  const [selectedDetailOrder, setSelectedDetailOrder] = useState<QueueOrderItem | null>(null);
-
-  // Consolidated reset helper for visibility pagination
-  const resetOrdersVisibility = () => {
-    setVisibleOrdersCount(10);
-  };
-
-  // Reusable custom generic scroll loading abstraction
-  const createScrollLoader = (
-    loading: boolean,
-    setLoading: (val: boolean) => void,
-    setVisibleCount: React.Dispatch<React.SetStateAction<number>>,
-    totalLength: number
-  ) => {
-    return (e: React.UIEvent<HTMLDivElement>) => {
-      const target = e.currentTarget;
-      const isAtBottom = target.scrollHeight - target.scrollTop <= target.clientHeight + 30;
-      if (isAtBottom && !loading && totalLength > 0) {
-        setLoading(true);
-        setTimeout(() => {
-          setVisibleCount(prev => Math.min(prev + 10, totalLength));
-          setLoading(false);
-        }, 500);
-      }
-    };
-  };
-
-  const [orderSearchQuery, setOrderSearchQuery] = useState('');
-  const [orderStatusFilter, setOrderStatusFilter] = useState<OrderStatusFilter>('all');
-
-  const filteredOrders = filterOrders(orders, orderSearchQuery, orderStatusFilter);
-
-  const handleOrdersScroll = createScrollLoader(
-    loadingMoreOrders,
-    setLoadingMoreOrders,
-    setVisibleOrdersCount,
-    filteredOrders.length
-  );
-
-  const handleLogsScroll = createScrollLoader(
+  const {
+    alertSuccess,
+    filteredOrders,
+    handleClearOrderSearch,
+    handleLoadMoreLogs,
+    handleLoadMoreOrders,
+    handleLogsScroll,
+    handleOrderSearchChange,
+    handleOrderStatusFilterChange,
+    handleOrdersScroll,
+    infoMessage,
     loadingMoreLogs,
-    setLoadingMoreLogs,
-    setVisibleLogsCount,
-    releaseLogs.length
-  );
-
-  const overallProgressPercent = getProgressPercent(releasedAmount, originalLocked);
-
-  const handleAddNewMockOrder = () => {
-    setInfoMessage('è¯·ä½¿ç”¨â€œè®¤è´­ä¸­å¿ƒâ€æ¨¡å—ä¸‹çš„æ–¹æ¡ˆè®¢è´­ï¼Œæ‰€ç”Ÿæˆçš„è®¢å•å°†è‡ªåŠ¨ä¸Šé“¾å¹¿æ’­å¹¶è¿›å…¥æ™ºèƒ½é˜Ÿåˆ—ï¼');
-  };
-
-  const handleOrderSearchChange = (value: string) => {
-    setOrderSearchQuery(value);
-    resetOrdersVisibility();
-  };
-
-  const handleClearOrderSearch = () => {
-    setOrderSearchQuery('');
-    resetOrdersVisibility();
-  };
-
-  const handleOrderStatusFilterChange = (status: OrderStatusFilter) => {
-    setOrderStatusFilter(status);
-    resetOrdersVisibility();
-  };
-
-  const handleLoadMoreOrders = () => {
-    setLoadingMoreOrders(true);
-    setTimeout(() => {
-      setVisibleOrdersCount(prev => Math.min(prev + 10, filteredOrders.length));
-      setLoadingMoreOrders(false);
-    }, 450);
-  };
-
-  const handleLoadMoreLogs = () => {
-    setLoadingMoreLogs(true);
-    setTimeout(() => {
-      setVisibleLogsCount(prev => Math.min(prev + 10, releaseLogs.length));
-      setLoadingMoreLogs(false);
-    }, 450);
-  };
-
+    loadingMoreOrders,
+    orderSearchQuery,
+    orderStatusFilter,
+    overallProgressPercent,
+    selectedDetailOrder,
+    setInfoMessage,
+    setSelectedDetailOrder,
+    visibleLogsCount,
+    visibleOrdersCount
+  } = useQueueState({
+    orders,
+    releaseLogs,
+    originalLocked,
+    releasedAmount
+  });
   return (
     <PageView>
       <AnimatePresence>
@@ -439,9 +368,9 @@ export default function QueueView({
                 <Unlock className="w-5 h-5 animate-pulse" />
               </span>
               <div>
-                <p className="text-white font-extrabold text-sm">ğŸ‰ æ™ºèƒ½åˆçº¦è§£å¥—è¿ç®—å·²å¹¿æ’­å®Œæˆï¼</p>
+                <p className="text-white font-extrabold text-sm">?? ÖÇÄÜºÏÔ¼½âÌ×ÔËËãÒÑ¹ã²¥Íê³É£¡</p>
                 <p className="text-emerald-400/80 font-mono mt-0.5">
-                  æˆåŠŸä»æ’é˜Ÿé”ä»“ä¸­è§£é”å¹¶ä¹°å…¥äº† <span className="underline decoration-dashed">{(alertSuccess.unlockedSum * 10).toLocaleString()} TROO</span>ï¼ˆç­‰å€¼ {alertSuccess.unlockedSum.toFixed(2)} USDTï¼‰ï¼Œå·²ç«‹å³å­˜å…¥æ‚¨çš„æŒè‚¡è´¦æˆ·ã€‚
+                  ³É¹¦´ÓÅÅ¶ÓËø²ÖÖĞ½âËø²¢ÂòÈëÁË <span className="underline decoration-dashed">{(alertSuccess.unlockedSum * 10).toLocaleString()} TROO</span>£¨µÈÖµ {alertSuccess.unlockedSum.toFixed(2)} USDT£©£¬ÒÑÁ¢¼´´æÈëÄúµÄ³Ö¹ÉÕË»§¡£
                 </p>
               </div>
             </div>
