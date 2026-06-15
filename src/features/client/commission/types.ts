@@ -11,7 +11,7 @@ export interface CommissionViewProps {
   onWithdrawCommissions: () => void;
   onAddTransaction: (txn: Transaction) => void;
   onIncreaseLimit?: (amount: number) => void;
-  setActiveTab?: (tab: string) => void;
+  onNavigateToSubscribe?: () => void;
 }
 
 export type HistoryFilter = 'all' | 'pending' | 'success';

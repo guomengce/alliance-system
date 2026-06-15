@@ -19,7 +19,7 @@ export default function CommissionView({
   onWithdrawCommissions,
   onAddTransaction,
   onIncreaseLimit,
-  setActiveTab
+  onNavigateToSubscribe
 }: CommissionViewProps) {
   const {
     activeFilter,
@@ -59,8 +59,8 @@ export default function CommissionView({
   };
 
   const handleIncreaseLimit = () => {
-    if (setActiveTab) {
-      setActiveTab('subscribe');
+    if (onNavigateToSubscribe) {
+      onNavigateToSubscribe();
     } else {
       const amount = 50000;
       if (onIncreaseLimit) {

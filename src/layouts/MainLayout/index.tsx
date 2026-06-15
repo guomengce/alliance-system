@@ -1,14 +1,9 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import { useAppContext } from '../../context/AppContext';
-import AdminLayout from '../AdminLayout';
-import ClientLayout from '../ClientLayout';
 
 export default function MainLayout() {
-  const state = useAppContext();
-  const {
-    triggerGlobalAlert,
-    portalMode
-  } = state;
+  const { triggerGlobalAlert } = useAppContext();
 
   React.useEffect(() => {
     window.alert = (msg: string) => {
@@ -38,5 +33,5 @@ export default function MainLayout() {
     };
   }, [triggerGlobalAlert]);
 
-  return portalMode === 'admin' ? <AdminLayout state={state} /> : <ClientLayout state={state} />;
+  return <Outlet />;
 }

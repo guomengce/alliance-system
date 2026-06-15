@@ -1,4 +1,5 @@
 import { Bell, Languages, Menu, Settings, ShieldCheck, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import type { AppStateContext, LangCode } from './types';
 import { MOBILE_LANG_OPTIONS } from './navigation';
 
@@ -7,11 +8,11 @@ interface MobileHeaderProps {
 }
 
 export default function MobileHeader({ state }: MobileHeaderProps) {
+  const navigate = useNavigate();
   const {
     portalMode,
     nickname,
-    activeTab,
-    setActiveTab,
+
     unreadNotificationsCount,
     isMobileMenuOpen,
     setIsMobileMenuOpen,
@@ -70,7 +71,7 @@ export default function MobileHeader({ state }: MobileHeaderProps) {
         {portalMode === 'client' && (
           <>
             <button
-              onClick={() => setActiveTab('notifications')}
+              onClick={() => navigate('/client/notifications')}
               className="relative p-2 bg-[#211f24]/50 hover:bg-[#2d2a30]/80 transition-colors rounded-xl text-[#cbc4d2] border border-white/5 flex items-center justify-center cursor-pointer"
               title="閫氱煡涓績"
             >
@@ -83,7 +84,7 @@ export default function MobileHeader({ state }: MobileHeaderProps) {
             </button>
 
             <button
-              onClick={() => setActiveTab('settings')}
+              onClick={() => navigate('/client/settings')}
               className="p-2 bg-[#211f24]/50 hover:bg-[#2d2a30]/80 transition-colors rounded-xl text-[#cbc4d2] border border-white/5 flex items-center justify-center cursor-pointer"
               title="系统设定"
             >
@@ -94,7 +95,7 @@ export default function MobileHeader({ state }: MobileHeaderProps) {
 
         {portalMode === 'client' ? (
           <button
-            onClick={() => setActiveTab('member')}
+            onClick={() => navigate('/client/member')}
             className="w-8 h-8 rounded-full bg-gradient-to-br from-[#6750a4] to-[#cfbcff] flex items-center justify-center shadow-md relative overflow-hidden text-center active:scale-95 transition-all shrink-0 cursor-pointer border border-white/10"
             title="会员中心"
           >
@@ -104,7 +105,7 @@ export default function MobileHeader({ state }: MobileHeaderProps) {
           </button>
         ) : (
           <button
-            onClick={() => setActiveTab('admin-profile')}
+            onClick={() => navigate('/admin/profile')}
             className="w-8 h-8 rounded-full bg-gradient-to-br from-[#6750a4] to-[#cfbcff] flex items-center justify-center shadow-md relative overflow-hidden text-center shrink-0 border border-[#cfbcff]/45 cursor-pointer active:scale-95 transition-all outline-none"
             title="管理账户资料 ＆ 安全"
           >

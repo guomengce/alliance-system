@@ -5,8 +5,6 @@ import { ADMIN_MENU_ITEMS, CLIENT_MENU_ITEMS, getAllowedAdminTabs } from './side
 import type { SidebarProps } from './sidebar/types';
 
 export default function Sidebar({
-  activeTab,
-  setActiveTab,
   portalMode
 }: SidebarProps) {
   const { adminRole } = useAppContext();
@@ -19,10 +17,10 @@ export default function Sidebar({
 
   return (
     <>
-      <DesktopSidebar activeTab={activeTab} setActiveTab={setActiveTab} menuItems={menuItems} />
+      <DesktopSidebar menuItems={menuItems} />
 
       {portalMode === 'client' && (
-        <MobileBottomNav activeTab={activeTab} setActiveTab={setActiveTab} menuItems={menuItems} />
+        <MobileBottomNav menuItems={menuItems} />
       )}
     </>
   );

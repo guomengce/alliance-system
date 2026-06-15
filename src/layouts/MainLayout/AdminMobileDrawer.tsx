@@ -1,5 +1,6 @@
 import { AnimatePresence } from 'motion/react';
 import { ShieldCheck, X } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import type { AppStateContext } from './types';
 import { ADMIN_MOBILE_MENU_ITEMS } from './navigation';
 
@@ -8,10 +9,10 @@ interface AdminMobileDrawerProps {
 }
 
 export default function AdminMobileDrawer({ state }: AdminMobileDrawerProps) {
+  const location = useLocation();
+  const navigate = useNavigate();
   const {
     portalMode,
-    activeTab,
-    setActiveTab,
     isMobileMenuOpen,
     setIsMobileMenuOpen
   } = state;
@@ -52,7 +53,7 @@ export default function AdminMobileDrawer({ state }: AdminMobileDrawerProps) {
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="p-1.5 focus:bg-white/5 rounded-lg text-white/60 hover:text-white transition-colors cursor-pointer outline-none"
-                  title="关闭菜单"
+                  title="鍏抽棴鑿滃崟"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -61,13 +62,13 @@ export default function AdminMobileDrawer({ state }: AdminMobileDrawerProps) {
               <nav className="flex-1 space-y-1 overflow-y-auto pr-1">
                 {ADMIN_MOBILE_MENU_ITEMS.map((item) => {
                   const IconComponent = item.icon;
-                  const isActive = activeTab === item.id;
+                  const isActive = location.pathname === item.path;
 
                   return (
                     <button
                       key={item.id}
                       onClick={() => {
-                        setActiveTab(item.id);
+                        navigate(item.path);
                         setIsMobileMenuOpen(false);
                       }}
                       className={`w-full flex items-center justify-between px-4 py-3 rounded-xl font-medium transition-all group cursor-pointer text-left ${
