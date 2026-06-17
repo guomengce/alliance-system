@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
 import DetailView from './detail';
 import ListView from './list';
+import { useOrdersState } from './hooks/useOrdersState';
 import type { OrderDetail } from './types';
-import { INITIAL_ORDERS, filterAllocations } from './utils';
 
 export default function AdminOrdersView() {
-  const [orders, setOrders] = useState<OrderDetail[]>(INITIAL_ORDERS);
-  const [selectedOrder, setSelectedOrder] = useState<OrderDetail | null>(null);
-  const [detailSearchQuery, setDetailSearchQuery] = useState('');
+  const {
+    detailSearchQuery,
+    filteredAllocations,
+    orders,
+    selectedOrder,
+    setDetailSearchQuery,
+    setOrders,
+    setSelectedOrder
+  } = useOrdersState();
 
   // Export CSV
   const exportMockCSV = () => {
@@ -29,9 +34,6 @@ export default function AdminOrdersView() {
     setOrders(prev => prev.map(item => item.id === orderId ? { ...item, status } : item));
   };
 
-  const filteredAllocations = selectedOrder
-    ? filterAllocations(selectedOrder.commissionAllocations, detailSearchQuery)
-    : [];
 
   if (selectedOrder) {
     return (

@@ -80,9 +80,6 @@ export interface AppState {
   kycL2: 'in_progress' | 'verified' | 'unverified';
   twoFAEnabled: boolean;
 
-  // Active Tab
-  activeTab: string;
-
   // Collections state
   transactions: Transaction[];
   notifications: NotificationItem[];

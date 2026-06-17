@@ -13,7 +13,7 @@ export interface HomeViewProps {
   totalCredit: number;
   creditUsedPercent: number;
   transactions: Transaction[];
-  setActiveTab: (tab: string) => void;
+  onNavigateToRoute: (routeId: string) => void;
   onQuickAction: (actionType: string) => void;
   onRaiseCredit: () => void;
 }
@@ -39,7 +39,7 @@ export interface HomeOrder {
 }
 
 export interface BannerProps {
-  setActiveTab: (tab: string) => void;
+  onNavigateToRoute: (routeId: string) => void;
 }
 
 export interface AssetsAndCreditProps {
@@ -64,16 +64,16 @@ export interface MarketPanelProps {
   chartHeight: number;
   yesterdayDateStr: string;
   setHoveredIndex: Dispatch<SetStateAction<number | null>>;
-  setActiveTab: (tab: string) => void;
+  onNavigateToRoute: (routeId: string) => void;
 }
 
 export interface QuickActionsProps {
-  setActiveTab: (tab: string) => void;
+  onNavigateToRoute: (routeId: string) => void;
   onQuickAction: (actionType: string) => void;
 }
 
 export interface OrdersTableProps {
   orders: HomeOrder[];
-  setActiveTab: (tab: string) => void;
+  onNavigateToRoute: (routeId: string) => void;
   onQuickAction: (actionType: string) => void;
 }

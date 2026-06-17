@@ -1,0 +1,112 @@
+import { Edit } from 'lucide-react';
+import type { WorkspaceProps } from '../types';
+
+type SubscriptionFormProps = Pick<
+  WorkspaceProps,
+  | 'commissionPoolLimit'
+  | 'commissionPoolRemaining'
+  | 'plans'
+  | 'selectedPlan'
+  | 'amountInput'
+  | 'setAmountInput'
+  | 'handleDropdownChange'
+  | 'handleSubscriptionSubmit'
+>;
+
+export default function SubscriptionForm({
+  commissionPoolLimit,
+  commissionPoolRemaining,
+  plans,
+  selectedPlan,
+  amountInput,
+  setAmountInput,
+  handleDropdownChange,
+  handleSubscriptionSubmit
+}: SubscriptionFormProps) {
+  return (
+    <>
+      {/* 2 & 3. Subscription Details Confirm & Rules Form Layout */}
+      <div className="space-y-6">
+        {/* Form Details Screen - Expanded to full width */}
+        <div className="w-full glass-card rounded-2xl p-4 sm:p-6 md:p-8">
+          <h2 className="text-sm sm:text-base font-bold text-white mb-4 sm:mb-6 uppercase tracking-wider flex items-center gap-2">
+            <Edit className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-[#cfbcff]" /> 认购详情确认
+          </h2>
+
+          <form onSubmit={handleSubscriptionSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+            <div className="space-y-4 flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="flex flex-col gap-2">
+                  <label className="text-[9px] sm:text-[10px] font-bold uppercase text-[#cbc4d2] tracking-wider">选择套餐方案</label>
+                  <select 
+                    value={selectedPlan.id}
+                    onChange={handleDropdownChange}
+                    className="bg-[#141218] border border-white/10 rounded-xl text-white px-3.5 sm:px-4 py-3 sm:py-3.5 text-xs sm:text-sm focus:ring-1 focus:ring-[#cfbcff] outline-none"
+                  >
+                    {plans.map(p => (
+                      <option key={p.id} value={p.id}>{p.name} - {p.price.toLocaleString()} USDT</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <label className="text-[9px] sm:text-[10px] font-bold uppercase text-[#cbc4d2] tracking-wider">认购金额 (USDT)</label>
+                  <div className="relative">
+                    <input 
+                      type="number" 
+                      value={amountInput}
+                      onChange={(e) => setAmountInput(parseFloat(e.target.value) || 0)}
+                      min={selectedPlan.price}
+                      className="w-full bg-[#141218] border border-white/10 rounded-xl text-white pl-3.5 sm:pl-4 pr-16 py-3 sm:py-3.5 font-mono font-bold text-sm sm:text-base focus:ring-1 focus:ring-[#cfbcff] outline-none"
+                    />
+                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[11px] sm:text-xs text-[#cbc4d2] font-bold">USDT</span>
+                  </div>
+                  <span className="text-[9px] sm:text-[10px] text-[#cbc4d2]/60 select-none">最低认购门槛: {selectedPlan.price} USDT</span>
+                </div>
+              </div>
+
+              <div className="pt-3 sm:pt-4 space-y-2.5">
+                <button 
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-[#6750a4] to-[#cfbcff] text-white py-3 sm:py-3.5 rounded-xl font-bold hover:brightness-110 active:scale-[0.99] transition-all duration-150 text-[11px] sm:text-xs tracking-wider uppercase cursor-pointer shadow-lg shadow-black/30 block"
+                >
+                  确认认购并签署协议文件
+                </button>
+                <p className="text-left text-[9px] sm:text-[10px] text-[#cbc4d2]/40 select-none leading-relaxed">
+                  点击确认即代表您同意《理财参与协议》及相关全自理风险授权声明协议
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-[#141218]/80 rounded-2xl p-4 sm:p-5 flex flex-col justify-between space-y-3.5 border border-white/5 text-[11px] sm:text-xs md:text-sm">
+              <div className="space-y-3.5">
+                <div className="flex justify-between items-center pb-2.5 border-b border-white/5">
+                  <span className="text-[11px] sm:text-xs text-[#cbc4d2]/80">充值赠送比例</span>
+                  <span className="text-xs sm:text-sm font-bold text-[#cfbcff] font-mono">{selectedPlan.giftRatio}%</span>
+                </div>
+                <div className="flex justify-between items-center pb-2.5 border-b border-white/5">
+                  <span className="text-[11px] sm:text-xs text-[#cbc4d2]/80">立即买入 (70% 对应 TROO)</span>
+                  <span className="text-xs sm:text-sm font-bold text-white font-mono">{(amountInput * 0.7 * 10).toLocaleString('zh-CN')} TROO</span>
+                </div>
+                <div className="flex justify-between items-center pb-2.5 border-b border-white/5">
+                  <span className="text-[11px] sm:text-xs text-[#cbc4d2]/80">排队锁定 (31%)</span>
+                  <span className="text-xs sm:text-sm font-bold text-[#e7c365] font-mono">{(amountInput * 0.31).toLocaleString('zh-CN')} USDT</span>
+                </div>
+                <div className="flex justify-between items-center pb-2.5 border-b border-white/5">
+                  <span className="text-[11px] sm:text-xs text-[#cbc4d2]/80">佣金池增加放款额度</span>
+                  <span className="text-xs sm:text-sm font-bold text-emerald-400 font-mono">+¥ {(selectedPlan.poolLimit * (amountInput / selectedPlan.price)).toLocaleString()}</span>
+                </div>
+              </div>
+              <div className="flex justify-between items-center pt-2">
+                <span className="text-[11px] sm:text-xs text-[#cbc4d2]/80">当前可用佣金池限额</span>
+                <span className="text-[10px] sm:text-[11px] font-black text-[#cfbcff] font-mono">
+                  {commissionPoolRemaining.toLocaleString()} / {commissionPoolLimit.toLocaleString()} USDT
+                </span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+}

@@ -13,7 +13,7 @@ export default function MarketPanel({
   chartHeight,
   yesterdayDateStr,
   setHoveredIndex,
-  setActiveTab
+  onNavigateToRoute
 }: MarketPanelProps) {
   return (
     <div className="glass-card p-6 md:p-8 rounded-2xl relative overflow-hidden space-y-6">
@@ -71,7 +71,7 @@ export default function MarketPanel({
           </div>
 
           <button 
-            onClick={() => setActiveTab('subscribe')}
+            onClick={() => onNavigateToRoute('subscribe')}
             className="w-full mt-2 py-2.5 bg-gradient-to-r from-[#6750a4] to-[#cfbcff] text-white rounded-xl font-bold hover:opacity-90 active:scale-[0.98] transition-all text-xs flex items-center justify-center gap-1 cursor-pointer"
           >
             <span>立即认购TROO</span>

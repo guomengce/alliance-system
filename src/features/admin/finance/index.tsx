@@ -1,16 +1,12 @@
-import React, { useState } from 'react';
 import type { DownlineMember, Transaction } from '@/src/types';
 import Workspace from './components/Workspace';
-import type { AdminFinanceViewProps, FinanceTab } from './types';
+import { useFinanceState } from './hooks/useFinanceState';
+import type { AdminFinanceViewProps } from './types';
 import {
   COMPANY_TROO,
   COMPANY_USDT,
   WITHDRAWAL_FEE,
-  buildInitialLedger,
-  createWalletAdjustmentTransaction,
-  getTotalUserLocked,
-  getTotalUserTROO,
-  getTotalUserUSDT
+  createWalletAdjustmentTransaction
 } from './utils';
 
 export default function AdminFinanceView({
@@ -21,26 +17,35 @@ export default function AdminFinanceView({
   transactions,
   onUpdateDownlines
 }: AdminFinanceViewProps) {
-  const [activeTab, setActiveTab] = useState<FinanceTab>('reserves');
-  const [searchMemberQuery, setSearchMemberQuery] = useState('');
-  const [ledgerTypeFilter, setLedgerTypeFilter] = useState<string>('all');
-  const [searchLedgerQuery, setSearchLedgerQuery] = useState('');
-  const [fullLedger, setFullLedger] = useState<Transaction[]>(buildInitialLedger(transactions));
-
-  // Modal interaction states
-  const [selectedLedgerItem, setSelectedLedgerItem] = useState<Transaction | null>(null);
-  const [selectedWalletMember, setSelectedWalletMember] = useState<DownlineMember | null>(null);
-  const [selectedWithdrawal, setSelectedWithdrawal] = useState<Transaction | null>(null);
-
-  // States for manual balance adjustment form
-  const [adjustUsdt, setAdjustUsdt] = useState<number>(0);
-  const [adjustTroo, setAdjustTroo] = useState<number>(0);
-  const [adjustFrozen, setAdjustFrozen] = useState<number>(0);
-  const [adjustStatus, setAdjustStatus] = useState<string>('normal');
-
-  const totalUserUSDT = getTotalUserUSDT(downlines);
-  const totalUserTROO = getTotalUserTROO(downlines);
-  const totalUserLocked = getTotalUserLocked(downlines);
+  const {
+    activeTab,
+    adjustFrozen,
+    adjustStatus,
+    adjustTroo,
+    adjustUsdt,
+    fullLedger,
+    ledgerTypeFilter,
+    searchLedgerQuery,
+    searchMemberQuery,
+    selectedLedgerItem,
+    selectedWalletMember,
+    selectedWithdrawal,
+    setActiveTab,
+    setAdjustFrozen,
+    setAdjustStatus,
+    setAdjustTroo,
+    setAdjustUsdt,
+    setFullLedger,
+    setLedgerTypeFilter,
+    setSearchLedgerQuery,
+    setSearchMemberQuery,
+    setSelectedLedgerItem,
+    setSelectedWalletMember,
+    setSelectedWithdrawal,
+    totalUserLocked,
+    totalUserTROO,
+    totalUserUSDT
+  } = useFinanceState(downlines, transactions);
 
   const handleOpenWalletDetails = (member: DownlineMember) => {
     setSelectedWalletMember(member);

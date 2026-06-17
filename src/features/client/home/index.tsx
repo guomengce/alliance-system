@@ -1,19 +1,12 @@
-import { useState } from 'react';
 import PageView from '../../../components/PageView';
 import AssetsAndCredit from './components/AssetsAndCredit';
 import Banner from './components/Banner';
 import MarketPanel from './components/MarketPanel';
 import OrdersTable from './components/OrdersTable';
 import QuickActions from './components/QuickActions';
+import { useHomeMarket } from './hooks/useHomeMarket';
 import type { HomeViewProps } from './types';
-import {
-  MARKET_CHART_HEIGHT,
-  MARKET_CHART_WIDTH,
-  MY_ORDERS,
-  TROO_MARKET_DATA,
-  getMarketChartPaths,
-  getYesterdayDateString
-} from './utils';
+import { MY_ORDERS } from './utils';
 
 export default function HomeView({
   usdtBalance,
@@ -27,29 +20,28 @@ export default function HomeView({
   totalCredit,
   creditUsedPercent,
   transactions,
-  setActiveTab,
+  onNavigateToRoute,
   onQuickAction,
   onRaiseCredit
 }: HomeViewProps) {
-  
-  // Interactive TROO market history
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
-  // Currently displayed item on hover or latest index
-  const activeIndex = hoveredIndex !== null ? hoveredIndex : TROO_MARKET_DATA.length - 1;
-  const activeData = TROO_MARKET_DATA[activeIndex];
-
-  const { points, linePath, areaPath } = getMarketChartPaths(
-    TROO_MARKET_DATA,
-    MARKET_CHART_WIDTH,
-    MARKET_CHART_HEIGHT
-  );
-  const yesterdayDateStr = getYesterdayDateString();
+  const {
+    activeData,
+    activeIndex,
+    areaPath,
+    chartHeight,
+    chartWidth,
+    hoveredIndex,
+    linePath,
+    marketData,
+    points,
+    setHoveredIndex,
+    yesterdayDateStr
+  } = useHomeMarket();
 
   return (
     <PageView>
       {/* Banner / Promotional Carousel */}
-      <Banner setActiveTab={setActiveTab} />
+      <Banner onNavigateToRoute={onNavigateToRoute} />
 
       {/* Stats Grid */}
       <AssetsAndCredit
@@ -67,27 +59,27 @@ export default function HomeView({
         activeData={activeData}
         activeIndex={activeIndex}
         hoveredIndex={hoveredIndex}
-        marketData={TROO_MARKET_DATA}
+        marketData={marketData}
         points={points}
         linePath={linePath}
         areaPath={areaPath}
-        chartWidth={MARKET_CHART_WIDTH}
-        chartHeight={MARKET_CHART_HEIGHT}
+        chartWidth={chartWidth}
+        chartHeight={chartHeight}
         yesterdayDateStr={yesterdayDateStr}
         setHoveredIndex={setHoveredIndex}
-        setActiveTab={setActiveTab}
+        onNavigateToRoute={onNavigateToRoute}
       />
 
       {/* Quick Actions Grid */}
       <QuickActions
-        setActiveTab={setActiveTab}
+        onNavigateToRoute={onNavigateToRoute}
         onQuickAction={onQuickAction}
       />
 
       {/* My Orders Table */}
       <OrdersTable
         orders={MY_ORDERS}
-        setActiveTab={setActiveTab}
+        onNavigateToRoute={onNavigateToRoute}
         onQuickAction={onQuickAction}
       />
     </PageView>

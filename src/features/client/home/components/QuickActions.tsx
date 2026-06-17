@@ -2,7 +2,7 @@ import { ListTodo, PlusCircle, ShoppingCart, Users } from 'lucide-react';
 import type { QuickActionsProps } from '../types';
 
 export default function QuickActions({
-  setActiveTab,
+  onNavigateToRoute,
   onQuickAction
 }: QuickActionsProps) {
   return (
@@ -22,7 +22,7 @@ export default function QuickActions({
         </button>
 
         <button 
-          onClick={() => setActiveTab('subscribe')}
+          onClick={() => onNavigateToRoute('subscribe')}
           className="glass-card p-5 rounded-2xl flex flex-col items-center gap-3 group"
         >
           <div className="w-14 h-14 rounded-2xl bg-[#e7c365]/10 flex items-center justify-center group-hover:scale-110 duration-200 transition-transform">
@@ -32,7 +32,7 @@ export default function QuickActions({
         </button>
 
         <button 
-          onClick={() => setActiveTab('team')}
+          onClick={() => onNavigateToRoute('team')}
           className="glass-card p-5 rounded-2xl flex flex-col items-center gap-3 group"
         >
           <div className="w-14 h-14 rounded-2xl bg-[#cdc0e9]/10 flex items-center justify-center group-hover:scale-110 duration-200 transition-transform">

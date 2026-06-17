@@ -70,3 +70,51 @@ export interface WorkspaceProps {
   handleToggleAccountStatus: (id: string) => void;
   handleDeleteAccount: (id: string) => void;
 }
+
+export type AddAccountModalProps = Pick<
+  WorkspaceProps,
+  | 'roles'
+  | 'newUsername'
+  | 'newNickname'
+  | 'newEmail'
+  | 'newRole'
+  | 'setIsNewAccountModalOpen'
+  | 'setNewUsername'
+  | 'setNewNickname'
+  | 'setNewEmail'
+  | 'setNewRole'
+  | 'handleCreateAccount'
+>;
+
+export type AddRoleModalProps = Pick<
+  WorkspaceProps,
+  | 'newRoleName'
+  | 'newRoleCode'
+  | 'setIsNewRoleModalOpen'
+  | 'setNewRoleName'
+  | 'setNewRoleCode'
+  | 'handleCreateRole'
+>;
+
+export type EditAccountModalProps = Omit<
+  Pick<
+    WorkspaceProps,
+    | 'permissionInventory'
+    | 'roles'
+    | 'editingAccount'
+    | 'editNickname'
+    | 'editEmail'
+    | 'editRole'
+    | 'editStatus'
+    | 'setEditingAccount'
+    | 'setEditNickname'
+    | 'setEditEmail'
+    | 'setEditRole'
+    | 'setEditStatus'
+    | 'handleSaveEditAccount'
+    | 'handleResetPassword'
+  >,
+  'editingAccount'
+> & {
+  editingAccount: AdminAccount;
+};

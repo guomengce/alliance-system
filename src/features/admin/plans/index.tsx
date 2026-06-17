@@ -1,25 +1,33 @@
-import { useState } from 'react';
 import { EditorModal } from './components/EditorModal';
 import { List } from './components/List';
 import { Toolbar } from './components/Toolbar';
+import { usePlansState } from './hooks/usePlansState';
 import type { Plan } from './types';
-import { createPlanId, INITIAL_PLANS } from './utils';
+import { createPlanId } from './utils';
 
 export default function AdminPlansView() {
-  const [adminPlans, setAdminPlans] = useState<Plan[]>(INITIAL_PLANS);
-
-  // Modal open controllers
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingPlan, setEditingPlan] = useState<Plan | null>(null);
-
-  // Form parameters
-  const [formName, setFormName] = useState('');
-  const [formPrice, setFormPrice] = useState<number>(1000);
-  const [formGiftRatio, setFormGiftRatio] = useState<number>(1.0);
-  const [formBuyRatio, setFormBuyRatio] = useState<number>(40);
-  const [formQueueRatio, setFormQueueRatio] = useState<number>(60);
-  const [formCommissionLimit, setFormCommissionLimit] = useState<number>(5000);
-  const [formDescription, setFormDescription] = useState('');
+  const {
+    adminPlans,
+    editingPlan,
+    formBuyRatio,
+    formCommissionLimit,
+    formDescription,
+    formGiftRatio,
+    formName,
+    formPrice,
+    formQueueRatio,
+    isModalOpen,
+    setAdminPlans,
+    setEditingPlan,
+    setFormBuyRatio,
+    setFormCommissionLimit,
+    setFormDescription,
+    setFormGiftRatio,
+    setFormName,
+    setFormPrice,
+    setFormQueueRatio,
+    setIsModalOpen
+  } = usePlansState();
 
   const handleOpenCreateModal = () => {
     setEditingPlan(null);

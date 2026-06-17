@@ -1,4 +1,4 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import AlertBanner from '../../components/AlertBanner';
 import { useAppContext } from '../../context/AppContext';
@@ -22,7 +22,7 @@ export default function LoginView({
   onSuccess
 }: LoginViewProps) {
   // Access global registered users database & states
-  const { registeredUsers, setRegisteredUsers, setAdminRole, setActiveTab } = useAppContext();
+  const { registeredUsers, setRegisteredUsers, setAdminRole } = useAppContext();
 
   // Active form view standard: 'login' | 'register' | 'forgot' | 'reset'
   const [view, setView] = useState<AuthView>('login');
@@ -87,12 +87,6 @@ export default function LoginView({
     setNickname(matched.nickname);
     setEmail(matched.email);
 
-    // Auto router target
-    if (matched.portalMode === 'admin') {
-      setActiveTab('admin-dashboard');
-    } else {
-      setActiveTab('home');
-    }
 
     onSuccess(matched.portalMode);
   };

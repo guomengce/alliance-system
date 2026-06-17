@@ -30,8 +30,6 @@ export const INITIAL_OVERFLOW_LOGS: OverflowLog[] = [
   { id: 'OVF-018', memberUid: '889425', orderId: 'ORD-2026053109', tierLevel: 'L1', missingAmount: 490.00, time: '2026-05-31 10:45:00' },
   { id: 'OVF-019', memberUid: '892019', orderId: 'ORD-2026053114', tierLevel: 'L2', missingAmount: 710.00, time: '2026-05-31 13:58:11' },
   { id: 'OVF-020', memberUid: '891044', orderId: 'ORD-2026053118', tierLevel: 'L3', missingAmount: 1050.00, time: '2026-05-31 16:30:44' },
-  { id: 'OVF-021', memberUid: '889421', orderId: 'ORD-2026060101', tierLevel: 'L1', missingAmount: 230.00, time: '2026-06-01 02:11:05' },
-  { id: 'OVF-022', memberUid: '890112', orderId: 'ORD-2026060105', tierLevel: 'L2', missingAmount: 380.00, time: '2026-06-01 06:45:30' }
 ];
 
 export function mapOverflowLogs(overflowLogs: OverflowLog[]): CommissionPayout[] {

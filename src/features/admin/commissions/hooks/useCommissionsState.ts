@@ -1,0 +1,42 @@
+import { useState } from 'react';
+import type { ActiveTab, CommissionPayout } from '../types';
+import {
+  INITIAL_COMMISSIONS,
+  INITIAL_OVERFLOW_LOGS,
+  filterCommissionItems,
+  getAbnormalAuditCount,
+  getCombinedCommissionItems,
+  getTotalCreditedAmount,
+  getTotalOverflowAmount
+} from '../utils';
+
+export function useCommissionsState() {
+  const [commissions, setCommissions] = useState<CommissionPayout[]>(INITIAL_COMMISSIONS);
+  const [overflowLogs, setOverflowLogs] = useState(INITIAL_OVERFLOW_LOGS);
+  const [selectedCommission, setSelectedCommission] = useState<CommissionPayout | null>(null);
+  const [activeTab, setActiveTab] = useState<ActiveTab>('all');
+  const [commissionSearch, setCommissionSearch] = useState<string>('');
+
+  const totalCreditedAmount = getTotalCreditedAmount(commissions);
+  const abnormalAuditCount = getAbnormalAuditCount(commissions);
+  const totalOverflowAmount = getTotalOverflowAmount(overflowLogs);
+  const allCombinedItems = getCombinedCommissionItems(commissions, overflowLogs);
+  const filteredCommissions = filterCommissionItems(allCombinedItems, activeTab, commissionSearch);
+
+  return {
+    abnormalAuditCount,
+    activeTab,
+    commissionSearch,
+    commissions,
+    filteredCommissions,
+    overflowLogs,
+    selectedCommission,
+    setActiveTab,
+    setCommissionSearch,
+    setCommissions,
+    setOverflowLogs,
+    setSelectedCommission,
+    totalCreditedAmount,
+    totalOverflowAmount
+  };
+}

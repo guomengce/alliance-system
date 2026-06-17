@@ -1,10 +1,10 @@
-import { useState } from 'react';
 import type { FormEvent } from 'react';
 import { motion } from 'motion/react';
 import { LogoutSection } from './components/LogoutSection';
 import { PasswordForm } from './components/PasswordForm';
 import { ProfileBanner } from './components/ProfileBanner';
 import { ProfileForm } from './components/ProfileForm';
+import { useProfileState } from './hooks/useProfileState';
 import type { AdminProfileViewProps } from './types';
 
 export default function AdminProfileView({
@@ -17,21 +17,26 @@ export default function AdminProfileView({
   onUpdatePassword,
   onLogout,
 }: AdminProfileViewProps) {
-  // Local profile states
-  const [formNickname, setFormNickname] = useState(nickname);
-  const [formEmail, setFormEmail] = useState(email);
-
-  // Local password modification states
-  const [oldPassword, setOldPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
-  // Notification states
-  const [profileSuccess, setProfileSuccess] = useState(false);
-  const [profileError, setProfileError] = useState('');
-
-  const [passwordSuccess, setPasswordSuccess] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const {
+    confirmPassword,
+    formEmail,
+    formNickname,
+    newPassword,
+    oldPassword,
+    passwordError,
+    passwordSuccess,
+    profileError,
+    profileSuccess,
+    setConfirmPassword,
+    setFormEmail,
+    setFormNickname,
+    setNewPassword,
+    setOldPassword,
+    setPasswordError,
+    setPasswordSuccess,
+    setProfileError,
+    setProfileSuccess
+  } = useProfileState(nickname, email);
 
   const handleSaveProfile = (e: FormEvent) => {
     e.preventDefault();

@@ -1,18 +1,21 @@
 import { Bell, Languages, Settings, ShieldCheck } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import type { AppStateContext, LangCode } from './types';
-import { ADMIN_TAB_LABELS, CLIENT_TAB_LABELS, DESKTOP_LANG_OPTIONS } from './navigation';
+import { DESKTOP_LANG_OPTIONS } from './navigation';
+import { getRouteByPath } from '../../router/routes';
 
 interface DesktopHeaderProps {
   state: AppStateContext;
 }
 
 export default function DesktopHeader({ state }: DesktopHeaderProps) {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const currentRoute = getRouteByPath(location.pathname);
   const {
     portalMode,
     nickname,
     currentUid,
-    activeTab,
-    setActiveTab,
     unreadNotificationsCount,
     isLangDropdownOpen,
     setIsLangDropdownOpen,
@@ -24,11 +27,11 @@ export default function DesktopHeader({ state }: DesktopHeaderProps) {
     <div className="hidden md:flex sticky top-0 bg-[#0c0a0f]/80 backdrop-blur-3xl z-30 h-16 border-b border-white/5 select-none animate-fadeIn items-center justify-between px-8 w-full">
       <div className="flex items-center gap-3">
         <div className="px-3 py-1.5 bg-[#1c1822] rounded-full border border-white/5 text-xs text-[#cbc4d2]/70 tracking-wide flex items-center gap-1.5 font-sans font-extrabold shadow-sm">
-          {CLIENT_TAB_LABELS[activeTab] && <span className="text-[#cfbcff]">{CLIENT_TAB_LABELS[activeTab]}</span>}
-          {activeTab.startsWith('admin-') && (
+          {currentRoute?.portalMode === 'client' && <span className="text-[#cfbcff]">{currentRoute.label}</span>}
+          {currentRoute?.portalMode === 'admin' && (
             <span className="text-[#cfbcff] font-black flex items-center gap-1.5 uppercase text-[11px]">
               <ShieldCheck className="w-4 h-4 text-[#cfbcff]" />
-              管理后台 ▸ {ADMIN_TAB_LABELS[activeTab] || '系统管理控制台'}
+              管理后台 ▸ {currentRoute.label || '系统管理控制台'}
             </span>
           )}
         </div>
@@ -70,7 +73,7 @@ export default function DesktopHeader({ state }: DesktopHeaderProps) {
         {portalMode === 'client' && (
           <>
             <button
-              onClick={() => setActiveTab('notifications')}
+              onClick={() => navigate('/client/notifications')}
               className="relative p-2 bg-[#211f24] hover:bg-[#2d2a30] transition-colors rounded-xl text-[#cbc4d2] border border-white/5 flex items-center justify-center cursor-pointer"
             >
               <Bell className="w-4.5 h-4.5" />
@@ -82,7 +85,7 @@ export default function DesktopHeader({ state }: DesktopHeaderProps) {
             </button>
 
             <button
-              onClick={() => setActiveTab('settings')}
+              onClick={() => navigate('/client/settings')}
               className="p-2 bg-[#211f24] hover:bg-[#2d2a30] transition-colors rounded-xl text-[#cbc4d2] border border-white/5 flex items-center justify-center cursor-pointer"
             >
               <Settings className="w-4.5 h-4.5" />
@@ -92,7 +95,7 @@ export default function DesktopHeader({ state }: DesktopHeaderProps) {
 
         {portalMode === 'client' ? (
           <button
-            onClick={() => setActiveTab('member')}
+            onClick={() => navigate('/client/member')}
             className="flex items-center gap-3 px-3 py-1 bg-[#211f24]/30 hover:bg-[#2d2a30]/50 transition-all rounded-full border border-white/5 cursor-pointer text-left select-none group"
           >
             <div className="text-right">
@@ -107,7 +110,7 @@ export default function DesktopHeader({ state }: DesktopHeaderProps) {
           </button>
         ) : (
           <button
-            onClick={() => setActiveTab('admin-profile')}
+            onClick={() => navigate('/admin/profile')}
             className="flex items-center gap-3 px-3 py-1 bg-[#211f24]/30 hover:bg-[#cfbcff]/15 border border-[#cfbcff]/20 hover:border-[#cfbcff]/40 rounded-full text-left cursor-pointer select-none group active:scale-[0.98] transition-all outline-none"
             title="点击进入安全中心 / 修改密码"
           >

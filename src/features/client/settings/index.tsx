@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PageView from '../../../components/PageView';
 import DevicesPanel from './components/DevicesPanel';
 import FeedbackMessages from './components/FeedbackMessages';
@@ -6,6 +6,7 @@ import LogoutButton from './components/LogoutButton';
 import PasswordForm from './components/PasswordForm';
 import ProfileForm from './components/ProfileForm';
 import SupportCard from './components/SupportCard';
+import { useSettingsFormState } from './hooks/useSettingsFormState';
 import type { SettingsViewProps } from './types';
 import { ACTIVE_DEVICES, isValidEmail } from './utils';
 
@@ -16,14 +17,22 @@ export default function SettingsView({
   onUpdateEmail,
   onLogout
 }: SettingsViewProps) {
-  const [successMsg, setSuccessMsg] = useState('');
-  const [errorMsg, setErrorMsg] = useState('');
-  const [tempNickname, setTempNickname] = useState(nickname);
-  const [tempEmail, setTempEmail] = useState(email);
-  const [showPassword, setShowPassword] = useState(false);
-
-  const [oldPassword, setOldPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
+  const {
+    errorMsg,
+    newPassword,
+    oldPassword,
+    setErrorMsg,
+    setNewPassword,
+    setOldPassword,
+    setShowPassword,
+    setSuccessMsg,
+    setTempEmail,
+    setTempNickname,
+    showPassword,
+    successMsg,
+    tempEmail,
+    tempNickname
+  } = useSettingsFormState({ email, nickname });
 
   const handleUpdateProfile = (e: React.FormEvent) => {
     e.preventDefault();

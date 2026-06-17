@@ -1,8 +1,6 @@
 import type { LucideIcon } from 'lucide-react';
 
 export interface SidebarProps {
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
   uid: string;
   nickname: string;
   unreadCount: number;
@@ -14,11 +12,9 @@ export interface MenuItem {
   id: string;
   label: string;
   icon: LucideIcon;
+  path: string;
 }
 
 export interface NavigationProps {
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
   menuItems: MenuItem[];
 }
-

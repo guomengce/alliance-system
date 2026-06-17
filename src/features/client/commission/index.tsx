@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import PageView from '../../../components/PageView';
 import AlertBanner from '../../../components/AlertBanner';
 import Header from './components/Header';
@@ -6,8 +5,9 @@ import HistoryLedger from './components/HistoryLedger';
 import RatiosTable from './components/RatiosTable';
 import RulesNotice from './components/RulesNotice';
 import StatsAndPool from './components/StatsAndPool';
-import type { CommissionViewProps, HistoryFilter } from './types';
-import { COMMISSION_HISTORY, COMMISSION_RATIOS, filterCommissionHistory } from './utils';
+import { useCommissionState } from './hooks/useCommissionState';
+import type { CommissionViewProps } from './types';
+import { COMMISSION_RATIOS } from './utils';
 
 export default function CommissionView({
   cumulativeCommissions,
@@ -19,12 +19,15 @@ export default function CommissionView({
   onWithdrawCommissions,
   onAddTransaction,
   onIncreaseLimit,
-  setActiveTab
+  onNavigateToSubscribe
 }: CommissionViewProps) {
-  const [successMsg, setSuccessMsg] = useState('');
-  const [activeFilter, setActiveFilter] = useState<HistoryFilter>('all');
-
-  const filteredHistory = filterCommissionHistory(COMMISSION_HISTORY, activeFilter);
+  const {
+    activeFilter,
+    filteredHistory,
+    setActiveFilter,
+    setSuccessMsg,
+    successMsg
+  } = useCommissionState();
 
   const handleWithdrawClick = () => {
     if (pendingBalance <= 0) {
@@ -56,8 +59,8 @@ export default function CommissionView({
   };
 
   const handleIncreaseLimit = () => {
-    if (setActiveTab) {
-      setActiveTab('subscribe');
+    if (onNavigateToSubscribe) {
+      onNavigateToSubscribe();
     } else {
       const amount = 50000;
       if (onIncreaseLimit) {
