@@ -45,3 +45,16 @@ export interface ListViewProps {
   exportMockCSV: () => void;
   onUpdateOrderStatus: (orderId: string, status: OrderDetail['status']) => void;
 }
+
+export interface OrderHeaderProps {
+  onExport: ListViewProps['exportMockCSV'];
+}
+
+export interface MobileOrderCardProps {
+  order: OrderDetail;
+  setSelectedOrder: ListViewProps['setSelectedOrder'];
+  setDetailSearchQuery: ListViewProps['setDetailSearchQuery'];
+  onUpdateOrderStatus: ListViewProps['onUpdateOrderStatus'];
+}
+
+export interface OrderRowProps extends MobileOrderCardProps {}
