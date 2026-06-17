@@ -95,3 +95,27 @@ export interface DetailModalProps {
   selectedDetailOrder: QueueOrderItem | null;
   onClose: () => void;
 }
+
+export interface OrdersToolbarProps {
+  filteredOrdersCount: number;
+  orderSearchQuery: string;
+  orderStatusFilter: OrderStatusFilter;
+  onSearchChange: (value: string) => void;
+  onClearSearch: () => void;
+  onStatusFilterChange: (status: OrderStatusFilter) => void;
+}
+
+export interface OrderCardProps {
+  item: QueueOrderItem;
+  onSelectDetailOrder: Dispatch<SetStateAction<QueueOrderItem | null>>;
+}
+
+export interface OrdersFeedProps {
+  filteredOrders: QueueOrderItem[];
+  visibleOrdersCount: number;
+  loadingMoreOrders: boolean;
+  onOrdersScroll: (e: UIEvent<HTMLDivElement>) => void;
+  onSelectDetailOrder: Dispatch<SetStateAction<QueueOrderItem | null>>;
+  onLoadMoreOrders: () => void;
+}
+
