@@ -1,5 +1,5 @@
 import type { Transaction } from '../../../types';
-import type { FilterButton } from './types';
+import type { FilterButton, NetworkType } from './types';
 
 export const FILTER_BUTTONS: FilterButton[] = [
   { id: 'all', label: '全部' },
@@ -42,3 +42,67 @@ export const filterTransactions = (
     }
     return true;
   });
+
+interface WalletTransactionOptions {
+  now?: () => Date;
+}
+
+const createTxnId = () => `TXN-${Math.floor(1000000000 + Math.random() * 9000000000)}`;
+const formatTime = (date: Date) => date.toISOString().replace('T', ' ').slice(0, 19);
+
+export function validateWithdraw(
+  amount: number,
+  usdtBalance: number,
+  address: string,
+  network: NetworkType
+) {
+  const minWithdraw = network === 'ETH' ? 40 : 20;
+  if (amount < minWithdraw) return `提现金额不可低于最小提现要求: ${minWithdraw} USDT`;
+  if (amount > usdtBalance) return '您的可用余额不足！';
+  if (!address.trim()) return '请输入收款钱包地址';
+  return null;
+}
+
+export function validateTransfer(amount: number, usdtBalance: number, transferUserId: string) {
+  if (amount < 10) return '站内划转金额不可低于最小划转限制: 10 USDT';
+  if (!transferUserId.trim()) return '请输入接收方的平台用户ID (UID)';
+  if (amount > usdtBalance) return '您的可用余额不足！';
+  return null;
+}
+
+export function buildWithdrawTransaction(
+  amount: number,
+  network: NetworkType,
+  address: string,
+  { now = () => new Date() }: WalletTransactionOptions = {}
+): Transaction {
+  return {
+    id: createTxnId(),
+    type: 'withdraw',
+    typeLabel: '提现申请',
+    desc: `提现至外部钱包 (${network} 网络: ${address})`,
+    amount: -amount,
+    currency: 'USDT',
+    time: formatTime(now()),
+    status: 'pending',
+    statusLabel: '处理中'
+  };
+}
+
+export function buildTransferTransaction(
+  amount: number,
+  transferUserId: string,
+  { now = () => new Date() }: WalletTransactionOptions = {}
+): Transaction {
+  return {
+    id: createTxnId(),
+    type: 'transfer',
+    typeLabel: '平台划转',
+    desc: `站内资金划转至用户 UID: ${transferUserId}`,
+    amount: -amount,
+    currency: 'USDT',
+    time: formatTime(now()),
+    status: 'success',
+    statusLabel: '成功'
+  };
+}

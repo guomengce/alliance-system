@@ -8,7 +8,13 @@ import TransactionDetailsModal from './components/TransactionDetailsModal';
 import TransactionLedger from './components/TransactionLedger';
 import { useWalletState } from './hooks/useWalletState';
 import type { WalletViewProps } from './types';
-import { FILTER_BUTTONS } from './utils';
+import {
+  FILTER_BUTTONS,
+  buildTransferTransaction,
+  buildWithdrawTransaction,
+  validateTransfer,
+  validateWithdraw
+} from './utils';
 
 export default function WalletView({
   usdtBalance,
@@ -60,64 +66,25 @@ export default function WalletView({
       }
     }
 
-    const formattedTime = new Date().toISOString().replace('T', ' ').slice(0, 19);
-    const generatedId = 'TXN-' + Math.floor(1000000000 + Math.random() * 9000000000);
-
     if (activeAction === 'recharge') {
       return;
     } else if (activeAction === 'withdraw') {
-      const minWithdraw = withdrawNetwork === 'ETH' ? 40 : 20;
-      if (num < minWithdraw) {
-        setErrorMsg(`提现金额不可低于最小提现要求: ${minWithdraw} USDT`);
-        return;
-      }
-      if (num > usdtBalance) {
-        setErrorMsg('您的可用余额不足！');
-        return;
-      }
-      if (!addressInput.trim()) {
-        setErrorMsg('请输入收款钱包地址');
+      const validationError = validateWithdraw(num, usdtBalance, addressInput, withdrawNetwork);
+      if (validationError) {
+        setErrorMsg(validationError);
         return;
       }
       onUpdateBalances(-num, 0);
-      onAddTransaction({
-        id: generatedId,
-        type: 'withdraw',
-        typeLabel: '提现申请',
-        desc: `提现至外部钱包 (${withdrawNetwork} 网络: ${addressInput})`,
-        amount: -num,
-        currency: 'USDT',
-        time: formattedTime,
-        status: 'pending',
-        statusLabel: '处理中'
-      });
+      onAddTransaction(buildWithdrawTransaction(num, withdrawNetwork, addressInput));
       setSuccessMsg(`已成功提交提现申请 ${num} USDT (${withdrawNetwork}网络)，系统正在处理`);
     } else if (activeAction === 'transfer') {
-      const minTransfer = 10;
-      if (num < minTransfer) {
-        setErrorMsg(`站内划转金额不可低于最小划转限制: ${minTransfer} USDT`);
-        return;
-      }
-      if (!transferUserId.trim()) {
-        setErrorMsg('请输入接收方的平台用户ID (UID)');
-        return;
-      }
-      if (num > usdtBalance) {
-        setErrorMsg('您的可用余额不足！');
+      const validationError = validateTransfer(num, usdtBalance, transferUserId);
+      if (validationError) {
+        setErrorMsg(validationError);
         return;
       }
       onUpdateBalances(-num, 0);
-      onAddTransaction({
-        id: generatedId,
-        type: 'transfer',
-        typeLabel: '平台划转',
-        desc: `站内资金划转至用户 UID: ${transferUserId}`,
-        amount: -num,
-        currency: 'USDT',
-        time: formattedTime,
-        status: 'success',
-        statusLabel: '成功'
-      });
+      onAddTransaction(buildTransferTransaction(num, transferUserId));
       setSuccessMsg(`划转成功！您已成功向平台用户 ${transferUserId} 口岸划转 ${num} USDT`);
     }
 
