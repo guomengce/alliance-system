@@ -7,9 +7,17 @@ import {
   KycL2Status,
   UserAccountStatus
 } from '../types';
-import { filterAdminUsers } from '../utils';
+import {
+  applyKycAudit,
+  buildUpdatedUserFromForm,
+  filterAdminUsers,
+  inferUserKycL2
+} from '../utils';
 
-export function useUsersState(downlines: DownlineMember[]) {
+export function useUsersState(
+  downlines: DownlineMember[],
+  onUpdateDownlines: (members: DownlineMember[]) => void
+) {
   const [userSearchText, setUserSearchText] = useState<string>('');
   const [kycFilter, setKycFilter] = useState<KycFilter>('all');
   const [editingUser, setEditingUser] = useState<DownlineMember | null>(null);
@@ -34,6 +42,68 @@ export function useUsersState(downlines: DownlineMember[]) {
 
   const filteredDownlines = filterAdminUsers(downlines, userSearchText, kycFilter);
 
+  const handleKycAudit = (uid: string, accept: boolean) => {
+    onUpdateDownlines(applyKycAudit(downlines, uid, accept));
+    alert(`用户 UID: ${uid} 的 KYC L2 级身份核验结果审核【${accept ? '通过' : '驳回复查'}】！`);
+  };
+
+  const handleStartEditing = (user: DownlineMember) => {
+    setEditingUser(user);
+    setActiveTab('profile');
+    setTeamSearchText('');
+
+    setFormNickname(user.nickname || '');
+    setFormEmail(user.email || '');
+    setFormPhone(user.phone || '');
+    setFormSponsor(user.sponsor || '999001 (SYS)');
+    setFormPassword('');
+    setFormStatus(user.status || 'normal');
+    setFormRegDate(user.registrationDate || '');
+    setFormTier(user.tier || '标准账户');
+    setFormUsdt(user.usdtBalance || 0);
+    setFormFrozenUsdt(user.frozenBalance || 0);
+    setFormTroo(user.trooBalance || 0);
+    setFormPending(user.pendingBalance || 0);
+    setFormNodes(user.nodeSize || 0);
+    setFormVolume(user.volume || 0);
+    setFormKycL1(user.kycL1 || 'verified');
+    setFormKycL2(inferUserKycL2(user));
+  };
+
+  const handleSaveInline = () => {
+    if (!editingUser) return;
+
+    onUpdateDownlines(downlines.map((member) => {
+      if (member.uid !== editingUser.uid) return member;
+
+      return buildUpdatedUserFromForm(member, {
+        nickname: formNickname,
+        email: formEmail,
+        phone: formPhone,
+        sponsor: formSponsor,
+        password: formPassword,
+        status: formStatus,
+        registrationDate: formRegDate,
+        tier: formTier,
+        usdtBalance: formUsdt,
+        frozenBalance: formFrozenUsdt,
+        trooBalance: formTroo,
+        pendingBalance: formPending,
+        nodeSize: formNodes,
+        volume: formVolume,
+        kycL1: formKycL1,
+        kycL2: formKycL2
+      });
+    }));
+
+    alert(`用户 UID: ${editingUser.uid} 的档案信息及资产设置已成功修改并刷新！`);
+    setEditingUser(null);
+  };
+
+  const handleResetPasswordEmail = () => {
+    alert(`重置密码邮件已发送至该用户邮箱: ${formEmail || '暂无绑定邮箱'} ！请指导该用户在邮箱中完成新密码自主设定。`);
+  };
+
   return {
     activeTab,
     editingUser,
@@ -54,6 +124,10 @@ export function useUsersState(downlines: DownlineMember[]) {
     formTroo,
     formUsdt,
     formVolume,
+    handleKycAudit,
+    handleResetPasswordEmail,
+    handleSaveInline,
+    handleStartEditing,
     kycFilter,
     setActiveTab,
     setEditingUser,
