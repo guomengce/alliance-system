@@ -1,13 +1,27 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import type { Transaction } from '../../../../types';
 import type { ActionType, NetworkType } from '../types';
-import { filterTransactions } from '../utils';
+import {
+  buildTransferTransaction,
+  buildWithdrawTransaction,
+  filterTransactions,
+  validateTransfer,
+  validateWithdraw
+} from '../utils';
 
 interface UseWalletStateParams {
+  onAddTransaction: (txn: Transaction) => void;
+  onUpdateBalances: (usdtDiff: number, trooDiff: number, lockedDiff?: number) => void;
   transactions: Transaction[];
+  usdtBalance: number;
 }
 
-export const useWalletState = ({ transactions }: UseWalletStateParams) => {
+export const useWalletState = ({
+  onAddTransaction,
+  onUpdateBalances,
+  transactions,
+  usdtBalance
+}: UseWalletStateParams) => {
   const [filterType, setFilterType] = useState<string>('all');
   const [activeAction, setActiveAction] = useState<ActionType>('none');
   const [successMsg, setSuccessMsg] = useState<string>('');
@@ -58,6 +72,47 @@ export const useWalletState = ({ transactions }: UseWalletStateParams) => {
     setTimeout(() => setCopySuccessId(''), duration);
   };
 
+  const handleSubmitAction = (e: FormEvent) => {
+    e.preventDefault();
+    setErrorMsg('');
+    const num = parseFloat(amountInput);
+
+    if (activeAction !== 'recharge') {
+      if (Number.isNaN(num) || num <= 0) {
+        setErrorMsg('请输入有效的金额');
+        return;
+      }
+    }
+
+    if (activeAction === 'recharge') {
+      return;
+    } else if (activeAction === 'withdraw') {
+      const validationError = validateWithdraw(num, usdtBalance, addressInput, withdrawNetwork);
+      if (validationError) {
+        setErrorMsg(validationError);
+        return;
+      }
+      onUpdateBalances(-num, 0);
+      onAddTransaction(buildWithdrawTransaction(num, withdrawNetwork, addressInput));
+      setSuccessMsg(`已成功提交提现申请 ${num} USDT (${withdrawNetwork}网络)，系统正在处理`);
+    } else if (activeAction === 'transfer') {
+      const validationError = validateTransfer(num, usdtBalance, transferUserId);
+      if (validationError) {
+        setErrorMsg(validationError);
+        return;
+      }
+      onUpdateBalances(-num, 0);
+      onAddTransaction(buildTransferTransaction(num, transferUserId));
+      setSuccessMsg(`划转成功！您已成功向平台用户 ${transferUserId} 口岸划转 ${num} USDT`);
+    }
+
+    setAmountInput('');
+    setAddressInput('');
+    setTransferUserId('');
+    setActiveAction('none');
+    setTimeout(() => setSuccessMsg(''), 4000);
+  };
+
   return {
     activeAction,
     amountInput,
@@ -75,6 +130,7 @@ export const useWalletState = ({ transactions }: UseWalletStateParams) => {
     withdrawNetwork,
     handleCopyRechargeAddress,
     handleCopyTransactionId,
+    handleSubmitAction,
     setActiveAction,
     setAddressInput,
     setAmountInput,
