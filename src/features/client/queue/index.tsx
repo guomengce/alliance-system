@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Unlock } from 'lucide-react';
 import PageView from '../../../shared/components/PageView';
 import AlertBanner from '../../../shared/components/AlertBanner';
@@ -8,31 +7,18 @@ import ProgressVisualization from './components/ProgressVisualization';
 import ReleaseLogList from './components/ReleaseLogList';
 import UnlockMechanismNotice from './components/UnlockMechanismNotice';
 import { useQueueState } from './hooks/useQueueState';
-import { getInitialClientQueueOrders, getInitialClientReleaseLogs } from '../../../api/client/queue';
-import type { QueueOrderItem, QueueViewProps, ReleaseLogItem } from './types';
+import type { QueueViewProps } from './types';
 
 export default function QueueView({
-  usdtBalance,
   lockedQueueAmount,
   originalLockedQueue,
-  releasedQueueAmount,
-  commissionPoolLimit,
-  commissionPoolRemaining,
-  onUpdateBalances,
-  onAddTransaction,
-  onExecuteSimulation
+  releasedQueueAmount
 }: QueueViewProps) {
   
   // 1. Dynamic calculated totals mapped perfectly from top-level state
   const originalLocked = originalLockedQueue;
   const releasedAmount = releasedQueueAmount;
   const remainingLocked = lockedQueueAmount;
-
-  // 2. High-fidelity Queue Orders containing all orders preloaded to allow transparent outside management
-  const [orders, setOrders] = useState<QueueOrderItem[]>(() => getInitialClientQueueOrders());
-
-  // 3. Timeline Logs matching "买入/解锁记录" in screenshot
-  const [releaseLogs, setReleaseLogs] = useState<ReleaseLogItem[]>(() => getInitialClientReleaseLogs());
 
   const {
     alertSuccess,
@@ -50,14 +36,13 @@ export default function QueueView({
     orderSearchQuery,
     orderStatusFilter,
     overallProgressPercent,
+    releaseLogs,
     selectedDetailOrder,
     setInfoMessage,
     setSelectedDetailOrder,
     visibleLogsCount,
     visibleOrdersCount
   } = useQueueState({
-    orders,
-    releaseLogs,
     originalLocked,
     releasedAmount
   });

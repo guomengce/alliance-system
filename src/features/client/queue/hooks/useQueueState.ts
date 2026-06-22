@@ -1,20 +1,19 @@
 import { useState, type Dispatch, type SetStateAction, type UIEvent } from 'react';
+import { getInitialClientQueueOrders, getInitialClientReleaseLogs } from '../../../../api/client/queue';
 import type { OrderStatusFilter, QueueOrderItem, ReleaseLogItem } from '../types';
 import { filterOrders, getProgressPercent } from '../utils';
 
 interface UseQueueStateParams {
-  orders: QueueOrderItem[];
-  releaseLogs: ReleaseLogItem[];
   originalLocked: number;
   releasedAmount: number;
 }
 
 export const useQueueState = ({
-  orders,
-  releaseLogs,
   originalLocked,
   releasedAmount
 }: UseQueueStateParams) => {
+  const [orders] = useState<QueueOrderItem[]>(() => getInitialClientQueueOrders());
+  const [releaseLogs] = useState<ReleaseLogItem[]>(() => getInitialClientReleaseLogs());
   const [alertSuccess, setAlertSuccess] = useState<{
     show: boolean;
     unlockedSum: number;
@@ -123,6 +122,7 @@ export const useQueueState = ({
     orderSearchQuery,
     orderStatusFilter,
     overallProgressPercent,
+    releaseLogs,
     selectedDetailOrder,
     setAlertSuccess,
     setInfoMessage,
