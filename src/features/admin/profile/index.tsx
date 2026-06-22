@@ -1,4 +1,3 @@
-import type { FormEvent } from 'react';
 import { motion } from 'motion/react';
 import { LogoutSection } from './components/LogoutSection';
 import { PasswordForm } from './components/PasswordForm';
@@ -21,6 +20,8 @@ export default function AdminProfileView({
     confirmPassword,
     formEmail,
     formNickname,
+    handleSavePassword,
+    handleSaveProfile,
     newPassword,
     oldPassword,
     passwordError,
@@ -31,62 +32,15 @@ export default function AdminProfileView({
     setFormEmail,
     setFormNickname,
     setNewPassword,
-    setOldPassword,
-    setPasswordError,
-    setPasswordSuccess,
-    setProfileError,
-    setProfileSuccess
-  } = useProfileState(nickname, email);
-
-  const handleSaveProfile = (e: FormEvent) => {
-    e.preventDefault();
-    setProfileSuccess(false);
-    setProfileError('');
-
-    if (!formNickname.trim()) {
-      setProfileError('超级管理员代称不能为空');
-      return;
-    }
-    if (!formEmail.trim() || !formEmail.includes('@')) {
-      setProfileError('请输入正确的系统电子邮箱地址');
-      return;
-    }
-
-    onUpdateNickname(formNickname);
-    onUpdateEmail(formEmail);
-    setProfileSuccess(true);
-    setTimeout(() => setProfileSuccess(false), 4000);
-  };
-
-  const handleSavePassword = (e: FormEvent) => {
-    e.preventDefault();
-    setPasswordSuccess('');
-    setPasswordError('');
-
-    if (!oldPassword) {
-      setPasswordError('请输入当前正在使用的旧安全密码');
-      return;
-    }
-    if (oldPassword !== loginPasswordVal) {
-      setPasswordError('当前旧密码验证失败，密码不正确');
-      return;
-    }
-    if (newPassword.length < 6) {
-      setPasswordError('新密码长度过短，不得小于 6 位');
-      return;
-    }
-    if (newPassword !== confirmPassword) {
-      setPasswordError('两次输入的新安全密码不吻合，请重新校配');
-      return;
-    }
-
-    onUpdatePassword(newPassword);
-    setPasswordSuccess('核心管理密码已通过系统哈希重置，请妥善保管新密匙！');
-    setOldPassword('');
-    setNewPassword('');
-    setConfirmPassword('');
-    setTimeout(() => setPasswordSuccess(''), 5000);
-  };
+    setOldPassword
+  } = useProfileState({
+    nickname,
+    email,
+    loginPassword: loginPasswordVal,
+    onUpdateNickname,
+    onUpdateEmail,
+    onUpdatePassword
+  });
 
   return (
     <motion.div
