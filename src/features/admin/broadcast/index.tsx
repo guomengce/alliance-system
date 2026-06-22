@@ -2,40 +2,20 @@ import BroadcastForm from './components/BroadcastForm';
 import TemplatePanel from './components/TemplatePanel';
 import { useBroadcastState } from './hooks/useBroadcastState';
 import type { AdminBroadcastViewProps } from './types';
-import {
-  createBroadcastNotification,
-  getBroadcastTargetLabel,
-  validateBroadcastForm
-} from './utils';
 
 export default function AdminBroadcastView({ onAddNotification }: AdminBroadcastViewProps) {
   const {
     broadcastBody,
     broadcastTarget,
     broadcastTitle,
+    handleSaveTemplate,
+    handleSendBroadcast,
     notificationTemplate,
     setBroadcastBody,
     setBroadcastTarget,
     setBroadcastTitle,
     setNotificationTemplate
-  } = useBroadcastState();
-
-  const handleSendBroadcast = () => {
-    const validationError = validateBroadcastForm(broadcastTitle, broadcastBody);
-    if (validationError) return alert(validationError);
-
-    const newNotif = createBroadcastNotification(broadcastTitle, broadcastBody);
-    onAddNotification(newNotif);
-    alert(`系统广播成功！已成功向“${getBroadcastTargetLabel(broadcastTarget)}”发送推达消息。`);
-    
-    // Clear inputs
-    setBroadcastTitle('');
-    setBroadcastBody('');
-  };
-
-  const handleSaveTemplate = () => {
-    alert('池限额补额推达文案模配置保存成功！');
-  };
+  } = useBroadcastState({ onAddNotification });
 
   return (
     <div id="admin_broadcast_view" className="glass-card p-5 md:p-6 rounded-2xl border border-white/5 bg-[#141119] space-y-6 animate-fadeIn flex-grow flex flex-col md:min-h-[calc(100vh-140px)] pb-4">
