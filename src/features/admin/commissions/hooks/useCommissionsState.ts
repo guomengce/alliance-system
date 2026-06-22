@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import {
+  getInitialAdminCommissions,
+  getInitialAdminOverflowLogs
+} from '../../../../api/admin/commissions';
 import type { ActiveTab, CommissionPayout } from '../types';
 import {
-  INITIAL_COMMISSIONS,
-  INITIAL_OVERFLOW_LOGS,
   filterCommissionItems,
   getAbnormalAuditCount,
   getCombinedCommissionItems,
@@ -11,8 +13,8 @@ import {
 } from '../utils';
 
 export function useCommissionsState() {
-  const [commissions, setCommissions] = useState<CommissionPayout[]>(INITIAL_COMMISSIONS);
-  const [overflowLogs, setOverflowLogs] = useState(INITIAL_OVERFLOW_LOGS);
+  const [commissions, setCommissions] = useState<CommissionPayout[]>(() => getInitialAdminCommissions());
+  const [overflowLogs, setOverflowLogs] = useState(() => getInitialAdminOverflowLogs());
   const [selectedCommission, setSelectedCommission] = useState<CommissionPayout | null>(null);
   const [activeTab, setActiveTab] = useState<ActiveTab>('all');
   const [commissionSearch, setCommissionSearch] = useState<string>('');
