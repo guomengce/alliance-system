@@ -3,6 +3,7 @@ import { getInitialAdminLogs } from '../../../mock/admin/logs';
 import Workspace from './components/Workspace';
 import { useLogsState } from './hooks/useLogsState';
 import type { AdminLog, AdminLogsViewProps } from './types';
+import { buildAdminLogs, filterAdminLogs } from './utils';
 
 export default function AdminLogsView({ transactions = [], downlines = [] }: AdminLogsViewProps) {
   const initialLogs = getInitialAdminLogs();
@@ -23,84 +24,20 @@ export default function AdminLogsView({ transactions = [], downlines = [] }: Adm
     simulatedCount
   } = useLogsState();
 
-  // Map and merge dynamic active models (downline member profiles & financial transactions ledger)
   const logs = useMemo(() => {
-    // 1. Map dynamic user registrations/actions from the DownlineMember database
-    const mappedDownlines = (downlines || []).map((member): AdminLog => {
-      const ip = ['192.168.1.100', '127.0.0.1', '103.45.112.59', '182.23.4.195'][parseInt(member.uid) % 4] || '127.0.0.1';
-      return {
-        id: `LOG-REG-${member.uid}`,
-        timestamp: member.registrationDate || '2026-06-03 00:00:00',
-        operator: '999001 (SYS)',
-        category: 'operation',
-        severity: 'info',
-        ipAddress: ip,
-        moduleName: '同盟注册中心',
-        action: '同盟会员档案链上注册同步',
-        details: `新会员 UID: ${member.uid} (${member.nickname || '未设置昵称'}) 已注册。代数级别: ${member.level}，质押总量: ¥${(member.volume || 0).toLocaleString()}，推荐上线: ${member.sponsor || '系统总站'}`,
-        payload: JSON.stringify({
-          uid: member.uid,
-          tier: member.tier,
-          level: member.level,
-          nickname: member.nickname,
-          sponsor: member.sponsor,
-          volume: member.volume,
-          blockchainSync: 'SUCCESS'
-        }, null, 2)
-      };
+    return buildAdminLogs({
+      initialLogs,
+      extraLogs,
+      transactions,
+      downlines
     });
-
-    // 2. Map dynamic financial transactions from standard ledger logs
-    const mappedTxns = (transactions || []).map((tx): AdminLog => {
-      let label = '资产划转';
-      switch (tx.type) {
-        case 'recharge': label = '充值入金'; break;
-        case 'withdraw': label = '大额提现'; break;
-        case 'exchange': label = '持股置换'; break;
-        case 'transfer': label = '人工对账'; break;
-        case 'commission': label = '推广返佣'; break;
-        case 'subscribe': label = '合约认购'; break;
-        case 'lock': label = '锁仓排队'; break;
-      }
-      return {
-        id: tx.id.replace('TXN-', 'LOG-'),
-        timestamp: tx.time,
-        operator: tx.desc.includes('手动') || tx.desc.includes('人工') ? '首席财务官 (Linda)' : '999001 (SYS)',
-        category: 'finance',
-        severity: tx.status === 'failed' ? 'error' : tx.status === 'pending' ? 'warn' : 'info',
-        ipAddress: tx.blockchainProof?.network?.includes('TRON') ? '103.45.112.59' : '162.254.204.18',
-        moduleName: '财务模块',
-        action: tx.typeLabel || label,
-        details: `${tx.desc} | 涉及资金: ${tx.amount} ${tx.currency} (${tx.statusLabel || tx.status})`,
-        payload: JSON.stringify(tx, null, 2)
-      };
-    });
-
-    const combined = [...extraLogs, ...mappedTxns, ...mappedDownlines, ...initialLogs];
-    // Sort descending by timestamp to keep the latest operations on top
-    return combined.sort((a, b) => b.timestamp.localeCompare(a.timestamp));
   }, [transactions, downlines, extraLogs]);
 
-  // Filter logs logic
   const filteredLogs = useMemo(() => {
-    return logs.filter(log => {
-      // Search matches
-      const query = searchQuery.trim().toLowerCase();
-      const matchesSearch = query === '' || 
-        log.id.toLowerCase().includes(query) ||
-        log.operator.toLowerCase().includes(query) ||
-        log.moduleName.toLowerCase().includes(query) ||
-        log.action.toLowerCase().includes(query) ||
-        log.details.toLowerCase().includes(query) ||
-        log.ipAddress.includes(query);
-
-      // Severity matches
-      const matchesSeverity = selectedSeverity === 'All' || log.severity === selectedSeverity;
-
-      // Category matches
-      const matchesCategory = selectedCategory === 'All' || log.category === selectedCategory;
-
-      return matchesSearch && matchesSeverity && matchesCategory;
+    return filterAdminLogs(logs, {
+      searchQuery,
+      selectedSeverity,
+      selectedCategory
     });
   }, [logs, searchQuery, selectedSeverity, selectedCategory]);
 
