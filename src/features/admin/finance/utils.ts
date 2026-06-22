@@ -90,3 +90,37 @@ export function createWalletAdjustmentTransaction(selectedWalletMember: Downline
     statusLabel: '成功'
   };
 }
+
+interface WalletAdjustmentValues {
+  usdtBalance: number;
+  trooBalance: number;
+  frozenBalance: number;
+  status: DownlineMember['status'];
+}
+
+export function applyWalletAdjustment(
+  downlines: DownlineMember[],
+  selectedUid: string,
+  values: WalletAdjustmentValues
+) {
+  return downlines.map(downline => {
+    if (downline.uid !== selectedUid) return downline;
+
+    return {
+      ...downline,
+      usdtBalance: values.usdtBalance,
+      trooBalance: values.trooBalance,
+      frozenBalance: values.frozenBalance,
+      status: values.status
+    };
+  });
+}
+
+export function buildLedgerCsvContent(ledger: Transaction[]) {
+  const header = '流水ID,分类代码,账目详细描述,收支金额,币种,成交时间,状态';
+  const rows = ledger.map(item => (
+    `${item.id},${item.typeLabel || item.type},${item.desc},${item.amount},${item.currency},${item.time},${item.status}`
+  ));
+
+  return [header, ...rows].join('\r\n');
+}

@@ -6,6 +6,8 @@ import {
   COMPANY_TROO,
   COMPANY_USDT,
   WITHDRAWAL_FEE,
+  applyWalletAdjustment,
+  buildLedgerCsvContent,
   createWalletAdjustmentTransaction
 } from './utils';
 
@@ -59,17 +61,11 @@ export default function AdminFinanceView({
   const handleSaveWalletAdjustment = () => {
     if (!selectedWalletMember) return;
     
-    const updated = downlines.map(d => {
-      if (d.uid === selectedWalletMember.uid) {
-        return {
-          ...d,
-          usdtBalance: adjustUsdt,
-          trooBalance: adjustTroo,
-          frozenBalance: adjustFrozen,
-          status: adjustStatus as any
-        };
-      }
-      return d;
+    const updated = applyWalletAdjustment(downlines, selectedWalletMember.uid, {
+      usdtBalance: adjustUsdt,
+      trooBalance: adjustTroo,
+      frozenBalance: adjustFrozen,
+      status: adjustStatus as DownlineMember['status']
     });
 
     if (onUpdateDownlines) {
@@ -87,10 +83,7 @@ export default function AdminFinanceView({
   // Export report as CSV
   const exportLedgerCSV = () => {
     let csvContent = "data:text/csv;charset=utf-8,";
-    csvContent += "流水ID,分类代号,账目详细描述,收支金额,币种,成交时间,状态\r\n";
-    fullLedger.forEach(l => {
-      csvContent += `${l.id},${l.typeLabel || l.type},${l.desc},${l.amount},${l.currency},${l.time},${l.status}\r\n`;
-    });
+    csvContent += buildLedgerCsvContent(fullLedger);
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
