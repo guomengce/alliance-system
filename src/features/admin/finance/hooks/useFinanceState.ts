@@ -2,13 +2,20 @@ import { useState } from 'react';
 import type { DownlineMember, Transaction } from '@/src/types';
 import type { FinanceTab } from '../types';
 import {
+  applyWalletAdjustment,
   buildInitialLedger,
+  buildLedgerCsvContent,
+  createWalletAdjustmentTransaction,
   getTotalUserLocked,
   getTotalUserTROO,
   getTotalUserUSDT
 } from '../utils';
 
-export function useFinanceState(downlines: DownlineMember[], transactions: Transaction[]) {
+export function useFinanceState(
+  downlines: DownlineMember[],
+  transactions: Transaction[],
+  onUpdateDownlines?: (members: DownlineMember[]) => void
+) {
   const [activeTab, setActiveTab] = useState<FinanceTab>('reserves');
   const [searchMemberQuery, setSearchMemberQuery] = useState('');
   const [ledgerTypeFilter, setLedgerTypeFilter] = useState<string>('all');
@@ -26,6 +33,44 @@ export function useFinanceState(downlines: DownlineMember[], transactions: Trans
   const totalUserTROO = getTotalUserTROO(downlines);
   const totalUserLocked = getTotalUserLocked(downlines);
 
+  const handleOpenWalletDetails = (member: DownlineMember) => {
+    setSelectedWalletMember(member);
+    setAdjustUsdt(member.usdtBalance || 0);
+    setAdjustTroo(member.trooBalance || 0);
+    setAdjustFrozen(member.frozenBalance || 0);
+    setAdjustStatus(member.status || 'normal');
+  };
+
+  const handleSaveWalletAdjustment = () => {
+    if (!selectedWalletMember) return;
+
+    const updated = applyWalletAdjustment(downlines, selectedWalletMember.uid, {
+      usdtBalance: adjustUsdt,
+      trooBalance: adjustTroo,
+      frozenBalance: adjustFrozen,
+      status: adjustStatus as DownlineMember['status']
+    });
+
+    onUpdateDownlines?.(updated);
+
+    const newTx = createWalletAdjustmentTransaction(selectedWalletMember, adjustUsdt);
+
+    setFullLedger(prev => [newTx, ...prev]);
+    alert(`【人工财务纠偏对账成功】\n会员 ${selectedWalletMember.uid} 的资产池及状态已成功校对修改！余额更改记录已写至完整财务账簿日志中。`);
+    setSelectedWalletMember(null);
+  };
+
+  const exportLedgerCSV = () => {
+    const csvContent = `data:text/csv;charset=utf-8,${buildLedgerCsvContent(fullLedger)}`;
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', `comprehensive_finance_ledger_${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return {
     activeTab,
     adjustFrozen,
@@ -33,12 +78,15 @@ export function useFinanceState(downlines: DownlineMember[], transactions: Trans
     adjustTroo,
     adjustUsdt,
     fullLedger,
+    handleOpenWalletDetails,
+    handleSaveWalletAdjustment,
     ledgerTypeFilter,
     searchLedgerQuery,
     searchMemberQuery,
     selectedLedgerItem,
     selectedWalletMember,
     selectedWithdrawal,
+    exportLedgerCSV,
     setActiveTab,
     setAdjustFrozen,
     setAdjustStatus,
