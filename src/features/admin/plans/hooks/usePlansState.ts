@@ -1,6 +1,17 @@
 import { useState } from 'react';
 import { getInitialAdminPlans } from '../../../../api/admin/plans';
 import type { Plan } from '../types';
+import { createPlanFromForm, togglePlanStatus, updatePlanFromForm } from '../utils';
+
+const createDefaults = {
+  name: '',
+  price: 1000,
+  giftRatio: 1.0,
+  buyRatio: 40,
+  queueRatio: 60,
+  commissionLimit: 4000,
+  description: ''
+};
 
 export function usePlansState() {
   const [adminPlans, setAdminPlans] = useState<Plan[]>(() => getInitialAdminPlans());
@@ -14,6 +25,66 @@ export function usePlansState() {
   const [formCommissionLimit, setFormCommissionLimit] = useState<number>(5000);
   const [formDescription, setFormDescription] = useState('');
 
+  const applyFormValues = (values: typeof createDefaults) => {
+    setFormName(values.name);
+    setFormPrice(values.price);
+    setFormGiftRatio(values.giftRatio);
+    setFormBuyRatio(values.buyRatio);
+    setFormQueueRatio(values.queueRatio);
+    setFormCommissionLimit(values.commissionLimit);
+    setFormDescription(values.description);
+  };
+
+  const handleOpenCreateModal = () => {
+    setEditingPlan(null);
+    applyFormValues(createDefaults);
+    setIsModalOpen(true);
+  };
+
+  const handleOpenEditModal = (plan: Plan) => {
+    setEditingPlan(plan);
+    applyFormValues({
+      name: plan.name,
+      price: plan.price,
+      giftRatio: plan.giftRatio,
+      buyRatio: plan.buyRatio,
+      queueRatio: plan.queueRatio,
+      commissionLimit: plan.commissionLimit,
+      description: plan.description || ''
+    });
+    setIsModalOpen(true);
+  };
+
+  const handleSaveOrUpdatePlan = () => {
+    if (!formName) return alert('请输入套餐名称');
+    if (formPrice <= 0) return alert('认购金额必须大于 0');
+    if (formCommissionLimit <= 0) return alert('佣金额度设定值必须大于 0');
+
+    const values = {
+      name: formName,
+      price: formPrice,
+      giftRatio: formGiftRatio,
+      buyRatio: formBuyRatio,
+      queueRatio: formQueueRatio,
+      commissionLimit: formCommissionLimit,
+      description: formDescription
+    };
+
+    if (editingPlan) {
+      setAdminPlans(prev => updatePlanFromForm(prev, editingPlan.id, values));
+      alert(`套餐“${editingPlan.id}”参数已更新成功。`);
+    } else {
+      setAdminPlans(prev => [...prev, createPlanFromForm(values)]);
+      alert(`新套餐“${formName}”已配置建档并同步对外启租销售。`);
+    }
+
+    setIsModalOpen(false);
+  };
+
+  const handleTogglePlanStatus = (id: string) => {
+    setAdminPlans(prev => togglePlanStatus(prev, id));
+  };
+
   return {
     adminPlans,
     editingPlan,
@@ -25,8 +96,6 @@ export function usePlansState() {
     formPrice,
     formQueueRatio,
     isModalOpen,
-    setAdminPlans,
-    setEditingPlan,
     setFormBuyRatio,
     setFormCommissionLimit,
     setFormDescription,
@@ -34,6 +103,10 @@ export function usePlansState() {
     setFormName,
     setFormPrice,
     setFormQueueRatio,
-    setIsModalOpen
+    setIsModalOpen,
+    handleOpenCreateModal,
+    handleOpenEditModal,
+    handleSaveOrUpdatePlan,
+    handleTogglePlanStatus
   };
 }
