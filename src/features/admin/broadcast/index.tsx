@@ -4,7 +4,8 @@ import { useBroadcastState } from './hooks/useBroadcastState';
 import type { AdminBroadcastViewProps } from './types';
 import {
   createBroadcastNotification,
-  getBroadcastTargetLabel
+  getBroadcastTargetLabel,
+  validateBroadcastForm
 } from './utils';
 
 export default function AdminBroadcastView({ onAddNotification }: AdminBroadcastViewProps) {
@@ -20,7 +21,8 @@ export default function AdminBroadcastView({ onAddNotification }: AdminBroadcast
   } = useBroadcastState();
 
   const handleSendBroadcast = () => {
-    if (!broadcastTitle || !broadcastBody) return alert('标题和内容不能为空');
+    const validationError = validateBroadcastForm(broadcastTitle, broadcastBody);
+    if (validationError) return alert(validationError);
 
     const newNotif = createBroadcastNotification(broadcastTitle, broadcastBody);
     onAddNotification(newNotif);
