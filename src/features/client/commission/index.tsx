@@ -8,6 +8,7 @@ import StatsAndPool from './components/StatsAndPool';
 import { useCommissionState } from './hooks/useCommissionState';
 import { getInitialClientCommissionData } from '../../../mock/client/commission';
 import type { CommissionViewProps } from './types';
+import { buildCommissionWithdrawalTransaction } from './utils';
 
 export default function CommissionView({
   cumulativeCommissions,
@@ -39,17 +40,7 @@ export default function CommissionView({
     onWithdrawCommissions();
     
     // Add transaction record
-    onAddTransaction({
-      id: 'TXN-' + Math.floor(1000000000 + Math.random() * 9000000000),
-      type: 'commission',
-      typeLabel: '佣金到账',
-      desc: 'D+1系统自动汇总划转 (模拟测试日结完成)',
-      amount: sum,
-      currency: 'USDT',
-      time: new Date().toISOString().replace('T', ' ').slice(0, 19),
-      status: 'success',
-      statusLabel: '成功'
-    });
+    onAddTransaction(buildCommissionWithdrawalTransaction(sum));
 
     setSuccessMsg(`[D+1 日结模拟系统] 已自动触发结算：系统成功汇算代收池，并将 ¥ ${sum.toLocaleString()} 自动划转至您的可用余额 (Wallet Balance)`);
     setTimeout(() => setSuccessMsg(''), 5000);

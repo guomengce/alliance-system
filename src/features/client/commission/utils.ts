@@ -1,4 +1,5 @@
 import type { CommissionHistoryItem, HistoryFilter } from './types';
+import type { Transaction } from '../../../types';
 
 export function filterCommissionHistory(
   historyList: CommissionHistoryItem[],
@@ -31,5 +32,26 @@ export function getCommissionPoolMetrics(
     percent,
     strokeDashoffset,
     consumedAmount
+  };
+}
+
+interface BuildCommissionTransactionOptions {
+  now?: () => Date;
+}
+
+export function buildCommissionWithdrawalTransaction(
+  amount: number,
+  { now = () => new Date() }: BuildCommissionTransactionOptions = {}
+): Transaction {
+  return {
+    id: `TXN-${Math.floor(1000000000 + Math.random() * 9000000000)}`,
+    type: 'commission',
+    typeLabel: '佣金到账',
+    desc: 'D+1系统自动汇总代收佣金划转 (模拟测试日结完成)',
+    amount,
+    currency: 'USDT',
+    time: now().toISOString().replace('T', ' ').slice(0, 19),
+    status: 'success',
+    statusLabel: '成功'
   };
 }
