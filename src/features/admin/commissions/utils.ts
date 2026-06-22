@@ -62,3 +62,38 @@ export function getAbnormalAuditCount(commissions: CommissionPayout[]) {
 export function getTotalOverflowAmount(overflowLogs: OverflowLog[]) {
   return overflowLogs.reduce((sum, item) => sum + item.missingAmount, 0);
 }
+
+export function forceCommissionPayout(commissions: CommissionPayout[], payoutId: string) {
+  return commissions.map(commission => (
+    commission.id === payoutId
+      ? { ...commission, status: 'credited' as const, errorMessage: undefined }
+      : commission
+  ));
+}
+
+export function adjustCommissionAmount(
+  commissions: CommissionPayout[],
+  payoutId: string,
+  secureNewAmount: number
+) {
+  return commissions.map(commission => (
+    commission.id === payoutId
+      ? {
+          ...commission,
+          amount: secureNewAmount,
+          status: 'credited' as const,
+          errorMessage: undefined
+        }
+      : commission
+  ));
+}
+
+export function removeOverflowForCommission(
+  overflowLogs: OverflowLog[],
+  commission: CommissionPayout
+) {
+  return overflowLogs.filter(log => !(
+    log.memberUid === commission.uid &&
+    log.orderId === commission.orderId
+  ));
+}
