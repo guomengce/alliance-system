@@ -1,28 +1,32 @@
-import type { ReactElement, ReactNode } from 'react';
-import AdminBroadcastView from '../features/admin/broadcast';
-import AdminCommissionsView from '../features/admin/commissions';
-import AdminDashboardView from '../features/admin/dashboard';
-import AdminFinanceView from '../features/admin/finance';
-import AdminLogsView from '../features/admin/logs';
-import AdminOrdersView from '../features/admin/orders';
-import AdminParametersView from '../features/admin/parameters';
-import AdminPlansView from '../features/admin/plans';
-import AdminProfileView from '../features/admin/profile';
-import AdminQueueView from '../features/admin/queue';
-import AdminRbacView from '../features/admin/rbac';
-import AdminReportsView from '../features/admin/reports';
-import AdminSettlementView from '../features/admin/settlement';
-import AdminUsersView from '../features/admin/users';
+import { Suspense, type ReactElement, type ReactNode } from 'react';
 import { useAppContext } from '../context/AppContext';
 import type { AppStateContext } from '../layouts/MainLayout/types';
+import { ADMIN_PAGE_COMPONENTS } from './pageLoaders';
 
 type AdminRouteElementFactory = (state: AppStateContext) => ReactElement;
 
 const routePageFrame = (children: ReactNode): ReactElement => (
   <div className="flex flex-col flex-grow w-full">
-    {children}
+    <Suspense fallback={null}>{children}</Suspense>
   </div>
 );
+
+const {
+  'admin-broadcast': AdminBroadcastView,
+  'admin-commissions': AdminCommissionsView,
+  'admin-dashboard': AdminDashboardView,
+  'admin-finance': AdminFinanceView,
+  'admin-logs': AdminLogsView,
+  'admin-orders': AdminOrdersView,
+  'admin-parameters': AdminParametersView,
+  'admin-plans': AdminPlansView,
+  'admin-profile': AdminProfileView,
+  'admin-queue': AdminQueueView,
+  'admin-rbac': AdminRbacView,
+  'admin-reports': AdminReportsView,
+  'admin-settlement': AdminSettlementView,
+  'admin-users': AdminUsersView
+} = ADMIN_PAGE_COMPONENTS;
 
 const adminRouteElementFactories: Record<string, AdminRouteElementFactory> = {
   'admin-dashboard': ({ usdtBalance, lockedQueueAmount }) => routePageFrame(

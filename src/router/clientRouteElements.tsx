@@ -1,16 +1,8 @@
-import type { ReactElement, ReactNode } from 'react';
+import { Suspense, type ReactElement, type ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
-import CommissionView from '../features/client/commission';
-import HomeView from '../features/client/home';
-import MemberView from '../features/client/member';
-import NotificationsView from '../features/client/notifications';
-import QueueView from '../features/client/queue';
-import SettingsView from '../features/client/settings';
-import SubscribeView from '../features/client/subscribe';
-import TeamView from '../features/client/team';
-import WalletView from '../features/client/wallet';
 import { useAppContext } from '../context/AppContext';
 import type { AppStateContext } from '../layouts/MainLayout/types';
+import { CLIENT_PAGE_COMPONENTS } from './pageLoaders';
 import { getRouteByRouteId } from './routes';
 
 type ClientRouteElementFactory = (state: AppStateContext, helpers: ClientRouteHelpers) => ReactElement;
@@ -22,9 +14,21 @@ interface ClientRouteHelpers {
 
 const routePageFrame = (children: ReactNode): ReactElement => (
   <div className="flex flex-col flex-grow w-full">
-    {children}
+    <Suspense fallback={null}>{children}</Suspense>
   </div>
 );
+
+const {
+  commission: CommissionView,
+  home: HomeView,
+  member: MemberView,
+  notifications: NotificationsView,
+  queue: QueueView,
+  settings: SettingsView,
+  subscribe: SubscribeView,
+  team: TeamView,
+  wallet: WalletView
+} = CLIENT_PAGE_COMPONENTS;
 
 const clientRouteElementFactories: Record<string, ClientRouteElementFactory> = {
   home: (state, { navigateToRoute, handleQuickAction }) => routePageFrame(
