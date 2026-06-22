@@ -1,15 +1,16 @@
 import type { FormEvent } from 'react';
+import { getInitialPermissionDefinitions } from '../../../api/admin/rbac';
 import { Workspace } from './components/Workspace';
 import { useRbacState } from './hooks/useRbacState';
 import type { AdminAccount, RolePermission } from './types';
 import {
   generatePassword,
   isValidEmail,
-  normalizeRoleCode,
-  PERMISSION_INVENTORY
+  normalizeRoleCode
 } from './utils';
 
 export default function AdminRbacView() {
+  const permissionInventory = getInitialPermissionDefinitions();
   const {
     activeRoleObj,
     activeTab,
@@ -212,7 +213,7 @@ export default function AdminRbacView() {
 
   return (
     <Workspace
-      permissionInventory={PERMISSION_INVENTORY}
+      permissionInventory={permissionInventory}
       roles={roles}
       adminUsers={adminUsers}
       activeTab={activeTab}

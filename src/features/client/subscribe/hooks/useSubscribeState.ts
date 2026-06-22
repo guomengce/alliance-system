@@ -1,16 +1,19 @@
 import { useEffect, useState } from 'react';
+import {
+  getInitialClientPlans,
+  getInitialClientSubscribeOrders
+} from '../../../../api/client/subscribe';
 import type { Plan, Purchase } from '../types';
-import { INITIAL_PURCHASES, PLANS } from '../utils';
 
 export function useSubscribeState() {
-  const plans = PLANS;
+  const plans = getInitialClientPlans();
   const [selectedPlan, setSelectedPlan] = useState<Plan>(plans[4]);
   const [amountInput, setAmountInput] = useState<number>(50000);
   const [successMsg, setSuccessMsg] = useState<string>('');
   const [errorMsg, setErrorMsg] = useState<string>('');
   const [copiedId, setCopiedId] = useState<string>('');
   const [detailModalItem, setDetailModalItem] = useState<Purchase | null>(null);
-  const [purchases, setPurchases] = useState<Purchase[]>(INITIAL_PURCHASES);
+  const [purchases, setPurchases] = useState<Purchase[]>(() => getInitialClientSubscribeOrders());
 
   useEffect(() => {
     if (successMsg) {

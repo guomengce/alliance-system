@@ -1,12 +1,14 @@
 import { useState } from 'react';
+import { getInitialClientCommissionData } from '../../../../mock/client/commission';
 import type { HistoryFilter } from '../types';
-import { COMMISSION_HISTORY, filterCommissionHistory } from '../utils';
+import { filterCommissionHistory } from '../utils';
 
 export function useCommissionState() {
   const [successMsg, setSuccessMsg] = useState('');
   const [activeFilter, setActiveFilter] = useState<HistoryFilter>('all');
+  const { history } = getInitialClientCommissionData();
 
-  const filteredHistory = filterCommissionHistory(COMMISSION_HISTORY, activeFilter);
+  const filteredHistory = filterCommissionHistory(history, activeFilter);
 
   return {
     activeFilter,

@@ -1,9 +1,20 @@
 import { apiClient } from '../request';
 import type { ApiEnvelope, ApiListResponse, PaginationQuery } from '../types';
+import type { QueueOrderItem, ReleaseLogItem } from '../../features/client/queue/types';
+import {
+  INITIAL_CLIENT_QUEUE_ORDER_DTOS,
+  INITIAL_CLIENT_RELEASE_LOG_DTOS
+} from '../../mock/client/queue';
 
-export type ClientQueueSummaryDto = Record<string, unknown>;
-export type ClientQueueOrderDto = Record<string, unknown>;
-export type ClientReleaseLogDto = Record<string, unknown>;
+export interface ClientQueueSummaryDto {
+  originalLocked: number;
+  releasedAmount: number;
+  remainingLocked: number;
+}
+
+export interface ClientQueueOrderDto extends QueueOrderItem {}
+
+export interface ClientReleaseLogDto extends ReleaseLogItem {}
 
 export const clientQueueApi = {
   getSummary: () => (
@@ -16,3 +27,22 @@ export const clientQueueApi = {
     apiClient.get<ApiEnvelope<ApiListResponse<ClientReleaseLogDto>>>('/client/queue/release-logs', { query })
   )
 };
+
+export const mapClientQueueOrderDto = (dto: ClientQueueOrderDto): QueueOrderItem => ({
+  ...dto,
+  unlockHistory: dto.unlockHistory ? [...dto.unlockHistory] : undefined
+});
+
+export const mapClientReleaseLogDto = (dto: ClientReleaseLogDto): ReleaseLogItem => ({
+  id: dto.id,
+  date: dto.date,
+  desc: dto.desc
+});
+
+export const getInitialClientQueueOrders = (): QueueOrderItem[] => (
+  INITIAL_CLIENT_QUEUE_ORDER_DTOS.map((order) => mapClientQueueOrderDto(order))
+);
+
+export const getInitialClientReleaseLogs = (): ReleaseLogItem[] => (
+  INITIAL_CLIENT_RELEASE_LOG_DTOS.map((log) => mapClientReleaseLogDto(log))
+);

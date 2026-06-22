@@ -1,7 +1,8 @@
 import { apiClient } from '../request';
 import type { ApiEnvelope, ApiListResponse, PaginationQuery } from '../types';
+import type { NotificationItem } from '../../types';
 
-export type ClientNotificationDto = Record<string, unknown>;
+export interface ClientNotificationDto extends NotificationItem {}
 
 export interface ClientNotificationsQuery extends PaginationQuery {
   category?: string;

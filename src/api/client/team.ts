@@ -1,8 +1,14 @@
 import { apiClient } from '../request';
 import type { ApiEnvelope, ApiListResponse, PaginationQuery } from '../types';
+import type { DownlineMember } from '../../types';
 
-export type ClientTeamSummaryDto = Record<string, unknown>;
-export type ClientTeamMemberDto = Record<string, unknown>;
+export interface ClientTeamSummaryDto {
+  totalMembers: number;
+  activeMembers: number;
+  totalVolume: number;
+}
+
+export interface ClientTeamMemberDto extends DownlineMember {}
 
 export const clientTeamApi = {
   getSummary: () => (

@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import {
+  getInitialAdminAccounts,
+  getInitialRolePermissions
+} from '../../../../api/admin/rbac';
 import type { AccountStatus, AdminAccount, RbacTab, RolePermission } from '../types';
-import { INITIAL_ADMIN_USERS, INITIAL_ROLES } from '../utils';
 
 export function useRbacState() {
-  const [roles, setRoles] = useState<RolePermission[]>(INITIAL_ROLES);
-  const [adminUsers, setAdminUsers] = useState<AdminAccount[]>(INITIAL_ADMIN_USERS);
+  const [roles, setRoles] = useState<RolePermission[]>(() => getInitialRolePermissions());
+  const [adminUsers, setAdminUsers] = useState<AdminAccount[]>(() => getInitialAdminAccounts());
   const [activeTab, setActiveTab] = useState<RbacTab>('accounts');
   const [selectedRoleCode, setSelectedRoleCode] = useState<string>('SUPER_ADMIN');
   const [isNewAccountModalOpen, setIsNewAccountModalOpen] = useState(false);

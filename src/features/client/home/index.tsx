@@ -5,8 +5,8 @@ import MarketPanel from './components/MarketPanel';
 import OrdersTable from './components/OrdersTable';
 import QuickActions from './components/QuickActions';
 import { useHomeMarket } from './hooks/useHomeMarket';
+import { getInitialClientHomeData } from '../../../mock/client/home';
 import type { HomeViewProps } from './types';
-import { MY_ORDERS } from './utils';
 
 export default function HomeView({
   usdtBalance,
@@ -37,6 +37,7 @@ export default function HomeView({
     setHoveredIndex,
     yesterdayDateStr
   } = useHomeMarket();
+  const { orders } = getInitialClientHomeData();
 
   return (
     <PageView>
@@ -78,7 +79,7 @@ export default function HomeView({
 
       {/* My Orders Table */}
       <OrdersTable
-        orders={MY_ORDERS}
+        orders={orders}
         onNavigateToRoute={onNavigateToRoute}
         onQuickAction={onQuickAction}
       />

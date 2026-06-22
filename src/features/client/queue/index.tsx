@@ -8,7 +8,7 @@ import ProgressVisualization from './components/ProgressVisualization';
 import ReleaseLogList from './components/ReleaseLogList';
 import UnlockMechanismNotice from './components/UnlockMechanismNotice';
 import { useQueueState } from './hooks/useQueueState';
-import { INITIAL_QUEUE_ORDERS, INITIAL_RELEASE_LOGS } from './utils';
+import { getInitialClientQueueOrders, getInitialClientReleaseLogs } from '../../../api/client/queue';
 import type { QueueOrderItem, QueueViewProps, ReleaseLogItem } from './types';
 
 export default function QueueView({
@@ -29,10 +29,10 @@ export default function QueueView({
   const remainingLocked = lockedQueueAmount;
 
   // 2. High-fidelity Queue Orders containing all orders preloaded to allow transparent outside management
-  const [orders, setOrders] = useState<QueueOrderItem[]>(INITIAL_QUEUE_ORDERS);
+  const [orders, setOrders] = useState<QueueOrderItem[]>(() => getInitialClientQueueOrders());
 
   // 3. Timeline Logs matching "买入/解锁记录" in screenshot
-  const [releaseLogs, setReleaseLogs] = useState<ReleaseLogItem[]>(INITIAL_RELEASE_LOGS);
+  const [releaseLogs, setReleaseLogs] = useState<ReleaseLogItem[]>(() => getInitialClientReleaseLogs());
 
   const {
     alertSuccess,

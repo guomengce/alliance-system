@@ -1,7 +1,8 @@
 import { apiClient } from '../request';
 import type { ApiEnvelope, ApiListResponse, PaginationQuery } from '../types';
+import type { AdminLog } from '../../features/admin/logs/types';
 
-export type AdminLogDto = Record<string, unknown>;
+export interface AdminLogDto extends AdminLog {}
 
 export interface AdminLogsQuery extends PaginationQuery {
   category?: string;

@@ -1,9 +1,10 @@
 import { Search, Users } from 'lucide-react';
+import { getInitialTeamMembers } from '../../../../../mock/admin/users';
 import type { TeamPanelProps } from '../../types';
-import { filterTeamMembers, TEAM_MEMBERS } from '../../utils';
+import { filterTeamMembers } from '../../utils';
 
 export function TeamPanel({ teamSearchText, setTeamSearchText, formNodes, formVolume }: TeamPanelProps) {
-  const filteredTeamMembers = filterTeamMembers(TEAM_MEMBERS, teamSearchText);
+  const filteredTeamMembers = filterTeamMembers(getInitialTeamMembers(), teamSearchText);
 
   return (
           <div className="glass-card p-6 md:p-8 rounded-2xl border border-white/5 bg-[#141119] space-y-5 animate-fadeIn text-xs">

@@ -1,7 +1,12 @@
 import { apiClient } from '../request';
 import type { ApiEnvelope, ApiListResponse, PaginationQuery } from '../types';
+import type { Transaction } from '../../types';
 
-export type AdminWithdrawalDto = Record<string, unknown>;
+export interface AdminWithdrawalDto extends Transaction {
+  reviewer?: string;
+  reviewedAt?: string;
+  rejectReason?: string;
+}
 
 export interface AdminFinanceQuery extends PaginationQuery {
   keyword?: string;

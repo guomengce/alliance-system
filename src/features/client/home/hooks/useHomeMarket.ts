@@ -1,19 +1,20 @@
 import { useState } from 'react';
+import { getInitialClientHomeData } from '../../../../mock/client/home';
 import {
   MARKET_CHART_HEIGHT,
   MARKET_CHART_WIDTH,
-  TROO_MARKET_DATA,
   getMarketChartPaths,
   getYesterdayDateString
 } from '../utils';
 
 export function useHomeMarket() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const { marketData } = getInitialClientHomeData();
 
-  const activeIndex = hoveredIndex !== null ? hoveredIndex : TROO_MARKET_DATA.length - 1;
-  const activeData = TROO_MARKET_DATA[activeIndex];
+  const activeIndex = hoveredIndex !== null ? hoveredIndex : marketData.length - 1;
+  const activeData = marketData[activeIndex];
   const { points, linePath, areaPath } = getMarketChartPaths(
-    TROO_MARKET_DATA,
+    marketData,
     MARKET_CHART_WIDTH,
     MARKET_CHART_HEIGHT
   );
@@ -27,7 +28,7 @@ export function useHomeMarket() {
     chartWidth: MARKET_CHART_WIDTH,
     hoveredIndex,
     linePath,
-    marketData: TROO_MARKET_DATA,
+    marketData,
     points,
     setHoveredIndex,
     yesterdayDateStr

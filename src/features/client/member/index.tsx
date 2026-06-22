@@ -4,8 +4,8 @@ import KycCard from './components/KycCard';
 import ProfileCard from './components/ProfileCard';
 import TeamOverview from './components/TeamOverview';
 import { useMemberProfile } from './hooks/useMemberProfile';
+import { getInitialClientMemberData } from '../../../mock/client/member';
 import type { MemberViewProps } from './types';
-import { RECENT_ACTIVITIES } from './utils';
 
 export default function MemberView({
   uid,
@@ -22,6 +22,7 @@ export default function MemberView({
     setTempNickname,
     toggleEdit
   } = useMemberProfile({ nickname, uid, onUpdateNickname });
+  const { recentActivities } = getInitialClientMemberData();
 
   return (
     <PageView>
@@ -44,7 +45,7 @@ export default function MemberView({
       {/* Team Overview and Commission Pool */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Team Overview section */}
-        <TeamOverview recentActivities={RECENT_ACTIVITIES} />
+        <TeamOverview recentActivities={recentActivities} />
 
         {/* Commission Pool (Visual Ring) */}
         <CreditPool

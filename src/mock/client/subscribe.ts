@@ -1,6 +1,6 @@
-import type { Plan, Purchase } from './types';
+import type { ClientPlanDto, ClientSubscribeOrderDto } from '../../api/client/subscribe';
 
-export const PLANS: Plan[] = [
+export const INITIAL_CLIENT_PLAN_DTOS: ClientPlanDto[] = [
   { 
     id: 'all-a', 
     name: '方案 A', 
@@ -74,7 +74,7 @@ export const PLANS: Plan[] = [
   },
 ];
 
-export const INITIAL_PURCHASES: Purchase[] = [
+export const INITIAL_CLIENT_SUBSCRIBE_ORDER_DTOS: ClientSubscribeOrderDto[] = [
   { id: 'SUB-99812-E', name: '方案 E', amount: 50000, troo: 350000, giftRatio: 20, lockAmount: 15500, progress: 45, date: '2023-11-24 14:32', status: '进行中', statusType: 'pending' },
   { id: 'SUB-82215-D', name: '方案 D', amount: 10000, troo: 70000, giftRatio: 15, lockAmount: 3100, progress: 100, date: '2023-10-15 09:12', status: '已完成', statusType: 'success' },
   { id: 'SUB-71104-B', name: '方案 B', amount: 1000, troo: 7000, giftRatio: 2, lockAmount: 310, progress: 0, date: '2023-09-02 11:45', status: '已取消', statusType: 'failed' },

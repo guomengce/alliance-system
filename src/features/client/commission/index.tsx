@@ -6,8 +6,8 @@ import RatiosTable from './components/RatiosTable';
 import RulesNotice from './components/RulesNotice';
 import StatsAndPool from './components/StatsAndPool';
 import { useCommissionState } from './hooks/useCommissionState';
+import { getInitialClientCommissionData } from '../../../mock/client/commission';
 import type { CommissionViewProps } from './types';
-import { COMMISSION_RATIOS } from './utils';
 
 export default function CommissionView({
   cumulativeCommissions,
@@ -28,6 +28,7 @@ export default function CommissionView({
     setSuccessMsg,
     successMsg
   } = useCommissionState();
+  const { ratios } = getInitialClientCommissionData();
 
   const handleWithdrawClick = () => {
     if (pendingBalance <= 0) {
@@ -96,7 +97,7 @@ export default function CommissionView({
       />
 
       {/* Ratios Table / Proportion */}
-      <RatiosTable ratios={COMMISSION_RATIOS} />
+      <RatiosTable ratios={ratios} />
 
       {/* Rules Notice */}
       <RulesNotice />

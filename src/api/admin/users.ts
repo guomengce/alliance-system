@@ -1,7 +1,8 @@
 import { apiClient } from '../request';
 import type { ApiEnvelope, ApiListResponse, PaginationQuery } from '../types';
+import type { DownlineMember } from '../../types';
 
-export type AdminUserDto = Record<string, unknown>;
+export interface AdminUserDto extends DownlineMember {}
 
 export interface AdminUsersQuery extends PaginationQuery {
   keyword?: string;

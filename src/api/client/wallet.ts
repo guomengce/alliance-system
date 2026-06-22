@@ -1,8 +1,31 @@
 import { apiClient } from '../request';
 import type { ApiEnvelope, ApiListResponse, PaginationQuery } from '../types';
+import type { NetworkType } from '../../features/client/wallet/types';
+import type { Transaction } from '../../types';
 
-export type ClientWalletSummaryDto = Record<string, unknown>;
-export type ClientTransactionDto = Record<string, unknown>;
+export interface ClientWalletSummaryDto {
+  usdtBalance: number;
+  trooBalance: number;
+  lockedQueueAmount: number;
+}
+
+export interface ClientTransactionDto extends Transaction {}
+
+export interface ClientRechargePayload {
+  amount: number;
+  network: NetworkType;
+}
+
+export interface ClientWithdrawPayload {
+  amount: number;
+  network: NetworkType;
+  address: string;
+}
+
+export interface ClientTransferPayload {
+  amount: number;
+  targetUid: string;
+}
 
 export interface ClientTransactionsQuery extends PaginationQuery {
   keyword?: string;
@@ -16,13 +39,13 @@ export const clientWalletApi = {
   listTransactions: (query: ClientTransactionsQuery = {}) => (
     apiClient.get<ApiEnvelope<ApiListResponse<ClientTransactionDto>>>('/client/wallet/transactions', { query })
   ),
-  recharge: (payload: Record<string, unknown>) => (
-    apiClient.post<ApiEnvelope<ClientTransactionDto>, Record<string, unknown>>('/client/wallet/recharge', payload)
+  recharge: (payload: ClientRechargePayload) => (
+    apiClient.post<ApiEnvelope<ClientTransactionDto>, ClientRechargePayload>('/client/wallet/recharge', payload)
   ),
-  withdraw: (payload: Record<string, unknown>) => (
-    apiClient.post<ApiEnvelope<ClientTransactionDto>, Record<string, unknown>>('/client/wallet/withdraw', payload)
+  withdraw: (payload: ClientWithdrawPayload) => (
+    apiClient.post<ApiEnvelope<ClientTransactionDto>, ClientWithdrawPayload>('/client/wallet/withdraw', payload)
   ),
-  transfer: (payload: Record<string, unknown>) => (
-    apiClient.post<ApiEnvelope<ClientTransactionDto>, Record<string, unknown>>('/client/wallet/transfer', payload)
+  transfer: (payload: ClientTransferPayload) => (
+    apiClient.post<ApiEnvelope<ClientTransactionDto>, ClientTransferPayload>('/client/wallet/transfer', payload)
   )
 };

@@ -1,7 +1,14 @@
 import { apiClient } from '../request';
 import type { ApiEnvelope } from '../types';
+import type { TrooMarketDataPoint, TrendDataPoint } from '../../features/admin/dashboard/types';
 
-export type AdminDashboardDto = Record<string, unknown>;
+export interface AdminDashboardDto {
+  usdtBalance: number;
+  lockedQueueAmount: number;
+  reserveBalance: number;
+  trooMarketData: TrooMarketDataPoint[];
+  trendData: TrendDataPoint[];
+}
 
 export const adminDashboardApi = {
   getOverview: () => (

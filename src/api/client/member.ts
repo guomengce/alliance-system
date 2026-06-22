@@ -1,7 +1,15 @@
 import { apiClient } from '../request';
 import type { ApiEnvelope } from '../types';
+import type { RecentActivity } from '../../features/client/member/types';
 
-export type ClientMemberDto = Record<string, unknown>;
+export interface ClientMemberDto {
+  uid: string;
+  nickname: string;
+  joinDate: string;
+  remainingCredit: number;
+  totalCredit: number;
+  recentActivities: RecentActivity[];
+}
 
 export const clientMemberApi = {
   getProfile: () => (

@@ -1,7 +1,13 @@
 import { apiClient } from '../request';
 import type { ApiEnvelope } from '../types';
+import type { CommissionLevels } from '../../features/admin/parameters/types';
 
-export type AdminParametersDto = Record<string, unknown>;
+export interface AdminParametersDto {
+  commissionLevels: CommissionLevels;
+  withdrawalFee: number;
+  l1UnlockRatio: number;
+  apiPriceUrl: string;
+}
 
 export const adminParametersApi = {
   get: () => (

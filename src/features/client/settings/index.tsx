@@ -7,8 +7,9 @@ import PasswordForm from './components/PasswordForm';
 import ProfileForm from './components/ProfileForm';
 import SupportCard from './components/SupportCard';
 import { useSettingsFormState } from './hooks/useSettingsFormState';
+import { getInitialClientSettingsData } from '../../../mock/client/settings';
 import type { SettingsViewProps } from './types';
-import { ACTIVE_DEVICES, isValidEmail } from './utils';
+import { isValidEmail } from './utils';
 
 export default function SettingsView({
   nickname,
@@ -33,6 +34,7 @@ export default function SettingsView({
     tempEmail,
     tempNickname
   } = useSettingsFormState({ email, nickname });
+  const { activeDevices } = getInitialClientSettingsData();
 
   const handleUpdateProfile = (e: React.FormEvent) => {
     e.preventDefault();
@@ -117,7 +119,7 @@ export default function SettingsView({
           <SupportCard setSuccessMsg={setSuccessMsg} />
 
           {/* Active Devices lists & System Version combined elegantly */}
-          <DevicesPanel activeDevices={ACTIVE_DEVICES} />
+          <DevicesPanel activeDevices={activeDevices} />
 
           <LogoutButton onLogout={onLogout} />
         </div>

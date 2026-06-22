@@ -1,9 +1,11 @@
-import { METRICS } from '../utils';
+import { getInitialAdminReportData } from '../../../../mock/admin/reports';
 
 export function MetricsGrid() {
+  const { metrics } = getInitialAdminReportData();
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-      {METRICS.map((metric) => (
+      {metrics.map((metric) => (
         <div key={metric.label} className="bg-[#1c1824] border border-white/5 p-4 rounded-xl">
           <span className="text-[10px] uppercase font-bold text-[#cbc4d2]/40 tracking-wider font-sans">{metric.label}</span>
           <p className={`text-xl font-bold font-mono ${metric.valueClassName} mt-1`}>{metric.value}</p>

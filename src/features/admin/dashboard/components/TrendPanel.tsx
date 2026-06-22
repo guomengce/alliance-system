@@ -1,13 +1,14 @@
 import { TrendingUp } from 'lucide-react';
+import { getInitialAdminTrendData } from '../../../../mock/admin/dashboard';
 import type { TrendPanelProps } from '../types';
-import { LAST_7_DAYS_DATA } from '../utils';
 
 export default function TrendPanel({
   hoveredChartIndex,
   onHoveredChartIndexChange
 }: TrendPanelProps) {
+  const trendData = getInitialAdminTrendData();
   const activeDetailIdx = hoveredChartIndex !== null ? hoveredChartIndex : 6;
-  const activeDayData = LAST_7_DAYS_DATA[activeDetailIdx];
+  const activeDayData = trendData[activeDetailIdx];
 
   return (
     <div className="lg:col-span-7 glass-card p-6 rounded-2xl border border-white/5 bg-[#141119] flex flex-col justify-between">
@@ -45,7 +46,7 @@ export default function TrendPanel({
 
         {/* Bar Representation */}
         <div className="flex items-end gap-3.5 h-32 md:h-44 lg:h-52 xl:h-60 justify-between px-2 text-center relative select-none">
-          {LAST_7_DAYS_DATA.map((day, i) => {
+          {trendData.map((day, i) => {
             const isActive = activeDetailIdx === i;
             return (
               <div 
