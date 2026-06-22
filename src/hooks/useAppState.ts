@@ -1,4 +1,4 @@
-import type { Transaction } from '../types';
+import { createAppStateValue } from './createAppStateValue';
 import { useAdminBusinessState } from './useAdminBusinessState';
 import { useAppShellState } from './useAppShellState';
 import { useAuthState } from './useAuthState';
@@ -10,33 +10,16 @@ export function useAppState() {
   const appShellState = useAppShellState();
   const authState = useAuthState(appShellState.portalMode);
   const clientBusinessState = useClientBusinessState();
-  const {
-    addTransactionRecord,
-    refundUsdtBalance,
-    ...clientBusiness
-  } = clientBusinessState;
   const adminBusinessState = useAdminBusinessState({
-    addTransactionRecord,
-    refundUsdtBalance
+    addTransactionRecord: clientBusinessState.addTransactionRecord,
+    refundUsdtBalance: clientBusinessState.refundUsdtBalance
   });
-  const {
-    addPendingWithdrawal,
-    ...adminBusiness
-  } = adminBusinessState;
 
-  const handleAddTransaction = (newTxn: Transaction) => {
-    addTransactionRecord(newTxn);
-    if (newTxn.type === 'withdraw' && newTxn.status === 'pending') {
-      addPendingWithdrawal(newTxn);
-    }
-  };
-
-  return {
-    ...globalAlertState,
-    ...appShellState,
-    ...authState,
-    ...clientBusiness,
-    ...adminBusiness,
-    handleAddTransaction
-  };
+  return createAppStateValue({
+    globalAlertState,
+    appShellState,
+    authState,
+    clientBusinessState,
+    adminBusinessState
+  });
 }

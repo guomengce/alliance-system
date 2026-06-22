@@ -1,7 +1,10 @@
 node_modules/
+.pnpm-store/
+@tolgee/
 build/
 dist/
 coverage/
+tools/
 .DS_Store
 *.log
 .env*
