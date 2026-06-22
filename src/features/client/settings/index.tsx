@@ -9,7 +9,7 @@ import SupportCard from './components/SupportCard';
 import { useSettingsFormState } from './hooks/useSettingsFormState';
 import { getInitialClientSettingsData } from '../../../mock/client/settings';
 import type { SettingsViewProps } from './types';
-import { isValidEmail } from './utils';
+import { validatePasswordForm, validateProfileForm } from './utils';
 
 export default function SettingsView({
   nickname,
@@ -41,16 +41,9 @@ export default function SettingsView({
     setErrorMsg('');
     setSuccessMsg('');
     
-    if (!tempNickname.trim()) {
-      setErrorMsg('用户昵称不能为空！');
-      return;
-    }
-    if (!tempEmail.trim()) {
-      setErrorMsg('安全收据邮箱不能为空！');
-      return;
-    }
-    if (!isValidEmail(tempEmail)) {
-      setErrorMsg('请输入有效的邮箱地址！');
+    const validationError = validateProfileForm(tempNickname, tempEmail);
+    if (validationError) {
+      setErrorMsg(validationError);
       return;
     }
 
@@ -65,8 +58,9 @@ export default function SettingsView({
     setErrorMsg('');
     setSuccessMsg('');
 
-    if (!oldPassword || !newPassword) {
-      setErrorMsg('请输入完整密码！');
+    const validationError = validatePasswordForm(oldPassword, newPassword);
+    if (validationError) {
+      setErrorMsg(validationError);
       return;
     }
     setSuccessMsg('登录安全密码修改成功！');
