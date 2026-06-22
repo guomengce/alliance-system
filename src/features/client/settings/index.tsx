@@ -1,5 +1,5 @@
-import React from 'react';
 import PageView from '../../../shared/components/PageView';
+import { getInitialClientSettingsData } from '../../../mock/client/settings';
 import DevicesPanel from './components/DevicesPanel';
 import FeedbackMessages from './components/FeedbackMessages';
 import LogoutButton from './components/LogoutButton';
@@ -7,9 +7,7 @@ import PasswordForm from './components/PasswordForm';
 import ProfileForm from './components/ProfileForm';
 import SupportCard from './components/SupportCard';
 import { useSettingsFormState } from './hooks/useSettingsFormState';
-import { getInitialClientSettingsData } from '../../../mock/client/settings';
 import type { SettingsViewProps } from './types';
-import { validatePasswordForm, validateProfileForm } from './utils';
 
 export default function SettingsView({
   nickname,
@@ -20,6 +18,8 @@ export default function SettingsView({
 }: SettingsViewProps) {
   const {
     errorMsg,
+    handleUpdatePasswords,
+    handleUpdateProfile,
     newPassword,
     oldPassword,
     setErrorMsg,
@@ -33,41 +33,13 @@ export default function SettingsView({
     successMsg,
     tempEmail,
     tempNickname
-  } = useSettingsFormState({ email, nickname });
+  } = useSettingsFormState({
+    email,
+    nickname,
+    onUpdateEmail,
+    onUpdateNickname
+  });
   const { activeDevices } = getInitialClientSettingsData();
-
-  const handleUpdateProfile = (e: React.FormEvent) => {
-    e.preventDefault();
-    setErrorMsg('');
-    setSuccessMsg('');
-    
-    const validationError = validateProfileForm(tempNickname, tempEmail);
-    if (validationError) {
-      setErrorMsg(validationError);
-      return;
-    }
-
-    onUpdateNickname(tempNickname);
-    onUpdateEmail(tempEmail);
-    setSuccessMsg('个人昵称与安全邮箱资料更新成功！');
-    setTimeout(() => setSuccessMsg(''), 4000);
-  };
-
-  const handleUpdatePasswords = (e: React.FormEvent) => {
-    e.preventDefault();
-    setErrorMsg('');
-    setSuccessMsg('');
-
-    const validationError = validatePasswordForm(oldPassword, newPassword);
-    if (validationError) {
-      setErrorMsg(validationError);
-      return;
-    }
-    setSuccessMsg('登录安全密码修改成功！');
-    setOldPassword('');
-    setNewPassword('');
-    setTimeout(() => setSuccessMsg(''), 4000);
-  };
 
   return (
     <PageView>
