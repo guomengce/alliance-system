@@ -2,6 +2,7 @@ import DetailView from './detail';
 import ListView from './list';
 import { useOrdersState } from './hooks/useOrdersState';
 import type { OrderDetail } from './types';
+import { buildOrdersCsvContent, updateOrderStatus } from './utils';
 
 export default function AdminOrdersView() {
   const {
@@ -17,10 +18,7 @@ export default function AdminOrdersView() {
   // Export CSV
   const exportMockCSV = () => {
     let csvContent = "data:text/csv;charset=utf-8,";
-    csvContent += "订单编号,会员UID,认购套餐,认购金额(USDT),支付通道,交易哈希,资金流向,状态,入账时间\r\n";
-    orders.forEach(o => {
-      csvContent += `${o.id},${o.uid},${o.planName},${o.amount},${o.paymentChannel},${o.txid},${o.cashFlowTrack},${o.status},${o.time}\r\n`;
-    });
+    csvContent += buildOrdersCsvContent(orders);
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
@@ -31,7 +29,7 @@ export default function AdminOrdersView() {
   };
 
   const handleUpdateOrderStatus = (orderId: string, status: OrderDetail['status']) => {
-    setOrders(prev => prev.map(item => item.id === orderId ? { ...item, status } : item));
+    setOrders(prev => updateOrderStatus(prev, orderId, status));
   };
 
 
