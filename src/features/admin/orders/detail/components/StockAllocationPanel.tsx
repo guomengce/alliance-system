@@ -1,5 +1,5 @@
 import { Wallet } from 'lucide-react';
-import type { DetailViewProps } from '../types';
+import type { DetailViewProps } from '../../types';
 
 interface StockAllocationPanelProps {
   selectedOrder: DetailViewProps['selectedOrder'];

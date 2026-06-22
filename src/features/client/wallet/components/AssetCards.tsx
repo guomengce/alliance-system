@@ -1,5 +1,5 @@
 import { Clock, Coins, DollarSign, Lock, TrendingUp } from 'lucide-react';
-import MetricCard from '../../../../components/MetricCard';
+import MetricCard from '../../../../shared/components/MetricCard';
 import type { AssetCardsProps } from '../types';
 
 export default function AssetCards({ usdtBalance, trooBalance, lockedQueueAmount }: AssetCardsProps) {

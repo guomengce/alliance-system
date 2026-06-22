@@ -1,5 +1,5 @@
 import { ArrowLeft, CheckCircle, Landmark, XCircle } from 'lucide-react';
-import type { DetailViewProps } from '../types';
+import type { DetailViewProps } from '../../types';
 
 interface HeaderAndActionsProps {
   selectedOrder: DetailViewProps['selectedOrder'];

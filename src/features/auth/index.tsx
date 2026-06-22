@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import AlertBanner from '../../components/AlertBanner';
+import AlertBanner from '../../shared/components/AlertBanner';
 import { useAppContext } from '../../context/AppContext';
 import Background from './components/Background';
 import BrandHeader from './components/BrandHeader';

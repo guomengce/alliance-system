@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { getInitialAdminQueueRoster } from '../../../../api/admin/queue';
 import type { QueueRoster } from '../types';
-import { filterTriggerHistory, INITIAL_LOCKED_ROSTER } from '../utils';
+import { filterTriggerHistory } from '../utils';
 
 export function useQueueState() {
-  const [lockedRoster, setLockedRoster] = useState<QueueRoster[]>(INITIAL_LOCKED_ROSTER);
+  const [lockedRoster, setLockedRoster] = useState<QueueRoster[]>(() => getInitialAdminQueueRoster());
   const [selectedRoster, setSelectedRoster] = useState<QueueRoster | null>(null);
   const [calibCurrent, setCalibCurrent] = useState<number>(0);
   const [calibUnlocked, setCalibUnlocked] = useState<number>(0);

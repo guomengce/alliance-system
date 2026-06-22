@@ -1,6 +1,6 @@
 import type { FormEvent } from 'react';
-import PageView from '../../../components/PageView';
-import AlertBanner from '../../../components/AlertBanner';
+import PageView from '../../../shared/components/PageView';
+import AlertBanner from '../../../shared/components/AlertBanner';
 import ActionPanel from './components/ActionPanel';
 import ActionTabs from './components/ActionTabs';
 import AssetCards from './components/AssetCards';

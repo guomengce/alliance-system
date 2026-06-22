@@ -1,4 +1,4 @@
-import PageView from '../../../components/PageView';
+import PageView from '../../../shared/components/PageView';
 import DownlineLedger from './components/DownlineLedger';
 import Header from './components/Header';
 import NetworkGraph from './components/NetworkGraph';

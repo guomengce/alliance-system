@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Filter } from 'lucide-react';
 import type { OrdersFeedProps } from '../types';
 import OrderCard from './OrderCard';
@@ -24,7 +25,9 @@ export default function OrdersFeed({
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {filteredOrders.slice(0, visibleOrdersCount).map((item) => (
-              <OrderCard key={item.id} item={item} onSelectDetailOrder={onSelectDetailOrder} />
+              <Fragment key={item.id}>
+                <OrderCard item={item} onSelectDetailOrder={onSelectDetailOrder} />
+              </Fragment>
             ))}
           </div>
 

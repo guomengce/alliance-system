@@ -1,6 +1,6 @@
 import { AnimatePresence } from 'motion/react';
-import PageView from '../../../../components/PageView';
-import AlertBanner from '../../../../components/AlertBanner';
+import PageView from '../../../../shared/components/PageView';
+import AlertBanner from '../../../../shared/components/AlertBanner';
 import type { WorkspaceProps } from '../types';
 import DetailModal from './DetailModal';
 import PlansList from './PlansList';

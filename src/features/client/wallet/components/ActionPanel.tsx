@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'motion/react';
 import { X } from 'lucide-react';
-import AlertBanner from '../../../../components/AlertBanner';
+import AlertBanner from '../../../../shared/components/AlertBanner';
 import type { ActionPanelProps } from '../types';
 import RechargePanel from './RechargePanel';
 import RechargeQrPanel from './RechargeQrPanel';

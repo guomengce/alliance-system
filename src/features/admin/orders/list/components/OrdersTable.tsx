@@ -1,7 +1,8 @@
+import { Fragment } from 'react';
 import OrderTableRow from './OrderTableRow';
 import type { MobileOrderCardProps } from '../../types';
 
-interface OrdersTableProps extends MobileOrderCardProps {
+interface OrdersTableProps extends Omit<MobileOrderCardProps, 'order'> {
   orders: MobileOrderCardProps['order'][];
 }
 
@@ -28,13 +29,14 @@ export default function OrdersTable({
         </thead>
         <tbody className="divide-y divide-white/5 font-mono">
           {orders.map(order => (
-            <OrderTableRow
-              key={order.id}
-              order={order}
-              setSelectedOrder={setSelectedOrder}
-              setDetailSearchQuery={setDetailSearchQuery}
-              onUpdateOrderStatus={onUpdateOrderStatus}
-            />
+            <Fragment key={order.id}>
+              <OrderTableRow
+                order={order}
+                setSelectedOrder={setSelectedOrder}
+                setDetailSearchQuery={setDetailSearchQuery}
+                onUpdateOrderStatus={onUpdateOrderStatus}
+              />
+            </Fragment>
           ))}
         </tbody>
       </table>

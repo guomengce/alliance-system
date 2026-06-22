@@ -1,5 +1,5 @@
 import { AnimatePresence } from 'motion/react';
-import AlertBanner from '../../../../components/AlertBanner';
+import AlertBanner from '../../../../shared/components/AlertBanner';
 import type { FeedbackMessagesProps } from '../types';
 
 export default function FeedbackMessages({

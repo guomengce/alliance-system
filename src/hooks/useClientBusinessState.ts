@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { NotificationItem, Transaction } from '../types';
-import { initialNotifications, initialTransactions } from '../data';
-import { calculateDirectSimulation } from '../utils/simulation';
+import { initialNotifications, initialTransactions } from '../mock/data';
+import { calculateDirectSimulation } from '../shared/utils/simulation';
 
 export function useClientBusinessState() {
   const [usdtBalance, setUsdtBalance] = useState<number>(128450.00);

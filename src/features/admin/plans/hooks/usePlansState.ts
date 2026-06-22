@@ -1,9 +1,9 @@
 import { useState } from 'react';
+import { getInitialAdminPlans } from '../../../../api/admin/plans';
 import type { Plan } from '../types';
-import { INITIAL_PLANS } from '../utils';
 
 export function usePlansState() {
-  const [adminPlans, setAdminPlans] = useState<Plan[]>(INITIAL_PLANS);
+  const [adminPlans, setAdminPlans] = useState<Plan[]>(() => getInitialAdminPlans());
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingPlan, setEditingPlan] = useState<Plan | null>(null);
   const [formName, setFormName] = useState('');

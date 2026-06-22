@@ -1,4 +1,4 @@
-import PageView from '../../../components/PageView';
+import PageView from '../../../shared/components/PageView';
 import CategoryTabs from './components/CategoryTabs';
 import HeaderActions from './components/HeaderActions';
 import NotificationList from './components/NotificationList';

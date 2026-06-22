@@ -1,4 +1,4 @@
-import { Transaction, DownlineMember, NotificationItem } from './types';
+import { Transaction, DownlineMember, NotificationItem } from '../types';
 
 export const initialTransactions: Transaction[] = [
   {

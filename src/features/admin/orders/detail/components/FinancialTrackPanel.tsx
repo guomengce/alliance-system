@@ -1,5 +1,5 @@
 import { FileText } from 'lucide-react';
-import type { DetailViewProps } from '../types';
+import type { DetailViewProps } from '../../types';
 
 interface FinancialTrackPanelProps {
   selectedOrder: DetailViewProps['selectedOrder'];

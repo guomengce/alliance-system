@@ -1,4 +1,4 @@
-import PageView from '../../../components/PageView';
+import PageView from '../../../shared/components/PageView';
 import CreditPool from './components/CreditPool';
 import KycCard from './components/KycCard';
 import ProfileCard from './components/ProfileCard';

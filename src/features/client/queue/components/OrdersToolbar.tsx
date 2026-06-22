@@ -1,12 +1,12 @@
-import type { OrderStatusFilter } from '../types';
+﻿import type { OrderStatusFilter } from '../types';
 import { Search, X } from 'lucide-react';
 import type { OrdersToolbarProps } from '../types';
 
 const STATUS_FILTERS: Array<{ id: OrderStatusFilter; label: string }> = [
   { id: 'all', label: '全部' },
-  { id: 'queueing', label: '排队�? },
+  { id: 'queueing', label: '排队中' },
   { id: 'partially_released', label: '部分解锁' },
-  { id: 'released', label: '已完�? }
+  { id: 'released', label: '已完成' }
 ];
 
 export default function OrdersToolbar({
@@ -21,7 +21,7 @@ export default function OrdersToolbar({
     <div className="p-5 border-b border-white/5 space-y-4">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <h4 className="text-sm font-semibold text-white tracking-wider flex items-center gap-2">
-          排队订单列表 <span className="text-[11px] font-mono text-[#cbc4d2]/40 font-normal">({filteredOrdersCount} 个订�?</span>
+          排队订单列表 <span className="text-[11px] font-mono text-[#cbc4d2]/40 font-normal">({filteredOrdersCount} 个订单)</span>
         </h4>
 
         <div className="relative w-full sm:w-64">
@@ -30,7 +30,7 @@ export default function OrdersToolbar({
           </span>
           <input
             type="text"
-            placeholder="按订单号或理财套餐搜�?.."
+            placeholder="按订单号或理财套餐搜索..."
             value={orderSearchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             className="w-full bg-[#100d14] border border-white/5 rounded-xl pl-8 pr-7 py-2 text-[11px] text-white placeholder-[#cbc4d2]/30 focus:outline-none focus:border-[#cfbcff]/50 transition-colors"

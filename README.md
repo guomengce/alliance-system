@@ -1,20 +1,46 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Alliance System
 
-# Run and deploy your AI Studio app
+Alliance System is a React + TypeScript management console with separate client and admin portals. The current refactor keeps the approved UI intact while moving the codebase toward a maintainable enterprise-style frontend architecture.
 
-This contains everything you need to run your app locally.
+## Tech Stack
 
-View your app in AI Studio: https://ai.studio/apps/e248bc63-1477-42a7-aaf8-91719ca5274d
+- Vite
+- React
+- TypeScript
+- Tailwind CSS
+- React Router
 
-## Run Locally
+## Scripts
 
-**Prerequisites:**  Node.js
+Install dependencies:
 
+```bash
+pnpm install
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Start local development:
+
+```bash
+pnpm dev
+```
+
+Run type checks:
+
+```bash
+pnpm lint
+```
+
+Build production assets:
+
+```bash
+pnpm build
+```
+
+## Structure
+
+- `src/features/admin`: admin portal business modules
+- `src/features/client`: client portal business modules
+- `src/layouts`: portal and shell layouts
+- `src/router`: route configuration and guards
+- `src/api`: request client and backend API adapters
+- `src/shared`: shared components, hooks, utilities, constants, and types

@@ -1,7 +1,19 @@
 import { apiClient } from '../request';
 import type { ApiEnvelope, ApiListResponse, PaginationQuery } from '../types';
+import type { Plan } from '../../features/admin/plans/types';
+import { INITIAL_ADMIN_PLAN_DTOS } from '../../mock/admin/plans';
 
-export type AdminPlanDto = Record<string, unknown>;
+export interface AdminPlanDto {
+  id: string;
+  name: string;
+  price: number;
+  giftRatio: number;
+  buyRatio: number;
+  queueRatio: number;
+  commissionLimit: number;
+  status: Plan['status'];
+  description?: string;
+}
 
 export const adminPlansApi = {
   list: (query: PaginationQuery = {}) => (
@@ -14,3 +26,19 @@ export const adminPlansApi = {
     apiClient.patch<ApiEnvelope<AdminPlanDto>, Partial<AdminPlanDto>>(`/admin/plans/${planId}`, payload)
   )
 };
+
+export const mapAdminPlanDto = (dto: AdminPlanDto): Plan => ({
+  id: dto.id,
+  name: dto.name,
+  price: dto.price,
+  giftRatio: dto.giftRatio,
+  buyRatio: dto.buyRatio,
+  queueRatio: dto.queueRatio,
+  commissionLimit: dto.commissionLimit,
+  status: dto.status,
+  description: dto.description
+});
+
+export const getInitialAdminPlans = (): Plan[] => (
+  INITIAL_ADMIN_PLAN_DTOS.map((plan) => mapAdminPlanDto(plan))
+);

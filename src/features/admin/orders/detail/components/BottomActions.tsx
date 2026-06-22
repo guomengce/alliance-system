@@ -1,4 +1,4 @@
-import type { DetailViewProps } from '../types';
+import type { DetailViewProps } from '../../types';
 
 interface BottomActionsProps {
   setSelectedOrder: DetailViewProps['setSelectedOrder'];

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { DownlineMember, Transaction } from '../types';
-import { initialDownlines } from '../data';
+import { initialDownlines } from '../mock/data';
 import type { AddTransactionRecord, RefundUsdtBalance } from './types';
 
 interface AdminBusinessStateDeps {

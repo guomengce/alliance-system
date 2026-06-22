@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { getInitialAdminOrders } from '../../../../api/admin/orders';
 import type { OrderDetail } from '../types';
-import { INITIAL_ORDERS, filterAllocations } from '../utils';
+import { filterAllocations } from '../utils';
 
 export function useOrdersState() {
-  const [orders, setOrders] = useState<OrderDetail[]>(INITIAL_ORDERS);
+  const [orders, setOrders] = useState<OrderDetail[]>(() => getInitialAdminOrders());
   const [selectedOrder, setSelectedOrder] = useState<OrderDetail | null>(null);
   const [detailSearchQuery, setDetailSearchQuery] = useState('');
 

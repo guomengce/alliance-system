@@ -1,5 +1,5 @@
 import { Search, ShieldCheck } from 'lucide-react';
-import type { CommissionAllocation, DetailViewProps } from '../types';
+import type { CommissionAllocation, DetailViewProps } from '../../types';
 
 interface CommissionAllocationPanelProps {
   filteredAllocations: CommissionAllocation[];

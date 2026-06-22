@@ -1,7 +1,8 @@
+import { Fragment } from 'react';
 import type { MobileOrderCardProps } from '../../types';
 import OrderMobileCard from './OrderMobileCard';
 
-interface MobileOrderCardsProps extends MobileOrderCardProps {
+interface MobileOrderCardsProps extends Omit<MobileOrderCardProps, 'order'> {
   orders: MobileOrderCardProps['order'][];
 }
 
@@ -14,13 +15,14 @@ export default function MobileOrderCards({
   return (
     <div className="block md:hidden space-y-3">
       {orders.map(order => (
-        <OrderMobileCard
-          key={order.id}
-          order={order}
-          setSelectedOrder={setSelectedOrder}
-          setDetailSearchQuery={setDetailSearchQuery}
-          onUpdateOrderStatus={onUpdateOrderStatus}
-        />
+        <Fragment key={order.id}>
+          <OrderMobileCard
+            order={order}
+            setSelectedOrder={setSelectedOrder}
+            setDetailSearchQuery={setDetailSearchQuery}
+            onUpdateOrderStatus={onUpdateOrderStatus}
+          />
+        </Fragment>
       ))}
     </div>
   );

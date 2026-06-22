@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Unlock } from 'lucide-react';
-import PageView from '../../../components/PageView';
-import AlertBanner from '../../../components/AlertBanner';
+import PageView from '../../../shared/components/PageView';
+import AlertBanner from '../../../shared/components/AlertBanner';
 import { AnimatePresence, motion } from 'motion/react';
 import OrdersList from './components/OrdersList';
 import ProgressVisualization from './components/ProgressVisualization';

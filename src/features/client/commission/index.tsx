@@ -1,5 +1,5 @@
-import PageView from '../../../components/PageView';
-import AlertBanner from '../../../components/AlertBanner';
+import PageView from '../../../shared/components/PageView';
+import AlertBanner from '../../../shared/components/AlertBanner';
 import Header from './components/Header';
 import HistoryLedger from './components/HistoryLedger';
 import RatiosTable from './components/RatiosTable';

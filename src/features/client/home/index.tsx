@@ -1,4 +1,4 @@
-import PageView from '../../../components/PageView';
+import PageView from '../../../shared/components/PageView';
 import AssetsAndCredit from './components/AssetsAndCredit';
 import Banner from './components/Banner';
 import MarketPanel from './components/MarketPanel';
