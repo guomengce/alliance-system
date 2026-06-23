@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
   TROO_CHART_HEIGHT,
   TROO_CHART_WIDTH,
+  buildDashboardPageData,
   buildDashboardViewModel,
   buildMetricCards,
   buildTrendChartOption,
@@ -124,16 +125,27 @@ describe('admin dashboard utils', () => {
     expect(Array.isArray(option.series)).toBe(true);
   });
 
-  it('builds a complete dashboard view model from the simulated API dto', () => {
+  it('builds page data that can be passed directly from index to components', () => {
+    const pageData = buildDashboardPageData(dashboardOverview, {
+      activeTrendIndex: 0,
+      activeTrooIndex: 1,
+    });
+
+    expect(pageData.metrics.cards).toHaveLength(5);
+    expect(pageData.trend.chart.activePoint.date).toBe('D-2');
+    expect(pageData.trend.chartOption.series).toBeDefined();
+    expect(pageData.trooPrice.chart.activePoint.time).toBe('12:00');
+    expect(pageData.trooPrice.chartOption.series).toBeDefined();
+  });
+
+  it('keeps the legacy flat dashboard view model for compatibility', () => {
     const viewModel = buildDashboardViewModel(dashboardOverview, {
       activeTrendIndex: 0,
       activeTrooIndex: 1,
     });
 
-    expect(viewModel.metricCards).toHaveLength(5);
-    expect(viewModel.trendChart.activePoint.date).toBe('D-2');
-    expect(viewModel.trooChart.activePoint.time).toBe('12:00');
-    expect(viewModel.trendOption.series).toBeDefined();
-    expect(viewModel.trooOption.series).toBeDefined();
+    expect(viewModel.metricCards).toBe(viewModel.pageData.metrics.cards);
+    expect(viewModel.trendChart).toBe(viewModel.pageData.trend.chart);
+    expect(viewModel.trooChart).toBe(viewModel.pageData.trooPrice.chart);
   });
 });
