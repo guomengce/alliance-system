@@ -1,4 +1,7 @@
+import type { EChartsOption } from 'echarts';
+
 export interface MetricCardProps {
+  key?: string;
   title: string;
   value: string;
   sub: string;
@@ -11,8 +14,7 @@ export interface AdminDashboardViewProps {
 }
 
 export interface MetricGridProps {
-  lockedQueueAmount: number;
-  reserveBalance: number;
+  cards: MetricCardViewModel[];
 }
 
 export interface TrooMarketDataPoint {
@@ -27,14 +29,9 @@ export interface TrooChartPoint extends TrooMarketDataPoint {
 }
 
 export interface TrooPricePanelProps {
-  activeTrooData: TrooMarketDataPoint;
-  trooChartHeight: number;
-  trooChartWidth: number;
-  trooAreaPath: string;
-  trooLinePath: string;
-  trooPoints: TrooChartPoint[];
-  hoveredTrooIndex: number | null;
-  onHoveredTrooIndexChange: (index: number | null) => void;
+  chart: TrooChartViewModel;
+  option: EChartsOption;
+  onHoverIndexChange: (index: number | null) => void;
 }
 
 export interface TrendDataPoint {
@@ -45,6 +42,71 @@ export interface TrendDataPoint {
 }
 
 export interface TrendPanelProps {
-  hoveredChartIndex: number | null;
-  onHoveredChartIndexChange: (index: number | null) => void;
+  chart: TrendChartViewModel;
+  option: EChartsOption;
+  onHoverIndexChange: (index: number | null) => void;
+}
+
+export interface AdminDashboardMetricsDto {
+  totalMembers: number;
+  todaySubscriptionAmount: number;
+  todayCommissionAmount: number;
+  lockedQueueAmount: number;
+  reserveBalance: number;
+}
+
+export interface AdminDashboardTrendDto {
+  date: string;
+  subscriptionAmount: number;
+  commissionAmount: number;
+}
+
+export interface AdminDashboardOverviewDto {
+  metrics: AdminDashboardMetricsDto;
+  trooMarket: TrooMarketDataPoint[];
+  trend: AdminDashboardTrendDto[];
+}
+
+export interface MetricCardViewModel extends MetricCardProps {
+  key: string;
+  colorClass: string;
+}
+
+export interface ChartSeriesViewModel {
+  key: string;
+  name: string;
+  color: string;
+  values: number[];
+}
+
+export interface TrendChartViewModel {
+  xAxis: string[];
+  series: ChartSeriesViewModel[];
+  activeIndex: number;
+  activePoint: {
+    date: string;
+    subscriptionAmountText: string;
+    commissionAmountText: string;
+  };
+}
+
+export interface TrooChartViewModel {
+  xAxis: string[];
+  prices: number[];
+  changes: number[];
+  activeIndex: number;
+  activePoint: {
+    time: string;
+    priceText: string;
+    changeText: string;
+    change: number;
+  };
+}
+
+export interface DashboardViewModel {
+  metricCards: MetricCardViewModel[];
+  trendChart: TrendChartViewModel;
+  trendOption: EChartsOption;
+  trooChart: TrooChartViewModel;
+  trooOption: EChartsOption;
 }

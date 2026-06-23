@@ -4,44 +4,33 @@ import TrendPanel from './components/TrendPanel';
 import TrooPricePanel from './components/TrooPricePanel';
 import { useDashboardState } from './hooks/useDashboardState';
 import type { AdminDashboardViewProps } from './types';
-import { COMPANY_USDT } from './utils';
 
-export default function AdminDashboardView({ usdtBalance, lockedQueueAmount }: AdminDashboardViewProps) {
+export default function AdminDashboardView(_props: AdminDashboardViewProps) {
   const {
-    activeTrooData,
-    hoveredChartIndex,
-    hoveredTrooIndex,
+    metricCards,
     setHoveredChartIndex,
     setHoveredTrooIndex,
-    trooAreaPath,
-    trooChartHeight,
-    trooChartWidth,
-    trooLinePath,
-    trooPoints
+    trendChart,
+    trendOption,
+    trooChart,
+    trooOption
   } = useDashboardState();
 
   return (
     <div id="admin_dashboard_page" className="space-y-6 select-none animate-fadeIn flex-grow flex flex-col pb-4 h-full">
       <StatusHeader />
-      <MetricGrid
-        lockedQueueAmount={lockedQueueAmount}
-        reserveBalance={COMPANY_USDT + usdtBalance}
-      />
+      <MetricGrid cards={metricCards} />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-grow">
         <TrooPricePanel
-          activeTrooData={activeTrooData}
-          trooChartHeight={trooChartHeight}
-          trooChartWidth={trooChartWidth}
-          trooAreaPath={trooAreaPath}
-          trooLinePath={trooLinePath}
-          trooPoints={trooPoints}
-          hoveredTrooIndex={hoveredTrooIndex}
-          onHoveredTrooIndexChange={setHoveredTrooIndex}
+          chart={trooChart}
+          option={trooOption}
+          onHoverIndexChange={setHoveredTrooIndex}
         />
         <TrendPanel
-          hoveredChartIndex={hoveredChartIndex}
-          onHoveredChartIndexChange={setHoveredChartIndex}
+          chart={trendChart}
+          option={trendOption}
+          onHoverIndexChange={setHoveredChartIndex}
         />
       </div>
     </div>
