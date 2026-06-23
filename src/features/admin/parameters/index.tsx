@@ -7,6 +7,9 @@ export default function AdminParametersView() {
   const {
     apiPriceUrl,
     commissionLevels,
+    handleSaveCommissionLevels,
+    handleSaveLimits,
+    handleTestApiPrice,
     l1UnlockRatio,
     setApiPriceUrl,
     setCommissionLevels,
@@ -28,16 +31,19 @@ export default function AdminParametersView() {
         <CommissionPanel
           commissionLevels={commissionLevels}
           setCommissionLevels={setCommissionLevels}
+          onSaveCommissionLevels={handleSaveCommissionLevels}
         />
         <LimitsPanel
           withdrawalFee={withdrawalFee}
           setWithdrawalFee={setWithdrawalFee}
           l1UnlockRatio={l1UnlockRatio}
           setL1UnlockRatio={setL1UnlockRatio}
+          onSaveLimits={handleSaveLimits}
         />
         <ApiPanel
           apiPriceUrl={apiPriceUrl}
           setApiPriceUrl={setApiPriceUrl}
+          onTestApiPrice={handleTestApiPrice}
         />
       </div>
     </div>

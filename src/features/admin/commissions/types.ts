@@ -62,5 +62,5 @@ export interface DetailsPanelProps {
   selectedCommission: CommissionPayout;
   onClose: () => void;
   onForcePayout: (payoutId: string) => void;
-  onAdjustCommissionAmount: (payoutId: string, secureNewAmount: number) => void;
+  onSubmitCommissionAdjustment: (payoutId: string, rawAmount: string) => void;
 }

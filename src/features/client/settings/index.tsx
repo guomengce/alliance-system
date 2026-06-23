@@ -1,5 +1,4 @@
 import PageView from '../../../shared/components/PageView';
-import { getInitialClientSettingsData } from '../../../mock/client/settings';
 import DevicesPanel from './components/DevicesPanel';
 import FeedbackMessages from './components/FeedbackMessages';
 import LogoutButton from './components/LogoutButton';
@@ -17,6 +16,7 @@ export default function SettingsView({
   onLogout
 }: SettingsViewProps) {
   const {
+    activeDevices,
     errorMsg,
     handleUpdatePasswords,
     handleUpdateProfile,
@@ -39,7 +39,6 @@ export default function SettingsView({
     onUpdateEmail,
     onUpdateNickname
   });
-  const { activeDevices } = getInitialClientSettingsData();
 
   return (
     <PageView>

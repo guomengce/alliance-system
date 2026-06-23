@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useAppContext } from '../../../../context/AppContext';
 import type { DownlineMember } from '../../../../types';
 import { filterDownlines } from '../utils';
 
@@ -7,12 +8,14 @@ interface UseTeamStateParams {
 }
 
 export const useTeamState = ({ downlines }: UseTeamStateParams) => {
+  const { triggerGlobalAlert } = useAppContext();
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [levelFilter, setLevelFilter] = useState<string>('all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [copiedUid, setCopiedUid] = useState<string | null>(null);
   const [copiedLink, setCopiedLink] = useState<boolean>(false);
   const [exporting, setExporting] = useState<boolean>(false);
+  const notifyInfo = (message: string) => triggerGlobalAlert(message, 'info');
 
   const filteredDownlines = filterDownlines(downlines, levelFilter, searchQuery);
 
@@ -32,7 +35,7 @@ export const useTeamState = ({ downlines }: UseTeamStateParams) => {
     setExporting(true);
     setTimeout(() => {
       setExporting(false);
-      alert('鍥㈤槦鏁版嵁鎶ヨ〃宸茬敓鎴愬苟鍑嗗瀵煎嚭 (Downline_Ledger_Export.csv)');
+      notifyInfo('鍥㈤槦鏁版嵁鎶ヨ〃宸茬敓鎴愬苟鍑嗗瀵煎嚭 (Downline_Ledger_Export.csv)');
     }, 1500);
   };
 

@@ -1,7 +1,11 @@
 import { Coins } from 'lucide-react';
 import type { CommissionPanelProps } from '../types';
 
-export default function CommissionPanel({ commissionLevels, setCommissionLevels }: CommissionPanelProps) {
+export default function CommissionPanel({
+  commissionLevels,
+  setCommissionLevels,
+  onSaveCommissionLevels
+}: CommissionPanelProps) {
   return (
     <div className="bg-[#1f1a26]/40 border border-white/5 rounded-2xl p-4.5 space-y-3.5 flex flex-col justify-between">
       <div>
@@ -35,7 +39,7 @@ export default function CommissionPanel({ commissionLevels, setCommissionLevels 
       </div>
 
       <button 
-        onClick={() => alert('L1-L5 各层推荐代付分佣占比修改已实时推送并锁入智能结算合约！')}
+        onClick={onSaveCommissionLevels}
         className="w-full mt-4 py-2 bg-gradient-to-r from-[#6750a4] to-[#cfbcff] text-white rounded-xl text-xs font-bold active:scale-95 transition-all text-center cursor-pointer"
       >
         锁定分成占比

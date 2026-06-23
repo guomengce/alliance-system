@@ -55,6 +55,7 @@ export interface DetailsPanelProps {
   setFormKycL1: Dispatch<SetStateAction<KycL1Status>>;
   formKycL2: KycL2Status;
   setFormKycL2: Dispatch<SetStateAction<KycL2Status>>;
+  filteredTeamMembers: TeamMember[];
   onBack: () => void;
   onResetPasswordEmail: () => void;
   onSave: () => void;
@@ -104,7 +105,7 @@ export type WalletPanelProps = Pick<
 
 export type TeamPanelProps = Pick<
   DetailsPanelProps,
-  'teamSearchText' | 'setTeamSearchText' | 'formNodes' | 'formVolume'
+  'teamSearchText' | 'setTeamSearchText' | 'formNodes' | 'formVolume' | 'filteredTeamMembers'
 >;
 
 export type FooterActionsProps = Pick<DetailsPanelProps, 'onBack' | 'onSave'>;

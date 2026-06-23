@@ -5,7 +5,8 @@ export default function OrderTableRow({
   order,
   setSelectedOrder,
   setDetailSearchQuery,
-  onUpdateOrderStatus
+  onConfirmOrderArrival,
+  onCancelOrder
 }: OrderRowProps) {
   return (
     <tr className="hover:bg-white/[0.02] transition-colors">
@@ -39,8 +40,7 @@ export default function OrderTableRow({
             <button
               type="button"
               onClick={() => {
-                onUpdateOrderStatus(order.id, 'confirmed');
-                alert(`订单 ${order.id} 交易到货审核已经完成！USDT质押到账已确认，自动开始向对应上线计算佣金派发。`);
+                onConfirmOrderArrival(order.id);
               }}
               className="bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 font-sans font-bold px-2 py-1 rounded-lg text-[10px] transition-all cursor-pointer"
             >
@@ -49,8 +49,7 @@ export default function OrderTableRow({
             <button
               type="button"
               onClick={() => {
-                onUpdateOrderStatus(order.id, 'cancelled');
-                alert(`订单 ${order.id} 已执行撤回，已将其锁定余额原路全额退回到钱包缓存中。`);
+                onCancelOrder(order.id);
               }}
               className="bg-red-500/10 hover:bg-red-500/20 text-red-400 font-sans font-bold px-2 py-1 rounded-lg text-[10px] transition-all cursor-pointer"
             >

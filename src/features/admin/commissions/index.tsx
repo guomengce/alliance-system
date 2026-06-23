@@ -9,8 +9,8 @@ export default function AdminCommissionsView() {
     activeTab,
     commissionSearch,
     filteredCommissions,
-    handleAdjustCommissionAmount,
     handleForcePayout,
+    handleSubmitCommissionAdjustment,
     selectedCommission,
     setActiveTab,
     setCommissionSearch,
@@ -44,7 +44,7 @@ export default function AdminCommissionsView() {
           selectedCommission={selectedCommission}
           onClose={() => setSelectedCommission(null)}
           onForcePayout={handleForcePayout}
-          onAdjustCommissionAmount={handleAdjustCommissionAmount}
+          onSubmitCommissionAdjustment={handleSubmitCommissionAdjustment}
         />
       )}
     </div>

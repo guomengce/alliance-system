@@ -7,7 +7,8 @@ export default function AdminOrdersView() {
     detailSearchQuery,
     exportMockCSV,
     filteredAllocations,
-    handleUpdateOrderStatus,
+    handleCancelOrder,
+    handleConfirmOrderArrival,
     orders,
     selectedOrder,
     setDetailSearchQuery,
@@ -22,7 +23,8 @@ export default function AdminOrdersView() {
         detailSearchQuery={detailSearchQuery}
         setDetailSearchQuery={setDetailSearchQuery}
         filteredAllocations={filteredAllocations}
-        onUpdateOrderStatus={handleUpdateOrderStatus}
+        onConfirmOrderArrival={handleConfirmOrderArrival}
+        onCancelOrder={handleCancelOrder}
       />
     );
   }
@@ -33,7 +35,8 @@ export default function AdminOrdersView() {
       setSelectedOrder={setSelectedOrder}
       setDetailSearchQuery={setDetailSearchQuery}
       exportMockCSV={exportMockCSV}
-      onUpdateOrderStatus={handleUpdateOrderStatus}
+      onConfirmOrderArrival={handleConfirmOrderArrival}
+      onCancelOrder={handleCancelOrder}
     />
   );
 }

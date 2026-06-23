@@ -1,11 +1,13 @@
 import { Search, Users } from 'lucide-react';
-import { getInitialTeamMembers } from '../../../../../mock/admin/users';
 import type { TeamPanelProps } from '../../types';
-import { filterTeamMembers } from '../../utils';
 
-export function TeamPanel({ teamSearchText, setTeamSearchText, formNodes, formVolume }: TeamPanelProps) {
-  const filteredTeamMembers = filterTeamMembers(getInitialTeamMembers(), teamSearchText);
-
+export function TeamPanel({
+  teamSearchText,
+  setTeamSearchText,
+  formNodes,
+  formVolume,
+  filteredTeamMembers
+}: TeamPanelProps) {
   return (
           <div className="glass-card p-6 md:p-8 rounded-2xl border border-white/5 bg-[#141119] space-y-5 animate-fadeIn text-xs">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3.5 pb-3 border-b border-white/5">

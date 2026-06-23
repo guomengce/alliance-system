@@ -1,7 +1,7 @@
 import { useState, type Dispatch, type SetStateAction, type UIEvent } from 'react';
 import { getInitialClientQueueOrders, getInitialClientReleaseLogs } from '../../../../api/client/queue';
 import type { OrderStatusFilter, QueueOrderItem, ReleaseLogItem } from '../types';
-import { filterOrders, getProgressPercent } from '../utils';
+import { filterOrders, getNextVisibleCount, getProgressPercent } from '../utils';
 
 interface UseQueueStateParams {
   originalLocked: number;
@@ -45,7 +45,7 @@ export const useQueueState = ({
       if (isAtBottom && !loading && totalLength > 0) {
         setLoading(true);
         setTimeout(() => {
-          setVisibleCount(prev => Math.min(prev + 10, totalLength));
+          setVisibleCount(prev => getNextVisibleCount(prev, totalLength));
           setLoading(false);
         }, 500);
       }
@@ -92,7 +92,7 @@ export const useQueueState = ({
   const handleLoadMoreOrders = () => {
     setLoadingMoreOrders(true);
     setTimeout(() => {
-      setVisibleOrdersCount(prev => Math.min(prev + 10, filteredOrders.length));
+      setVisibleOrdersCount(prev => getNextVisibleCount(prev, filteredOrders.length));
       setLoadingMoreOrders(false);
     }, 450);
   };
@@ -100,7 +100,7 @@ export const useQueueState = ({
   const handleLoadMoreLogs = () => {
     setLoadingMoreLogs(true);
     setTimeout(() => {
-      setVisibleLogsCount(prev => Math.min(prev + 10, releaseLogs.length));
+      setVisibleLogsCount(prev => getNextVisibleCount(prev, releaseLogs.length));
       setLoadingMoreLogs(false);
     }, 450);
   };

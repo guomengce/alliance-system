@@ -29,13 +29,16 @@ export interface OrderDetail {
   commissionAllocations: CommissionAllocation[];
 }
 
+export type OrderFeedbackVariant = 'full' | 'short';
+
 export interface DetailViewProps {
   selectedOrder: OrderDetail;
   setSelectedOrder: Dispatch<SetStateAction<OrderDetail | null>>;
   detailSearchQuery: string;
   setDetailSearchQuery: Dispatch<SetStateAction<string>>;
   filteredAllocations: CommissionAllocation[];
-  onUpdateOrderStatus: (orderId: string, status: OrderDetail['status']) => void;
+  onConfirmOrderArrival: (orderId: string, variant?: OrderFeedbackVariant) => void;
+  onCancelOrder: (orderId: string, variant?: OrderFeedbackVariant) => void;
 }
 
 export interface ListViewProps {
@@ -43,7 +46,8 @@ export interface ListViewProps {
   setSelectedOrder: Dispatch<SetStateAction<OrderDetail | null>>;
   setDetailSearchQuery: Dispatch<SetStateAction<string>>;
   exportMockCSV: () => void;
-  onUpdateOrderStatus: (orderId: string, status: OrderDetail['status']) => void;
+  onConfirmOrderArrival: (orderId: string, variant?: OrderFeedbackVariant) => void;
+  onCancelOrder: (orderId: string, variant?: OrderFeedbackVariant) => void;
 }
 
 export interface OrderHeaderProps {
@@ -54,7 +58,8 @@ export interface MobileOrderCardProps {
   order: OrderDetail;
   setSelectedOrder: ListViewProps['setSelectedOrder'];
   setDetailSearchQuery: ListViewProps['setDetailSearchQuery'];
-  onUpdateOrderStatus: ListViewProps['onUpdateOrderStatus'];
+  onConfirmOrderArrival: ListViewProps['onConfirmOrderArrival'];
+  onCancelOrder: ListViewProps['onCancelOrder'];
 }
 
 export interface OrderRowProps extends MobileOrderCardProps {}

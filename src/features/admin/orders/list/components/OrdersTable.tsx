@@ -10,7 +10,8 @@ export default function OrdersTable({
   orders,
   setSelectedOrder,
   setDetailSearchQuery,
-  onUpdateOrderStatus
+  onConfirmOrderArrival,
+  onCancelOrder
 }: OrdersTableProps) {
   return (
     <div className="hidden md:block overflow-x-auto border border-white/5 rounded-2xl bg-[#1c1825]/40 p-1">
@@ -34,7 +35,8 @@ export default function OrdersTable({
                 order={order}
                 setSelectedOrder={setSelectedOrder}
                 setDetailSearchQuery={setDetailSearchQuery}
-                onUpdateOrderStatus={onUpdateOrderStatus}
+                onConfirmOrderArrival={onConfirmOrderArrival}
+                onCancelOrder={onCancelOrder}
               />
             </Fragment>
           ))}

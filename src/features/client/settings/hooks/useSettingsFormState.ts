@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { getInitialClientSettingsData } from '../../../../mock/client/settings';
 import { validatePasswordForm, validateProfileForm } from '../utils';
 
 type UseSettingsFormStateOptions = {
@@ -21,6 +22,7 @@ export function useSettingsFormState({
   const [showPassword, setShowPassword] = useState(false);
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const [{ activeDevices }] = useState(() => getInitialClientSettingsData());
 
   const handleUpdateProfile = (e: FormEvent) => {
     e.preventDefault();
@@ -56,6 +58,7 @@ export function useSettingsFormState({
   };
 
   return {
+    activeDevices,
     errorMsg,
     handleUpdatePasswords,
     handleUpdateProfile,

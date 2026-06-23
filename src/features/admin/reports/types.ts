@@ -31,3 +31,19 @@ export interface DistributionLog {
 export interface HeaderProps {
   onExportCSV: () => void;
 }
+
+export interface AdminReportData {
+  settlementLogs: SettlementLog[];
+  metrics: Metric[];
+  packageSegments: PackageSegment[];
+  distributionLogs: DistributionLog[];
+}
+
+export interface MetricsGridProps {
+  metrics: Metric[];
+}
+
+export interface ChartsGridProps {
+  distributionLogs: DistributionLog[];
+  packageSegments: PackageSegment[];
+}

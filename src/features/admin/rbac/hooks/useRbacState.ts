@@ -1,8 +1,10 @@
 import { useState, type FormEvent } from 'react';
 import {
   getInitialAdminAccounts,
+  getInitialPermissionDefinitions,
   getInitialRolePermissions
 } from '../../../../api/admin/rbac';
+import { useAppContext } from '../../../../context/AppContext';
 import type { AccountStatus, AdminAccount, RbacTab, RolePermission } from '../types';
 import {
   createAdminAccount,
@@ -17,8 +19,10 @@ import {
 } from '../utils';
 
 export function useRbacState() {
+  const { triggerGlobalAlert } = useAppContext();
   const [roles, setRoles] = useState<RolePermission[]>(() => getInitialRolePermissions());
   const [adminUsers, setAdminUsers] = useState<AdminAccount[]>(() => getInitialAdminAccounts());
+  const [permissionInventory] = useState(() => getInitialPermissionDefinitions());
   const [activeTab, setActiveTab] = useState<RbacTab>('accounts');
   const [selectedRoleCode, setSelectedRoleCode] = useState<string>('SUPER_ADMIN');
   const [isNewAccountModalOpen, setIsNewAccountModalOpen] = useState(false);
@@ -49,11 +53,11 @@ export function useRbacState() {
     event.preventDefault();
     if (!editingAccount) return;
     if (!editNickname.trim() || !editEmail.trim()) {
-      alert('请将必填框填写完整！');
+      triggerGlobalAlert('请将必填框填写完整！', 'error');
       return;
     }
     if (!isValidEmail(editEmail)) {
-      alert('请输入合法的邮箱格式。');
+      triggerGlobalAlert('请输入合法的邮箱格式。', 'error');
       return;
     }
 
@@ -64,7 +68,7 @@ export function useRbacState() {
       status: editStatus
     }));
 
-    alert(`【管理员档案修改成功】\n已成功将“${editNickname}”的信息和角色挂接完成热更新。`);
+    triggerGlobalAlert(`【管理员档案修改成功】\n已成功将“${editNickname}”的信息和角色挂接完成热更新。`, 'success');
     setEditingAccount(null);
   };
 
@@ -73,12 +77,12 @@ export function useRbacState() {
     if (customPassword === null) return;
 
     const finalPassword = customPassword.trim() || generatePassword();
-    alert(`【访问密码重置完成】\n管理员 [${username}] 的新登录校验密码为：\n${finalPassword}`);
+    triggerGlobalAlert(`【访问密码重置完成】\n管理员 [${username}] 的新登录校验密码为：\n${finalPassword}`, 'success');
   };
 
   const handleTogglePermission = (roleCode: string, permissionCode: string) => {
     if (roleCode === 'SUPER_ADMIN') {
-      alert('【安全管控警告】超级管理员拥有全部权限，系统禁止缩减或改动 SUPER_ADMIN 权限。');
+      triggerGlobalAlert('【安全管控警告】超级管理员拥有全部权限，系统禁止缩减或改动 SUPER_ADMIN 权限。', 'warning');
       return;
     }
 
@@ -88,16 +92,16 @@ export function useRbacState() {
   const handleCreateAccount = (event: FormEvent) => {
     event.preventDefault();
     if (!newUsername.trim() || !newNickname.trim() || !newEmail.trim()) {
-      alert('请将必填框填写完整！');
+      triggerGlobalAlert('请将必填框填写完整！', 'error');
       return;
     }
     if (!isValidEmail(newEmail)) {
-      alert('请输入合法的邮箱格式。');
+      triggerGlobalAlert('请输入合法的邮箱格式。', 'error');
       return;
     }
     const exists = adminUsers.some(user => user.username.toLowerCase() === newUsername.toLowerCase());
     if (exists) {
-      alert('此管理员账号名已存在。');
+      triggerGlobalAlert('此管理员账号名已存在。', 'error');
       return;
     }
 
@@ -115,19 +119,19 @@ export function useRbacState() {
     setNewNickname('');
     setNewEmail('');
     setNewRole('OPERATOR');
-    alert(`【系统账号分配成功】\n已成功为“${newNickname}”分拨后台入口权限，专属权限已与“${newRole}”角色联动挂载。`);
+    triggerGlobalAlert(`【系统账号分配成功】\n已成功为“${newNickname}”分拨后台入口权限，专属权限已与“${newRole}”角色联动挂载。`, 'success');
   };
 
   const handleCreateRole = (event: FormEvent) => {
     event.preventDefault();
     if (!newRoleName.trim() || !newRoleCode.trim()) {
-      alert('请填写完整名称与编码。');
+      triggerGlobalAlert('请填写完整名称与编码。', 'error');
       return;
     }
     const cleanCode = normalizeRoleCode(newRoleCode);
     const codeExists = roles.some(role => role.roleCode === cleanCode);
     if (codeExists) {
-      alert('存在相同编码的角色。');
+      triggerGlobalAlert('存在相同编码的角色。', 'error');
       return;
     }
 
@@ -136,13 +140,13 @@ export function useRbacState() {
     setIsNewRoleModalOpen(false);
     setNewRoleName('');
     setNewRoleCode('');
-    alert(`【创建全新角色成功】\n已建立角色“${newRoleName}”[${cleanCode}]，现在可在权限网格中勾选分权细节。`);
+    triggerGlobalAlert(`【创建全新角色成功】\n已建立角色“${newRoleName}”[${cleanCode}]，现在可在权限网格中勾选分权细节。`, 'success');
   };
 
   const handleToggleAccountStatus = (id: string) => {
     const target = adminUsers.find(account => account.id === id);
     if (target?.username === 'admin_master') {
-      alert('安全防线：主管理员 master 为根特权账号，不允许冻结或拉黑。');
+      triggerGlobalAlert('安全防线：主管理员 master 为根特权账号，不允许冻结或拉黑。', 'warning');
       return;
     }
 
@@ -152,7 +156,7 @@ export function useRbacState() {
   const handleDeleteAccount = (id: string) => {
     const target = adminUsers.find(account => account.id === id);
     if (target?.username === 'admin_master') {
-      alert('操作被驳回：底层核心账号不允许执行物理删除。');
+      triggerGlobalAlert('操作被驳回：底层核心账号不允许执行物理删除。', 'warning');
       return;
     }
     if (confirm(`【操作警告】确认注销并回收管理员（UID: ${id} - ${target?.username}）的全部后台权限吗？`)) {
@@ -177,6 +181,7 @@ export function useRbacState() {
     newRoleCode,
     newRoleName,
     newUsername,
+    permissionInventory,
     roles,
     selectedRoleCode,
     setActiveTab,

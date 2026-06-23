@@ -5,14 +5,16 @@ interface HeaderAndActionsProps {
   selectedOrder: DetailViewProps['selectedOrder'];
   setSelectedOrder: DetailViewProps['setSelectedOrder'];
   setDetailSearchQuery: DetailViewProps['setDetailSearchQuery'];
-  onUpdateOrderStatus: DetailViewProps['onUpdateOrderStatus'];
+  onConfirmOrderArrival: DetailViewProps['onConfirmOrderArrival'];
+  onCancelOrder: DetailViewProps['onCancelOrder'];
 }
 
 export default function HeaderAndActions({
   selectedOrder,
   setSelectedOrder,
   setDetailSearchQuery,
-  onUpdateOrderStatus
+  onConfirmOrderArrival,
+  onCancelOrder
 }: HeaderAndActionsProps) {
   return (
     <>
@@ -60,9 +62,8 @@ export default function HeaderAndActions({
             <button
               type="button"
               onClick={() => {
-                onUpdateOrderStatus(selectedOrder.id, 'confirmed');
+                onConfirmOrderArrival(selectedOrder.id);
                 setSelectedOrder(prev => prev ? { ...prev, status: 'confirmed' } : null);
-                alert(`订单 ${selectedOrder.id} 交易到货审核已经完成！USDT质押到账已确认，自动开始向对应上线计算佣金派发。`);
               }}
               className="bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 font-bold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 transition-all cursor-pointer"
             >
@@ -71,9 +72,8 @@ export default function HeaderAndActions({
             <button
               type="button"
               onClick={() => {
-                onUpdateOrderStatus(selectedOrder.id, 'cancelled');
+                onCancelOrder(selectedOrder.id);
                 setSelectedOrder(prev => prev ? { ...prev, status: 'cancelled' } : null);
-                alert(`订单 ${selectedOrder.id} 已执行撤回，已将其锁定余额原路全额退回到钱包缓存中。`);
               }}
               className="bg-red-500/10 hover:bg-red-500/20 text-red-400 font-bold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 transition-all cursor-pointer"
             >

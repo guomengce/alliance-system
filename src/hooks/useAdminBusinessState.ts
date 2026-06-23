@@ -2,14 +2,19 @@ import { useState } from 'react';
 import type { DownlineMember, Transaction } from '../types';
 import { getInitialPendingWithdrawals } from '../mock/adminBusiness';
 import { initialDownlines } from '../mock/data';
-import type { AddTransactionRecord, RefundUsdtBalance } from './types';
+import type { AddTransactionRecord, GlobalAlertType, RefundUsdtBalance } from './types';
 
 interface AdminBusinessStateDeps {
   addTransactionRecord: AddTransactionRecord;
   refundUsdtBalance: RefundUsdtBalance;
+  triggerGlobalAlert: (message: string, type?: GlobalAlertType) => void;
 }
 
-export function useAdminBusinessState({ addTransactionRecord, refundUsdtBalance }: AdminBusinessStateDeps) {
+export function useAdminBusinessState({
+  addTransactionRecord,
+  refundUsdtBalance,
+  triggerGlobalAlert
+}: AdminBusinessStateDeps) {
   const [downlines, setDownlines] = useState<DownlineMember[]>(initialDownlines);
   const [pendingWithdrawals, setPendingWithdrawals] = useState<Transaction[]>(() => getInitialPendingWithdrawals());
 
@@ -27,7 +32,7 @@ export function useAdminBusinessState({ addTransactionRecord, refundUsdtBalance 
       };
       addTransactionRecord(newRecord);
       setPendingWithdrawals(prev => prev.filter(w => w.id !== id));
-      alert(`出款委托流水 ${id} 已审核划付！USDT 已从储备准备金划出至目标公链网络。`);
+      triggerGlobalAlert(`出款委托流水 ${id} 已审核划付！USDT 已从储备准备金划出至目标公链网络。`, 'success');
     }
   };
 
@@ -44,7 +49,7 @@ export function useAdminBusinessState({ addTransactionRecord, refundUsdtBalance 
       };
       addTransactionRecord(newRecord);
       setPendingWithdrawals(prev => prev.filter(w => w.id !== id));
-      alert(`出账委托 ${id} 已执行拒绝驳回！提现资金 ${refundAmt} USDT 已全额解冻并退回至超级代理可用余额。`);
+      triggerGlobalAlert(`出账委托 ${id} 已执行拒绝驳回！提现资金 ${refundAmt} USDT 已全额解冻并退回至超级代理可用余额。`, 'warning');
     }
   };
 

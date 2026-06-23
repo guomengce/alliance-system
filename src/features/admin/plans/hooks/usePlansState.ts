@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { getInitialAdminPlans } from '../../../../api/admin/plans';
+import { useAppContext } from '../../../../context/AppContext';
 import type { Plan } from '../types';
 import { createPlanFromForm, togglePlanStatus, updatePlanFromForm } from '../utils';
 
@@ -14,6 +15,7 @@ const createDefaults = {
 };
 
 export function usePlansState() {
+  const { triggerGlobalAlert } = useAppContext();
   const [adminPlans, setAdminPlans] = useState<Plan[]>(() => getInitialAdminPlans());
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingPlan, setEditingPlan] = useState<Plan | null>(null);
@@ -24,6 +26,8 @@ export function usePlansState() {
   const [formQueueRatio, setFormQueueRatio] = useState<number>(60);
   const [formCommissionLimit, setFormCommissionLimit] = useState<number>(5000);
   const [formDescription, setFormDescription] = useState('');
+  const notifySuccess = (message: string) => triggerGlobalAlert(message, 'success');
+  const notifyError = (message: string) => triggerGlobalAlert(message, 'error');
 
   const applyFormValues = (values: typeof createDefaults) => {
     setFormName(values.name);
@@ -56,9 +60,9 @@ export function usePlansState() {
   };
 
   const handleSaveOrUpdatePlan = () => {
-    if (!formName) return alert('请输入套餐名称');
-    if (formPrice <= 0) return alert('认购金额必须大于 0');
-    if (formCommissionLimit <= 0) return alert('佣金额度设定值必须大于 0');
+    if (!formName) return notifyError('请输入套餐名称');
+    if (formPrice <= 0) return notifyError('认购金额必须大于 0');
+    if (formCommissionLimit <= 0) return notifyError('佣金额度设定值必须大于 0');
 
     const values = {
       name: formName,
@@ -72,10 +76,10 @@ export function usePlansState() {
 
     if (editingPlan) {
       setAdminPlans(prev => updatePlanFromForm(prev, editingPlan.id, values));
-      alert(`套餐“${editingPlan.id}”参数已更新成功。`);
+      notifySuccess(`套餐“${editingPlan.id}”参数已更新成功。`);
     } else {
       setAdminPlans(prev => [...prev, createPlanFromForm(values)]);
-      alert(`新套餐“${formName}”已配置建档并同步对外启租销售。`);
+      notifySuccess(`新套餐“${formName}”已配置建档并同步对外启租销售。`);
     }
 
     setIsModalOpen(false);

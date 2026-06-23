@@ -5,7 +5,8 @@ export default function LimitsPanel({
   withdrawalFee,
   setWithdrawalFee,
   l1UnlockRatio,
-  setL1UnlockRatio
+  setL1UnlockRatio,
+  onSaveLimits
 }: LimitsPanelProps) {
   return (
     <div className="bg-[#1f1a26]/40 border border-white/5 rounded-2xl p-4.5 space-y-3.5 flex flex-col justify-between">
@@ -42,7 +43,7 @@ export default function LimitsPanel({
       </div>
 
       <button 
-        onClick={() => alert('出金封底矿工费、L1 解锁提点比例保存成功！')}
+        onClick={onSaveLimits}
         className="w-full mt-4 py-2 bg-[#36343a] text-[#cfbcff] rounded-xl text-xs font-bold active:scale-95 transition-all text-center cursor-pointer border border-white/5 hover:bg-[#cfbcff]/10"
       >
         确认扣比修改

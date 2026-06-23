@@ -11,7 +11,8 @@ export default function DetailView({
   detailSearchQuery,
   setDetailSearchQuery,
   filteredAllocations,
-  onUpdateOrderStatus
+  onConfirmOrderArrival,
+  onCancelOrder
 }: DetailViewProps) {
   return (
     <div id="admin_orders_detail_view" className="space-y-4 animate-fadeIn select-none flex-grow flex flex-col md:min-h-[calc(100vh-140px)] pb-3 font-sans">
@@ -20,7 +21,8 @@ export default function DetailView({
           selectedOrder={selectedOrder}
           setSelectedOrder={setSelectedOrder}
           setDetailSearchQuery={setDetailSearchQuery}
-          onUpdateOrderStatus={onUpdateOrderStatus}
+          onConfirmOrderArrival={onConfirmOrderArrival}
+          onCancelOrder={onCancelOrder}
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-xs">

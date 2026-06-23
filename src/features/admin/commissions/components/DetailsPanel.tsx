@@ -5,7 +5,7 @@ export default function DetailsPanel({
   selectedCommission,
   onClose,
   onForcePayout,
-  onAdjustCommissionAmount
+  onSubmitCommissionAdjustment
 }: DetailsPanelProps) {
   return (
     <div id="commission_detail_overlay" className="fixed inset-0 bg-black/85 backdrop-blur-md flex items-center justify-center z-50 animate-fadeIn p-4 overflow-y-auto">
@@ -141,9 +141,7 @@ export default function DetailsPanel({
                   onClick={() => {
                     const adjustPrompt = prompt(`修正用户 UID: ${selectedCommission.uid} 的实际该单派发佣金额度。(上限请限制在额度容量内，例如输入金额 380U)`, '380');
                     if (adjustPrompt) {
-                      const num = parseFloat(adjustPrompt);
-                      if (isNaN(num) || num <= 0) return alert('请输入有效数值');
-                      onAdjustCommissionAmount(selectedCommission.id, num);
+                      onSubmitCommissionAdjustment(selectedCommission.id, adjustPrompt);
                     }
                   }}
                   className="bg-white/5 hover:bg-white/10 text-[#cbc4d2] p-3 rounded-xl font-bold border border-white/10 cursor-pointer transition-all active:scale-95 flex items-center justify-center gap-1"

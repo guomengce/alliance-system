@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { getInitialAdminOrders } from '../../../../api/admin/orders';
-import type { OrderDetail } from '../types';
+import { useAppContext } from '../../../../context/AppContext';
+import type { OrderDetail, OrderFeedbackVariant } from '../types';
 import { buildOrdersCsvContent, filterAllocations, updateOrderStatus } from '../utils';
 
 export function useOrdersState() {
+  const { triggerGlobalAlert } = useAppContext();
   const [orders, setOrders] = useState<OrderDetail[]>(() => getInitialAdminOrders());
   const [selectedOrder, setSelectedOrder] = useState<OrderDetail | null>(null);
   const [detailSearchQuery, setDetailSearchQuery] = useState('');
@@ -27,11 +29,32 @@ export function useOrdersState() {
     setOrders(prev => updateOrderStatus(prev, orderId, status));
   };
 
+  const handleConfirmOrderArrival = (orderId: string, variant: OrderFeedbackVariant = 'full') => {
+    handleUpdateOrderStatus(orderId, 'confirmed');
+    triggerGlobalAlert(
+      variant === 'short'
+        ? `订单 ${orderId} 交易到货审核已经完成！`
+        : `订单 ${orderId} 交易到货审核已经完成！USDT质押到账已确认，自动开始向对应上线计算佣金派发。`,
+      'success'
+    );
+  };
+
+  const handleCancelOrder = (orderId: string, variant: OrderFeedbackVariant = 'full') => {
+    handleUpdateOrderStatus(orderId, 'cancelled');
+    triggerGlobalAlert(
+      variant === 'short'
+        ? `订单 ${orderId} 已执行拒绝驳回！`
+        : `订单 ${orderId} 已执行撤回，已将其锁定余额原路全额退回到钱包缓存中。`,
+      'success'
+    );
+  };
+
   return {
     detailSearchQuery,
     exportMockCSV,
     filteredAllocations,
-    handleUpdateOrderStatus,
+    handleCancelOrder,
+    handleConfirmOrderArrival,
     orders,
     selectedOrder,
     setDetailSearchQuery,

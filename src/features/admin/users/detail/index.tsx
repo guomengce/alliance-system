@@ -38,6 +38,7 @@ export default function DetailsPanel({
   setFormKycL1,
   formKycL2,
   setFormKycL2,
+  filteredTeamMembers,
   onBack,
   onResetPasswordEmail,
   onSave,
@@ -97,6 +98,7 @@ export default function DetailsPanel({
             setTeamSearchText={setTeamSearchText}
             formNodes={formNodes}
             formVolume={formVolume}
+            filteredTeamMembers={filteredTeamMembers}
           />
         )}
 

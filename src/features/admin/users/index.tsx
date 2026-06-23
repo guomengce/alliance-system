@@ -11,6 +11,7 @@ export default function AdminUsersView({
     activeTab,
     editingUser,
     filteredDownlines,
+    filteredTeamMembers,
     formEmail,
     formFrozenUsdt,
     formKycL1,
@@ -85,6 +86,7 @@ export default function AdminUsersView({
         setFormKycL1={setFormKycL1}
         formKycL2={formKycL2}
         setFormKycL2={setFormKycL2}
+        filteredTeamMembers={filteredTeamMembers}
         onBack={() => setEditingUser(null)}
         onResetPasswordEmail={handleResetPasswordEmail}
         onSave={handleSaveInline}

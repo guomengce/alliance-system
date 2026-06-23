@@ -1,6 +1,5 @@
 import PageView from '../../../shared/components/PageView';
 import AlertBanner from '../../../shared/components/AlertBanner';
-import { getInitialClientCommissionData } from '../../../mock/client/commission';
 import Header from './components/Header';
 import HistoryLedger from './components/HistoryLedger';
 import RatiosTable from './components/RatiosTable';
@@ -26,6 +25,7 @@ export default function CommissionView({
     filteredHistory,
     handleExport,
     handleIncreaseLimit,
+    ratios,
     setActiveFilter,
     setSuccessMsg,
     successMsg
@@ -36,7 +36,6 @@ export default function CommissionView({
     onWithdrawCommissions,
     pendingBalance
   });
-  const { ratios } = getInitialClientCommissionData();
 
   return (
     <PageView>

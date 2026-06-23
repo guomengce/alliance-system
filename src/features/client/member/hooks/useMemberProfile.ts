@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getInitialClientMemberData } from '../../../../mock/client/member';
 
 type UseMemberProfileOptions = {
   nickname: string;
@@ -14,6 +15,7 @@ export function useMemberProfile({
   const [isEditing, setIsEditing] = useState(false);
   const [tempNickname, setTempNickname] = useState(nickname);
   const [copiedLink, setCopiedLink] = useState(false);
+  const [{ recentActivities }] = useState(() => getInitialClientMemberData());
 
   const kycL1 = 'verified';
   const kycL2 = 'pending';
@@ -39,6 +41,7 @@ export function useMemberProfile({
     isEditing,
     kycL1,
     kycL2,
+    recentActivities,
     tempNickname,
     setTempNickname,
     toggleEdit

@@ -9,7 +9,7 @@ import {
 
 export function useHomeMarket() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const { marketData } = getInitialClientHomeData();
+  const [{ marketData, orders }] = useState(() => getInitialClientHomeData());
 
   const activeIndex = hoveredIndex !== null ? hoveredIndex : marketData.length - 1;
   const activeData = marketData[activeIndex];
@@ -29,6 +29,7 @@ export function useHomeMarket() {
     hoveredIndex,
     linePath,
     marketData,
+    orders,
     points,
     setHoveredIndex,
     yesterdayDateStr

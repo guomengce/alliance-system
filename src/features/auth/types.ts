@@ -1,6 +1,7 @@
 import type { FormEvent } from 'react';
 
 export type AuthView = 'login' | 'register' | 'forgot' | 'reset';
+export type AuthAlertType = 'success' | 'error' | 'warning' | 'info';
 
 export interface LoginViewProps {
   portalMode: 'client' | 'admin';

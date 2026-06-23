@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { getInitialAdminQueueRoster } from '../../../../api/admin/queue';
+import { useAppContext } from '../../../../context/AppContext';
 import type { QueueRoster } from '../types';
 import { applyQueueCalibration, filterTriggerHistory } from '../utils';
 
 export function useQueueState() {
+  const { triggerGlobalAlert } = useAppContext();
   const [lockedRoster, setLockedRoster] = useState<QueueRoster[]>(() => getInitialAdminQueueRoster());
   const [selectedRoster, setSelectedRoster] = useState<QueueRoster | null>(null);
   const [calibCurrent, setCalibCurrent] = useState<number>(0);
@@ -11,6 +13,8 @@ export function useQueueState() {
   const [calibOriginal, setCalibOriginal] = useState<number>(0);
   const [isEditingData, setIsEditingData] = useState(false);
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const notifySuccess = (message: string) => triggerGlobalAlert(message, 'success');
+  const notifyError = (message: string) => triggerGlobalAlert(message, 'error');
 
   const filteredHistory = selectedRoster
     ? filterTriggerHistory(selectedRoster.triggerHistory, searchQuery)
@@ -31,7 +35,7 @@ export function useQueueState() {
 
   const handleSaveDataCalibration = () => {
     if (calibCurrent < 0 || calibUnlocked < 0 || calibOriginal < 0) {
-      return alert('各项数值不能为负数！');
+      return notifyError('各项数值不能为负数！');
     }
     if (calibCurrent + calibUnlocked !== calibOriginal) {
       const shouldContinue = confirm(
@@ -58,7 +62,7 @@ export function useQueueState() {
     });
 
     setIsEditingData(false);
-    alert(`【人工数据对账校准成功】\n会员 UID: ${selectedRoster.uid} 数据校对生效。\n仍锁仓已修正为 ${calibCurrent} USDT，已解锁修正为 ${calibUnlocked} USDT。`);
+    notifySuccess(`【人工数据对账校准成功】\n会员 UID: ${selectedRoster.uid} 数据校对生效。\n仍锁仓已修正为 ${calibCurrent} USDT，已解锁修正为 ${calibUnlocked} USDT。`);
   };
 
   return {

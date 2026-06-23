@@ -9,10 +9,13 @@ export function useAppState() {
   const globalAlertState = useGlobalAlertState();
   const appShellState = useAppShellState();
   const authState = useAuthState(appShellState.portalMode);
-  const clientBusinessState = useClientBusinessState();
+  const clientBusinessState = useClientBusinessState({
+    triggerGlobalAlert: globalAlertState.triggerGlobalAlert
+  });
   const adminBusinessState = useAdminBusinessState({
     addTransactionRecord: clientBusinessState.addTransactionRecord,
-    refundUsdtBalance: clientBusinessState.refundUsdtBalance
+    refundUsdtBalance: clientBusinessState.refundUsdtBalance,
+    triggerGlobalAlert: globalAlertState.triggerGlobalAlert
   });
 
   return createAppStateValue({

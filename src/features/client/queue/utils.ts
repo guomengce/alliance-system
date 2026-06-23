@@ -14,3 +14,9 @@ export const filterOrders = (
 
 export const getProgressPercent = (releasedAmount: number, originalLocked: number) =>
   originalLocked > 0 ? Math.round((releasedAmount / originalLocked) * 100) : 0;
+
+export const getNextVisibleCount = (
+  currentCount: number,
+  totalLength: number,
+  pageSize = 10
+) => Math.min(currentCount + pageSize, totalLength);

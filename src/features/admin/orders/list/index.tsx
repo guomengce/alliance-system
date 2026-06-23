@@ -8,7 +8,8 @@ export default function ListView({
   setSelectedOrder,
   setDetailSearchQuery,
   exportMockCSV,
-  onUpdateOrderStatus
+  onConfirmOrderArrival,
+  onCancelOrder
 }: ListViewProps) {
   return (
     <div id="admin_orders_view" className="space-y-4 animate-fadeIn select-none flex-grow flex flex-col md:min-h-[calc(100vh-140px)] pb-3">
@@ -20,13 +21,15 @@ export default function ListView({
             orders={orders}
             setSelectedOrder={setSelectedOrder}
             setDetailSearchQuery={setDetailSearchQuery}
-            onUpdateOrderStatus={onUpdateOrderStatus}
+            onConfirmOrderArrival={onConfirmOrderArrival}
+            onCancelOrder={onCancelOrder}
           />
           <OrdersTable
             orders={orders}
             setSelectedOrder={setSelectedOrder}
             setDetailSearchQuery={setDetailSearchQuery}
-            onUpdateOrderStatus={onUpdateOrderStatus}
+            onConfirmOrderArrival={onConfirmOrderArrival}
+            onCancelOrder={onCancelOrder}
           />
         </div>
       </div>

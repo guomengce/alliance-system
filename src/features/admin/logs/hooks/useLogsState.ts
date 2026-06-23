@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import type { DownlineMember, Transaction } from '@/src/types';
+import { useAppContext } from '../../../../context/AppContext';
 import { getInitialAdminLogs } from '../../../../mock/admin/logs';
 import type { AdminLog } from '../types';
 import { buildAdminLogs, filterAdminLogs } from '../utils';
@@ -66,6 +67,7 @@ function createSimulatedLog(simulatedCount: number): AdminLog {
 }
 
 export function useLogsState({ transactions, downlines }: UseLogsStateOptions) {
+  const { triggerGlobalAlert } = useAppContext();
   const initialLogs = useMemo(() => getInitialAdminLogs(), []);
   const [extraLogs, setExtraLogs] = useState<AdminLog[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -107,7 +109,7 @@ export function useLogsState({ transactions, downlines }: UseLogsStateOptions) {
     setIsExporting(true);
     setTimeout(() => {
       setIsExporting(false);
-      alert('🎉 联盟系统管理后台日志成功导出！本次已备份 ' + filteredLogs.length + ' 条过滤审计记录日志至 Excel/CSV/JSON 综合封包中。');
+      triggerGlobalAlert('🎉 联盟系统管理后台日志成功导出！本次已备份 ' + filteredLogs.length + ' 条过滤审计记录日志至 Excel/CSV/JSON 综合封包中。', 'success');
     }, 1500);
   };
 

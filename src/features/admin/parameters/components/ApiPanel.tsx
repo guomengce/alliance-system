@@ -1,7 +1,7 @@
 import { Globe } from 'lucide-react';
 import type { ApiPanelProps } from '../types';
 
-export default function ApiPanel({ apiPriceUrl, setApiPriceUrl }: ApiPanelProps) {
+export default function ApiPanel({ apiPriceUrl, setApiPriceUrl, onTestApiPrice }: ApiPanelProps) {
   return (
     <div className="bg-[#1f1a26]/40 border border-white/5 rounded-2xl p-4.5 space-y-3.5 flex flex-col justify-between">
       <div>
@@ -33,9 +33,7 @@ export default function ApiPanel({ apiPriceUrl, setApiPriceUrl }: ApiPanelProps)
 
       <div className="mt-4 flex gap-2">
         <button 
-          onClick={() => {
-            alert('Yahoo Finance API 跨链报盘价格抓取成功！TROO市价复归锁定在 $0.125');
-          }}
+          onClick={onTestApiPrice}
           className="w-full py-2 bg-gradient-to-r from-cyan-500 to-blue-400 text-[#110e16] rounded-xl text-xs font-bold active:scale-95 transition-all text-center cursor-pointer"
         >
           实时抓取测试

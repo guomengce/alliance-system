@@ -7,7 +7,8 @@ export default function OrderMobileCard({
   order,
   setSelectedOrder,
   setDetailSearchQuery,
-  onUpdateOrderStatus
+  onConfirmOrderArrival,
+  onCancelOrder
 }: OrderMobileCardProps) {
   return (
     <div className="bg-[#1c1825]/60 border border-white/5 p-4 rounded-2xl space-y-3 font-sans">
@@ -57,8 +58,7 @@ export default function OrderMobileCard({
               <button
                 type="button"
                 onClick={() => {
-                  onUpdateOrderStatus(order.id, 'confirmed');
-                  alert(`订单 ${order.id} 交易到货审核已经完成！`);
+                  onConfirmOrderArrival(order.id, 'short');
                 }}
                 className="bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 font-bold px-2 py-1 rounded-lg text-[10px] cursor-pointer"
               >
@@ -67,8 +67,7 @@ export default function OrderMobileCard({
               <button
                 type="button"
                 onClick={() => {
-                  onUpdateOrderStatus(order.id, 'cancelled');
-                  alert(`订单 ${order.id} 已执行拒绝驳回！`);
+                  onCancelOrder(order.id, 'short');
                 }}
                 className="bg-red-500/10 hover:bg-red-500/20 text-red-400 font-bold px-2 py-1 rounded-lg text-[10px] cursor-pointer"
               >

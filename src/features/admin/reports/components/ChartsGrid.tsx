@@ -1,8 +1,6 @@
-import { getInitialAdminReportData } from '../../../../mock/admin/reports';
+import type { ChartsGridProps } from '../types';
 
-export function ChartsGrid() {
-  const { distributionLogs, packageSegments } = getInitialAdminReportData();
-
+export function ChartsGrid({ distributionLogs, packageSegments }: ChartsGridProps) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       <div className="bg-[#1a1622] rounded-2xl p-5 border border-white/5">

@@ -5,7 +5,6 @@ import MarketPanel from './components/MarketPanel';
 import OrdersTable from './components/OrdersTable';
 import QuickActions from './components/QuickActions';
 import { useHomeMarket } from './hooks/useHomeMarket';
-import { getInitialClientHomeData } from '../../../mock/client/home';
 import type { HomeViewProps } from './types';
 
 export default function HomeView({
@@ -33,11 +32,11 @@ export default function HomeView({
     hoveredIndex,
     linePath,
     marketData,
+    orders,
     points,
     setHoveredIndex,
     yesterdayDateStr
   } = useHomeMarket();
-  const { orders } = getInitialClientHomeData();
 
   return (
     <PageView>

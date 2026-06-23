@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { DownlineMember, Transaction } from '@/src/types';
+import { useAppContext } from '../../../../context/AppContext';
 import type { FinanceTab } from '../types';
 import {
   applyWalletAdjustment,
@@ -16,6 +17,7 @@ export function useFinanceState(
   transactions: Transaction[],
   onUpdateDownlines?: (members: DownlineMember[]) => void
 ) {
+  const { triggerGlobalAlert } = useAppContext();
   const [activeTab, setActiveTab] = useState<FinanceTab>('reserves');
   const [searchMemberQuery, setSearchMemberQuery] = useState('');
   const [ledgerTypeFilter, setLedgerTypeFilter] = useState<string>('all');
@@ -56,7 +58,7 @@ export function useFinanceState(
     const newTx = createWalletAdjustmentTransaction(selectedWalletMember, adjustUsdt);
 
     setFullLedger(prev => [newTx, ...prev]);
-    alert(`【人工财务纠偏对账成功】\n会员 ${selectedWalletMember.uid} 的资产池及状态已成功校对修改！余额更改记录已写至完整财务账簿日志中。`);
+    triggerGlobalAlert(`【人工财务纠偏对账成功】\n会员 ${selectedWalletMember.uid} 的资产池及状态已成功校对修改！余额更改记录已写至完整财务账簿日志中。`, 'success');
     setSelectedWalletMember(null);
   };
 

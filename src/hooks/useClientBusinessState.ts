@@ -2,8 +2,13 @@ import { useState } from 'react';
 import type { NotificationItem, Transaction } from '../types';
 import { initialNotifications, initialTransactions } from '../mock/data';
 import { calculateDirectSimulation } from '../shared/utils/simulation';
+import type { GlobalAlertType } from './types';
 
-export function useClientBusinessState() {
+interface ClientBusinessStateDeps {
+  triggerGlobalAlert: (message: string, type?: GlobalAlertType) => void;
+}
+
+export function useClientBusinessState({ triggerGlobalAlert }: ClientBusinessStateDeps) {
   const [usdtBalance, setUsdtBalance] = useState<number>(128450.00);
   const [trooBalance, setTrooBalance] = useState<number>(452190.22);
   const [lockedQueueAmount, setLockedQueueAmount] = useState<number>(3100.00);
@@ -86,7 +91,7 @@ export function useClientBusinessState() {
   const handleRaiseCredit = () => {
     setCommissionPoolLimit(prev => prev + 10000);
     setCommissionPoolRemaining(prev => prev + 10000);
-    alert('已成功申请提升您的佣金池最高额度 poolLimit + ¥10,000 USDT！');
+    triggerGlobalAlert('已成功申请提升您的佣金池最高额度 poolLimit + ¥10,000 USDT！', 'success');
   };
 
   const onMarkAllRead = () => {

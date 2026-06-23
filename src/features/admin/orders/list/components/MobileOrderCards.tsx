@@ -10,7 +10,8 @@ export default function MobileOrderCards({
   orders,
   setSelectedOrder,
   setDetailSearchQuery,
-  onUpdateOrderStatus
+  onConfirmOrderArrival,
+  onCancelOrder
 }: MobileOrderCardsProps) {
   return (
     <div className="block md:hidden space-y-3">
@@ -20,7 +21,8 @@ export default function MobileOrderCards({
             order={order}
             setSelectedOrder={setSelectedOrder}
             setDetailSearchQuery={setDetailSearchQuery}
-            onUpdateOrderStatus={onUpdateOrderStatus}
+            onConfirmOrderArrival={onConfirmOrderArrival}
+            onCancelOrder={onCancelOrder}
           />
         </Fragment>
       ))}

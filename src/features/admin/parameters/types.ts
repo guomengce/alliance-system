@@ -5,6 +5,7 @@ export type CommissionLevels = { [key: string]: number };
 export interface CommissionPanelProps {
   commissionLevels: CommissionLevels;
   setCommissionLevels: Dispatch<SetStateAction<CommissionLevels>>;
+  onSaveCommissionLevels: () => void;
 }
 
 export interface LimitsPanelProps {
@@ -12,9 +13,11 @@ export interface LimitsPanelProps {
   setWithdrawalFee: Dispatch<SetStateAction<number>>;
   l1UnlockRatio: number;
   setL1UnlockRatio: Dispatch<SetStateAction<number>>;
+  onSaveLimits: () => void;
 }
 
 export interface ApiPanelProps {
   apiPriceUrl: string;
   setApiPriceUrl: Dispatch<SetStateAction<string>>;
+  onTestApiPrice: () => void;
 }

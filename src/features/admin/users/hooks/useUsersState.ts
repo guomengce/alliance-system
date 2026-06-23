@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useAppContext } from '../../../../context/AppContext';
+import { getInitialTeamMembers } from '../../../../mock/admin/users';
 import {
   AdminUserTab,
   DownlineMember,
@@ -11,6 +13,7 @@ import {
   applyKycAudit,
   buildUpdatedUserFromForm,
   filterAdminUsers,
+  filterTeamMembers,
   inferUserKycL2
 } from '../utils';
 
@@ -18,6 +21,7 @@ export function useUsersState(
   downlines: DownlineMember[],
   onUpdateDownlines: (members: DownlineMember[]) => void
 ) {
+  const { triggerGlobalAlert } = useAppContext();
   const [userSearchText, setUserSearchText] = useState<string>('');
   const [kycFilter, setKycFilter] = useState<KycFilter>('all');
   const [editingUser, setEditingUser] = useState<DownlineMember | null>(null);
@@ -39,12 +43,14 @@ export function useUsersState(
   const [formVolume, setFormVolume] = useState<number>(0);
   const [formKycL1, setFormKycL1] = useState<KycL1Status>('verified');
   const [formKycL2, setFormKycL2] = useState<KycL2Status>('unverified');
+  const [teamMembers] = useState(() => getInitialTeamMembers());
 
   const filteredDownlines = filterAdminUsers(downlines, userSearchText, kycFilter);
+  const filteredTeamMembers = filterTeamMembers(teamMembers, teamSearchText);
 
   const handleKycAudit = (uid: string, accept: boolean) => {
     onUpdateDownlines(applyKycAudit(downlines, uid, accept));
-    alert(`用户 UID: ${uid} 的 KYC L2 级身份核验结果审核【${accept ? '通过' : '驳回复查'}】！`);
+    triggerGlobalAlert(`用户 UID: ${uid} 的 KYC L2 级身份核验结果审核【${accept ? '通过' : '驳回复查'}】！`, 'success');
   };
 
   const handleStartEditing = (user: DownlineMember) => {
@@ -96,12 +102,12 @@ export function useUsersState(
       });
     }));
 
-    alert(`用户 UID: ${editingUser.uid} 的档案信息及资产设置已成功修改并刷新！`);
+    triggerGlobalAlert(`用户 UID: ${editingUser.uid} 的档案信息及资产设置已成功修改并刷新！`, 'success');
     setEditingUser(null);
   };
 
   const handleResetPasswordEmail = () => {
-    alert(`重置密码邮件已发送至该用户邮箱: ${formEmail || '暂无绑定邮箱'} ！请指导该用户在邮箱中完成新密码自主设定。`);
+    triggerGlobalAlert(`重置密码邮件已发送至该用户邮箱: ${formEmail || '暂无绑定邮箱'} ！请指导该用户在邮箱中完成新密码自主设定。`, 'success');
   };
 
   return {
@@ -109,6 +115,7 @@ export function useUsersState(
     editingUser,
     filteredDownlines,
     formEmail,
+    filteredTeamMembers,
     formFrozenUsdt,
     formKycL1,
     formKycL2,

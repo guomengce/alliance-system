@@ -4,7 +4,6 @@ import KycCard from './components/KycCard';
 import ProfileCard from './components/ProfileCard';
 import TeamOverview from './components/TeamOverview';
 import { useMemberProfile } from './hooks/useMemberProfile';
-import { getInitialClientMemberData } from '../../../mock/client/member';
 import type { MemberViewProps } from './types';
 
 export default function MemberView({
@@ -18,11 +17,11 @@ export default function MemberView({
 }: MemberViewProps) {
   const {
     isEditing,
+    recentActivities,
     tempNickname,
     setTempNickname,
     toggleEdit
   } = useMemberProfile({ nickname, uid, onUpdateNickname });
-  const { recentActivities } = getInitialClientMemberData();
 
   return (
     <PageView>
