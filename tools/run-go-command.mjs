@@ -6,6 +6,10 @@ import { fileURLToPath } from 'node:url';
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const backendDir = path.join(rootDir, 'backend-go');
 const localGoBin = path.join(rootDir, '.tools', 'go', 'bin');
+const commonGoBins = [
+  'C:\\Program Files\\Go\\bin',
+  'C:\\Go\\bin',
+];
 
 const commands = {
   'api:dev': ['run', './cmd/server'],
@@ -26,6 +30,11 @@ const pathParts = [];
 if (existsSync(localGoBin)) {
   pathParts.push(localGoBin);
 }
+commonGoBins.forEach((binPath) => {
+  if (existsSync(binPath)) {
+    pathParts.push(binPath);
+  }
+});
 pathParts.push(process.env.PATH || '');
 
 const env = {
