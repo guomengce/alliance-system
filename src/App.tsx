@@ -1,7 +1,9 @@
+import { ConfigProvider } from 'antd';
 import { AnimatePresence } from 'motion/react';
 import { BrowserRouter } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import AppRouter from './router';
+import { allianceAntdTheme } from './shared/antd/theme';
 
 function AppContent() {
   return (
@@ -15,10 +17,12 @@ function AppContent() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <AppProvider>
-        <AppContent />
-      </AppProvider>
-    </BrowserRouter>
+    <ConfigProvider theme={allianceAntdTheme}>
+      <BrowserRouter>
+        <AppProvider>
+          <AppContent />
+        </AppProvider>
+      </BrowserRouter>
+    </ConfigProvider>
   );
 }

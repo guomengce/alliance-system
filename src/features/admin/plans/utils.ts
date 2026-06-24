@@ -31,7 +31,7 @@ export const updatePlanFromForm = (
   plans: Plan[],
   planId: string,
   values: PlanFormValues
-) => plans.map(plan => (
+): Plan[] => plans.map(plan => (
   plan.id === planId
     ? {
         ...plan,
@@ -49,8 +49,10 @@ export const updatePlanFromForm = (
 export const togglePlanStatus = (
   plans: Plan[],
   planId: string
-) => plans.map(plan => (
-  plan.id === planId
-    ? { ...plan, status: plan.status === 'enabled' ? 'disabled' : 'enabled' }
-    : plan
-));
+): Plan[] => plans.map(plan => {
+  if (plan.id !== planId) return plan;
+
+  const nextStatus: Plan['status'] = plan.status === 'enabled' ? 'disabled' : 'enabled';
+
+  return { ...plan, status: nextStatus };
+});

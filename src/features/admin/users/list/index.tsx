@@ -2,7 +2,7 @@ import React from 'react';
 import { DownlineMember, KycFilter } from '../types';
 import Toolbar from './components/Toolbar';
 import MobileCard from './components/MobileCard';
-import DesktopTable from './components/DesktopTable';
+import AntdDesktopTable from './components/AntdDesktopTable';
 
 interface ListProps {
   filteredDownlines: DownlineMember[];
@@ -46,7 +46,7 @@ export default function List({
           ))}
         </div>
 
-        <DesktopTable
+        <AntdDesktopTable
           users={filteredDownlines}
           onStartEditing={onStartEditing}
           onKycAudit={onKycAudit}

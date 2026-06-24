@@ -32,8 +32,8 @@ const adminRouteElementFactories: Record<string, AdminRouteElementFactory> = {
   'admin-dashboard': ({ usdtBalance, lockedQueueAmount }) => routePageFrame(
     <AdminDashboardView usdtBalance={usdtBalance} lockedQueueAmount={lockedQueueAmount} />
   ),
-  'admin-users': ({ downlines, setDownlines }) => routePageFrame(
-    <AdminUsersView downlines={downlines} onUpdateDownlines={setDownlines} />
+  'admin-users': () => routePageFrame(
+    <AdminUsersView />
   ),
   'admin-plans': () => routePageFrame(
     <AdminPlansView />

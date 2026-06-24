@@ -1,6 +1,6 @@
-import ApiPanel from './components/ApiPanel';
-import CommissionPanel from './components/CommissionPanel';
-import LimitsPanel from './components/LimitsPanel';
+import AntdApiPanel from './components/AntdApiPanel';
+import AntdCommissionPanel from './components/AntdCommissionPanel';
+import AntdLimitsPanel from './components/AntdLimitsPanel';
 import { useParametersState } from './hooks/useParametersState';
 
 export default function AdminParametersView() {
@@ -28,19 +28,19 @@ export default function AdminParametersView() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <CommissionPanel
+        <AntdCommissionPanel
           commissionLevels={commissionLevels}
           setCommissionLevels={setCommissionLevels}
           onSaveCommissionLevels={handleSaveCommissionLevels}
         />
-        <LimitsPanel
+        <AntdLimitsPanel
           withdrawalFee={withdrawalFee}
           setWithdrawalFee={setWithdrawalFee}
           l1UnlockRatio={l1UnlockRatio}
           setL1UnlockRatio={setL1UnlockRatio}
           onSaveLimits={handleSaveLimits}
         />
-        <ApiPanel
+        <AntdApiPanel
           apiPriceUrl={apiPriceUrl}
           setApiPriceUrl={setApiPriceUrl}
           onTestApiPrice={handleTestApiPrice}

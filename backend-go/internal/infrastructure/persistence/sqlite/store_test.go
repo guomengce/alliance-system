@@ -16,6 +16,7 @@ func TestReplacePersistsRelationalTables(t *testing.T) {
 	if err := store.Load(); err != nil {
 		t.Fatal(err)
 	}
+	defer store.Close()
 
 	adminRole := domain.RoleSuperAdmin
 	height := 12345
@@ -112,6 +113,7 @@ func TestLoadRestoresRelationalData(t *testing.T) {
 	if err := first.Load(); err != nil {
 		t.Fatal(err)
 	}
+	defer first.Close()
 
 	params := &domain.Parameters{
 		CommissionLevels: map[string]float64{"L1": 8, "L2": 3},
@@ -131,6 +133,7 @@ func TestLoadRestoresRelationalData(t *testing.T) {
 	if err := second.Load(); err != nil {
 		t.Fatal(err)
 	}
+	defer second.Close()
 
 	if err := second.View(func(db domain.Database) error {
 		if len(db.Users) != 1 || db.Users[0].Email != "client@example.com" {
@@ -191,6 +194,7 @@ func TestLoadAllowsLegacyPendingWithdrawalsWithoutUserEmail(t *testing.T) {
 	if err := store.Load(); err != nil {
 		t.Fatal(err)
 	}
+	defer store.Close()
 
 	if err := store.View(func(data domain.Database) error {
 		if len(data.PendingWithdrawals) != 1 {

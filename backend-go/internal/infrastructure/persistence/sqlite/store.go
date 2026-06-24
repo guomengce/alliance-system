@@ -40,14 +40,29 @@ func (s *Store) Load() error {
 	s.db = db
 
 	if err := s.migrate(); err != nil {
+		_ = db.Close()
+		s.db = nil
 		return err
 	}
 	data, err := s.readAllLocked()
 	if err != nil {
+		_ = db.Close()
+		s.db = nil
 		return err
 	}
 	s.data = data
 	return nil
+}
+
+func (s *Store) Close() error {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	if s.db == nil {
+		return nil
+	}
+	err := s.db.Close()
+	s.db = nil
+	return err
 }
 
 func (s *Store) Replace(data domain.Database) error {

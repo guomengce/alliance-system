@@ -1,6 +1,6 @@
-import DetailsPanel from './components/DetailsPanel';
-import List from './components/List';
-import SummaryCards from './components/SummaryCards';
+import AntdDetailsPanel from './components/AntdDetailsPanel';
+import AntdList from './components/AntdList';
+import AntdSummaryCards from './components/AntdSummaryCards';
 import { useCommissionsState } from './hooks/useCommissionsState';
 
 export default function AdminCommissionsView() {
@@ -21,14 +21,14 @@ export default function AdminCommissionsView() {
 
   return (
     <div id="admin_commissions_view" className="space-y-4 animate-fadeIn select-none flex-grow flex flex-col md:min-h-[calc(100vh-140px)] pb-3">
-      <SummaryCards
+      <AntdSummaryCards
         totalCreditedAmount={totalCreditedAmount}
         abnormalAuditCount={abnormalAuditCount}
         totalOverflowAmount={totalOverflowAmount}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-grow">
-        <List
+        <AntdList
           filteredCommissions={filteredCommissions}
           commissionSearch={commissionSearch}
           onCommissionSearchChange={setCommissionSearch}
@@ -40,7 +40,7 @@ export default function AdminCommissionsView() {
       </div>
 
       {selectedCommission && (
-        <DetailsPanel
+        <AntdDetailsPanel
           selectedCommission={selectedCommission}
           onClose={() => setSelectedCommission(null)}
           onForcePayout={handleForcePayout}

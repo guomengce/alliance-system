@@ -30,6 +30,7 @@ func main() {
 	if err := store.Load(); err != nil {
 		log.Fatal(err)
 	}
+	defer store.Close()
 	if err := store.Replace(data); err != nil {
 		log.Fatal(err)
 	}

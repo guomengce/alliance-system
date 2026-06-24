@@ -1,4 +1,8 @@
-import Workspace from './components/Workspace';
+import AntdDetailModal from './components/AntdDetailModal';
+import AntdFiltersPanel from './components/AntdFiltersPanel';
+import AntdHeaderActions from './components/AntdHeaderActions';
+import AntdLogsList from './components/AntdLogsList';
+import AntdMetricsGrid from './components/AntdMetricsGrid';
 import { useLogsState } from './hooks/useLogsState';
 import type { AdminLogsViewProps } from './types';
 
@@ -21,21 +25,36 @@ export default function AdminLogsView({ transactions = [], downlines = [] }: Adm
   } = useLogsState({ transactions, downlines });
 
   return (
-    <Workspace
-      logs={logs}
-      filteredLogs={filteredLogs}
-      searchQuery={searchQuery}
-      setSearchQuery={setSearchQuery}
-      selectedSeverity={selectedSeverity}
-      setSelectedSeverity={setSelectedSeverity}
-      selectedCategory={selectedCategory}
-      setSelectedCategory={setSelectedCategory}
-      activeDetailLog={activeDetailLog}
-      setActiveDetailLog={setActiveDetailLog}
-      isExporting={isExporting}
-      handleSimulateLog={handleSimulateLog}
-      handleClearAllLogs={handleClearAllLogs}
-      handleExportLogs={handleExportLogs}
-    />
+    <div id="admin_logs_view" className="flex flex-col gap-6 animate-fadeIn">
+      <AntdHeaderActions
+        logs={logs}
+        isExporting={isExporting}
+        handleSimulateLog={handleSimulateLog}
+        handleClearAllLogs={handleClearAllLogs}
+        handleExportLogs={handleExportLogs}
+      />
+
+      <AntdMetricsGrid logs={logs} />
+
+      <AntdFiltersPanel
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        selectedSeverity={selectedSeverity}
+        setSelectedSeverity={setSelectedSeverity}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+      />
+
+      <AntdLogsList
+        logs={logs}
+        filteredLogs={filteredLogs}
+        setActiveDetailLog={setActiveDetailLog}
+      />
+
+      <AntdDetailModal
+        activeDetailLog={activeDetailLog}
+        setActiveDetailLog={setActiveDetailLog}
+      />
+    </div>
   );
 }

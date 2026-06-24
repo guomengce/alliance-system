@@ -1,4 +1,5 @@
 import {
+  AdminUsersApiResponse,
   DownlineMember,
   KycFilter,
   KycL1Status,
@@ -6,6 +7,41 @@ import {
   TeamMember,
   UserAccountStatus
 } from './types';
+
+const formatAmountText = (value: number) => value.toFixed(2);
+
+export function transformAdminUsersResponse(response: AdminUsersApiResponse) {
+  return {
+    downlines: response.users.map((user): DownlineMember => ({
+      uid: user.uid,
+      level: user.level,
+      tier: user.tierName,
+      registrationDate: user.registeredAt,
+      nodeSize: user.team.nodeSize,
+      volume: user.team.volume,
+      avatarLetter: user.avatarLetter,
+      invested: user.investedAmount,
+      nickname: user.profile.nickname,
+      email: user.profile.email,
+      phone: user.profile.phone,
+      sponsor: user.profile.sponsor,
+      status: user.profile.status,
+      usdtBalance: user.wallet.usdtBalance,
+      frozenBalance: user.wallet.frozenBalance,
+      trooBalance: user.wallet.trooBalance,
+      pendingBalance: user.wallet.pendingBalance,
+      kycL1: user.kyc.l1,
+      kycL2: user.kyc.l2,
+    })),
+    teamMembers: response.teamMembers.map((member): TeamMember => ({
+      uid: member.uid,
+      name: member.name,
+      level: member.level,
+      nodes: `${member.nodes}人`,
+      volume: formatAmountText(member.volume),
+    })),
+  };
+}
 
 export interface AdminUserFormValues {
   nickname: string;

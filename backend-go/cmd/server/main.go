@@ -18,6 +18,7 @@ func main() {
 	if err := store.Load(); err != nil {
 		log.Fatal(err)
 	}
+	defer store.Close()
 
 	router := http.NewRouter(cfg, store)
 	if err := router.Run("0.0.0.0:" + cfg.Port); err != nil {

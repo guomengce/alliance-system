@@ -7,12 +7,50 @@ export type UserAccountStatus = 'normal' | 'frozen' | 'disabled';
 export type KycL1Status = 'verified' | 'unverified';
 export type KycL2Status = 'verified' | 'pending' | 'unverified';
 
-export interface AdminUsersViewProps {
-  downlines: DownlineMember[];
-  onUpdateDownlines: (members: DownlineMember[]) => void;
+export type { DownlineMember };
+
+export interface AdminUserApiDto {
+  uid: string;
+  level: DownlineMember['level'];
+  tierName: string;
+  registeredAt: string;
+  avatarLetter: string;
+  investedAmount: number;
+  profile: {
+    nickname: string;
+    email: string;
+    phone: string;
+    sponsor: string;
+    status: UserAccountStatus;
+  };
+  wallet: {
+    usdtBalance: number;
+    frozenBalance: number;
+    trooBalance: number;
+    pendingBalance: number;
+  };
+  team: {
+    nodeSize: number;
+    volume: number;
+  };
+  kyc: {
+    l1: KycL1Status;
+    l2: KycL2Status;
+  };
 }
 
-export type { DownlineMember };
+export interface AdminTeamMemberApiDto {
+  uid: string;
+  name: string;
+  level: string;
+  nodes: number;
+  volume: number;
+}
+
+export interface AdminUsersApiResponse {
+  users: AdminUserApiDto[];
+  teamMembers: AdminTeamMemberApiDto[];
+}
 
 
 export interface TeamMember {

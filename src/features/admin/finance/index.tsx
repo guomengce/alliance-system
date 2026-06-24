@@ -1,4 +1,10 @@
-import Workspace from './components/Workspace';
+import AntdHeaderTabs from './components/AntdHeaderTabs';
+import AntdLedgerPanel from './components/AntdLedgerPanel';
+import AntdReservesPanel from './components/AntdReservesPanel';
+import AntdWalletsPanel from './components/AntdWalletsPanel';
+import LedgerDetailsModal from './components/LedgerDetailsModal';
+import WalletDetailsModal from './components/WalletDetailsModal';
+import WithdrawalAuditModal from './components/WithdrawalAuditModal';
 import { useFinanceState } from './hooks/useFinanceState';
 import type { AdminFinanceViewProps } from './types';
 import {
@@ -48,43 +54,71 @@ export default function AdminFinanceView({
   } = useFinanceState(downlines, transactions, onUpdateDownlines);
 
   return (
-    <Workspace
-      pendingWithdrawals={pendingWithdrawals}
-      onApproveWithdrawal={onApproveWithdrawal}
-      onRejectWithdrawal={onRejectWithdrawal}
-      downlines={downlines}
-      activeTab={activeTab}
-      setActiveTab={setActiveTab}
-      searchMemberQuery={searchMemberQuery}
-      setSearchMemberQuery={setSearchMemberQuery}
-      ledgerTypeFilter={ledgerTypeFilter}
-      setLedgerTypeFilter={setLedgerTypeFilter}
-      searchLedgerQuery={searchLedgerQuery}
-      setSearchLedgerQuery={setSearchLedgerQuery}
-      companyUSDT={COMPANY_USDT}
-      companyTROO={COMPANY_TROO}
-      withdrawalFee={WITHDRAWAL_FEE}
-      totalUserUSDT={totalUserUSDT}
-      totalUserTROO={totalUserTROO}
-      totalUserLocked={totalUserLocked}
-      fullLedger={fullLedger}
-      selectedLedgerItem={selectedLedgerItem}
-      setSelectedLedgerItem={setSelectedLedgerItem}
-      selectedWalletMember={selectedWalletMember}
-      setSelectedWalletMember={setSelectedWalletMember}
-      selectedWithdrawal={selectedWithdrawal}
-      setSelectedWithdrawal={setSelectedWithdrawal}
-      adjustUsdt={adjustUsdt}
-      setAdjustUsdt={setAdjustUsdt}
-      adjustTroo={adjustTroo}
-      setAdjustTroo={setAdjustTroo}
-      adjustFrozen={adjustFrozen}
-      setAdjustFrozen={setAdjustFrozen}
-      adjustStatus={adjustStatus}
-      setAdjustStatus={setAdjustStatus}
-      handleOpenWalletDetails={handleOpenWalletDetails}
-      handleSaveWalletAdjustment={handleSaveWalletAdjustment}
-      exportLedgerCSV={exportLedgerCSV}
-    />
+    <div id="admin_finance_module" className="space-y-6 animate-fadeIn select-none flex-grow flex flex-col md:min-h-[calc(100vh-140px)] pb-4">
+      <div className="glass-card p-5 md:p-6 rounded-2xl border border-white/5 bg-[#141119] space-y-6 flex-grow flex flex-col">
+        <AntdHeaderTabs activeTab={activeTab} setActiveTab={setActiveTab} />
+
+        {activeTab === 'reserves' && (
+          <AntdReservesPanel
+            pendingWithdrawals={pendingWithdrawals}
+            withdrawalFee={WITHDRAWAL_FEE}
+            companyUSDT={COMPANY_USDT}
+            companyTROO={COMPANY_TROO}
+            totalUserUSDT={totalUserUSDT}
+            totalUserTROO={totalUserTROO}
+            totalUserLocked={totalUserLocked}
+            setSelectedWithdrawal={setSelectedWithdrawal}
+            onApproveWithdrawal={onApproveWithdrawal}
+            onRejectWithdrawal={onRejectWithdrawal}
+          />
+        )}
+
+        {activeTab === 'wallets' && (
+          <AntdWalletsPanel
+            downlines={downlines}
+            searchMemberQuery={searchMemberQuery}
+            setSearchMemberQuery={setSearchMemberQuery}
+            handleOpenWalletDetails={handleOpenWalletDetails}
+          />
+        )}
+
+        {activeTab === 'ledger' && (
+          <AntdLedgerPanel
+            fullLedger={fullLedger}
+            ledgerTypeFilter={ledgerTypeFilter}
+            setLedgerTypeFilter={setLedgerTypeFilter}
+            setSelectedLedgerItem={setSelectedLedgerItem}
+            exportLedgerCSV={exportLedgerCSV}
+          />
+        )}
+      </div>
+
+      <LedgerDetailsModal
+        selectedLedgerItem={selectedLedgerItem}
+        setSelectedLedgerItem={setSelectedLedgerItem}
+      />
+
+      <WalletDetailsModal
+        selectedWalletMember={selectedWalletMember}
+        setSelectedWalletMember={setSelectedWalletMember}
+        adjustUsdt={adjustUsdt}
+        setAdjustUsdt={setAdjustUsdt}
+        adjustTroo={adjustTroo}
+        setAdjustTroo={setAdjustTroo}
+        adjustFrozen={adjustFrozen}
+        setAdjustFrozen={setAdjustFrozen}
+        adjustStatus={adjustStatus}
+        setAdjustStatus={setAdjustStatus}
+        handleSaveWalletAdjustment={handleSaveWalletAdjustment}
+      />
+
+      <WithdrawalAuditModal
+        selectedWithdrawal={selectedWithdrawal}
+        setSelectedWithdrawal={setSelectedWithdrawal}
+        withdrawalFee={WITHDRAWAL_FEE}
+        onApproveWithdrawal={onApproveWithdrawal}
+        onRejectWithdrawal={onRejectWithdrawal}
+      />
+    </div>
   );
 }

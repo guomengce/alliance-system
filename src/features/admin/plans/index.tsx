@@ -1,5 +1,5 @@
-import { EditorModal } from './components/EditorModal';
-import { List } from './components/List';
+import { AntdEditorModal } from './components/AntdEditorModal';
+import { AntdList } from './components/AntdList';
 import { Toolbar } from './components/Toolbar';
 import { usePlansState } from './hooks/usePlansState';
 
@@ -33,12 +33,12 @@ export default function AdminPlansView() {
     <div id="admin_plans_view" className="space-y-6 animate-fadeIn select-none flex-grow flex flex-col md:min-h-[calc(100vh-140px)] pb-4">
       <div className="glass-card p-5 md:p-6 rounded-2xl border border-white/5 bg-[#141119] space-y-6 flex-grow flex flex-col">
         <Toolbar onOpenCreateModal={handleOpenCreateModal} />
-        <List plans={adminPlans} onOpenEditModal={handleOpenEditModal} onTogglePlanStatus={handleTogglePlanStatus} />
+        <AntdList plans={adminPlans} onOpenEditModal={handleOpenEditModal} onTogglePlanStatus={handleTogglePlanStatus} />
       </div>
 
       {/* Versatile Overlay Selection Modal Component matching the exact Commission details style */}
       {isModalOpen && (
-        <EditorModal
+        <AntdEditorModal
           editingPlan={editingPlan}
           formName={formName}
           formPrice={formPrice}

@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import type { DownlineMember } from './types';
-import { applyKycAudit, buildUpdatedUserFromForm, inferUserKycL2 } from './utils';
+import {
+  applyKycAudit,
+  buildUpdatedUserFromForm,
+  inferUserKycL2,
+  transformAdminUsersResponse,
+} from './utils';
 
 const baseUser: DownlineMember = {
   uid: '1001',
@@ -14,6 +19,72 @@ const baseUser: DownlineMember = {
 };
 
 describe('admin user helpers', () => {
+  it('transforms backend-like users response into list members', () => {
+    const result = transformAdminUsersResponse({
+      users: [
+        {
+          uid: 'U1001',
+          level: 'L2',
+          tierName: 'Gold',
+          registeredAt: '2026-06-01 10:00',
+          avatarLetter: 'AL',
+          investedAmount: 1200,
+          profile: {
+            nickname: 'Alice',
+            email: 'alice@example.com',
+            phone: '18800001111',
+            sponsor: '999001',
+            status: 'normal',
+          },
+          wallet: {
+            usdtBalance: 100,
+            frozenBalance: 5,
+            trooBalance: 200,
+            pendingBalance: 8,
+          },
+          team: {
+            nodeSize: 12,
+            volume: 3400,
+          },
+          kyc: {
+            l1: 'verified',
+            l2: 'pending',
+          },
+        },
+      ],
+      teamMembers: [
+        {
+          uid: 'T1001',
+          name: 'Team Alice',
+          level: 'L1',
+          nodes: 6,
+          volume: 900,
+        },
+      ],
+    });
+
+    expect(result.downlines[0]).toMatchObject({
+      uid: 'U1001',
+      level: 'L2',
+      tier: 'Gold',
+      registrationDate: '2026-06-01 10:00',
+      nickname: 'Alice',
+      email: 'alice@example.com',
+      status: 'normal',
+      usdtBalance: 100,
+      nodeSize: 12,
+      volume: 3400,
+      kycL2: 'pending',
+    });
+    expect(result.teamMembers[0]).toEqual({
+      uid: 'T1001',
+      name: 'Team Alice',
+      level: 'L1',
+      nodes: '6人',
+      volume: '900.00',
+    });
+  });
+
   it('applies KYC audit decisions without mutating other users', () => {
     const otherUser = { ...baseUser, uid: '1002' };
     const accepted = applyKycAudit([baseUser, otherUser], '1001', true);

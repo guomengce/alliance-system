@@ -1,12 +1,8 @@
 import DetailsPanel from './detail';
 import { useUsersState } from './hooks/useUsersState';
 import List from './list';
-import { AdminUsersViewProps } from './types';
 
-export default function AdminUsersView({
-  downlines,
-  onUpdateDownlines
-}: AdminUsersViewProps) {
+export default function AdminUsersView() {
   const {
     activeTab,
     editingUser,
@@ -50,7 +46,7 @@ export default function AdminUsersView({
     setUserSearchText,
     teamSearchText,
     userSearchText
-  } = useUsersState(downlines, onUpdateDownlines);
+  } = useUsersState();
 
   if (editingUser) {
     return (

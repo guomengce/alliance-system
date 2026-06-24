@@ -1,6 +1,6 @@
-import { DetailsView } from './detail';
+import { AntdDetailsView } from './detail/AntdDetailsView';
 import { useQueueState } from './hooks/useQueueState';
-import { RosterView } from './list';
+import { AntdRosterView } from './list/AntdRosterView';
 
 export default function AdminQueueView() {
   const {
@@ -24,7 +24,7 @@ export default function AdminQueueView() {
 
   if (selectedRoster) {
     return (
-      <DetailsView
+      <AntdDetailsView
         selectedRoster={selectedRoster}
         filteredHistory={filteredHistory}
         isEditingData={isEditingData}
@@ -43,5 +43,5 @@ export default function AdminQueueView() {
     );
   }
 
-  return <RosterView lockedRoster={lockedRoster} onOpenDetails={handleOpenDetails} />;
+  return <AntdRosterView lockedRoster={lockedRoster} onOpenDetails={handleOpenDetails} />;
 }

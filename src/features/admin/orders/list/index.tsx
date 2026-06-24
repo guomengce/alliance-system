@@ -1,6 +1,6 @@
 import ListHeader from './components/ListHeader';
-import MobileOrderCards from './components/MobileOrderCards';
-import OrdersTable from './components/OrdersTable';
+import AntdOrderMobileCard from './components/AntdOrderMobileCard';
+import AntdOrdersTable from './components/AntdOrdersTable';
 import type { ListViewProps } from '../types';
 
 export default function ListView({
@@ -17,14 +17,19 @@ export default function ListView({
         <ListHeader onExport={exportMockCSV} />
 
         <div className="space-y-4">
-          <MobileOrderCards
-            orders={orders}
-            setSelectedOrder={setSelectedOrder}
-            setDetailSearchQuery={setDetailSearchQuery}
-            onConfirmOrderArrival={onConfirmOrderArrival}
-            onCancelOrder={onCancelOrder}
-          />
-          <OrdersTable
+          <div className="block md:hidden space-y-3">
+            {orders.map((order) => (
+              <AntdOrderMobileCard
+                key={order.id}
+                order={order}
+                setSelectedOrder={setSelectedOrder}
+                setDetailSearchQuery={setDetailSearchQuery}
+                onConfirmOrderArrival={onConfirmOrderArrival}
+                onCancelOrder={onCancelOrder}
+              />
+            ))}
+          </div>
+          <AntdOrdersTable
             orders={orders}
             setSelectedOrder={setSelectedOrder}
             setDetailSearchQuery={setDetailSearchQuery}
