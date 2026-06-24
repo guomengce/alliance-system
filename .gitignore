@@ -1,6 +1,8 @@
 node_modules/
 .pnpm-store/
 @tolgee/
+.tools/
+.cache/
 build/
 dist/
 coverage/
@@ -9,3 +11,4 @@ tools/
 *.log
 .env*
 !.env.example
+alliance.sqlite*

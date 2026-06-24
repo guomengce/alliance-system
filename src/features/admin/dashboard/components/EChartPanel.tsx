@@ -14,20 +14,26 @@ export default function EChartPanel({
   onHoverIndexChange
 }: EChartPanelProps) {
   const chartRef = useRef<HTMLDivElement | null>(null);
+  const chartInstanceRef = useRef<ReturnType<typeof echarts.init> | null>(null);
+  const hoverHandlerRef = useRef(onHoverIndexChange);
+
+  useEffect(() => {
+    hoverHandlerRef.current = onHoverIndexChange;
+  }, [onHoverIndexChange]);
 
   useEffect(() => {
     if (!chartRef.current) return;
 
     const chart = echarts.init(chartRef.current, undefined, { renderer: 'canvas' });
-    chart.setOption(option);
+    chartInstanceRef.current = chart;
 
     const handleMouseOver = (params: { dataIndex?: number }) => {
       if (typeof params.dataIndex === 'number') {
-        onHoverIndexChange?.(params.dataIndex);
+        hoverHandlerRef.current?.(params.dataIndex);
       }
     };
     const handleMouseOut = () => {
-      onHoverIndexChange?.(null);
+      hoverHandlerRef.current?.(null);
     };
     const handleResize = () => chart.resize();
 
@@ -39,9 +45,17 @@ export default function EChartPanel({
       chart.off('mouseover', handleMouseOver);
       chart.off('mouseout', handleMouseOut);
       window.removeEventListener('resize', handleResize);
+      chartInstanceRef.current = null;
       chart.dispose();
     };
-  }, [onHoverIndexChange, option]);
+  }, []);
+
+  useEffect(() => {
+    chartInstanceRef.current?.setOption(option, {
+      lazyUpdate: true,
+      notMerge: true
+    });
+  }, [option]);
 
   return <div ref={chartRef} className={className} />;
 }

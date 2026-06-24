@@ -3,6 +3,7 @@ import type {
   AdminDashboardMetricsDto,
   AdminDashboardOverviewDto,
   AdminDashboardTrendDto,
+  DashboardPageViewModel,
   DashboardViewModel,
   MetricCardViewModel,
   TrendChartViewModel,
@@ -259,7 +260,7 @@ export function buildTrooChartOption(chart: TrooChartViewModel): EChartsOption {
   };
 }
 
-export function buildDashboardViewModel(
+export function buildDashboardPageData(
   overview: AdminDashboardOverviewDto,
   {
     activeTrendIndex = overview.trend.length - 1,
@@ -268,15 +269,40 @@ export function buildDashboardViewModel(
     activeTrendIndex?: number;
     activeTrooIndex?: number;
   } = {}
-): DashboardViewModel {
+): DashboardPageViewModel {
   const trendChart = buildTrendChartViewModel(overview.trend, activeTrendIndex);
   const trooChart = buildTrooChartViewModel(overview.trooMarket, activeTrooIndex);
 
   return {
-    metricCards: buildMetricCards(overview.metrics),
-    trendChart,
-    trendOption: buildTrendChartOption(trendChart),
-    trooChart,
-    trooOption: buildTrooChartOption(trooChart)
+    metrics: {
+      cards: buildMetricCards(overview.metrics)
+    },
+    trooPrice: {
+      chart: trooChart,
+      chartOption: buildTrooChartOption(trooChart)
+    },
+    trend: {
+      chart: trendChart,
+      chartOption: buildTrendChartOption(trendChart)
+    }
+  };
+}
+
+export function buildDashboardViewModel(
+  overview: AdminDashboardOverviewDto,
+  options?: {
+    activeTrendIndex?: number;
+    activeTrooIndex?: number;
+  }
+): DashboardViewModel {
+  const pageData = buildDashboardPageData(overview, options);
+
+  return {
+    pageData,
+    metricCards: pageData.metrics.cards,
+    trendChart: pageData.trend.chart,
+    trendOption: pageData.trend.chartOption,
+    trooChart: pageData.trooPrice.chart,
+    trooOption: pageData.trooPrice.chartOption
   };
 }

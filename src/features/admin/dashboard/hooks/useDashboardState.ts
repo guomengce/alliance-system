@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { AdminDashboardOverviewDto } from '../types';
 import {
-  buildDashboardViewModel,
+  buildDashboardPageData,
   getAdminTrooMarketData,
 } from '../utils';
 
@@ -27,25 +27,19 @@ const simulatedDashboardOverview: AdminDashboardOverviewDto = {
 
 export function useDashboardState() {
   const [overview] = useState<AdminDashboardOverviewDto>(() => simulatedDashboardOverview);
-  const [hoveredChartIndex, setHoveredChartIndex] = useState<number | null>(null);
+  const [hoveredTrendIndex, setHoveredTrendIndex] = useState<number | null>(null);
   const [hoveredTrooIndex, setHoveredTrooIndex] = useState<number | null>(null);
 
-  const activeTrendIndex = hoveredChartIndex !== null ? hoveredChartIndex : overview.trend.length - 1;
-  const activeTrooIndex = hoveredTrooIndex !== null ? hoveredTrooIndex : overview.trooMarket.length - 1;
-  const viewModel = buildDashboardViewModel(overview, {
-    activeTrendIndex,
-    activeTrooIndex
+  const pageData = buildDashboardPageData(overview, {
+    activeTrendIndex: hoveredTrendIndex ?? overview.trend.length - 1,
+    activeTrooIndex: hoveredTrooIndex ?? overview.trooMarket.length - 1
   });
 
   return {
-    hoveredChartIndex,
-    hoveredTrooIndex,
-    metricCards: viewModel.metricCards,
-    setHoveredChartIndex,
-    setHoveredTrooIndex,
-    trendChart: viewModel.trendChart,
-    trendOption: viewModel.trendOption,
-    trooChart: viewModel.trooChart,
-    trooOption: viewModel.trooOption
+    pageData,
+    actions: {
+      setHoveredTrendIndex,
+      setHoveredTrooIndex
+    }
   };
 }

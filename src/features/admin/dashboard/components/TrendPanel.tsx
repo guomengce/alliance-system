@@ -3,25 +3,24 @@ import type { TrendPanelProps } from '../types';
 import EChartPanel from './EChartPanel';
 
 export default function TrendPanel({
-  chart,
-  option,
+  data,
   onHoverIndexChange
 }: TrendPanelProps) {
+  const { chart, chartOption } = data;
+
   return (
     <div className="lg:col-span-7 glass-card p-6 rounded-2xl border border-white/5 bg-[#141119] flex flex-col justify-between">
       <div>
         <h3 className="text-sm font-bold text-white flex items-center gap-2">
           <TrendingUp className="w-4 h-4 text-[#cfbcff]" />
-          近七日订阅认购单及公司结算佣金走向对比趋势
+          近七日认购单及公司结算佣金走势对比趋势
         </h3>
         <p className="text-xs text-[#cbc4d2]/60 mt-1 leading-relaxed">
-          精算统计全系统每日新增流动性质押认购体量与 D+1 04:00 各代扣池佣金派扣划拨总值比重 (鼠标悬停或触控可实时对账)
+          精算统计全系统每日新增流动性质押认购体量与 D+1 04:00 各代扣池佣金派发划拨总值比率
         </p>
       </div>
 
-      {/* Legend and interactive data display */}
       <div className="space-y-4">
-        {/* Live Data Display Board */}
         <div className="grid grid-cols-3 gap-3 bg-[#1e1a26] border border-white/5 rounded-xl p-3 text-center my-2">
           <div className="text-left pl-1">
             <span className="text-[10px] uppercase font-bold text-[#cbc4d2]/40 tracking-wider">核算日期</span>
@@ -43,7 +42,7 @@ export default function TrendPanel({
 
         <EChartPanel
           className="h-32 md:h-44 lg:h-52 xl:h-60 w-full"
-          option={option}
+          option={chartOption}
           onHoverIndexChange={onHoverIndexChange}
         />
       </div>

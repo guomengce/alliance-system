@@ -13,10 +13,6 @@ export interface AdminDashboardViewProps {
   lockedQueueAmount: number;
 }
 
-export interface MetricGridProps {
-  cards: MetricCardViewModel[];
-}
-
 export interface TrooMarketDataPoint {
   time: string;
   price: number;
@@ -28,23 +24,11 @@ export interface TrooChartPoint extends TrooMarketDataPoint {
   y: number;
 }
 
-export interface TrooPricePanelProps {
-  chart: TrooChartViewModel;
-  option: EChartsOption;
-  onHoverIndexChange: (index: number | null) => void;
-}
-
 export interface TrendDataPoint {
   date: string;
   sub: number;
   comm: number;
   val: number;
-}
-
-export interface TrendPanelProps {
-  chart: TrendChartViewModel;
-  option: EChartsOption;
-  onHoverIndexChange: (index: number | null) => void;
 }
 
 export interface AdminDashboardMetricsDto {
@@ -70,6 +54,10 @@ export interface AdminDashboardOverviewDto {
 export interface MetricCardViewModel extends MetricCardProps {
   key: string;
   colorClass: string;
+}
+
+export interface MetricGridProps {
+  cards: MetricCardViewModel[];
 }
 
 export interface ChartSeriesViewModel {
@@ -103,10 +91,41 @@ export interface TrooChartViewModel {
   };
 }
 
+export interface DashboardMetricsSectionViewModel {
+  cards: MetricCardViewModel[];
+}
+
+export interface DashboardTrendSectionViewModel {
+  chart: TrendChartViewModel;
+  chartOption: EChartsOption;
+}
+
+export interface DashboardTrooPriceSectionViewModel {
+  chart: TrooChartViewModel;
+  chartOption: EChartsOption;
+}
+
+export interface DashboardPageViewModel {
+  metrics: DashboardMetricsSectionViewModel;
+  trooPrice: DashboardTrooPriceSectionViewModel;
+  trend: DashboardTrendSectionViewModel;
+}
+
 export interface DashboardViewModel {
+  pageData: DashboardPageViewModel;
   metricCards: MetricCardViewModel[];
   trendChart: TrendChartViewModel;
   trendOption: EChartsOption;
   trooChart: TrooChartViewModel;
   trooOption: EChartsOption;
+}
+
+export interface TrooPricePanelProps {
+  data: DashboardTrooPriceSectionViewModel;
+  onHoverIndexChange: (index: number | null) => void;
+}
+
+export interface TrendPanelProps {
+  data: DashboardTrendSectionViewModel;
+  onHoverIndexChange: (index: number | null) => void;
 }
