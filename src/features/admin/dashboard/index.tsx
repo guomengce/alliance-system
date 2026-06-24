@@ -2,6 +2,7 @@ import MetricGrid from './components/MetricGrid';
 import StatusHeader from './components/StatusHeader';
 import TrendPanel from './components/TrendPanel';
 import TrooPricePanel from './components/TrooPricePanel';
+
 import { useDashboardState } from './hooks/useDashboardState';
 import type { AdminDashboardViewProps } from './types';
 
