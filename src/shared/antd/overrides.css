@@ -2493,3 +2493,775 @@
 .alliance-antd-finance-export-button.ant-btn:hover {
   background: rgba(207, 188, 255, 0.15) !important;
 }
+
+/* Admin user detail Ant Design replacements */
+.alliance-antd-user-detail-tabs.ant-tabs {
+  color: #cbc4d2;
+  font-family: var(--font-sans);
+  margin-bottom: 0;
+}
+
+.alliance-antd-user-detail-tabs.ant-tabs > .ant-tabs-nav {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin: 0;
+}
+
+.alliance-antd-user-detail-tabs.ant-tabs > .ant-tabs-nav::before {
+  border-bottom: 0;
+}
+
+.alliance-antd-user-detail-tabs .ant-tabs-tab {
+  color: rgba(203, 196, 210, 0.4);
+  font-size: 12px;
+  font-weight: 800;
+  margin: 0 24px 0 0 !important;
+  padding: 0 0 8px;
+}
+
+.alliance-antd-user-detail-tabs .ant-tabs-tab:hover,
+.alliance-antd-user-detail-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #cfbcff !important;
+}
+
+.alliance-antd-user-detail-tabs .ant-tabs-tab-btn {
+  color: inherit !important;
+}
+
+.alliance-antd-user-detail-tabs .ant-tabs-ink-bar {
+  background: #cfbcff !important;
+}
+
+.alliance-antd-user-detail-tabs .ant-tabs-content-holder {
+  display: none;
+}
+
+.alliance-antd-user-detail-back-button.ant-btn,
+.alliance-antd-user-detail-back-button.ant-btn:hover,
+.alliance-antd-user-detail-back-button.ant-btn:focus {
+  align-items: center;
+  color: #cfbcff !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  gap: 8px;
+  padding: 0;
+}
+
+.alliance-antd-user-detail-back-button.ant-btn:hover {
+  color: #ffffff !important;
+}
+
+.alliance-antd-user-detail-header-card.ant-card,
+.alliance-antd-user-detail-panel-card.ant-card {
+  background: #141119;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  color: #cbc4d2;
+  font-family: var(--font-sans);
+  overflow: hidden;
+  position: relative;
+}
+
+.alliance-antd-user-detail-header-card .ant-card-body {
+  padding: 24px;
+}
+
+@media (min-width: 768px) {
+  .alliance-antd-user-detail-header-card .ant-card-body,
+  .alliance-antd-user-detail-panel-card .ant-card-body {
+    padding: 32px;
+  }
+}
+
+.alliance-antd-user-detail-panel-card .ant-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+}
+
+.alliance-antd-user-detail-avatar.ant-avatar {
+  background: linear-gradient(135deg, #6750a4, #cfbcff);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.alliance-antd-user-detail-tier-tag.ant-tag {
+  background: rgba(207, 188, 255, 0.1);
+  border-color: rgba(207, 188, 255, 0.2);
+  border-radius: 6px;
+  color: #cfbcff;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 18px;
+  margin: 0;
+  padding: 0 8px;
+  text-transform: uppercase;
+}
+
+.alliance-antd-user-detail-form .ant-form-item {
+  margin-bottom: 0;
+}
+
+.alliance-antd-user-detail-form .ant-form-item-label {
+  padding-bottom: 6px;
+}
+
+.alliance-antd-user-detail-form .ant-form-item-label > label {
+  color: rgba(203, 196, 210, 0.6) !important;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.alliance-antd-user-detail-form .ant-input,
+.alliance-antd-user-detail-form .ant-input-number,
+.alliance-antd-user-detail-form .ant-select-selector {
+  background: #1c1824 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  font-size: 12px;
+  font-weight: 700;
+  min-height: 42px;
+}
+
+.alliance-antd-user-detail-form .ant-input:hover,
+.alliance-antd-user-detail-form .ant-input:focus,
+.alliance-antd-user-detail-form .ant-input-number:hover,
+.alliance-antd-user-detail-form .ant-input-number-focused,
+.alliance-antd-user-detail-form .ant-select:hover .ant-select-selector,
+.alliance-antd-user-detail-form .ant-select-focused .ant-select-selector {
+  border-color: rgba(207, 188, 255, 0.45) !important;
+}
+
+.alliance-antd-user-detail-form .ant-input[disabled],
+.alliance-antd-user-detail-form .ant-input-disabled {
+  color: rgba(203, 196, 210, 0.6) !important;
+}
+
+.alliance-antd-user-detail-form .ant-select-selection-item,
+.alliance-antd-user-detail-form .ant-input-number-input {
+  color: #ffffff !important;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.alliance-antd-user-detail-form .ant-input-number,
+.alliance-antd-user-detail-form .ant-input-number-group-wrapper {
+  width: 100%;
+}
+
+.alliance-antd-user-detail-form .ant-input-number-input {
+  font-family: var(--font-mono);
+  height: 40px;
+}
+
+.alliance-antd-user-detail-form .ant-input-number-group-addon {
+  background: #110e16 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: rgba(203, 196, 210, 0.45) !important;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.alliance-antd-user-detail-inline-card.ant-card,
+.alliance-antd-user-detail-note-card.ant-card,
+.alliance-antd-user-detail-readonly-card.ant-card,
+.alliance-antd-user-detail-total-card.ant-card {
+  background: #1c1824;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  color: #cbc4d2;
+}
+
+.alliance-antd-user-detail-inline-card .ant-card-body {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+}
+
+.alliance-antd-user-detail-inline-card.is-column .ant-card-body {
+  align-items: stretch;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.alliance-antd-user-detail-note-card .ant-card-body,
+.alliance-antd-user-detail-readonly-card .ant-card-body,
+.alliance-antd-user-detail-total-card .ant-card-body {
+  padding: 16px;
+}
+
+.alliance-antd-user-detail-total-card.ant-card {
+  background: linear-gradient(135deg, #1c142c, #120a1c);
+  border-color: rgba(207, 188, 255, 0.2);
+}
+
+.alliance-antd-user-detail-total-card .ant-statistic-title,
+.alliance-antd-user-detail-readonly-card .ant-statistic-title {
+  color: rgba(203, 196, 210, 0.5) !important;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.alliance-antd-user-detail-gradient-button.ant-btn,
+.alliance-antd-user-detail-gradient-button.ant-btn:hover,
+.alliance-antd-user-detail-gradient-button.ant-btn:focus,
+.alliance-antd-user-detail-save-button.ant-btn,
+.alliance-antd-user-detail-save-button.ant-btn:hover,
+.alliance-antd-user-detail-save-button.ant-btn:focus {
+  align-items: center;
+  background: linear-gradient(90deg, #6750a4, #cfbcff) !important;
+  border-color: transparent !important;
+  border-radius: 12px;
+  color: #ffffff !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 900;
+  gap: 6px;
+  height: 42px;
+  justify-content: center;
+  padding: 0 24px;
+}
+
+.alliance-antd-user-detail-gradient-button.ant-btn:hover,
+.alliance-antd-user-detail-save-button.ant-btn:hover {
+  filter: brightness(1.08);
+}
+
+.alliance-antd-user-detail-cancel-button.ant-btn,
+.alliance-antd-user-detail-cancel-button.ant-btn:hover,
+.alliance-antd-user-detail-cancel-button.ant-btn:focus {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: transparent !important;
+  border-radius: 12px;
+  color: #cbc4d2 !important;
+  font-size: 12px;
+  font-weight: 800;
+  height: 42px;
+  padding: 0 24px;
+}
+
+.alliance-antd-user-detail-cancel-button.ant-btn:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.alliance-antd-user-detail-search.ant-input-affix-wrapper {
+  background: #1c1824 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  font-size: 11px;
+  max-width: 240px;
+}
+
+.alliance-antd-user-detail-search .ant-input {
+  background: transparent !important;
+  color: #ffffff !important;
+  font-size: 11px;
+}
+
+.alliance-antd-user-detail-search .ant-input::placeholder {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.alliance-antd-user-detail-table.ant-table-wrapper .ant-table-thead > tr > th {
+  background: rgba(255, 255, 255, 0.03) !important;
+  color: rgba(203, 196, 210, 0.45) !important;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.alliance-antd-rbac-tabs.ant-tabs {
+  color: #cbc4d2;
+}
+
+.alliance-antd-rbac-tabs.ant-tabs .ant-tabs-nav {
+  margin: 0;
+}
+
+.alliance-antd-rbac-tabs.ant-tabs .ant-tabs-nav::before {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.alliance-antd-rbac-tabs.ant-tabs .ant-tabs-tab {
+  color: rgba(203, 196, 210, 0.58);
+  font-size: 11px;
+  font-weight: 900;
+  padding: 10px 4px;
+}
+
+.alliance-antd-rbac-tabs.ant-tabs .ant-tabs-tab-active .ant-tabs-tab-btn,
+.alliance-antd-rbac-tabs.ant-tabs .ant-tabs-tab:hover {
+  color: #cfbcff !important;
+}
+
+.alliance-antd-rbac-tabs.ant-tabs .ant-tabs-ink-bar {
+  background: #cfbcff;
+}
+
+.alliance-antd-rbac-primary-button.ant-btn,
+.alliance-antd-rbac-primary-button.ant-btn:hover,
+.alliance-antd-rbac-primary-button.ant-btn:focus {
+  background: linear-gradient(90deg, #6750a4, #cfbcff) !important;
+  border-color: transparent !important;
+  border-radius: 12px;
+  color: #ffffff !important;
+  font-size: 11px;
+  font-weight: 900;
+  height: 38px;
+}
+
+.alliance-antd-rbac-secondary-button.ant-btn,
+.alliance-antd-rbac-secondary-button.ant-btn:hover,
+.alliance-antd-rbac-secondary-button.ant-btn:focus {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px;
+  color: #cbc4d2 !important;
+  font-size: 11px;
+  font-weight: 900;
+  height: 38px;
+}
+
+.alliance-antd-rbac-panel-card.ant-card,
+.alliance-antd-rbac-permission-card.ant-card,
+.alliance-antd-rbac-mobile-card.ant-card {
+  background: #141119;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  color: #cbc4d2;
+}
+
+.alliance-antd-rbac-panel-card > .ant-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 20px;
+}
+
+@media (min-width: 768px) {
+  .alliance-antd-rbac-panel-card > .ant-card-body {
+    padding: 24px;
+  }
+}
+
+.alliance-antd-rbac-mobile-card > .ant-card-body,
+.alliance-antd-rbac-permission-card > .ant-card-body {
+  padding: 14px;
+}
+
+.alliance-antd-rbac-table.ant-table-wrapper {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.alliance-antd-rbac-table.ant-table-wrapper .ant-table-thead > tr > th {
+  background: rgba(255, 255, 255, 0.03) !important;
+  color: rgba(203, 196, 210, 0.45) !important;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.alliance-antd-rbac-role-tag.ant-tag,
+.alliance-antd-rbac-count-tag.ant-tag {
+  background: rgba(207, 188, 255, 0.1);
+  border-color: rgba(207, 188, 255, 0.2);
+  border-radius: 6px;
+  color: #cfbcff;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 18px;
+  margin: 0;
+  padding: 0 8px;
+}
+
+.alliance-antd-rbac-status-tag.ant-tag {
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 900;
+  line-height: 18px;
+  margin: 0;
+  min-width: 66px;
+  padding: 0 8px;
+  text-align: center;
+}
+
+.alliance-antd-rbac-status-tag.is-success {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.28);
+  color: #34d399;
+}
+
+.alliance-antd-rbac-status-tag.is-warning {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.28);
+  color: #fbbf24;
+}
+
+.alliance-antd-rbac-status-tag.is-danger {
+  background: rgba(244, 63, 94, 0.12);
+  border-color: rgba(244, 63, 94, 0.28);
+  color: #fb7185;
+}
+
+.alliance-antd-rbac-mini-button.ant-btn,
+.alliance-antd-rbac-mini-button.ant-btn:hover,
+.alliance-antd-rbac-mini-button.ant-btn:focus {
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 900;
+  height: 28px;
+  padding: 0 9px;
+}
+
+.alliance-antd-rbac-mini-button.is-purple.ant-btn {
+  background: rgba(207, 188, 255, 0.1) !important;
+  border-color: rgba(207, 188, 255, 0.2) !important;
+  color: #cfbcff !important;
+}
+
+.alliance-antd-rbac-mini-button.is-danger.ant-btn {
+  background: rgba(244, 63, 94, 0.1) !important;
+  border-color: rgba(244, 63, 94, 0.2) !important;
+  color: #fb7185 !important;
+}
+
+.alliance-antd-rbac-switch.ant-switch {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.alliance-antd-rbac-switch.ant-switch.ant-switch-checked {
+  background: #10b981;
+}
+
+.alliance-antd-rbac-mobile-action.ant-btn,
+.alliance-antd-rbac-mobile-action.ant-btn:hover,
+.alliance-antd-rbac-mobile-action.ant-btn:focus {
+  border-radius: 10px;
+  flex: 1;
+  font-size: 10px;
+  font-weight: 900;
+  height: 34px;
+}
+
+.alliance-antd-rbac-mobile-action.is-purple.ant-btn {
+  background: rgba(207, 188, 255, 0.1) !important;
+  border-color: rgba(207, 188, 255, 0.2) !important;
+  color: #cfbcff !important;
+}
+
+.alliance-antd-rbac-mobile-action.is-warning.ant-btn {
+  background: rgba(245, 158, 11, 0.1) !important;
+  border-color: rgba(245, 158, 11, 0.2) !important;
+  color: #fbbf24 !important;
+}
+
+.alliance-antd-rbac-mobile-action.is-danger.ant-btn {
+  background: rgba(244, 63, 94, 0.1) !important;
+  border-color: rgba(244, 63, 94, 0.2) !important;
+  color: #fb7185 !important;
+}
+
+.alliance-antd-rbac-role-radio.ant-radio-group {
+  display: block;
+}
+
+.alliance-antd-rbac-role-radio .ant-radio-button-wrapper {
+  align-items: stretch;
+  background: #110e16;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 14px !important;
+  color: rgba(203, 196, 210, 0.72);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  height: auto;
+  line-height: normal;
+  padding: 12px;
+  width: 100%;
+}
+
+.alliance-antd-rbac-role-radio .ant-radio-button-wrapper::before {
+  display: none;
+}
+
+.alliance-antd-rbac-role-radio .ant-radio-button-wrapper-checked {
+  background: rgba(207, 188, 255, 0.1) !important;
+  border-color: rgba(207, 188, 255, 0.35) !important;
+  color: #ffffff !important;
+}
+
+.alliance-antd-rbac-permission-list .ant-list-item {
+  margin-bottom: 0;
+}
+
+.alliance-antd-rbac-permission-checkbox.ant-checkbox-wrapper {
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  display: flex;
+  gap: 10px;
+  min-height: 88px;
+  padding: 14px;
+  width: 100%;
+}
+
+.alliance-antd-rbac-permission-checkbox.ant-checkbox-wrapper:hover {
+  border-color: rgba(207, 188, 255, 0.25);
+}
+
+.alliance-antd-rbac-permission-checkbox .ant-checkbox {
+  margin-top: 2px;
+}
+
+.alliance-antd-rbac-modal.ant-modal .ant-modal-content {
+  background: #181421 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+  padding: 24px;
+}
+
+.alliance-antd-rbac-modal.ant-modal .ant-modal-close {
+  color: rgba(203, 196, 210, 0.6);
+}
+
+.alliance-antd-rbac-modal.ant-modal .ant-modal-close:hover {
+  color: #ffffff;
+}
+
+.alliance-antd-rbac-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.alliance-antd-rbac-modal-header {
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  gap: 12px;
+  padding-bottom: 14px;
+  text-align: left;
+}
+
+.alliance-antd-rbac-modal-header h4 {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 900;
+  margin: 0;
+}
+
+.alliance-antd-rbac-modal-header p {
+  color: rgba(203, 196, 210, 0.4);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  margin: 2px 0 0;
+}
+
+.alliance-antd-rbac-modal-icon {
+  align-items: center;
+  border-radius: 12px;
+  display: flex;
+  height: 36px;
+  justify-content: center;
+  width: 36px;
+}
+
+.alliance-antd-rbac-modal-icon.is-purple {
+  background: rgba(207, 188, 255, 0.1);
+  border: 1px solid rgba(207, 188, 255, 0.2);
+  color: #cfbcff;
+}
+
+.alliance-antd-rbac-modal-icon.is-amber {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+}
+
+.alliance-antd-rbac-form .ant-form-item {
+  margin-bottom: 14px;
+}
+
+.alliance-antd-rbac-form .ant-form-item:last-child {
+  margin-bottom: 0;
+}
+
+.alliance-antd-rbac-form .ant-form-item-label {
+  padding-bottom: 6px;
+}
+
+.alliance-antd-rbac-form .ant-form-item-label > label {
+  color: rgba(203, 196, 210, 0.6) !important;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.alliance-antd-rbac-form .ant-input,
+.alliance-antd-rbac-form .ant-select-selector {
+  background: #110e16 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  min-height: 42px;
+}
+
+.alliance-antd-rbac-form .ant-select-selection-item {
+  color: #ffffff !important;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.alliance-antd-rbac-lock-tip {
+  color: rgba(203, 196, 210, 0.35);
+  font-size: 9px;
+  font-style: italic;
+  line-height: 1.6;
+  margin: 8px 0 0;
+}
+
+.alliance-antd-rbac-readonly-box,
+.alliance-antd-rbac-permission-preview,
+.alliance-antd-rbac-danger-box {
+  background: rgba(17, 14, 22, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  padding: 14px;
+  text-align: left;
+}
+
+.alliance-antd-rbac-readonly-box span,
+.alliance-antd-rbac-permission-preview > span {
+  color: rgba(203, 196, 210, 0.45);
+  display: block;
+  font-size: 10px;
+  font-weight: 900;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.alliance-antd-rbac-readonly-box strong {
+  align-items: center;
+  color: #cfbcff;
+  display: flex;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 900;
+  gap: 8px;
+}
+
+.alliance-antd-rbac-readonly-box em,
+.alliance-antd-rbac-permission-preview em {
+  color: rgba(203, 196, 210, 0.38);
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.alliance-antd-rbac-permission-preview .ant-list {
+  max-height: 116px;
+  overflow-y: auto;
+}
+
+.alliance-antd-rbac-permission-preview .ant-list-item {
+  align-items: center;
+  border-block-end: 0 !important;
+  color: rgba(255, 255, 255, 0.86);
+  display: flex;
+  font-size: 10px;
+  gap: 6px;
+  padding: 3px 0;
+}
+
+.alliance-antd-rbac-permission-preview p {
+  color: #fb7185;
+  font-size: 10px;
+  font-style: italic;
+  margin: 0;
+}
+
+.alliance-antd-rbac-danger-box {
+  background: rgba(127, 29, 29, 0.18);
+  border-color: rgba(248, 113, 113, 0.16);
+}
+
+.alliance-antd-rbac-danger-box > div {
+  align-items: center;
+  color: #f87171;
+  display: flex;
+  font-size: 10px;
+  font-weight: 900;
+  gap: 6px;
+  text-transform: uppercase;
+}
+
+.alliance-antd-rbac-danger-box p {
+  color: rgba(203, 196, 210, 0.62);
+  font-size: 10px;
+  line-height: 1.65;
+  margin: 8px 0 10px;
+}
+
+.alliance-antd-rbac-reset-button.ant-btn,
+.alliance-antd-rbac-reset-button.ant-btn:hover,
+.alliance-antd-rbac-reset-button.ant-btn:focus {
+  background: rgba(239, 68, 68, 0.1) !important;
+  border-color: rgba(239, 68, 68, 0.22) !important;
+  border-radius: 12px;
+  color: #fca5a5 !important;
+  font-size: 11px;
+  font-weight: 900;
+  height: 38px;
+  width: 100%;
+}
+
+.alliance-antd-rbac-modal-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  gap: 12px;
+  padding-top: 14px;
+}
+
+.alliance-antd-rbac-modal-cancel.ant-btn,
+.alliance-antd-rbac-modal-cancel.ant-btn:hover,
+.alliance-antd-rbac-modal-cancel.ant-btn:focus,
+.alliance-antd-rbac-modal-submit.ant-btn,
+.alliance-antd-rbac-modal-submit.ant-btn:hover,
+.alliance-antd-rbac-modal-submit.ant-btn:focus {
+  border-color: transparent !important;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 900;
+  height: 42px;
+}
+
+.alliance-antd-rbac-modal-cancel.ant-btn {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #ffffff !important;
+  flex: 1;
+}
+
+.alliance-antd-rbac-modal-submit.ant-btn {
+  color: #110e16 !important;
+  flex: 2;
+}
+
+.alliance-antd-rbac-modal-submit.is-green.ant-btn {
+  background: linear-gradient(90deg, #14b8a6, #34d399) !important;
+}
+
+.alliance-antd-rbac-modal-submit.is-purple.ant-btn {
+  background: #cfbcff !important;
+}
