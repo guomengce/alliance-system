@@ -1,17 +1,18 @@
 import type { FormEvent } from 'react';
 
 import { useAppContext } from '../../../context/AppContext';
+import {
+  loginWithBackend,
+  registerWithBackend,
+  requestBackendResetCode,
+  resetBackendPassword,
+  toRegisteredUser,
+} from '../actions';
 import type { LoginViewProps } from '../types';
 import {
-  createRegisteredUser,
-  findRegisteredUser,
-  getRegistrationIdentity,
-  isRegisteredEmailConflict,
-  isResetCodeValid,
   isValidAuthEmail,
   isValidAuthPassword,
   normalizeAuthEmail,
-  updateRegisteredUserPassword,
 } from '../utils';
 import type { AuthFormState } from './useAuthFormState';
 
@@ -42,11 +43,12 @@ export function useAuthHandlers({
   setEmail,
   onSuccess,
 }: UseAuthHandlersParams) {
-  const { registeredUsers, setRegisteredUsers, setAdminRole } = useAppContext();
+  const { setRegisteredUsers, setAdminRole } = useAppContext();
   const {
     setView,
     setErrorMsg,
     setAlertType,
+    rememberMe,
     regEmail,
     regNickname,
     regPassword,
@@ -61,7 +63,12 @@ export function useAuthHandlers({
     setConfirmNewPassword,
   } = formState;
 
-  const handleSubmit = (e: FormEvent) => {
+  const showRequestError = (error: unknown, fallback: string) => {
+    setAlertType('error');
+    setErrorMsg(error instanceof Error ? error.message : fallback);
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
 
@@ -69,39 +76,35 @@ export function useAuthHandlers({
 
     if (!isValidAuthEmail(trimmedEmail)) {
       setAlertType('error');
-      setErrorMsg('请输入合法的系统安全登录邮箱账户');
+      setErrorMsg('请输入合法的登录邮箱账号');
       return;
     }
 
     if (!loginPassword || !isValidAuthPassword(loginPassword)) {
       setAlertType('error');
-      setErrorMsg('系统密钥口令长度不足，请重试');
+      setErrorMsg('密码长度不足，请重试');
       return;
     }
 
-    const matched = findRegisteredUser(registeredUsers, trimmedEmail);
+    try {
+      const result = await loginWithBackend({
+        email: trimmedEmail,
+        password: loginPassword,
+        remember: rememberMe,
+      });
 
-    if (!matched) {
-      setAlertType('error');
-      setErrorMsg('登录账号未在系统注册，请先点击下方注册新账户');
-      return;
+      setPortalMode(result.user.portalMode);
+      setAdminRole(result.user.role);
+      setNickname(result.user.nickname);
+      setEmail(result.user.email);
+
+      onSuccess(result.user.portalMode);
+    } catch (error) {
+      showRequestError(error, '登录失败，请检查账号或密码');
     }
-
-    if (matched.password !== loginPassword) {
-      setAlertType('error');
-      setErrorMsg('您输入的登录密钥/密码不正确，请重新输入');
-      return;
-    }
-
-    setPortalMode(matched.portalMode);
-    setAdminRole(matched.role);
-    setNickname(matched.nickname);
-    setEmail(matched.email);
-
-    onSuccess(matched.portalMode);
   };
 
-  const handleRegister = (e: FormEvent) => {
+  const handleRegister = async (e: FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
 
@@ -116,13 +119,13 @@ export function useAuthHandlers({
 
     if (!trimmedNick) {
       setAlertType('error');
-      setErrorMsg('请输入同盟专属名称（昵称）');
+      setErrorMsg('请输入昵称');
       return;
     }
 
     if (!isValidAuthPassword(regPassword)) {
       setAlertType('error');
-      setErrorMsg('密码安全强度不足，最少 4 位');
+      setErrorMsg('密码长度至少需要 4 位');
       return;
     }
 
@@ -132,26 +135,29 @@ export function useAuthHandlers({
       return;
     }
 
-    if (isRegisteredEmailConflict(registeredUsers, trimmedEmail)) {
-      setAlertType('error');
-      setErrorMsg('此邮箱已注册，请直接登录或找回密码');
-      return;
+    try {
+      const result = await registerWithBackend({
+        email: trimmedEmail,
+        nickname: trimmedNick,
+        password: regPassword,
+        remember: rememberMe,
+      });
+
+      setRegisteredUsers(prev => [...prev, toRegisteredUser(result.user, regPassword)]);
+      setPortalMode(result.user.portalMode);
+      setAdminRole(result.user.role);
+      setNickname(result.user.nickname);
+      setEmail(result.user.email);
+      setLoginEmail(result.user.email);
+      setLoginPassword(regPassword);
+
+      onSuccess(result.user.portalMode);
+    } catch (error) {
+      showRequestError(error, '注册失败，请检查账号信息');
     }
-
-    const identity = getRegistrationIdentity(trimmedEmail);
-    const newUser = createRegisteredUser(trimmedEmail, regPassword, trimmedNick);
-
-    setRegisteredUsers(prev => [...prev, newUser]);
-
-    setLoginEmail(trimmedEmail);
-    setLoginPassword(regPassword);
-
-    setAlertType('success');
-    setErrorMsg(`注册成功！已为您分配：${identity.isTestSystemMail ? '系统管理员菜单 (Operator)' : '联盟普通会员账户'}`);
-    setView('login');
   };
 
-  const handleRequestResetCode = (e: FormEvent) => {
+  const handleRequestResetCode = async (e: FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
 
@@ -159,56 +165,60 @@ export function useAuthHandlers({
 
     if (!isValidAuthEmail(trimmedForgot)) {
       setAlertType('error');
-      setErrorMsg('请输入用以验证的系统安全登录邮箱');
+      setErrorMsg('请输入用于验证的登录邮箱');
       return;
     }
 
-    const matched = findRegisteredUser(registeredUsers, trimmedForgot);
-
-    if (!matched) {
-      setAlertType('error');
-      setErrorMsg('未查找到此邮箱注册信息，请核对后重试');
-      return;
+    try {
+      const result = await requestBackendResetCode({ email: trimmedForgot });
+      setResetCode(result.resetToken ?? '');
+      setNewPassword('');
+      setConfirmNewPassword('');
+      setAlertType('success');
+      setErrorMsg(result.resetToken ? `${result.message} [ ${result.resetToken} ]` : result.message);
+      setView('reset');
+    } catch (error) {
+      showRequestError(error, '重置密码申请失败，请检查邮箱');
     }
-
-    setResetCode('');
-    setNewPassword('');
-    setConfirmNewPassword('');
-    setAlertType('success');
-    setErrorMsg('系统重置密码安全验证码已被分发，演示核验码为 [ 123456 ]');
-    setView('reset');
   };
 
-  const handleResetPassword = (e: FormEvent) => {
+  const handleResetPassword = async (e: FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
 
-    if (!isResetCodeValid(resetCode)) {
+    if (!resetCode.trim()) {
       setAlertType('error');
-      setErrorMsg('安全核验码不正确，请核对或重新输入 demonstration key: 123456');
+      setErrorMsg('请输入后端发放的重置验证码');
       return;
     }
 
     if (!isValidAuthPassword(newPassword)) {
       setAlertType('error');
-      setErrorMsg('新密码过于简单，长度至少需要4位');
+      setErrorMsg('新密码长度至少需要 4 位');
       return;
     }
 
     if (newPassword !== confirmNewPassword) {
       setAlertType('error');
-      setErrorMsg('两次填写的密码不匹配，请重新核对');
+      setErrorMsg('两次填写的密码不匹配');
       return;
     }
 
-    setRegisteredUsers(prev => updateRegisteredUserPassword(prev, forgotEmail, newPassword));
+    try {
+      const result = await resetBackendPassword({
+        email: forgotEmail,
+        code: resetCode,
+        newPassword,
+      });
 
-    setLoginEmail(normalizeAuthEmail(forgotEmail));
-    setLoginPassword(newPassword);
-
-    setAlertType('success');
-    setErrorMsg('您的同盟系统登录密码已被重置更新！请重新输入新密码登录。');
-    setView('login');
+      setLoginEmail(normalizeAuthEmail(forgotEmail));
+      setLoginPassword(newPassword);
+      setAlertType('success');
+      setErrorMsg(result.message);
+      setView('login');
+    } catch (error) {
+      showRequestError(error, '密码重置失败，请检查验证码');
+    }
   };
 
   const handleForgotClick = () => {
