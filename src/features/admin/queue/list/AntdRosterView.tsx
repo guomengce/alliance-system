@@ -1,6 +1,6 @@
-import { Card } from 'antd';
 import { Activity, Lock, ShieldCheck } from 'lucide-react';
 
+import { AntdCard } from '../../../../shared/antd/AntdCard';
 import { AntdDesktopTable } from './components/AntdDesktopTable';
 import { AntdMobileCard } from './components/AntdMobileCard';
 import type { RosterViewProps } from '../types';
@@ -38,7 +38,7 @@ export function AntdRosterView({ lockedRoster, onOpenDetails }: RosterViewProps)
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 bg-[#1a1622]/40 p-5 rounded-2xl border border-white/5 text-left animate-fadeIn">
-          <Card className="alliance-antd-queue-guide-card">
+          <AntdCard className="alliance-antd-queue-guide-card">
             <h4 className="text-xs font-black text-[#f1bf50] flex items-center gap-1.5 uppercase tracking-wider font-sans border-b border-white/5 pb-2">
               <ShieldCheck className="w-4 h-4 text-[#f1bf50]" />
               <span>{TEXT.guideTitle}</span>
@@ -51,9 +51,9 @@ export function AntdRosterView({ lockedRoster, onOpenDetails }: RosterViewProps)
               </div>
               <p className="text-[10px] text-[#cbc4d2]/40">{TEXT.stockNote}</p>
             </div>
-          </Card>
+          </AntdCard>
 
-          <Card className="alliance-antd-queue-guide-card">
+          <AntdCard className="alliance-antd-queue-guide-card">
             <div className="space-y-3 flex flex-col justify-between h-full">
               <div>
                 <h4 className="text-xs font-black text-[#cfbcff] flex items-center gap-1.5 uppercase tracking-wider font-sans border-b border-white/5 pb-2">
@@ -66,7 +66,7 @@ export function AntdRosterView({ lockedRoster, onOpenDetails }: RosterViewProps)
                 {TEXT.archiveNote}
               </div>
             </div>
-          </Card>
+          </AntdCard>
         </div>
 
         <div className="text-left space-y-4 flex-grow">

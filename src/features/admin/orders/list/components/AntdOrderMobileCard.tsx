@@ -1,6 +1,7 @@
-import { Button, Card, Space, Tag } from 'antd';
+import { Button, Space, Tag } from 'antd';
 import { Eye } from 'lucide-react';
 
+import { AntdCard } from '../../../../../shared/antd/AntdCard';
 import type { MobileOrderCardProps, OrderDetail } from '../../types';
 
 function OrderStatusTag({ status }: { status: OrderDetail['status'] }) {
@@ -29,7 +30,7 @@ export default function AntdOrderMobileCard({
   };
 
   return (
-    <Card className="alliance-antd-mobile-card alliance-antd-order-mobile-card">
+    <AntdCard className="alliance-antd-mobile-card alliance-antd-order-mobile-card">
       <div className="flex justify-between items-center text-xs">
         <span className="font-bold text-white font-mono">{order.id}</span>
         <OrderStatusTag status={order.status} />
@@ -91,6 +92,6 @@ export default function AntdOrderMobileCard({
           )}
         </div>
       </div>
-    </Card>
+    </AntdCard>
   );
 }

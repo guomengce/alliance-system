@@ -1,5 +1,6 @@
-import { Card } from 'antd';
 import { DollarSign, Sliders } from 'lucide-react';
+
+import { AntdCard } from '../../../../../shared/antd/AntdCard';
 
 const TEXT = {
   title: '\u667a\u80fd\u6821\u5bf9\u76d1\u63a7\u89c4\u8303',
@@ -15,7 +16,7 @@ const TEXT = {
 
 export function AntdCalibrationGuidePanel() {
   return (
-    <Card className="alliance-antd-queue-side-card lg:col-span-4">
+    <AntdCard className="alliance-antd-queue-side-card lg:col-span-4">
       <div className="space-y-4">
         <h4 className="text-xs font-black text-[#f1bf50] flex items-center gap-1.5 uppercase tracking-wider font-sans border-b border-white/5 pb-2">
           <Sliders className="w-4 h-4 text-[#f1bf50]" />
@@ -37,6 +38,6 @@ export function AntdCalibrationGuidePanel() {
         </p>
         <p className="text-[#cbc4d2]/75 leading-relaxed text-[11px]">{TEXT.riskDesc}</p>
       </div>
-    </Card>
+    </AntdCard>
   );
 }

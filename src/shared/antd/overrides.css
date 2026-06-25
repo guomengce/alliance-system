@@ -2708,10 +2708,10 @@
 .alliance-antd-wallet-action-button.is-active.ant-btn:hover,
 .alliance-antd-wallet-action-button.is-active.ant-btn:focus {
   background: var(--color-primary) !important;
-  border-color: rgba(207, 188, 255, 0.4) !important;
-  box-shadow: 0 0 0 1px var(--color-primary-light), var(--shadow-control);
+  border-color: transparent !important;
+    box-shadow: none;
   color: var(--color-text-main) !important;
-  transform: scale(1.02);
+  transform: none;
 }
 
 .alliance-antd-wallet-action-button.is-primary-idle.ant-btn,
@@ -3243,4 +3243,303 @@
 .alliance-antd-wallet-copy-button.ant-btn:hover,
 .alliance-antd-wallet-copy-button.ant-btn:focus {
   background: rgba(207, 188, 255, 0.25) !important;
+}
+
+/* Client subscribe Ant Design replacements */
+.alliance-antd-subscribe-plan-card.ant-card {
+  background: rgba(26, 22, 32, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.alliance-antd-subscribe-plan-card.ant-card:hover {
+  border-color: rgba(207, 188, 255, 0.3);
+}
+
+.alliance-antd-subscribe-plan-card.ant-card.tone-zinc {
+  border-color: rgba(39, 39, 42, 0.8) !important;
+}
+
+.alliance-antd-subscribe-plan-card.ant-card.tone-zinc:hover {
+  border-color: rgba(82, 82, 91, 0.8) !important;
+}
+
+.alliance-antd-subscribe-plan-card.ant-card.tone-slate {
+  border-color: rgba(30, 41, 59, 0.8) !important;
+}
+
+.alliance-antd-subscribe-plan-card.ant-card.tone-slate:hover {
+  border-color: rgba(71, 85, 105, 0.8) !important;
+}
+
+.alliance-antd-subscribe-plan-card.ant-card.tone-amber {
+  border-color: rgba(120, 53, 15, 0.3) !important;
+}
+
+.alliance-antd-subscribe-plan-card.ant-card.tone-amber:hover {
+  border-color: rgba(245, 158, 11, 0.3) !important;
+}
+
+.alliance-antd-subscribe-plan-card.ant-card.tone-sky {
+  border-color: rgba(12, 74, 110, 0.3) !important;
+}
+
+.alliance-antd-subscribe-plan-card.ant-card.tone-sky:hover {
+  border-color: rgba(14, 165, 233, 0.3) !important;
+}
+
+.alliance-antd-subscribe-plan-card.ant-card.tone-purple {
+  border-color: rgba(168, 85, 247, 0.3) !important;
+}
+
+.alliance-antd-subscribe-plan-card.ant-card.tone-purple:hover {
+  border-color: rgba(207, 188, 255, 0.5) !important;
+}
+
+.alliance-antd-subscribe-plan-card.ant-card.is-selected {
+  background: linear-gradient(135deg, rgba(103, 80, 164, 0.2), rgba(207, 188, 255, 0.05));
+  border-color: var(--color-primary-light) !important;
+  box-shadow: 0 0 0 2px rgba(207, 188, 255, 0.5), var(--shadow-card);
+  transform: scale(1.015);
+}
+
+.alliance-antd-subscribe-plan-card.ant-card .ant-card-body {
+  padding: 0;
+}
+
+.alliance-antd-subscribe-recommend-tag.ant-tag {
+  align-items: center;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  border-color: transparent;
+  border-left-color: var(--color-primary) !important;
+  border-radius: 6px;
+  color: var(--color-text-main);
+  display: inline-flex;
+  font-size: 10px;
+  font-weight: 900;
+  gap: 4px;
+  line-height: 18px;
+  margin-inline-end: 0;
+  padding: 0 10px;
+  text-transform: uppercase;
+}
+
+.alliance-antd-subscribe-plan-button.ant-btn,
+.alliance-antd-subscribe-plan-button.ant-btn:hover,
+.alliance-antd-subscribe-plan-button.ant-btn:focus {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px;
+  color: var(--color-text-main) !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 900;
+  height: 42px;
+  justify-content: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.alliance-antd-subscribe-plan-button.ant-btn:hover {
+  background: rgba(207, 188, 255, 0.12) !important;
+}
+
+.alliance-antd-subscribe-plan-button.ant-btn.is-selected,
+.alliance-antd-subscribe-plan-button.ant-btn.is-selected:hover,
+.alliance-antd-subscribe-plan-button.ant-btn.is-selected:focus {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light)) !important;
+  border-color: transparent !important;
+  border-left-color: var(--color-primary) !important;
+  color: var(--color-text-main) !important;
+}
+
+@media (min-width: 1280px) {
+
+  .alliance-antd-subscribe-plan-button.ant-btn,
+  .alliance-antd-subscribe-plan-button.ant-btn:hover,
+  .alliance-antd-subscribe-plan-button.ant-btn:focus {
+    width: 112px;
+  }
+}
+
+.alliance-antd-subscribe-copy-button.ant-btn,
+.alliance-antd-subscribe-copy-button.ant-btn:hover,
+.alliance-antd-subscribe-copy-button.ant-btn:focus,
+.alliance-antd-subscribe-mobile-link-button.ant-btn,
+.alliance-antd-subscribe-mobile-link-button.ant-btn:hover,
+.alliance-antd-subscribe-mobile-link-button.ant-btn:focus {
+  align-items: center;
+  background: rgba(207, 188, 255, 0.15) !important;
+  border-color: rgba(207, 188, 255, 0.12) !important;
+  border-radius: 6px;
+  color: var(--color-primary-light) !important;
+  display: inline-flex;
+  font-size: 9px;
+  font-weight: 900;
+  height: 22px;
+  padding: 0 6px;
+}
+
+.alliance-antd-subscribe-mobile-link-button.ant-btn,
+.alliance-antd-subscribe-mobile-link-button.ant-btn:hover,
+.alliance-antd-subscribe-mobile-link-button.ant-btn:focus {
+  background: transparent !important;
+  border-color: transparent !important;
+  height: auto;
+  min-width: 0;
+  padding: 0;
+}
+
+.alliance-antd-subscribe-detail-button.ant-btn,
+.alliance-antd-subscribe-detail-button.ant-btn:hover,
+.alliance-antd-subscribe-detail-button.ant-btn:focus {
+  background: rgba(207, 188, 255, 0.05) !important;
+  border-color: rgba(207, 188, 255, 0.1) !important;
+  border-radius: 8px;
+  color: var(--color-primary-light) !important;
+  font-size: 12px;
+  font-weight: 900;
+  height: 30px;
+  padding: 0 10px;
+}
+
+.alliance-antd-subscribe-detail-button.ant-btn:hover {
+  background: rgba(207, 188, 255, 0.12) !important;
+}
+
+.alliance-antd-subscribe-detail-button.is-mobile.ant-btn {
+  font-size: 11px;
+  height: 28px;
+}
+
+.alliance-antd-subscribe-status-tag.ant-tag {
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 18px;
+  margin-inline-end: 0;
+  padding: 0 9px;
+  text-transform: uppercase;
+}
+
+.alliance-antd-subscribe-status-tag.is-mobile.ant-tag {
+  font-size: 9px;
+  line-height: 16px;
+  padding: 0 8px;
+}
+
+.alliance-antd-subscribe-status-tag.is-success {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+}
+
+.alliance-antd-subscribe-status-tag.is-failed {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+}
+
+.alliance-antd-subscribe-status-tag.is-pending {
+  background: rgba(103, 80, 164, 0.3);
+  border-color: rgba(207, 188, 255, 0.2);
+  color: var(--color-primary-light);
+}
+
+.alliance-antd-subscribe-status-tag.is-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.12);
+  color: #f59e0b;
+}
+
+.alliance-antd-subscribe-progress.ant-progress .ant-progress-outer {
+  display: block;
+}
+
+.alliance-antd-subscribe-progress.ant-progress .ant-progress-inner {
+  background: rgba(54, 52, 58, 0.4);
+}
+
+.alliance-antd-subscribe-progress.ant-progress .ant-progress-bg {
+  background: #8b5ed7;
+}
+
+.alliance-antd-subscribe-modal-progress.ant-progress .ant-progress-bg {
+  background: #b794f6 !important;
+}
+
+.alliance-antd-subscribe-modal-close.ant-btn,
+.alliance-antd-subscribe-modal-close.ant-btn:hover,
+.alliance-antd-subscribe-modal-close.ant-btn:focus {
+  align-items: center;
+  background: transparent !important;
+  border-color: transparent !important;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.5) !important;
+  display: inline-flex;
+  height: 32px;
+  justify-content: center;
+  min-width: 32px;
+  padding: 0;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
+.alliance-antd-subscribe-modal-close.ant-btn:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: var(--color-text-main) !important;
+}
+
+.alliance-antd-subscribe-modal-secondary.ant-btn,
+.alliance-antd-subscribe-modal-secondary.ant-btn:hover,
+.alliance-antd-subscribe-modal-secondary.ant-btn:focus {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  border-radius: 12px;
+  color: var(--color-text-secondary) !important;
+  flex: 1;
+  font-size: 12px;
+  font-weight: 800;
+  height: 42px;
+}
+
+.alliance-antd-subscribe-modal-secondary.ant-btn:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.alliance-antd-subscribe-modal-primary.ant-btn,
+.alliance-antd-subscribe-modal-primary.ant-btn:hover,
+.alliance-antd-subscribe-modal-primary.ant-btn:focus {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light)) !important;
+  border-color: transparent !important;
+  border-left-color: var(--color-primary) !important;
+  border-radius: 12px;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.3);
+  color: var(--color-text-main) !important;
+  flex: 1;
+  font-size: 12px;
+  font-weight: 900;
+  height: 42px;
+}
+
+.alliance-antd-subscribe-modal-close-button.ant-btn,
+.alliance-antd-subscribe-modal-close-button.ant-btn:hover,
+.alliance-antd-subscribe-modal-close-button.ant-btn:focus {
+  background: var(--color-primary-light) !important;
+  border-color: transparent !important;
+  border-radius: 12px;
+  box-shadow: var(--shadow-control);
+  color: var(--color-primary-contrast) !important;
+  font-size: 12px;
+  font-weight: 800;
+  height: 38px;
+  padding: 0 20px;
 }

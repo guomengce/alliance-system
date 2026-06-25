@@ -1,0 +1,155 @@
+:root {
+  /* Backgrounds */
+  --app-color-bg-page: #0b090f;
+  --app-color-bg-page-deep: #0c0a0f;
+  --app-color-bg-surface: #16131c;
+  --app-color-bg-surface-soft: #1c1824;
+  --app-color-bg-surface-raised: #181421;
+  --app-color-bg-control: #141218;
+  --app-color-bg-control-hover: #211f24;
+  --app-color-bg-control-muted: #36343a;
+
+  /* Brand */
+  --app-color-primary: #6750a4;
+  --app-color-primary-light: #cfbcff;
+  --app-color-primary-contrast: #381e72;
+  --app-gradient-primary: linear-gradient(90deg, #6750a4, #cfbcff);
+
+  /* Text */
+  --app-color-text-primary: #ffffff;
+  --app-color-text-body: #e6e0e9;
+  --app-color-text-secondary: #cbc4d2;
+  --app-color-text-muted: rgba(203, 196, 210, 0.55);
+  --app-color-text-faint: rgba(203, 196, 210, 0.35);
+  --app-color-text-placeholder: rgba(203, 196, 210, 0.32);
+
+  /* Borders */
+  --app-color-border-faint: rgba(255, 255, 255, 0.05);
+  --app-color-border-soft: rgba(255, 255, 255, 0.08);
+  --app-color-border-control: rgba(255, 255, 255, 0.1);
+  --app-color-border-active: rgba(207, 188, 255, 0.45);
+  --app-color-border-strong: rgba(207, 188, 255, 0.35);
+
+  /* Status */
+  --app-color-success: #34d399;
+  --app-color-success-strong: #00e676;
+  --app-color-warning: #e7c365;
+  --app-color-warning-strong: #f59e0b;
+  --app-color-danger: #f87171;
+  --app-color-danger-strong: #ff6b8a;
+  --app-color-risk: #fb7185;
+  --app-color-info: #58c7ff;
+
+  /* Status surfaces */
+  --app-color-success-bg: rgba(16, 185, 129, 0.1);
+  --app-color-success-border: rgba(16, 185, 129, 0.12);
+  --app-color-warning-bg: rgba(245, 158, 11, 0.1);
+  --app-color-warning-border: rgba(245, 158, 11, 0.12);
+  --app-color-danger-bg: rgba(239, 68, 68, 0.1);
+  --app-color-danger-border: rgba(239, 68, 68, 0.12);
+  --app-color-info-bg: rgba(88, 199, 255, 0.12);
+  --app-color-info-border: rgba(88, 199, 255, 0.25);
+  --app-color-purple-bg: rgba(207, 188, 255, 0.1);
+  --app-color-purple-border: rgba(207, 188, 255, 0.2);
+  --app-color-muted-bg: rgba(255, 255, 255, 0.05);
+  --app-color-muted-border: rgba(255, 255, 255, 0.08);
+
+  /* Typography */
+  --app-font-family-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --app-font-family-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --app-font-size-page-title: 20px;
+  --app-font-size-section-title: 16px;
+  --app-font-size-card-title: 14px;
+  --app-font-size-body: 13px;
+  --app-font-size-table: 13px;
+  --app-font-size-table-header: 12px;
+  --app-font-size-caption: 12px;
+  --app-font-size-tag: 12px;
+  --app-font-size-min: 11px;
+  --app-line-height-tight: 1.25;
+  --app-line-height-body: 1.5;
+  --app-line-height-control: 1.35;
+  --app-font-weight-title: 800;
+  --app-font-weight-strong: 800;
+  --app-font-weight-body: 600;
+  --app-font-weight-muted: 500;
+
+  /* Radius */
+  --app-radius-sm: 8px;
+  --app-radius-md: 12px;
+  --app-radius-lg: 16px;
+  --app-radius-xl: 24px;
+  --app-radius-pill: 999px;
+
+  /* Spacing */
+  --app-space-1: 4px;
+  --app-space-2: 8px;
+  --app-space-3: 12px;
+  --app-space-4: 16px;
+  --app-space-5: 20px;
+  --app-space-6: 24px;
+  --app-space-8: 32px;
+
+  /* Shadows */
+  --app-shadow-card: 0 18px 60px rgba(0, 0, 0, 0.22);
+  --app-shadow-control: 0 10px 22px rgba(0, 0, 0, 0.25);
+  --app-shadow-modal: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+
+  /* Compatibility aliases for the existing gradual migration layer. */
+  --color-bg-page: var(--app-color-bg-page);
+  --color-bg-card: var(--app-color-bg-surface);
+  --color-bg-card-soft: var(--app-color-bg-surface-soft);
+  --color-bg-control: var(--app-color-bg-control);
+  --color-bg-control-hover: var(--app-color-bg-control-hover);
+  --color-bg-control-muted: var(--app-color-bg-control-muted);
+  --color-border-soft: var(--app-color-border-soft);
+  --color-border-faint: var(--app-color-border-faint);
+  --color-border-control: var(--app-color-border-control);
+  --color-border-strong: var(--app-color-border-strong);
+  --color-primary: var(--app-color-primary);
+  --color-primary-light: var(--app-color-primary-light);
+  --color-primary-contrast: var(--app-color-primary-contrast);
+  --color-text-main: var(--app-color-text-primary);
+  --color-text-secondary: var(--app-color-text-secondary);
+  --color-text-muted: var(--app-color-text-muted);
+  --color-text-faint: var(--app-color-text-faint);
+  --color-success: var(--app-color-success-strong);
+  --color-warning: var(--app-color-warning);
+  --color-error: var(--app-color-danger-strong);
+  --color-danger: var(--app-color-risk);
+  --color-info: var(--app-color-info);
+  --font-size-page-title: var(--app-font-size-page-title);
+  --font-size-section-title: var(--app-font-size-section-title);
+  --font-size-card-title: var(--app-font-size-card-title);
+  --font-size-body: var(--app-font-size-body);
+  --font-size-small: var(--app-font-size-caption);
+  --font-size-xs: var(--app-font-size-min);
+  --font-weight-title: var(--app-font-weight-title);
+  --font-weight-strong: var(--app-font-weight-strong);
+  --font-weight-body: var(--app-font-weight-body);
+  --font-weight-muted: var(--app-font-weight-muted);
+  --radius-card: var(--app-radius-lg);
+  --radius-control: var(--app-radius-md);
+  --radius-input: var(--app-radius-sm);
+  --radius-pill: var(--app-radius-pill);
+  --space-page-section: var(--app-space-6);
+  --space-card: var(--app-space-6);
+  --space-card-mobile: var(--app-space-4);
+  --space-form-item: var(--app-space-4);
+  --space-control-gap: var(--app-space-3);
+  --shadow-card: var(--app-shadow-card);
+  --shadow-control: var(--app-shadow-control);
+}
+
+:where(.ant-btn-primary):not(.ant-btn-dangerous),
+:where(.ant-btn-primary):not(.ant-btn-dangerous):hover,
+:where(.ant-btn-primary):not(.ant-btn-dangerous):focus {
+  background: linear-gradient(90deg, #6750a4, #cfbcff) !important;
+  border-color: transparent !important;
+  color: var(--app-color-text-primary) !important;
+}
+
+:where(.ant-btn-primary):not(.ant-btn-dangerous):hover,
+:where(.ant-btn-primary):not(.ant-btn-dangerous):focus {
+  filter: brightness(1.06);
+}
