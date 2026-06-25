@@ -5,10 +5,10 @@ import type { AdminRole, PortalMode, RegisteredUser } from './types';
 export function useAuthState(portalMode: PortalMode) {
   const [adminRole, setAdminRole] = useState<AdminRole>(null);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [loginEmail, setLoginEmail] = useState<string>('ppyybb888@gmail.com');
-  const [loginPassword, setLoginPassword] = useState<string>('admin1234');
+  const [loginEmail, setLoginEmail] = useState<string>('client@alliance.com');
+  const [loginPassword, setLoginPassword] = useState<string>('password123');
   const [nickname, setNickname] = useState<string>('Alliance Super Agent');
-  const [email, setEmail] = useState<string>('ppyybb888@gmail.com');
+  const [email, setEmail] = useState<string>('client@alliance.com');
   const [registeredUsers, setRegisteredUsers] = useState<RegisteredUser[]>(() => getInitialRegisteredUsers());
   const [twoFAEnabled, setTwoFAEnabled] = useState<boolean>(true);
 
