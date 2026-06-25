@@ -1,14 +1,3 @@
-import {
-  backendAuthApi,
-  setStoredBackendAuthToken,
-  type BackendAuthSessionResponse,
-  type BackendLoginRequest,
-  type BackendRegisterRequest,
-  type BackendRequestResetRequest,
-  type BackendRequestResetResponse,
-  type BackendResetPasswordRequest,
-} from '../../api/backend';
-import type { BackendMessageResponse, BackendUserDto } from '../../api/backend/types';
 import type { AdminRole, PortalMode, RegisteredUser } from '../../hooks/types';
 import { normalizeAuthEmail } from './utils';
 
@@ -46,29 +35,27 @@ interface ResetPasswordPayload {
 }
 
 interface LoginDeps {
-  api?: Pick<typeof backendAuthApi, 'login'>;
-  saveToken?: typeof setStoredBackendAuthToken;
+  api?: unknown;
+  saveToken?: unknown;
 }
 
 interface RegisterDeps {
-  api?: Pick<typeof backendAuthApi, 'register'>;
-  saveToken?: typeof setStoredBackendAuthToken;
+  api?: unknown;
+  saveToken?: unknown;
 }
 
 interface RequestResetDeps {
-  api?: Pick<typeof backendAuthApi, 'requestReset'>;
+  api?: unknown;
 }
 
 interface ResetPasswordDeps {
-  api?: Pick<typeof backendAuthApi, 'resetPassword'>;
+  api?: unknown;
 }
 
-const toAuthenticatedUser = (user: BackendUserDto): AuthenticatedUser => ({
-  email: user.email,
-  nickname: user.nickname,
-  portalMode: user.portalMode,
-  role: user.role,
-});
+interface LocalResetResponse {
+  message: string;
+  resetToken: string;
+}
 
 export const toRegisteredUser = (user: AuthenticatedUser, password: string): RegisteredUser => ({
   email: user.email,
@@ -78,59 +65,66 @@ export const toRegisteredUser = (user: AuthenticatedUser, password: string): Reg
   role: user.role,
 });
 
-const toAuthSessionResult = (response: BackendAuthSessionResponse): AuthSessionResult => ({
-  message: response.message,
-  token: response.token,
-  user: toAuthenticatedUser(response.user),
-});
-
 const normalizeBackendEmail = (email: string): string => normalizeAuthEmail(email).toLowerCase();
+
+const getNicknameFromEmail = (email: string): string => {
+  const name = email.split('@')[0]?.trim();
+  if (!name) return 'Local User';
+  return name
+    .split(/[._-]+/)
+    .filter(Boolean)
+    .map(part => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(' ');
+};
+
+const createLocalSession = (
+  email: string,
+  nickname: string,
+  portalMode: PortalMode,
+  role: AdminRole
+): AuthSessionResult => ({
+  message: 'local login ok',
+  token: '',
+  user: {
+    email,
+    nickname,
+    portalMode,
+    role,
+  },
+});
 
 export const loginWithBackend = async (
   payload: LoginPayload,
-  { api = backendAuthApi, saveToken = setStoredBackendAuthToken }: LoginDeps = {}
+  _deps: LoginDeps = {}
 ): Promise<AuthSessionResult> => {
-  const request: BackendLoginRequest = {
-    email: normalizeBackendEmail(payload.email),
-    password: payload.password,
-  };
-  const response = await api.login(request);
-  saveToken(response.token, payload.remember);
-  return toAuthSessionResult(response);
+  const email = normalizeBackendEmail(payload.email);
+  return createLocalSession(email, getNicknameFromEmail(email), 'admin', 'SUPER_ADMIN');
 };
 
 export const registerWithBackend = async (
   payload: RegisterPayload,
-  { api = backendAuthApi, saveToken = setStoredBackendAuthToken }: RegisterDeps = {}
+  _deps: RegisterDeps = {}
 ): Promise<AuthSessionResult> => {
-  const request: BackendRegisterRequest = {
-    email: normalizeBackendEmail(payload.email),
-    nickname: payload.nickname.trim(),
-    password: payload.password,
+  return {
+    ...createLocalSession(normalizeBackendEmail(payload.email), payload.nickname.trim(), 'client', null),
+    message: 'local register ok',
   };
-  const response = await api.register(request);
-  saveToken(response.token, payload.remember);
-  return toAuthSessionResult(response);
 };
 
 export const requestBackendResetCode = async (
   payload: RequestResetPayload,
-  { api = backendAuthApi }: RequestResetDeps = {}
-): Promise<BackendRequestResetResponse> => {
-  const request: BackendRequestResetRequest = {
-    email: normalizeBackendEmail(payload.email),
-  };
-  return api.requestReset(request);
+  _deps: RequestResetDeps = {}
+): Promise<LocalResetResponse> => {
+  normalizeBackendEmail(payload.email);
+  return { message: 'local reset code ready', resetToken: '000000' };
 };
 
 export const resetBackendPassword = async (
   payload: ResetPasswordPayload,
-  { api = backendAuthApi }: ResetPasswordDeps = {}
-): Promise<BackendMessageResponse> => {
-  const request: BackendResetPasswordRequest = {
-    email: normalizeBackendEmail(payload.email),
-    code: payload.code.trim(),
-    newPassword: payload.newPassword,
-  };
-  return api.resetPassword(request);
+  _deps: ResetPasswordDeps = {}
+): Promise<{ message: string }> => {
+  normalizeBackendEmail(payload.email);
+  payload.code.trim();
+  payload.newPassword;
+  return { message: 'local password reset ok' };
 };

@@ -1,7 +1,7 @@
-import MetricGrid from './components/MetricGrid';
-import StatusHeader from './components/StatusHeader';
-import TrendPanel from './components/TrendPanel';
-import TrooPricePanel from './components/TrooPricePanel';
+import AntdMetricGrid from './components/AntdMetricGrid';
+import AntdStatusHeader from './components/AntdStatusHeader';
+import AntdTrendPanel from './components/AntdTrendPanel';
+import AntdTrooPricePanel from './components/AntdTrooPricePanel';
 import { useDashboardState } from './hooks/useDashboardState';
 import type { AdminDashboardViewProps } from './types';
 
@@ -10,15 +10,15 @@ export default function AdminDashboardView(_props: AdminDashboardViewProps) {
 
   return (
     <div id="admin_dashboard_page" className="space-y-6 select-none animate-fadeIn flex-grow flex flex-col pb-4 h-full">
-      <StatusHeader />
-      <MetricGrid cards={pageData.metrics.cards} />
+      <AntdStatusHeader />
+      <AntdMetricGrid cards={pageData.metrics.cards} />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-grow">
-        <TrooPricePanel
+        <AntdTrooPricePanel
           data={pageData.trooPrice}
           onHoverIndexChange={actions.setHoveredTrooIndex}
         />
-        <TrendPanel
+        <AntdTrendPanel
           data={pageData.trend}
           onHoverIndexChange={actions.setHoveredTrendIndex}
         />

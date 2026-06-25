@@ -1,7 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
 
-import type { BackendAuthSessionResponse } from '../../api/backend/auth';
-import type { BackendUserDto } from '../../api/backend/types';
 import {
   loginWithBackend,
   registerWithBackend,
@@ -9,38 +7,10 @@ import {
   resetBackendPassword,
 } from './actions';
 
-const backendUser: BackendUserDto = {
-  email: 'admin_center@alliance.com',
-  nickname: 'Admin Center',
-  portalMode: 'admin',
-  role: 'SUPER_ADMIN',
-  usdtBalance: 100,
-  trooBalance: 200,
-  lockedQueueAmount: 0,
-  originalLockedQueue: 0,
-  releasedQueueAmount: 0,
-  commissionPoolLimit: 0,
-  commissionPoolRemaining: 0,
-  pendingBalance: 0,
-  cumulativeCommissions: 0,
-  arrivedCommissions: 0,
-  failedCommissions: 0,
-  yesterdayRevenue: 0,
-  totalCredit: 0,
-  remainingCredit: 0,
-  twoFAEnabled: true,
-};
-
-const session: BackendAuthSessionResponse = {
-  message: 'ok',
-  token: 'token-123',
-  user: backendUser,
-};
-
-describe('auth backend actions', () => {
-  it('logs in through backend api and stores the returned token', async () => {
+describe('local auth actions', () => {
+  it('logs in locally without calling the backend api or storing a token', async () => {
     const api = {
-      login: vi.fn().mockResolvedValue(session),
+      login: vi.fn(),
     };
     const saveToken = vi.fn();
 
@@ -49,67 +19,63 @@ describe('auth backend actions', () => {
       { api, saveToken }
     );
 
-    expect(api.login).toHaveBeenCalledWith({
-      email: 'admin_center@alliance.com',
-      password: 'admin1234',
-    });
-    expect(saveToken).toHaveBeenCalledWith('token-123', true);
-    expect(result.user).toEqual({
-      email: 'admin_center@alliance.com',
-      nickname: 'Admin Center',
-      portalMode: 'admin',
-      role: 'SUPER_ADMIN',
+    expect(api.login).not.toHaveBeenCalled();
+    expect(saveToken).not.toHaveBeenCalled();
+    expect(result).toEqual({
+      message: 'local login ok',
+      token: '',
+      user: {
+        email: 'admin_center@alliance.com',
+        nickname: 'Admin Center',
+        portalMode: 'admin',
+        role: 'SUPER_ADMIN',
+      },
     });
   });
 
-  it('registers through backend api and stores the returned token', async () => {
+  it('registers locally as a client without calling the backend api or storing a token', async () => {
     const api = {
-      register: vi.fn().mockResolvedValue({
-        ...session,
-        user: { ...backendUser, email: 'client@example.com', portalMode: 'client', role: null },
-      }),
+      register: vi.fn(),
     };
     const saveToken = vi.fn();
 
     const result = await registerWithBackend(
-      { email: ' CLIENT@EXAMPLE.COM ', nickname: 'Client', password: 'password123', remember: false },
+      { email: ' CLIENT@EXAMPLE.COM ', nickname: ' Client ', password: 'password123', remember: false },
       { api, saveToken }
     );
 
-    expect(api.register).toHaveBeenCalledWith({
+    expect(api.register).not.toHaveBeenCalled();
+    expect(saveToken).not.toHaveBeenCalled();
+    expect(result.user).toEqual({
       email: 'client@example.com',
       nickname: 'Client',
-      password: 'password123',
+      portalMode: 'client',
+      role: null,
     });
-    expect(saveToken).toHaveBeenCalledWith('token-123', false);
-    expect(result.user.portalMode).toBe('client');
   });
 
-  it('requests a backend reset code and exposes the development reset token', async () => {
+  it('returns a local reset code without calling the backend api', async () => {
     const api = {
-      requestReset: vi.fn().mockResolvedValue({ message: 'sent', resetToken: 'reset-token' }),
+      requestReset: vi.fn(),
     };
 
     const result = await requestBackendResetCode({ email: ' USER@EXAMPLE.COM ' }, { api });
 
-    expect(api.requestReset).toHaveBeenCalledWith({ email: 'user@example.com' });
-    expect(result.resetToken).toBe('reset-token');
+    expect(api.requestReset).not.toHaveBeenCalled();
+    expect(result).toEqual({ message: 'local reset code ready', resetToken: '000000' });
   });
 
-  it('resets password using the backend reset token', async () => {
+  it('resets password locally without calling the backend api', async () => {
     const api = {
-      resetPassword: vi.fn().mockResolvedValue({ message: 'done' }),
+      resetPassword: vi.fn(),
     };
 
-    await resetBackendPassword(
+    const result = await resetBackendPassword(
       { email: ' USER@EXAMPLE.COM ', code: 'reset-token', newPassword: 'new-pass' },
       { api }
     );
 
-    expect(api.resetPassword).toHaveBeenCalledWith({
-      email: 'user@example.com',
-      code: 'reset-token',
-      newPassword: 'new-pass',
-    });
+    expect(api.resetPassword).not.toHaveBeenCalled();
+    expect(result).toEqual({ message: 'local password reset ok' });
   });
 });
