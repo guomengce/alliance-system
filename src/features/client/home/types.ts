@@ -1,4 +1,5 @@
 import type { Dispatch, SetStateAction } from 'react';
+import type { EChartsOption } from 'echarts';
 import type { Transaction } from '../../../types';
 
 export interface HomeViewProps {
@@ -55,12 +56,9 @@ export interface AssetsAndCreditProps {
 export interface MarketPanelProps {
   activeData: TrooMarketPoint;
   activeIndex: number;
+  chartOption: EChartsOption;
   hoveredIndex: number | null;
   marketData: TrooMarketPoint[];
-  points: ChartPoint[];
-  linePath: string;
-  areaPath: string;
-  chartWidth: number;
   chartHeight: number;
   yesterdayDateStr: string;
   setHoveredIndex: Dispatch<SetStateAction<number | null>>;
