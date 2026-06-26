@@ -1,6 +1,13 @@
 import { AnimatePresence, motion } from 'motion/react';
+import { Button, Progress, Tag } from 'antd';
 import { Lock, X } from 'lucide-react';
-import type { DetailModalProps } from '../types';
+import type { DetailModalProps, QueueOrderItem } from '../types';
+
+const getStatusClassName = (status: QueueOrderItem['status']) => {
+  if (status === 'released') return 'is-success';
+  if (status === 'partially_released') return 'is-purple';
+  return 'is-warning';
+};
 
 export default function OrderDetailModal({ selectedDetailOrder, onClose }: DetailModalProps) {
   if (!selectedDetailOrder) return null;
@@ -38,30 +45,24 @@ export default function OrderDetailModal({ selectedDetailOrder, onClose }: Detai
                 <h3 className="text-white text-[15px] font-black tracking-tight leading-relaxed">
                   {selectedDetailOrder.name}
                 </h3>
-                <div className="flex items-center gap-2 mt-1">
+                <div className="flex items-center gap-2 mt-1 flex-wrap">
                   <span className="text-xs text-[#cbc4d2]/40 font-mono">
                     订单ID: {selectedDetailOrder.id}
                   </span>
                   <span className="w-1 h-1 rounded-full bg-white/20" />
-                  {selectedDetailOrder.status === 'released' && (
-                    <span className="text-xs font-bold text-emerald-400">已全部解锁并买入</span>
-                  )}
-                  {selectedDetailOrder.status === 'partially_released' && (
-                    <span className="text-xs font-bold text-[#cfbcff]">部分解锁</span>
-                  )}
-                  {selectedDetailOrder.status === 'queueing' && (
-                    <span className="text-xs font-bold text-amber-400">排队等待解锁</span>
-                  )}
+                  <Tag className={`alliance-antd-queue-status-tag ${getStatusClassName(selectedDetailOrder.status)}`}>
+                    <span className="alliance-antd-queue-status-dot" />
+                    {selectedDetailOrder.statusLabel}
+                  </Tag>
                 </div>
               </div>
 
-              <button
-                type="button"
+              <Button
+                type="text"
+                icon={<X className="w-4 h-4" />}
                 onClick={onClose}
-                className="p-1 px-1.5 rounded-lg bg-white/5 text-[#cbc4d2]/60 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
-              >
-                <X className="w-4 h-4" />
-              </button>
+                className="alliance-antd-queue-modal-close"
+              />
             </div>
 
             <div className="p-5 overflow-y-auto space-y-5 scrollbar-thin">
@@ -69,25 +70,25 @@ export default function OrderDetailModal({ selectedDetailOrder, onClose }: Detai
                 <div className="space-y-0.5">
                   <span className="text-xs font-bold text-[#cbc4d2]/40 uppercase tracking-widest block">认购方案金额</span>
                   <span className="text-white font-mono font-black text-sm">
-                    ¥ {selectedDetailOrder.amount.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
+                    $ {selectedDetailOrder.amount.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
                   </span>
                 </div>
                 <div className="space-y-0.5">
                   <span className="text-xs font-bold text-[#cbc4d2]/40 uppercase tracking-widest block font-mono">排队锁定金额 (31%)</span>
                   <span className="text-[#cbc4d2]/80 font-mono font-bold text-sm">
-                    ¥ {selectedDetailOrder.originalLock.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
+                    $ {selectedDetailOrder.originalLock.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
                   </span>
                 </div>
                 <div className="space-y-0.5 pt-1.5 border-t border-white/[0.03]">
                   <span className="text-xs font-bold text-[#cbc4d2]/40 uppercase tracking-widest block">已解锁并买入额</span>
                   <span className="text-[#cfbcff] font-mono font-black text-sm">
-                    ¥ {selectedDetailOrder.released.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
+                    $ {selectedDetailOrder.released.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
                   </span>
                 </div>
                 <div className="space-y-0.5 pt-1.5 border-t border-white/[0.03]">
                   <span className="text-xs font-bold text-amber-400/60 uppercase tracking-widest block">剩余排队锁定中</span>
                   <span className="text-amber-400 font-mono font-black text-sm">
-                    ¥ {selectedDetailOrder.remainingLock.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
+                    $ {selectedDetailOrder.remainingLock.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
                   </span>
                 </div>
               </div>
@@ -97,12 +98,7 @@ export default function OrderDetailModal({ selectedDetailOrder, onClose }: Detai
                   <span className="text-[#cbc4d2]/50">解锁买入比例 (UNLOCK RATIO)</span>
                   <span className="text-[#cfbcff] font-mono">{detailProgressPercent}%</span>
                 </div>
-                <div className="w-full bg-[#100d14] rounded-full h-2 overflow-hidden border border-white/[0.02]">
-                  <div
-                    className="bg-gradient-to-r from-[#8a6eff] to-[#cfbcff] h-full rounded-full transition-all duration-1000 ease-out"
-                    style={{ width: `${detailProgressPercent}%` }}
-                  />
-                </div>
+                <Progress className="alliance-antd-queue-progress" percent={detailProgressPercent} showInfo={false} />
               </div>
 
               <div className="space-y-2.5">
@@ -129,7 +125,7 @@ export default function OrderDetailModal({ selectedDetailOrder, onClose }: Detai
                         </p>
 
                         <div className="flex justify-between items-center mt-1 text-xs bg-white/[0.03] px-2.5 py-1 rounded-lg font-mono">
-                          <span className="text-emerald-400 font-bold">已解锁 ¥{subLog.unlockedAmount.toFixed(2)}</span>
+                          <span className="text-emerald-400 font-bold">已解锁 ${subLog.unlockedAmount.toFixed(2)}</span>
                           <span className="text-[#cfbcff] font-bold">买入增持: +{subLog.trooBought.toLocaleString()} TROO</span>
                         </div>
                       </div>
@@ -146,13 +142,13 @@ export default function OrderDetailModal({ selectedDetailOrder, onClose }: Detai
             </div>
 
             <div className="p-4 bg-white/[0.01] border-t border-white/5 flex justify-end gap-2">
-              <button
-                type="button"
+              <Button
+                type="primary"
                 onClick={onClose}
-                className="px-4 py-2 bg-[#cfbcff] text-[#100d14] text-xs font-black rounded-lg hover:bg-white transition-all cursor-pointer shadow-lg font-bold"
+                className="alliance-antd-queue-detail-button"
               >
                 关闭详情窗口 (CLOSE)
-              </button>
+              </Button>
             </div>
           </motion.div>
         </div>

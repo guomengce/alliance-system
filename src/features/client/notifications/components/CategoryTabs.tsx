@@ -1,3 +1,4 @@
+import { Badge, Segmented } from 'antd';
 import type { CategoryTabsProps } from '../types';
 import { hasUnreadNotifications } from '../utils';
 
@@ -8,23 +9,23 @@ export default function CategoryTabs({
   onSelectCategory
 }: CategoryTabsProps) {
   return (
-    <div className="flex border-b border-white/5 pb-1 gap-2 overflow-x-auto scrollbar-hide">
-      {categories.map((cat) => (
-        <button
-          key={cat.id}
-          onClick={() => onSelectCategory(cat.id)}
-          className={`px-5 py-2.5 rounded-xl text-xs font-bold transition-all relative ${
-            activeCategory === cat.id 
-              ? 'bg-white/5 text-[#cfbcff] font-extrabold' 
-              : 'text-[#cbc4d2]/80 hover:text-white'
-          }`}
-        >
-          {cat.label}
-          {cat.id !== 'all' && hasUnreadNotifications(notifications, cat.id) && (
-            <span className="absolute top-1 right-2 w-1.5 h-1.5 rounded-full bg-[#ffb4ab]"></span>
-          )}
-        </button>
-      ))}
+    <div className="border-b border-white/5 pb-1 overflow-x-auto scrollbar-hide">
+      <Segmented<string>
+        className="alliance-antd-notification-tabs"
+        options={categories.map((cat) => ({
+          value: cat.id,
+          label: (
+            <Badge
+              className="alliance-antd-notification-tab-badge"
+              dot={cat.id !== 'all' && hasUnreadNotifications(notifications, cat.id)}
+            >
+              {cat.label}
+            </Badge>
+          ),
+        }))}
+        value={activeCategory}
+        onChange={onSelectCategory}
+      />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import { Button, Form } from 'antd';
 import { AnimatePresence, motion } from 'motion/react';
 import { X } from 'lucide-react';
 import AlertBanner from '../../../../shared/components/AlertBanner';
@@ -61,7 +61,7 @@ export default function ActionPanel({
           )}
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-            <form onSubmit={onSubmit} className="lg:col-span-2 space-y-5">
+            <Form component="form" onSubmitCapture={onSubmit} className="lg:col-span-2 space-y-5">
               {activeAction === 'recharge' && (
                 <RechargePanel
                   rechargeNetwork={rechargeNetwork}
@@ -92,7 +92,7 @@ export default function ActionPanel({
                   usdtBalance={usdtBalance}
                 />
               )}
-            </form>
+            </Form>
 
             {activeAction === 'recharge' && (
               <RechargeQrPanel rechargeNetwork={rechargeNetwork} />
