@@ -73,7 +73,7 @@ export default function AntdFiltersPanel({
 
         <div className="flex items-center gap-3 flex-wrap w-full md:w-auto justify-start md:justify-end">
           <div className="flex items-center gap-1.5 w-full sm:w-auto">
-            <span className="text-[10px] text-[#cbc4d2]/50 font-bold uppercase tracking-wider inline-flex items-center gap-1 shrink-0">
+            <span className="text-xs text-[#cbc4d2]/50 font-bold uppercase tracking-wider inline-flex items-center gap-1 shrink-0">
               <Filter className="w-3 h-3 text-[#cfbcff]" />
               {TEXT.level}
             </span>
@@ -101,7 +101,7 @@ export default function AntdFiltersPanel({
           </div>
 
           <div className="flex items-center gap-1.5 w-full sm:w-auto">
-            <span className="text-[10px] text-[#cbc4d2]/50 font-bold uppercase tracking-wider inline-flex items-center gap-1 shrink-0">
+            <span className="text-xs text-[#cbc4d2]/50 font-bold uppercase tracking-wider inline-flex items-center gap-1 shrink-0">
               {TEXT.category}
             </span>
             <Select

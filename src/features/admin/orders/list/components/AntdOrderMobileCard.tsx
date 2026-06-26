@@ -36,26 +36,26 @@ export default function AntdOrderMobileCard({
         <OrderStatusTag status={order.status} />
       </div>
 
-      <div className="grid grid-cols-2 gap-2 text-[11px] border-t border-b border-white/5 py-2 font-mono">
+      <div className="grid grid-cols-2 gap-2 text-[13px] border-t border-b border-white/5 py-2 font-mono">
         <div>
-          <span className="text-[#cbc4d2]/40 text-[9px] block font-sans">会员 UID</span>
+          <span className="text-[#cbc4d2]/40 text-xs block font-sans">会员 UID</span>
           <p className="text-[#cbc4d2]/80 mt-0.5">{order.uid}</p>
         </div>
         <div>
-          <span className="text-[#cbc4d2]/40 text-[9px] block font-sans">认购理财规格</span>
+          <span className="text-[#cbc4d2]/40 text-xs block font-sans">认购理财规格</span>
           <p className="font-sans text-white font-bold mt-0.5">{order.planName}</p>
         </div>
         <div>
-          <span className="text-[#cbc4d2]/40 text-[9px] block font-sans">认购金额</span>
+          <span className="text-[#cbc4d2]/40 text-xs block font-sans">认购金额</span>
           <p className="text-emerald-400 font-extrabold mt-0.5">USDT {order.amount.toLocaleString()}</p>
         </div>
         <div>
-          <span className="text-[#cbc4d2]/40 text-[9px] block font-sans">到账结算时间</span>
+          <span className="text-[#cbc4d2]/40 text-xs block font-sans">到账结算时间</span>
           <p className="text-[#cbc4d2]/50 mt-0.5">{order.time}</p>
         </div>
       </div>
 
-      <div className="flex justify-between items-center text-[11px] gap-2">
+      <div className="flex justify-between items-center text-[13px] gap-2">
         <Button
           className="alliance-antd-mobile-action-button"
           icon={<Eye className="w-3.5 h-3.5" />}
@@ -85,10 +85,10 @@ export default function AntdOrderMobileCard({
             </Space>
           )}
           {order.status === 'confirmed' && (
-            <span className="text-[10px] text-emerald-400/60 font-semibold select-none">已交割</span>
+            <span className="text-xs text-emerald-400/60 font-semibold select-none">已交割</span>
           )}
           {order.status === 'cancelled' && (
-            <span className="text-[10px] text-white/30 select-none">中止</span>
+            <span className="text-xs text-white/30 select-none">中止</span>
           )}
         </div>
       </div>

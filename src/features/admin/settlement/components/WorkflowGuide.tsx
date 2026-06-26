@@ -11,21 +11,21 @@ export default function WorkflowGuide() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
             <div className="relative pl-4 border-l border-white/10 space-y-1">
               <p className="font-extrabold text-white">1. D+1 日常轮巡对账</p>
-              <p className="text-[#cbc4d2]/60 text-[10px] leading-relaxed">
+              <p className="text-[#cbc4d2]/60 text-xs leading-relaxed">
                 以 24 点日切、次日 04:00 点起息派发。将前日“待核算佣金”扣除溢流部分拨入可用余额钱包。
               </p>
             </div>
 
             <div className="relative pl-4 border-l border-white/10 space-y-1">
               <p className="font-extrabold text-[#e7c365]">2. 额度匮乏拦截 (溢漏)</p>
-              <p className="text-[#cbc4d2]/60 text-[10px] leading-relaxed">
+              <p className="text-[#cbc4d2]/60 text-xs leading-relaxed">
                 当预期派发额高于“仍可用额度”时，超额部分自动强行归集罚没至平台 Reserve 库中。
               </p>
             </div>
 
             <div className="relative pl-4 border-l border-white/10 space-y-1">
               <p className="font-extrabold text-emerald-400">3. 手动风控干预</p>
-              <p className="text-[#cbc4d2]/60 text-[10px] leading-relaxed">
+              <p className="text-[#cbc4d2]/60 text-xs leading-relaxed">
                 支持管理层一键人工补发拨付、下发枯竭邮件并调整多节点异常挂账。
               </p>
             </div>
@@ -34,17 +34,17 @@ export default function WorkflowGuide() {
 
         <div className="md:col-span-4 bg-[#110e16]/60 p-4.5 border border-white/5 rounded-xl flex flex-col justify-between space-y-2">
           <div className="space-y-1.5">
-            <p className="text-[10px] font-black uppercase text-[#cbc4d2]/40 tracking-wider">大盘结算实时审计 (AUDIT)</p>
-            <div className="flex justify-between items-center text-[11px] text-[#cbc4d2]/70 font-mono leading-none">
+            <p className="text-xs font-black uppercase text-[#cbc4d2]/40 tracking-wider">大盘结算实时审计 (AUDIT)</p>
+            <div className="flex justify-between items-center text-[13px] text-[#cbc4d2]/70 font-mono leading-none">
               <span>涉及预拨总佣金:</span>
               <span className="font-black text-white">6,050 U</span>
             </div>
-            <div className="flex justify-between items-center text-[11px] text-[#cbc4d2]/70 font-mono leading-none">
+            <div className="flex justify-between items-center text-[13px] text-[#cbc4d2]/70 font-mono leading-none">
               <span>因池不足总拦截:</span>
               <span className="font-extrabold text-red-400">1,650 U</span>
             </div>
           </div>
-          <p className="text-[9px] text-[#cbc4d2]/35 italic leading-tight">
+          <p className="text-xs text-[#cbc4d2]/35 italic leading-tight">
             * 链上清结算风控提示：系统每日根据当前联盟充值释放倍率精确对算，手工轧账更正会存入机密审计。
           </p>
         </div>

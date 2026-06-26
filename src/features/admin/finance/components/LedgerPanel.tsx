@@ -24,7 +24,7 @@ export default function LedgerPanel({
         <Sliders className="w-4 h-4 text-[#cfbcff]" />
         充值、提现、派发佣金、排队解锁完整总流水账谱
       </h4>
-      <p className="text-[10px] text-[#cbc4d2]/50 mt-0.5">
+      <p className="text-xs text-[#cbc4d2]/50 mt-0.5">
         记录每一次美金和TROO股份变动，点击即可拉取单条记账证书对账。
       </p>
     </div>
@@ -78,7 +78,7 @@ export default function LedgerPanel({
             <tr key={l.id} className="hover:bg-white/[0.015]">
               <td className="py-3.5 px-4 font-mono font-bold text-white">{l.id}</td>
               <td className="py-3.5 px-4">
-                <span className={`text-[10px] font-black px-2 py-0.5 rounded ${
+                <span className={`text-xs font-black px-2 py-0.5 rounded ${
                   l.type === 'recharge' ? 'bg-emerald-500/10 text-emerald-400' :
                   l.type === 'withdraw' ? 'bg-red-500/10 text-[#ffb4ab]' :
                   l.type === 'commission' ? 'bg-[#cfbcff]/10 text-[#cfbcff]' : 'bg-amber-500/10 text-amber-400'
@@ -96,7 +96,7 @@ export default function LedgerPanel({
                 <button
                   type="button"
                   onClick={() => setSelectedLedgerItem(l)}
-                  className="bg-white/5 hover:bg-white/10 text-[#cbc4d2] px-2.5 py-1 rounded-lg text-[10.5px] font-sans active:scale-95 transition-all outline-none mx-auto cursor-pointer flex items-center gap-1"
+                  className="bg-white/5 hover:bg-white/10 text-[#cbc4d2] px-2.5 py-1 rounded-lg text-[13px] font-sans active:scale-95 transition-all outline-none mx-auto cursor-pointer flex items-center gap-1"
                 >
                   <Eye className="w-3 h-3 text-[#cfbcff]" />
                   <span>凭证</span>
@@ -119,10 +119,10 @@ export default function LedgerPanel({
         <div key={l.id} className="p-4 rounded-xl border border-white/5 bg-white/[0.01] space-y-3 font-sans text-xs">
           <div className="flex justify-between items-start border-b border-white/5 pb-2">
             <div>
-              <span className="font-mono text-white font-extrabold text-[11px]">{l.id}</span>
-              <div className="text-[10px] text-[#cbc4d2]/40 font-mono mt-0.5">{l.time}</div>
+              <span className="font-mono text-white font-extrabold text-[13px]">{l.id}</span>
+              <div className="text-xs text-[#cbc4d2]/40 font-mono mt-0.5">{l.time}</div>
             </div>
-            <span className={`text-[10px] font-black px-2 py-0.5 rounded ${
+            <span className={`text-xs font-black px-2 py-0.5 rounded ${
               l.type === 'recharge' ? 'bg-emerald-500/10 text-emerald-400' :
               l.type === 'withdraw' ? 'bg-red-500/10 text-[#ffb4ab]' :
               l.type === 'commission' ? 'bg-[#cfbcff]/10 text-[#cfbcff]' : 'bg-amber-500/10 text-amber-400'
@@ -132,19 +132,19 @@ export default function LedgerPanel({
           </div>
 
           <div className="space-y-1">
-            <span className="text-[#cbc4d2]/45 text-[9px] block leading-none">资金交割描述</span>
-            <span className="text-[#cbc4d2]/90 block leading-relaxed line-clamp-2 text-[11px]" title={l.desc}>
+            <span className="text-[#cbc4d2]/45 text-xs block leading-none">资金交割描述</span>
+            <span className="text-[#cbc4d2]/90 block leading-relaxed line-clamp-2 text-[13px]" title={l.desc}>
               {l.desc}
             </span>
           </div>
 
           <div className="flex items-center justify-between pt-2 border-t border-white/5">
-            <div className="font-mono text-[11px]">
-              <span className="text-[#cbc4d2]/40 text-[9px] font-sans block leading-none mb-0.5">交割金额 / 币种</span>
+            <div className="font-mono text-[13px]">
+              <span className="text-[#cbc4d2]/40 text-xs font-sans block leading-none mb-0.5">交割金额 / 币种</span>
               <span className={`font-black text-xs ${l.amount < 0 ? 'text-[#ffb4ab]' : 'text-emerald-400'}`}>
                 {l.amount < 0 ? '' : '+'}{l.amount.toLocaleString(undefined, {minimumFractionDigits: 2})}
               </span>
-              <span className="text-[#cbc4d2]/60 font-bold ml-1 text-[10px]">{l.currency}</span>
+              <span className="text-[#cbc4d2]/60 font-bold ml-1 text-xs">{l.currency}</span>
             </div>
 
             <button

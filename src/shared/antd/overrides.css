@@ -3254,6 +3254,18 @@
   margin-bottom: 0;
 }
 
+.alliance-antd-subscribe-form-item.ant-form-item .ant-form-item-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.alliance-antd-subscribe-form-item.ant-form-item .ant-form-item-label,
+.alliance-antd-subscribe-form-item.ant-form-item .ant-form-item-control {
+  flex: none;
+  max-width: 100%;
+  width: 100%;
+}
+
 .alliance-antd-subscribe-form-item.ant-form-item .ant-form-item-control-input {
   min-height: 0;
 }
@@ -4219,6 +4231,18 @@
   margin-bottom: 0;
 }
 
+.alliance-antd-settings-form-item.ant-form-item .ant-form-item-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.alliance-antd-settings-form-item.ant-form-item .ant-form-item-label,
+.alliance-antd-settings-form-item.ant-form-item .ant-form-item-control {
+  flex: none;
+  max-width: 100%;
+  width: 100%;
+}
+
 .alliance-antd-settings-form-item.ant-form-item .ant-form-item-label {
   padding-bottom: 8px;
 }
@@ -4264,13 +4288,18 @@
 .alliance-antd-settings-secondary-button.ant-btn,
 .alliance-antd-settings-secondary-button.ant-btn:hover,
 .alliance-antd-settings-secondary-button.ant-btn:focus {
+  align-items: center;
   background: transparent !important;
   border-color: rgba(255, 255, 255, 0.1) !important;
   border-radius: 12px;
   color: var(--color-primary-light) !important;
+  display: inline-flex;
   font-size: 16px;
   font-weight: 800;
-  height: 40px;
+  height: 44px;
+  justify-content: center;
+  line-height: 44px;
+  min-height: 44px;
   padding: 0 16px;
 }
 

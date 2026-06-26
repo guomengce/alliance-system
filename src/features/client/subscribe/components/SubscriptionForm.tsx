@@ -33,11 +33,12 @@ export default function SubscriptionForm({
 
         <Form
           component="form"
+          layout="vertical"
           onSubmitCapture={handleSubscriptionSubmit}
           className="alliance-antd-subscribe-form grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6"
         >
           <div className="space-y-4 flex flex-col justify-between">
-            <div className="space-y-4">
+            <div>
               <Form.Item className="alliance-antd-subscribe-form-item" label="选择套餐方案">
                 <Select
                   options={plans.map((plan) => ({
@@ -65,7 +66,7 @@ export default function SubscriptionForm({
               </Form.Item>
             </div>
 
-            <div className="pt-3 sm:pt-4 space-y-2.5">
+            <div className="space-y-2.5">
               <Button className="w-full min-h-[46px] font-extrabold uppercase tracking-wider" htmlType="submit" type="primary">
                 确认认购并签署协议文件
               </Button>

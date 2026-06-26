@@ -15,7 +15,7 @@ export default function ProfileForm({
         <Settings2 className="w-5 h-5 text-[#cfbcff]" /> 基本资料修改
       </h3>
 
-      <Form component="form" onSubmitCapture={onUpdateProfile} className="space-y-4">
+      <Form component="form" layout="vertical" onSubmitCapture={onUpdateProfile} className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Form.Item className="alliance-antd-settings-form-item" label="用户昵称 (Nickname)">
             <Input

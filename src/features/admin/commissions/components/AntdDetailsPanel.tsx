@@ -76,7 +76,7 @@ export default function AntdDetailsPanel({
             <Sparkles className="w-4 h-4 text-[#cfbcff]" />
             <span>{DETAIL_TEXT.title}</span>
           </h4>
-          <p className="text-[10px] text-[#cbc4d2]/45 font-mono">
+          <p className="text-xs text-[#cbc4d2]/45 font-mono">
             {DETAIL_TEXT.transaction}: {selectedCommission.id}
           </p>
         </div>
@@ -105,7 +105,7 @@ export default function AntdDetailsPanel({
             </div>
             <div className="flex justify-between gap-4">
               <span className="text-[#cbc4d2]/40 font-bold font-sans">{DETAIL_TEXT.target}</span>
-              <span className="text-emerald-400 font-bold text-[11px] text-right">{DETAIL_TEXT.wallet}</span>
+              <span className="text-emerald-400 font-bold text-[13px] text-right">{DETAIL_TEXT.wallet}</span>
             </div>
             <div className="flex justify-between gap-4">
               <span className="text-[#cbc4d2]/40 font-bold font-sans">{DETAIL_TEXT.time}</span>
@@ -146,7 +146,7 @@ export default function AntdDetailsPanel({
                 {' '}
                 {DETAIL_TEXT.originSuffix}
               </p>
-              <div className="flex justify-between items-center bg-black/25 px-3 py-2 rounded-xl mt-1 text-[11px] font-mono">
+              <div className="flex justify-between items-center bg-black/25 px-3 py-2 rounded-xl mt-1 text-[13px] font-mono">
                 <span className="text-[#cbc4d2]/45">{DETAIL_TEXT.rechargeLabel}</span>
                 <span className="text-emerald-400 font-extrabold">
                   USDT {(selectedCommission.triggerRechargeAmount || selectedCommission.amount * 10).toLocaleString(undefined, {
@@ -164,8 +164,8 @@ export default function AntdDetailsPanel({
                   <CheckCircle className="w-4 h-4 shrink-0 text-[#cfbcff]" />
                   <span>{DETAIL_TEXT.recycleTitle}</span>
                 </p>
-                <p className="leading-relaxed opacity-90 text-[11px] font-mono text-left">{selectedCommission.errorMessage}</p>
-                <p className="text-[10px] text-white/30 italic font-sans leading-normal">
+                <p className="leading-relaxed opacity-90 text-[13px] font-mono text-left">{selectedCommission.errorMessage}</p>
+                <p className="text-xs text-white/30 italic font-sans leading-normal">
                   {DETAIL_TEXT.recycleNote}
                 </p>
               </div>
@@ -175,8 +175,8 @@ export default function AntdDetailsPanel({
                   <AlertTriangle className="w-4 h-4 shrink-0" />
                   <span>{DETAIL_TEXT.alertTitle}</span>
                 </p>
-                <p className="leading-relaxed opacity-90 text-[11px] font-mono text-left">{selectedCommission.errorMessage}</p>
-                <p className="text-[10px] text-white/30 italic font-sans leading-normal">
+                <p className="leading-relaxed opacity-90 text-[13px] font-mono text-left">{selectedCommission.errorMessage}</p>
+                <p className="text-xs text-white/30 italic font-sans leading-normal">
                   {DETAIL_TEXT.alertNote}
                 </p>
               </div>
@@ -185,7 +185,7 @@ export default function AntdDetailsPanel({
 
           {selectedCommission.status === 'intercepted' ? (
             <div className="p-4 bg-[#1a1523]/60 border border-white/5 rounded-2xl space-y-2">
-              <span className="text-[10px] text-[#cbc4d2]/40 uppercase font-black tracking-wider block">
+              <span className="text-xs text-[#cbc4d2]/40 uppercase font-black tracking-wider block">
                 {DETAIL_TEXT.recycleActionTitle}
               </span>
               <p className="text-xs text-[#cbc4d2]/80 leading-normal text-left">
@@ -194,7 +194,7 @@ export default function AntdDetailsPanel({
             </div>
           ) : (
             <div className="space-y-3.5 pt-2 border-t border-white/5">
-              <span className="text-[10px] text-[#cbc4d2]/40 uppercase font-black tracking-wider block">
+              <span className="text-xs text-[#cbc4d2]/40 uppercase font-black tracking-wider block">
                 {DETAIL_TEXT.workflowTitle}
               </span>
 
@@ -245,7 +245,7 @@ export default function AntdDetailsPanel({
         destroyOnHidden
       >
         <div className="pt-2">
-          <label className="text-[10px] text-[#cbc4d2]/50 font-black block mb-2">{DETAIL_TEXT.adjustLabel}</label>
+          <label className="text-xs text-[#cbc4d2]/50 font-black block mb-2">{DETAIL_TEXT.adjustLabel}</label>
           <InputNumber
             className="alliance-antd-commission-adjust-input"
             value={adjustAmount}

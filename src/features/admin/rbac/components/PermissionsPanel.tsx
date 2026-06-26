@@ -27,7 +27,7 @@ export default function PermissionsPanel({
         <Key className="w-4 h-4 text-amber-400" />
         权限绑定与细项决策矩阵 Mapping
       </h4>
-      <p className="text-[10px] text-[#cbc4d2]/50 font-sans mt-0.5">
+      <p className="text-xs text-[#cbc4d2]/50 font-sans mt-0.5">
         选定特定角色，实时钩选/撤销其访问子版块和数据的权限
       </p>
     </div>
@@ -35,7 +35,7 @@ export default function PermissionsPanel({
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start text-left">
       {/* Left Column of Section 2: available roles list selection */}
       <div className="lg:col-span-4 space-y-3">
-        <span className="text-[10px] font-black uppercase text-[#cbc4d2]/40 tracking-wider block text-left">
+        <span className="text-xs font-black uppercase text-[#cbc4d2]/40 tracking-wider block text-left">
           第一步：选择需要调整的后台角色类型
         </span>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5">
@@ -58,7 +58,7 @@ export default function PermissionsPanel({
                   </span>
                   {isActive && <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50" />}
                 </div>
-                <span className="text-[9.5px] font-mono text-[#cbc4d2]/40">
+                <span className="text-xs font-mono text-[#cbc4d2]/40">
                   {r.roleCode} • 已授安全凭证数 {r.permissions.length} 
                 </span>
               </button>
@@ -70,10 +70,10 @@ export default function PermissionsPanel({
       {/* Right Column of Section 2: permissions details grid */}
       <div className="lg:col-span-8 space-y-3">
         <div className="flex justify-between items-center text-xs">
-          <span className="text-[10px] font-black uppercase text-[#cfbcff] tracking-wider block text-left">
+          <span className="text-xs font-black uppercase text-[#cfbcff] tracking-wider block text-left">
             第二步：实时指派及核算功能极值 (关联角色：{activeRoleObj.roleName})
           </span>
-          <span className="font-mono text-[10px] text-emerald-400 bg-emerald-400/10 px-2.5 py-0.5 rounded-lg border border-emerald-500/10 font-bold">
+          <span className="font-mono text-xs text-emerald-400 bg-emerald-400/10 px-2.5 py-0.5 rounded-lg border border-emerald-500/10 font-bold">
             {activeRoleObj.permissions.length} / {permissionInventory.length} 系统细项已启
           </span>
         </div>
@@ -105,9 +105,9 @@ export default function PermissionsPanel({
                   <div className="text-left space-y-0.5">
                     <p className={`font-bold text-xs leading-normal ${isGranted ? 'text-white' : 'text-[#cbc4d2]/70'}`}>
                       {p.name}
-                      <span className="text-[9px] font-mono text-[#cbc4d2]/35 ml-1.5 font-normal">[{p.code}]</span>
+                      <span className="text-xs font-mono text-[#cbc4d2]/35 ml-1.5 font-normal">[{p.code}]</span>
                     </p>
-                    <p className="text-[10px] text-[#cbc4d2]/40 leading-relaxed font-sans font-medium">{p.description}</p>
+                    <p className="text-xs text-[#cbc4d2]/40 leading-relaxed font-sans font-medium">{p.description}</p>
                   </div>
                 </div>
               );
@@ -115,7 +115,7 @@ export default function PermissionsPanel({
           </div>
           
           {activeRoleObj.roleCode === 'SUPER_ADMIN' && (
-            <p className="text-[9.5px] text-amber-300 italic text-left leading-normal font-sans pt-1 border-t border-white/5">
+            <p className="text-xs text-amber-300 italic text-left leading-normal font-sans pt-1 border-t border-white/5">
               * 超级系统管理员属于最高绝对防御特权节点，不接受任何形式的在线物理扣留或去勾选处理。
             </p>
           )}

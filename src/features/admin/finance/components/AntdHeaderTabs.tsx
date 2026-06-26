@@ -37,7 +37,7 @@ export default function AntdHeaderTabs({ activeTab, setActiveTab }: HeaderTabsPr
             <Wallet className="w-4 h-4 text-[#cfbcff]" />
             <span>{TEXT.title}</span>
           </h3>
-          <p className="text-[11px] text-[#cbc4d2]/50 mt-0.5 leading-tight">
+          <p className="text-[13px] text-[#cbc4d2]/50 mt-0.5 leading-tight">
             {TEXT.desc}
           </p>
         </div>

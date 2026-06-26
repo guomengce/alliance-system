@@ -29,13 +29,13 @@ export function AddRoleModal({
               </div>
               <div className="text-left">
                 <h4 className="text-sm font-black text-white">建立全新的后台细分管理角色</h4>
-                <p className="text-[10px] text-[#cbc4d2]/40 font-mono mt-0.5">DEFINE CUSTOM SECURITY ROLE</p>
+                <p className="text-xs text-[#cbc4d2]/40 font-mono mt-0.5">DEFINE CUSTOM SECURITY ROLE</p>
               </div>
             </div>
 
             <div className="space-y-4 text-xs text-left text-sans">
               <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] font-bold text-[#cbc4d2]/60 uppercase">设计角色名称 (必填)</label>
+                <label className="text-xs font-bold text-[#cbc4d2]/60 uppercase">设计角色名称 (必填)</label>
                 <input 
                   type="text"
                   required
@@ -47,7 +47,7 @@ export function AddRoleModal({
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] font-bold text-[#cbc4d2]/60 uppercase">唯一角色精算编码 (大写字母/下划线)</label>
+                <label className="text-xs font-bold text-[#cbc4d2]/60 uppercase">唯一角色精算编码 (大写字母/下划线)</label>
                 <input 
                   type="text"
                   required

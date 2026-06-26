@@ -12,7 +12,7 @@ export default function TrooPricePanel({
     <div className="lg:col-span-5 glass-card p-6 rounded-2xl border border-white/5 bg-[#141119] flex flex-col justify-between">
       <div>
         <div className="flex justify-between items-center pb-3 border-b border-white/5">
-          <span className="text-[10px] font-black text-[#cbc4d2]/50 tracking-wider uppercase">Yahoo Finance Feed</span>
+          <span className="text-xs font-black text-[#cbc4d2]/50 tracking-wider uppercase">Yahoo Finance Feed</span>
         </div>
 
         <div className="mt-4 flex justify-between items-start">
@@ -31,7 +31,7 @@ export default function TrooPricePanel({
               </span>
             </div>
           </div>
-          <div className="text-right font-mono text-[10px] text-[#cbc4d2]/40 select-none">
+          <div className="text-right font-mono text-xs text-[#cbc4d2]/40 select-none">
             <p>时段 {activePoint.time}</p>
             <p className="mt-0.5 text-[#cfbcff]/70 font-sans">昨日历史走势</p>
           </div>

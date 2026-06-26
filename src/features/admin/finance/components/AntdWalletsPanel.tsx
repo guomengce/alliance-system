@@ -68,7 +68,7 @@ export default function AntdWalletsPanel({
             <Coins className="w-4 h-4 text-[#cfbcff]" />
             {WALLETS_TEXT.title}
           </h4>
-          <p className="text-[10px] text-[#cbc4d2]/50 mt-0.5">
+          <p className="text-xs text-[#cbc4d2]/50 mt-0.5">
             {WALLETS_TEXT.desc}
           </p>
         </div>

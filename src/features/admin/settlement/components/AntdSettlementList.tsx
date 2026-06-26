@@ -58,7 +58,7 @@ export default function AntdSettlementList({
       render: (_, tx) => (
         <div className="flex flex-col">
           <span className="text-white text-xs font-sans font-bold">{tx.memberUid}</span>
-          <span className="text-[10px] text-[#cbc4d2]/40 font-sans font-normal">{tx.nickname}</span>
+          <span className="text-xs text-[#cbc4d2]/40 font-sans font-normal">{tx.nickname}</span>
         </div>
       ),
     },
@@ -127,28 +127,28 @@ export default function AntdSettlementList({
             <div className="flex justify-between items-start">
               <div>
                 <p className="text-white text-xs font-bold leading-none">{tx.memberUid}</p>
-                <p className="text-[10px] text-[#cbc4d2]/40 font-normal mt-0.5">{tx.nickname}</p>
+                <p className="text-xs text-[#cbc4d2]/40 font-normal mt-0.5">{tx.nickname}</p>
               </div>
               <Tag className={statusMeta[tx.status].className}>
                 {statusMeta[tx.status].label}
               </Tag>
             </div>
 
-            <div className="grid grid-cols-2 gap-2 text-[11px] border-t border-b border-white/5 py-2 font-mono">
+            <div className="grid grid-cols-2 gap-2 text-[13px] border-t border-b border-white/5 py-2 font-mono">
               <div>
-                <span className="text-[#cbc4d2]/40 text-[9px] block font-sans">{TEXT.expected}</span>
+                <span className="text-[#cbc4d2]/40 text-xs block font-sans">{TEXT.expected}</span>
                 <p className="text-white font-semibold mt-0.5">USDT {tx.expectedCommissions.toLocaleString()}</p>
               </div>
               <div>
-                <span className="text-[#cbc4d2]/40 text-[9px] block font-sans">{TEXT.capacity}</span>
+                <span className="text-[#cbc4d2]/40 text-xs block font-sans">{TEXT.capacity}</span>
                 <p className={`font-semibold mt-0.5 ${tx.remainingPoolCapacity < 1000 ? 'text-amber-400 font-extrabold' : 'text-[#cbc4d2]/85'}`}>{tx.remainingPoolCapacity.toLocaleString()} U</p>
               </div>
               <div>
-                <span className="text-[#cbc4d2]/40 text-[9px] block font-sans">{TEXT.actual}</span>
+                <span className="text-[#cbc4d2]/40 text-xs block font-sans">{TEXT.actual}</span>
                 <p className="text-emerald-400 font-bold mt-0.5">USDT {tx.actualSettledAmount.toLocaleString()}</p>
               </div>
               <div>
-                <span className="text-red-400/80 text-[10px] block font-sans">{TEXT.clipped}</span>
+                <span className="text-red-400/80 text-xs block font-sans">{TEXT.clipped}</span>
                 <p className="text-red-400 font-bold mt-0.5">USDT {tx.spilloverClipped.toLocaleString()}</p>
               </div>
             </div>

@@ -17,7 +17,7 @@ export default function PasswordForm({
         <Key className="w-5 h-5 text-[#cfbcff]" /> 账号登录安全密码
       </h3>
 
-      <Form component="form" onSubmitCapture={onUpdatePasswords} className="space-y-4">
+      <Form component="form" layout="vertical" onSubmitCapture={onUpdatePasswords} className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <Form.Item className="alliance-antd-settings-form-item" label="原始登录密码">
             <Input.Password

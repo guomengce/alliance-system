@@ -123,13 +123,13 @@ export default function AntdOrdersTable({
 
         if (order.status === 'confirmed') {
           return (
-            <span className="text-[10px] text-emerald-400/60 font-bold font-sans">
+            <span className="text-xs text-emerald-400/60 font-bold font-sans">
               已交割锁证已存证
             </span>
           );
         }
 
-        return <span className="text-[10px] text-white/30 font-sans">链上中断</span>;
+        return <span className="text-xs text-white/30 font-sans">链上中断</span>;
       },
     },
   ];

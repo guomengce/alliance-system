@@ -52,7 +52,7 @@ function StatCard({ label, value, tone }: { label: string; value: number; tone: 
 
   return (
     <div className="bg-[#110e16] p-4 rounded-2xl border border-white/5 text-center space-y-1">
-      <span className={`text-[10px] ${labelClass} font-sans block`}>{label}</span>
+      <span className={`text-xs ${labelClass} font-sans block`}>{label}</span>
       <span className={`text-sm font-black ${valueClass} leading-none`}>USDT {value.toLocaleString()}</span>
     </div>
   );
@@ -81,7 +81,7 @@ export function AntdDetailMainPanel({
       render: (_, trigger) => (
         <div>
           <p className="text-white font-bold">{trigger.id}</p>
-          <p className="text-[8px] text-[#cbc4d2]/30 italic">{trigger.orderId}</p>
+          <p className="text-xs text-[#cbc4d2]/30 italic">{trigger.orderId}</p>
         </div>
       ),
     },
@@ -91,7 +91,7 @@ export function AntdDetailMainPanel({
       render: (_, trigger) => (
         <div>
           <p className="text-white leading-none font-sans font-extrabold text-xs">{trigger.downlineUid}</p>
-          <p className="text-[9px] text-[#cbc4d2]/40 font-sans truncate mt-1">{trigger.downlineNickname}</p>
+          <p className="text-xs text-[#cbc4d2]/40 font-sans truncate mt-1">{trigger.downlineNickname}</p>
         </div>
       ),
     },
@@ -118,7 +118,7 @@ export function AntdDetailMainPanel({
       dataIndex: 'time',
       key: 'time',
       align: 'right',
-      render: (time: QueueTrigger['time']) => <span className="text-[10px] text-[#cbc4d2]/45 font-mono">{time}</span>,
+      render: (time: QueueTrigger['time']) => <span className="text-xs text-[#cbc4d2]/45 font-mono">{time}</span>,
     },
   ];
 
@@ -156,15 +156,15 @@ export function AntdDetailMainPanel({
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-mono text-left">
             <label className="flex flex-col gap-1.5">
-              <span className="text-[10px] text-[#cbc4d2]/50 font-sans font-bold uppercase">{TEXT.originalInput}</span>
+              <span className="text-xs text-[#cbc4d2]/50 font-sans font-bold uppercase">{TEXT.originalInput}</span>
               <InputNumber className="alliance-antd-queue-number-input" value={calibOriginal} onChange={(value) => setCalibOriginal(typeof value === 'number' ? value : 0)} />
             </label>
             <label className="flex flex-col gap-1.5">
-              <span className="text-[10px] text-amber-400 font-sans font-bold uppercase">{TEXT.currentInput}</span>
+              <span className="text-xs text-amber-400 font-sans font-bold uppercase">{TEXT.currentInput}</span>
               <InputNumber className="alliance-antd-queue-number-input is-warning" value={calibCurrent} onChange={(value) => setCalibCurrent(typeof value === 'number' ? value : 0)} />
             </label>
             <label className="flex flex-col gap-1.5">
-              <span className="text-[10px] text-emerald-500 font-sans font-bold uppercase">{TEXT.unlockedInput}</span>
+              <span className="text-xs text-emerald-500 font-sans font-bold uppercase">{TEXT.unlockedInput}</span>
               <InputNumber className="alliance-antd-queue-number-input is-success" value={calibUnlocked} onChange={(value) => setCalibUnlocked(typeof value === 'number' ? value : 0)} />
             </label>
           </div>
@@ -182,7 +182,7 @@ export function AntdDetailMainPanel({
 
       <div className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-left">
-          <h5 className="text-[11px] font-black uppercase text-[#cfbcff] flex items-center gap-1.5 tracking-wider">
+          <h5 className="text-[13px] font-black uppercase text-[#cfbcff] flex items-center gap-1.5 tracking-wider">
             <Activity className="w-3.5 h-3.5" />
             <span>{TEXT.logTitle}</span>
           </h5>
@@ -232,8 +232,8 @@ export function AntdDetailMainPanel({
                 >
                   <div className="flex justify-between items-start gap-2 pb-2 border-b border-white/5">
                     <div>
-                      <span className="text-[#cfbcff] font-extrabold text-[11px] font-mono block">{trigger.id}</span>
-                      <span className="text-[#cbc4d2]/35 text-[9px] font-mono block mt-0.5 leading-none">{trigger.time}</span>
+                      <span className="text-[#cfbcff] font-extrabold text-[13px] font-mono block">{trigger.id}</span>
+                      <span className="text-[#cbc4d2]/35 text-xs font-mono block mt-0.5 leading-none">{trigger.time}</span>
                     </div>
                     <div className="text-right flex flex-col items-end">
                       <span className="text-emerald-400 font-extrabold font-mono text-xs">+{trigger.unlockedAmount.toLocaleString()} USDT</span>
@@ -241,24 +241,24 @@ export function AntdDetailMainPanel({
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-x-3 gap-y-2 text-[11px] font-mono">
+                  <div className="grid grid-cols-2 gap-x-3 gap-y-2 text-[13px] font-mono">
                     <div>
-                      <span className="text-[#cbc4d2]/45 text-[9px] font-sans block leading-none mb-1">{TEXT.downlineColumn}</span>
+                      <span className="text-[#cbc4d2]/45 text-xs font-sans block leading-none mb-1">{TEXT.downlineColumn}</span>
                       <span className="text-white font-bold text-[11.5px] block">{trigger.downlineUid}</span>
                     </div>
                     <div>
-                      <span className="text-[#cbc4d2]/45 text-[9px] font-sans block leading-none mb-1">{TEXT.orderAmountColumn}</span>
-                      <span className="text-[#cbc4d2]/90 block text-[11px]">USDT {trigger.orderAmount.toLocaleString()}</span>
+                      <span className="text-[#cbc4d2]/45 text-xs font-sans block leading-none mb-1">{TEXT.orderAmountColumn}</span>
+                      <span className="text-[#cbc4d2]/90 block text-[13px]">USDT {trigger.orderAmount.toLocaleString()}</span>
                     </div>
                     <div className="col-span-2">
-                      <span className="text-[#cbc4d2]/45 text-[9px] font-sans block leading-none mb-1">Nickname</span>
-                      <span className="text-[#cbc4d2]/80 font-sans block truncate text-[11px]" title={trigger.downlineNickname}>
+                      <span className="text-[#cbc4d2]/45 text-xs font-sans block leading-none mb-1">Nickname</span>
+                      <span className="text-[#cbc4d2]/80 font-sans block truncate text-[13px]" title={trigger.downlineNickname}>
                         {trigger.downlineNickname}
                       </span>
                     </div>
                     <div className="col-span-2">
-                      <span className="text-[#cbc4d2]/45 text-[9px] font-sans block leading-none mb-1">{TEXT.idColumn}</span>
-                      <span className="text-white/40 block text-[10px] break-all select-all font-mono">{trigger.orderId}</span>
+                      <span className="text-[#cbc4d2]/45 text-xs font-sans block leading-none mb-1">{TEXT.idColumn}</span>
+                      <span className="text-white/40 block text-xs break-all select-all font-mono">{trigger.orderId}</span>
                     </div>
                   </div>
                 </div>

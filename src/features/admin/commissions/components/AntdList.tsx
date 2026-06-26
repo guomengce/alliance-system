@@ -37,7 +37,7 @@ export default function AntdList({
             <Coins className="w-4 h-4 text-[#cfbcff]" />
             <span>{LIST_TEXT.title}</span>
           </h3>
-          <p className="text-[11px] text-[#cbc4d2]/50 mt-0.5 leading-tight">{LIST_TEXT.description}</p>
+          <p className="text-[13px] text-[#cbc4d2]/50 mt-0.5 leading-tight">{LIST_TEXT.description}</p>
         </div>
       </div>
 
@@ -82,7 +82,7 @@ export default function AntdList({
             description={
               <div className="space-y-2">
                 <p>{LIST_TEXT.emptyTitle}</p>
-                <span className="text-[10px]">{LIST_TEXT.emptyHint}</span>
+                <span className="text-xs">{LIST_TEXT.emptyHint}</span>
               </div>
             }
           />

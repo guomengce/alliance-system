@@ -37,7 +37,7 @@ export default function DetailModal({
               <Sparkles className="w-4 h-4 text-[#cfbcff]" />
               <span>加盟商佣金属限结算数据穿透校对簿</span>
             </h4>
-            <p className="text-[10px] text-[#cbc4d2]/45 font-mono">STL ACCOUNT TICKET ID: {selectedTx.id}</p>
+            <p className="text-xs text-[#cbc4d2]/45 font-mono">STL ACCOUNT TICKET ID: {selectedTx.id}</p>
           </div>
 
           {/* Core facts */}
@@ -75,10 +75,10 @@ export default function DetailModal({
                 <AlertTriangle className="w-4 h-4 text-red-400 shrink-0" />
                 <span>额度池严重透支警报 (Capacity Exhausted)</span>
               </p>
-              <p className="leading-relaxed text-[11px] font-sans">
+              <p className="leading-relaxed text-[13px] font-sans">
                 该上线代理人的 [佣金额度] 仅剩余 <strong>{selectedTx.remainingPoolCapacity} USDT</strong>，因此超出了系统设限制。已触发强行溢出回笼大仓机制共 <strong>{selectedTx.spilloverClipped} USDT</strong> 被直接罚没截留。
               </p>
-              <p className="text-[10px] text-white/30 font-sans italic">
+              <p className="text-xs text-white/30 font-sans italic">
                 * 如果该会员已通过其他渠道认购扩展补齐额度，管理员不仅可以发送警告推送，亦可执行“解决并重置异常”将其强行修正发放。
               </p>
             </div>
@@ -86,7 +86,7 @@ export default function DetailModal({
 
           {/* Actions for settlement details: manual intervention and notifications */}
           <div className="pt-2 space-y-3 text-left">
-            <span className="text-[10px] text-[#cbc4d2]/40 font-black uppercase tracking-wider block font-sans">平台决策管理命令 (Bypass & Notification Workflow)</span>
+            <span className="text-xs text-[#cbc4d2]/40 font-black uppercase tracking-wider block font-sans">平台决策管理命令 (Bypass & Notification Workflow)</span>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs font-sans">
               
@@ -112,7 +112,7 @@ export default function DetailModal({
 
             </div>
             
-            <p className="text-[10px] text-[#cbc4d2]/30 text-center leading-normal font-sans">
+            <p className="text-xs text-[#cbc4d2]/30 text-center leading-normal font-sans">
               * 精算操作备查：发出“佣额度不足拦截警告”会自动下向用户发送系统弹窗通知协助其自助补足。
             </p>
           </div>

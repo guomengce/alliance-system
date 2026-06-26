@@ -22,7 +22,7 @@ export default function Toolbar({
           <Users className="w-4 h-4 text-[#cfbcff]" />
           <span>用户列表</span>
         </h3>
-        <p className="text-[11px] text-[#cbc4d2]/50 mt-0.5 leading-tight">
+        <p className="text-[13px] text-[#cbc4d2]/50 mt-0.5 leading-tight">
           对超级同盟会员代表的状态实施权限管控与对账。点击“查看”可审核 L2 证照，执行全局深层对账与纠偏。
         </p>
       </div>

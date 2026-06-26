@@ -26,7 +26,7 @@ export default function AntdLimitsPanel({
           <Sliders className="w-4 h-4 text-[#e7c365]" />
           {TEXT.title}
         </h4>
-        <p className="text-[11px] text-[#cbc4d2]/50 leading-relaxed mt-2">{TEXT.desc}</p>
+        <p className="text-[13px] text-[#cbc4d2]/50 leading-relaxed mt-2">{TEXT.desc}</p>
 
         <div className="space-y-4 mt-4 text-xs font-sans">
           <label className="flex flex-col gap-1.5">

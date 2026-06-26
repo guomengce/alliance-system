@@ -59,29 +59,29 @@ export default function AntdReservesPanel({
     <div className="space-y-6 animate-fadeIn">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 font-sans">
         <AntdCard className="alliance-antd-finance-reserve-card is-usdt">
-          <div className="absolute right-3.5 top-3.5 font-mono font-bold text-[8px] text-white/20 uppercase tracking-widest">Reserve USDT</div>
-          <p className="text-[10.5px] uppercase font-bold text-[#cfbcff] tracking-wider leading-none">{RESERVES_TEXT.reserveUsdt}</p>
+          <div className="absolute right-3.5 top-3.5 font-mono font-bold text-xs text-white/20 uppercase tracking-widest">Reserve USDT</div>
+          <p className="text-[13px] uppercase font-bold text-[#cfbcff] tracking-wider leading-none">{RESERVES_TEXT.reserveUsdt}</p>
           <div className="mt-4 flex items-baseline gap-2">
             <span className="text-2xl font-black text-white font-mono">{companyUSDT.toLocaleString()}</span>
-            <span className="text-[10px] font-bold text-[#cbc4d2]/60 font-mono">USDT</span>
+            <span className="text-xs font-bold text-[#cbc4d2]/60 font-mono">USDT</span>
           </div>
-          <p className="text-[9.5px] text-[#cbc4d2]/40 mt-2">{RESERVES_TEXT.reserveDesc}</p>
+          <p className="text-xs text-[#cbc4d2]/40 mt-2">{RESERVES_TEXT.reserveDesc}</p>
         </AntdCard>
 
         <AntdCard className="alliance-antd-finance-reserve-card is-troo">
-          <div className="absolute right-3.5 top-3.5 font-mono font-bold text-[8px] text-white/20 uppercase tracking-widest">Escrow TROO</div>
-          <p className="text-[10.5px] uppercase font-bold text-[#f1bf50] tracking-wider leading-none">{RESERVES_TEXT.troo}</p>
+          <div className="absolute right-3.5 top-3.5 font-mono font-bold text-xs text-white/20 uppercase tracking-widest">Escrow TROO</div>
+          <p className="text-[13px] uppercase font-bold text-[#f1bf50] tracking-wider leading-none">{RESERVES_TEXT.troo}</p>
           <div className="mt-4 flex items-baseline gap-2">
             <span className="text-2xl font-black text-white font-mono">{companyTROO.toLocaleString()}</span>
-            <span className="text-[10px] font-bold text-[#cbc4d2]/60 font-mono">TROO</span>
+            <span className="text-xs font-bold text-[#cbc4d2]/60 font-mono">TROO</span>
           </div>
-          <p className="text-[9.5px] text-[#cbc4d2]/40 mt-2">{RESERVES_TEXT.trooDesc}</p>
+          <p className="text-xs text-[#cbc4d2]/40 mt-2">{RESERVES_TEXT.trooDesc}</p>
         </AntdCard>
 
         <AntdCard className="alliance-antd-finance-reserve-card is-users">
-          <div className="absolute right-3.5 top-3.5 font-mono font-bold text-[8px] text-white/20 uppercase tracking-widest">Aggregate Users Net</div>
-          <p className="text-[10.5px] uppercase font-bold text-[#cbc4d2]/60 tracking-wider leading-none">{RESERVES_TEXT.aggregate}</p>
-          <div className="mt-3.5 space-y-1 font-mono text-[11px]">
+          <div className="absolute right-3.5 top-3.5 font-mono font-bold text-xs text-white/20 uppercase tracking-widest">Aggregate Users Net</div>
+          <p className="text-[13px] uppercase font-bold text-[#cbc4d2]/60 tracking-wider leading-none">{RESERVES_TEXT.aggregate}</p>
+          <div className="mt-3.5 space-y-1 font-mono text-[13px]">
             <div className="flex justify-between">
               <span className="text-[#cbc4d2]/40">{RESERVES_TEXT.usdt}</span>
               <span className="text-white font-bold">{totalUserUSDT.toLocaleString(undefined, { minimumFractionDigits: 2 })} U</span>

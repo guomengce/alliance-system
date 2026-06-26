@@ -33,7 +33,7 @@ export function AntdRosterView({ lockedRoster, onOpenDetails }: RosterViewProps)
               <Lock className="w-4 h-4 text-[#cfbcff]" />
               <span>{TEXT.title}</span>
             </h3>
-            <p className="text-[11px] text-[#cbc4d2]/50 mt-0.5 leading-tight">{TEXT.description}</p>
+            <p className="text-[13px] text-[#cbc4d2]/50 mt-0.5 leading-tight">{TEXT.description}</p>
           </div>
         </div>
 
@@ -44,12 +44,12 @@ export function AntdRosterView({ lockedRoster, onOpenDetails }: RosterViewProps)
               <span>{TEXT.guideTitle}</span>
             </h4>
             <div className="text-xs text-[#cbc4d2]/70 space-y-2.5 leading-relaxed font-sans pt-3">
-              <p className="font-extrabold text-white text-[11px]">{TEXT.formulaTitle}</p>
-              <p className="leading-relaxed text-[11px]">{TEXT.formulaDesc}</p>
-              <div className="p-2 py-1.5 bg-emerald-500/5 text-emerald-400 border border-emerald-500/10 rounded font-mono text-[10px] font-bold text-center w-full max-w-xs">
+              <p className="font-extrabold text-white text-[13px]">{TEXT.formulaTitle}</p>
+              <p className="leading-relaxed text-[13px]">{TEXT.formulaDesc}</p>
+              <div className="p-2 py-1.5 bg-emerald-500/5 text-emerald-400 border border-emerald-500/10 rounded font-mono text-xs font-bold text-center w-full max-w-xs">
                 {TEXT.formula}
               </div>
-              <p className="text-[10px] text-[#cbc4d2]/40">{TEXT.stockNote}</p>
+              <p className="text-xs text-[#cbc4d2]/40">{TEXT.stockNote}</p>
             </div>
           </AntdCard>
 
@@ -60,9 +60,9 @@ export function AntdRosterView({ lockedRoster, onOpenDetails }: RosterViewProps)
                   <Activity className="w-4 h-4 text-[#cfbcff]" />
                   <span>{TEXT.monitorTitle}</span>
                 </h4>
-                <p className="text-[#cbc4d2]/75 leading-relaxed text-[11px] font-sans mt-2">{TEXT.monitorDesc}</p>
+                <p className="text-[#cbc4d2]/75 leading-relaxed text-[13px] font-sans mt-2">{TEXT.monitorDesc}</p>
               </div>
-              <div className="p-3 bg-[#cfbcff]/5 border border-[#cfbcff]/10 rounded-xl text-[10px] text-[#cbc4d2]/70 leading-normal font-sans">
+              <div className="p-3 bg-[#cfbcff]/5 border border-[#cfbcff]/10 rounded-xl text-xs text-[#cbc4d2]/70 leading-normal font-sans">
                 {TEXT.archiveNote}
               </div>
             </div>

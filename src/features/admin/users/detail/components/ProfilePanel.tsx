@@ -86,7 +86,7 @@ export function ProfilePanel({
             <div className="space-y-1.5 text-xs">
               <label className="text-[#cbc4d2]/60 font-semibold uppercase font-sans">登录密码重置安全管理 (Set / Reset Password)</label>
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 bg-[#1c1824] p-4 rounded-xl border border-white/5">
-                <p className="text-[11px] text-[#cbc4d2]/70 flex-1 leading-normal font-sans">
+                <p className="text-[13px] text-[#cbc4d2]/70 flex-1 leading-normal font-sans">
                   ℹ️ 为了全面保障用户和上级联盟链条的私密安全，管理端已废除管理员强解/写入明文密码的功能。系统只允许通过右侧按钮，引导发送改密指令和安全校验令牌到用户的注册或关联邮箱中，供其自主设置。
                 </p>
                 <button
@@ -131,7 +131,7 @@ export function ProfilePanel({
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-xs">
                 <div className="bg-[#1c1824] p-4 rounded-xl border border-white/5 space-y-3">
-                  <label className="text-[10px] text-[#cfbcff]/80 font-bold block uppercase">L1 基础实名资质 (手机与邮箱信息)</label>
+                  <label className="text-xs text-[#cfbcff]/80 font-bold block uppercase">L1 基础实名资质 (手机与邮箱信息)</label>
                   <select 
                     value={formKycL1}
                     onChange={(e) => setFormKycL1(e.target.value as any)}
@@ -141,7 +141,7 @@ export function ProfilePanel({
                     <option value="unverified">❌ 未核验 (Unverified - 暂缺必要安全绑定)</option>
                   </select>
 
-                  <div className="bg-[#110e16]/80 p-3 rounded-lg border border-white/5 text-[11px] text-[#cbc4d2]/80 space-y-1 font-mono">
+                  <div className="bg-[#110e16]/80 p-3 rounded-lg border border-white/5 text-[13px] text-[#cbc4d2]/80 space-y-1 font-mono">
                     <p><span className="text-[#cbc4d2]/40">初核姓名:</span> {formNickname ? formNickname.split(' ')[0] : '李'} * 强</p>
                     <p><span className="text-[#cbc4d2]/40">证件号码:</span> 110101 ********* 291X</p>
                     <p><span className="text-[#cbc4d2]/40">绑手机号:</span> {formPhone || '未绑定'}</p>
@@ -150,7 +150,7 @@ export function ProfilePanel({
                 </div>
 
                 <div className="bg-[#1c1824] p-4 rounded-xl border border-white/5 space-y-3">
-                  <label className="text-[10px] text-[#cfbcff]/80 font-bold block uppercase">L2 深度实名资质 (身份照、通行证与面容自证)</label>
+                  <label className="text-xs text-[#cfbcff]/80 font-bold block uppercase">L2 深度实名资质 (身份照、通行证与面容自证)</label>
                   <select 
                     value={formKycL2}
                     onChange={(e) => setFormKycL2(e.target.value as any)}
@@ -161,7 +161,7 @@ export function ProfilePanel({
                     <option value="unverified">❌ 尚未核验 (Unverified - 不满足算力承接深度评定)</option>
                   </select>
 
-                  <div className="bg-[#110e16]/80 p-3 rounded-lg border border-white/5 text-[11px] text-[#cbc4d2]/80 space-y-1 font-sans">
+                  <div className="bg-[#110e16]/80 p-3 rounded-lg border border-white/5 text-[13px] text-[#cbc4d2]/80 space-y-1 font-sans">
                     <p><span className="text-[#cbc4d2]/40 font-mono">上送媒介:</span> 手机端自拍提报</p>
                     <p><span className="text-[#cbc4d2]/40 font-mono">国籍/地区:</span> 中华人民共和国 (CN)</p>
                     <p><span className="text-[#cbc4d2]/40 font-mono">核验通道:</span> Tencent OCR / FaceId 集成</p>
@@ -172,66 +172,66 @@ export function ProfilePanel({
 
               {/* Displaying visual document thumbnails */}
               <div className="bg-[#1c1824] p-5 rounded-xl border border-white/5 space-y-3">
-                <span className="text-[10px] text-[#cfbcff] font-extrabold block uppercase tracking-wider">用户上送资质证明影印原件 (Uploaded ID Card & Handheld Photo Materials)</span>
+                <span className="text-xs text-[#cfbcff] font-extrabold block uppercase tracking-wider">用户上送资质证明影印原件 (Uploaded ID Card & Handheld Photo Materials)</span>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="bg-[#110e16] p-3 rounded-xl border border-white/10 text-center space-y-2">
-                    <span className="text-[10px] text-[#cbc4d2]/50 block font-bold">证件正面 (国家机读人像面)</span>
-                    <div className="w-full h-32 bg-[#1c1824] rounded-xl border border-white/5 flex flex-col items-center justify-center text-[10px] text-[#cfbcff] italic relative overflow-hidden group">
+                    <span className="text-xs text-[#cbc4d2]/50 block font-bold">证件正面 (国家机读人像面)</span>
+                    <div className="w-full h-32 bg-[#1c1824] rounded-xl border border-white/5 flex flex-col items-center justify-center text-xs text-[#cfbcff] italic relative overflow-hidden group">
                       {formKycL2 === 'unverified' ? (
                         <span className="text-[#cbc4d2]/20">暂未上送正面物料</span>
                       ) : (
                         <div className="absolute inset-0 bg-gradient-to-br from-[#1a1128] to-[#110a1b] p-3 flex flex-col justify-between text-left">
                           <div className="flex justify-between items-start">
-                            <div className="w-8 h-8 rounded-full bg-[#cfbcff]/10 flex items-center justify-center border border-white/10 font-bold text-white text-[9px]">ID</div>
-                            <span className="font-mono text-[8px] bg-emerald-500/10 text-emerald-400 px-1.5 py-0.5 rounded border border-emerald-500/20">OCR PASSED</span>
+                            <div className="w-8 h-8 rounded-full bg-[#cfbcff]/10 flex items-center justify-center border border-white/10 font-bold text-white text-xs">ID</div>
+                            <span className="font-mono text-xs bg-emerald-500/10 text-emerald-400 px-1.5 py-0.5 rounded border border-emerald-500/20">OCR PASSED</span>
                           </div>
                           <div className="font-mono text-[8.5px] text-[#cbc4d2]/80 space-y-0.5 mt-2">
                             <p className="font-bold text-white">CN_PASSPORT_FRONT_{editingUser.uid}.JPG</p>
-                            <p className="opacity-60 text-[8px]">MD5: c4ca4238a0b923820dcc509a6f75849b</p>
+                            <p className="opacity-60 text-xs">MD5: c4ca4238a0b923820dcc509a6f75849b</p>
                           </div>
-                          <span className="text-[9px] text-[#cfbcff] mt-1 font-bold hover:underline cursor-pointer">👁 放大检查原图</span>
+                          <span className="text-xs text-[#cfbcff] mt-1 font-bold hover:underline cursor-pointer">👁 放大检查原图</span>
                         </div>
                       )}
                     </div>
                   </div>
 
                   <div className="bg-[#110e16] p-3 rounded-xl border border-white/10 text-center space-y-2">
-                    <span className="text-[10px] text-[#cbc4d2]/50 block font-bold">证件反面 (带有签证印章/国徽)</span>
-                    <div className="w-full h-32 bg-[#1c1824] rounded-xl border border-white/5 flex flex-col items-center justify-center text-[10px] text-[#cfbcff] italic relative overflow-hidden group">
+                    <span className="text-xs text-[#cbc4d2]/50 block font-bold">证件反面 (带有签证印章/国徽)</span>
+                    <div className="w-full h-32 bg-[#1c1824] rounded-xl border border-white/5 flex flex-col items-center justify-center text-xs text-[#cfbcff] italic relative overflow-hidden group">
                       {formKycL2 === 'unverified' ? (
                         <span className="text-[#cbc4d2]/20">暂未上送反面物料</span>
                       ) : (
                         <div className="absolute inset-0 bg-gradient-to-br from-[#1a1128] to-[#110a1b] p-3 flex flex-col justify-between text-left">
                           <div className="flex justify-between items-start">
-                            <div className="w-8 h-8 rounded-full bg-[#cfbcff]/10 flex items-center justify-center border border-white/10 font-bold text-white text-[9px]">ID</div>
-                            <span className="font-mono text-[8px] bg-emerald-500/10 text-emerald-400 px-1.5 py-0.5 rounded border border-emerald-500/20">OCR PASSED</span>
+                            <div className="w-8 h-8 rounded-full bg-[#cfbcff]/10 flex items-center justify-center border border-white/10 font-bold text-white text-xs">ID</div>
+                            <span className="font-mono text-xs bg-emerald-500/10 text-emerald-400 px-1.5 py-0.5 rounded border border-emerald-500/20">OCR PASSED</span>
                           </div>
                           <div className="font-mono text-[8.5px] text-[#cbc4d2]/80 space-y-0.5 mt-2">
                             <p className="font-bold text-white">CN_PASSPORT_BACK_{editingUser.uid}.JPG</p>
-                            <p className="opacity-60 text-[8px]">MD5: 28c829188a0b923820dcc509a6faefbf0</p>
+                            <p className="opacity-60 text-xs">MD5: 28c829188a0b923820dcc509a6faefbf0</p>
                           </div>
-                          <span className="text-[9px] text-[#cfbcff] mt-1 font-bold hover:underline cursor-pointer">👁 放大检查原图</span>
+                          <span className="text-xs text-[#cfbcff] mt-1 font-bold hover:underline cursor-pointer">👁 放大检查原图</span>
                         </div>
                       )}
                     </div>
                   </div>
 
                   <div className="bg-[#110e16] p-3 rounded-xl border border-white/10 text-center space-y-2">
-                    <span className="text-[10px] text-[#cbc4d2]/50 block font-bold">手持证件自拍活体对比照片</span>
-                    <div className="w-full h-32 bg-[#1c1824] rounded-xl border border-white/5 flex flex-col items-center justify-center text-[10px] text-[#cfbcff] italic relative overflow-hidden group">
+                    <span className="text-xs text-[#cbc4d2]/50 block font-bold">手持证件自拍活体对比照片</span>
+                    <div className="w-full h-32 bg-[#1c1824] rounded-xl border border-white/5 flex flex-col items-center justify-center text-xs text-[#cfbcff] italic relative overflow-hidden group">
                       {formKycL2 === 'unverified' ? (
                         <span className="text-[#cbc4d2]/20">暂未上送自拍照</span>
                       ) : (
                         <div className="absolute inset-0 bg-gradient-to-br from-[#1a1128] to-[#110a1b] p-3 flex flex-col justify-between text-left">
                           <div className="flex justify-between items-start">
-                            <div className="w-8 h-8 rounded-full bg-[#cfbcff]/10 flex items-center justify-center border border-white/10 font-bold text-white text-[9px]">LIVE</div>
-                            <span className="font-mono text-[8px] bg-[#cfbcff]/10 text-[#cfbcff] px-1.5 py-0.5 rounded border border-[#cfbcff]/20">FACE MATCHED</span>
+                            <div className="w-8 h-8 rounded-full bg-[#cfbcff]/10 flex items-center justify-center border border-white/10 font-bold text-white text-xs">LIVE</div>
+                            <span className="font-mono text-xs bg-[#cfbcff]/10 text-[#cfbcff] px-1.5 py-0.5 rounded border border-[#cfbcff]/20">FACE MATCHED</span>
                           </div>
                           <div className="font-mono text-[8.5px] text-[#cbc4d2]/80 space-y-0.5 mt-2">
                             <p className="font-bold text-white">HAND_HELD_SELF_ALIGN_{editingUser.uid}.PNG</p>
-                            <p className="opacity-60 text-[8px]">Similarity: 98.42% (FaceId API)</p>
+                            <p className="opacity-60 text-xs">Similarity: 98.42% (FaceId API)</p>
                           </div>
-                          <span className="text-[9px] text-[#cfbcff] mt-1 font-bold hover:underline cursor-pointer">👁 放大检查原图</span>
+                          <span className="text-xs text-[#cfbcff] mt-1 font-bold hover:underline cursor-pointer">👁 放大检查原图</span>
                         </div>
                       )}
                     </div>

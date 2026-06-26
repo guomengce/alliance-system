@@ -35,13 +35,13 @@ export default function HeaderAndActions({
           <div className="h-4 w-px bg-white/10 hidden sm:block"></div>
 
           <div className="text-left">
-            <span className="text-[10px] uppercase text-[#cbc4d2]/40 font-mono tracking-wider block">订单穿透详情审计</span>
+            <span className="text-xs uppercase text-[#cbc4d2]/40 font-mono tracking-wider block">订单穿透详情审计</span>
             <p className="text-sm font-black text-white font-mono mt-0.5">{selectedOrder.id}</p>
           </div>
         </div>
 
         <div className="shrink-0">
-          <span className={`text-[10px] font-black px-3 py-1.5 rounded-full ${selectedOrder.status === 'confirmed' ? 'bg-emerald-500/10 text-emerald-400' : selectedOrder.status === 'pending' ? 'bg-amber-500/10 text-amber-400' : 'bg-red-500/10 text-red-400'}`}>
+          <span className={`text-xs font-black px-3 py-1.5 rounded-full ${selectedOrder.status === 'confirmed' ? 'bg-emerald-500/10 text-emerald-400' : selectedOrder.status === 'pending' ? 'bg-amber-500/10 text-amber-400' : 'bg-red-500/10 text-red-400'}`}>
             {selectedOrder.status === 'confirmed' ? '● 链上完成交割' : selectedOrder.status === 'pending' ? '● 待安全审核' : '● 已拒绝注销'}
           </span>
         </div>
@@ -54,7 +54,7 @@ export default function HeaderAndActions({
               <Landmark className="w-4 h-4 animate-pulse" />
               <span>待确认的流动性质认购订单</span>
             </h4>
-            <p className="text-[11px] text-[#cbc4d2]/70 leading-relaxed max-w-2xl">
+            <p className="text-[13px] text-[#cbc4d2]/70 leading-relaxed max-w-2xl">
               该笔订单交割额度为 <strong className="text-white font-mono">{selectedOrder.amount.toLocaleString()} USDT</strong>。请在核查链上付款哈希并在D+1个工作日内决定是否下发股票及派发佣金。
             </p>
           </div>

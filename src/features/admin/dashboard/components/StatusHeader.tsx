@@ -19,7 +19,7 @@ export default function StatusHeader() {
       <div className="flex items-center gap-3 bg-[rgba(255,180,171,0.05)] border border-[rgba(255,180,171,0.15)] px-4 py-2 rounded-xl">
         <Activity className="w-4 h-4 text-[#ffb4ab]" />
         <div className="text-left">
-          <p className="text-[9px] text-[#cbc4d2]/50 uppercase font-black tracking-widest leading-none">系统风控状态</p>
+          <p className="text-xs text-[#cbc4d2]/50 uppercase font-black tracking-widest leading-none">系统风控状态</p>
           <p className="text-xs font-black text-emerald-400 mt-1 leading-none font-mono">D+1 Settled Safely</p>
         </div>
       </div>
