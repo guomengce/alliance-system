@@ -35,7 +35,7 @@ export default function SubscriptionForm({
           <div className="space-y-4 flex flex-col justify-between">
             <div className="space-y-4">
               <div className="flex flex-col gap-2">
-                <label className="text-[9px] sm:text-[10px] font-bold uppercase text-[#cbc4d2] tracking-wider">选择套餐方案</label>
+                <label className="text-xs sm:text-xs font-bold uppercase text-[#cbc4d2] tracking-wider">选择套餐方案</label>
                 <Select
                   className="w-full"
                   options={plans.map((plan) => ({
@@ -48,16 +48,16 @@ export default function SubscriptionForm({
               </div>
 
               <div className="flex flex-col gap-2">
-                <label className="text-[9px] sm:text-[10px] font-bold uppercase text-[#cbc4d2] tracking-wider">认购金额 (USDT)</label>
+                <label className="text-xs sm:text-xs font-bold uppercase text-[#cbc4d2] tracking-wider">认购金额 (USDT)</label>
                 <Input
                   className="font-mono font-extrabold"
                   min={selectedPlan.price}
                   onChange={(e) => setAmountInput(parseFloat(e.target.value) || 0)}
-                  suffix={<span className="text-[11px] sm:text-xs text-[#cbc4d2] font-bold">USDT</span>}
+                  suffix={<span className="text-xs sm:text-xs text-[#cbc4d2] font-bold">USDT</span>}
                   type="number"
                   value={amountInput}
                 />
-                <span className="text-[9px] sm:text-[10px] text-[#cbc4d2]/60 select-none">最低认购门槛 {selectedPlan.price} USDT</span>
+                <span className="text-xs sm:text-xs text-[#cbc4d2]/60 select-none">最低认购门槛 {selectedPlan.price} USDT</span>
               </div>
             </div>
 
@@ -65,34 +65,34 @@ export default function SubscriptionForm({
               <Button className="w-full min-h-[46px] font-extrabold uppercase tracking-wider" htmlType="submit" type="primary">
                 确认认购并签署协议文件
               </Button>
-              <p className="text-left text-[9px] sm:text-[10px] text-[#cbc4d2]/40 select-none leading-relaxed">
+              <p className="text-left text-xs sm:text-xs text-[#cbc4d2]/40 select-none leading-relaxed">
                 点击确认即代表您同意《理财参与协议》及相关全自理风险授权声明协议
               </p>
             </div>
           </div>
 
-          <div className="bg-[#141218]/80 rounded-2xl p-4 sm:p-5 flex flex-col justify-between space-y-3.5 border border-white/5 text-[11px] sm:text-xs md:text-sm">
+          <div className="bg-[#141218]/80 rounded-2xl p-4 sm:p-5 flex flex-col justify-between space-y-3.5 border border-white/5 text-xs sm:text-xs md:text-sm">
             <div className="space-y-3.5">
               <div className="flex justify-between items-center pb-2.5 border-b border-white/5">
-                <span className="text-[11px] sm:text-xs text-[#cbc4d2]/80">充值赠送比例</span>
+                <span className="text-xs sm:text-xs text-[#cbc4d2]/80">充值赠送比例</span>
                 <span className="text-xs sm:text-sm font-bold text-[#cfbcff] font-mono">{selectedPlan.giftRatio}%</span>
               </div>
               <div className="flex justify-between items-center pb-2.5 border-b border-white/5">
-                <span className="text-[11px] sm:text-xs text-[#cbc4d2]/80">立即买入 (70% 对应 TROO)</span>
+                <span className="text-xs sm:text-xs text-[#cbc4d2]/80">立即买入 (70% 对应 TROO)</span>
                 <span className="text-xs sm:text-sm font-bold text-white font-mono">{(amountInput * 0.7 * 10).toLocaleString('zh-CN')} TROO</span>
               </div>
               <div className="flex justify-between items-center pb-2.5 border-b border-white/5">
-                <span className="text-[11px] sm:text-xs text-[#cbc4d2]/80">排队锁定 (31%)</span>
+                <span className="text-xs sm:text-xs text-[#cbc4d2]/80">排队锁定 (31%)</span>
                 <span className="text-xs sm:text-sm font-bold text-[#e7c365] font-mono">{(amountInput * 0.31).toLocaleString('zh-CN')} USDT</span>
               </div>
               <div className="flex justify-between items-center pb-2.5 border-b border-white/5">
-                <span className="text-[11px] sm:text-xs text-[#cbc4d2]/80">佣金池增加放款额度</span>
+                <span className="text-xs sm:text-xs text-[#cbc4d2]/80">佣金池增加放款额度</span>
                 <span className="text-xs sm:text-sm font-bold text-emerald-400 font-mono">+${(selectedPlan.poolLimit * (amountInput / selectedPlan.price)).toLocaleString()}</span>
               </div>
             </div>
             <div className="flex justify-between items-center pt-2">
-              <span className="text-[11px] sm:text-xs text-[#cbc4d2]/80">当前可用佣金池限额</span>
-              <span className="text-[10px] sm:text-[11px] font-black text-[#cfbcff] font-mono">
+              <span className="text-xs sm:text-xs text-[#cbc4d2]/80">当前可用佣金池限额</span>
+              <span className="text-xs sm:text-xs font-black text-[#cfbcff] font-mono">
                 {commissionPoolRemaining.toLocaleString()} / {commissionPoolLimit.toLocaleString()} USDT
               </span>
             </div>

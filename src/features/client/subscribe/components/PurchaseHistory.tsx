@@ -87,7 +87,7 @@ export default function PurchaseHistory({
             strokeColor={progress > 0 ? '#8b5ed7' : '#3a373f'}
             trailColor="rgba(54, 52, 58, 0.72)"
           />
-          <span className="text-[10px] font-mono text-white/70">{progress}%</span>
+          <span className="text-xs font-mono text-white/70">{progress}%</span>
         </div>
       )
     },
@@ -117,7 +117,7 @@ export default function PurchaseHistory({
     <section className="glass-card rounded-2xl overflow-hidden shadow-xl mt-6">
       <div className="px-4 sm:px-6 py-4 flex items-center justify-between border-b border-white/5">
         <h4 className="text-sm sm:text-base font-bold text-white uppercase tracking-wider">认购记录 (Purchase History)</h4>
-        <span className="text-[10px] text-[#cbc4d2]/50 font-mono bg-white/5 px-2.5 py-1 rounded-lg">
+        <span className="text-xs text-[#cbc4d2]/50 font-mono bg-white/5 px-2.5 py-1 rounded-lg">
           共 {purchases.length} 个订单
         </span>
       </div>
@@ -137,7 +137,7 @@ export default function PurchaseHistory({
               <div>
                 <div className="font-extrabold text-white text-[13px] sm:text-sm">{purchase.name} 认购计划</div>
                 <div className="flex items-center gap-1.5 mt-0.5">
-                  <span className="text-[9px] sm:text-[10px] text-[#cbc4d2]/50 font-mono">#{purchase.id}</span>
+                  <span className="text-xs sm:text-xs text-[#cbc4d2]/50 font-mono">#{purchase.id}</span>
                   <Button className="alliance-antd-subscribe-mobile-link-button" onClick={() => handleCopyText(purchase.id)}>
                     {copiedId === purchase.id ? '已复制' : '复制'}
                   </Button>
@@ -148,25 +148,25 @@ export default function PurchaseHistory({
               </Tag>
             </div>
 
-            <div className="grid grid-cols-2 gap-2.5 sm:gap-3 text-[11px] sm:text-xs bg-[#120f17]/50 rounded-xl p-2.5 sm:p-3 border border-white/5">
+            <div className="grid grid-cols-2 gap-2.5 sm:gap-3 text-xs sm:text-xs bg-[#120f17]/50 rounded-xl p-2.5 sm:p-3 border border-white/5">
               <div>
-                <p className="text-[#cbc4d2]/40 text-[8.5px] sm:text-[9px] font-bold uppercase">认购时间</p>
-                <p className="text-white/80 font-mono mt-0.5 text-[11px] sm:text-xs">{purchase.date}</p>
+                <p className="text-[#cbc4d2]/40 text-[8.5px] sm:text-xs font-bold uppercase">认购时间</p>
+                <p className="text-white/80 font-mono mt-0.5 text-xs sm:text-xs">{purchase.date}</p>
               </div>
               <div>
-                <p className="text-[#cbc4d2]/40 text-[8.5px] sm:text-[9px] font-bold uppercase text-right">方案金额</p>
-                <p className="text-[#cfbcff] font-bold font-mono text-right mt-0.5 text-[11px] sm:text-xs">{purchase.amount.toLocaleString()} USDT</p>
+                <p className="text-[#cbc4d2]/40 text-[8.5px] sm:text-xs font-bold uppercase text-right">方案金额</p>
+                <p className="text-[#cfbcff] font-bold font-mono text-right mt-0.5 text-xs sm:text-xs">{purchase.amount.toLocaleString()} USDT</p>
               </div>
               <div>
-                <p className="text-[#cbc4d2]/40 text-[8.5px] sm:text-[9px] font-bold uppercase">获赠比例</p>
-                <p className="text-white/80 font-mono mt-0.5 text-[11px] sm:text-xs">{purchase.giftRatio}%</p>
+                <p className="text-[#cbc4d2]/40 text-[8.5px] sm:text-xs font-bold uppercase">获赠比例</p>
+                <p className="text-white/80 font-mono mt-0.5 text-xs sm:text-xs">{purchase.giftRatio}%</p>
               </div>
               <div>
-                <p className="text-[#cbc4d2]/40 text-[8.5px] sm:text-[9px] font-bold uppercase text-right">预计 TROO</p>
-                <p className="text-emerald-400 font-bold font-mono text-right mt-0.5 text-[11px] sm:text-xs">+{purchase.troo.toLocaleString()} TROO</p>
+                <p className="text-[#cbc4d2]/40 text-[8.5px] sm:text-xs font-bold uppercase text-right">预计 TROO</p>
+                <p className="text-emerald-400 font-bold font-mono text-right mt-0.5 text-xs sm:text-xs">+{purchase.troo.toLocaleString()} TROO</p>
               </div>
               <div className="col-span-2 pt-1.5 border-t border-white/5 flex items-center justify-between">
-                <span className="text-[#cbc4d2]/40 text-[8.5px] sm:text-[9px] font-bold uppercase">买入进度</span>
+                <span className="text-[#cbc4d2]/40 text-[8.5px] sm:text-xs font-bold uppercase">买入进度</span>
                 <div className="flex items-center gap-1.5 sm:gap-2">
                   <Progress
                     className="alliance-antd-subscribe-progress w-16 sm:w-20"
@@ -176,7 +176,7 @@ export default function PurchaseHistory({
                     strokeColor={purchase.progress > 0 ? '#8b5ed7' : '#3a373f'}
                     trailColor="rgba(54, 52, 58, 0.72)"
                   />
-                  <span className="text-[9px] sm:text-[10px] font-mono font-bold text-white/90">{purchase.progress}%</span>
+                  <span className="text-xs sm:text-xs font-mono font-bold text-white/90">{purchase.progress}%</span>
                 </div>
               </div>
             </div>

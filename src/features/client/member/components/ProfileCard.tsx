@@ -40,7 +40,7 @@ export default function ProfileCard({
             ) : (
               <h1 className="text-xl md:text-2xl font-black text-white">{nickname}</h1>
             )}
-            <span className="bg-[#cfbcff]/10 text-[#cfbcff] text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded border border-[#cfbcff]/20 w-fit mx-auto md:mx-0">
+            <span className="bg-[#cfbcff]/10 text-[#cfbcff] text-xs font-extrabold uppercase px-2.5 py-0.5 rounded border border-[#cfbcff]/20 w-fit mx-auto md:mx-0">
               标准账户
             </span>
           </div>

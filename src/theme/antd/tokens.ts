@@ -42,7 +42,8 @@ export const appThemeTokens = {
   fontSizeBody: 13,
   fontSizeTableHeader: 12,
   fontSizeCaption: 12,
-  fontSizeMin: 11,
+  fontSizeMin: 12,
+  controlHeight: 50,
 };
 
 export const globalTokens: ThemeConfig['token'] = {
@@ -69,4 +70,7 @@ export const globalTokens: ThemeConfig['token'] = {
   fontFamily: appThemeTokens.fontFamily,
   fontSize: appThemeTokens.fontSizeBody,
   fontSizeSM: appThemeTokens.fontSizeCaption,
+  controlHeight: appThemeTokens.controlHeight,
+  controlHeightLG: appThemeTokens.controlHeight,
+  controlHeightSM: appThemeTokens.controlHeight,
 };

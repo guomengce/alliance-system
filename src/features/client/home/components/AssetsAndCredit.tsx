@@ -77,7 +77,7 @@ export default function AssetsAndCredit({
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <p className="text-2xl font-black text-white">{creditUsedPercent}%</p>
-              <p className="text-[10px] text-[#cbc4d2] font-bold uppercase tracking-wider mt-0.5">已使用</p>
+              <p className="text-xs text-[#cbc4d2] font-bold uppercase tracking-wider mt-0.5">已使用</p>
             </div>
           </div>
 
@@ -88,13 +88,13 @@ export default function AssetsAndCredit({
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-[11px] text-[#cbc4d2] font-semibold opacity-75 uppercase tracking-wide">剩余额度</p>
+                <p className="text-xs text-[#cbc4d2] font-semibold opacity-75 uppercase tracking-wide">剩余额度</p>
                 <p className="text-base font-bold text-white font-mono">
                   {remainingCredit.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
                 </p>
               </div>
               <div>
-                <p className="text-[11px] text-[#cbc4d2] font-semibold opacity-75 uppercase tracking-wide">总额度</p>
+                <p className="text-xs text-[#cbc4d2] font-semibold opacity-75 uppercase tracking-wide">总额度</p>
                 <p className="text-base font-bold text-white font-mono">
                   {totalCredit.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
                 </p>

@@ -91,7 +91,7 @@ export default function OrdersTable({
             <div className="flex justify-between items-start">
               <div>
                 <div className="font-semibold text-white text-sm">{order.name}</div>
-                <div className="text-[10px] text-[#cbc4d2]/50 font-mono">#{order.id}</div>
+                <div className="text-xs text-[#cbc4d2]/50 font-mono">#{order.id}</div>
               </div>
               <Tag className={`alliance-antd-home-status ${getStatusClassName(order.statusType)}`}>
                 {order.status}
@@ -100,11 +100,11 @@ export default function OrdersTable({
 
             <div className="grid grid-cols-2 gap-3 text-xs">
               <div>
-                <p className="text-[#cbc4d2]/40 text-[10px] font-semibold font-mono">购买时间</p>
+                <p className="text-[#cbc4d2]/40 text-xs font-semibold font-mono">购买时间</p>
                 <p className="text-white/80 font-mono mt-0.5">{order.date}</p>
               </div>
               <div>
-                <p className="text-[#cbc4d2]/40 text-[10px] font-semibold text-right font-sans">方案金额</p>
+                <p className="text-[#cbc4d2]/40 text-xs font-semibold text-right font-sans">方案金额</p>
                 <p className="text-[#cfbcff] font-bold font-mono text-right mt-0.5">{order.amount}</p>
               </div>
             </div>

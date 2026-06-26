@@ -21,7 +21,7 @@ export default function RechargePanel({
   return (
     <div className="space-y-5">
       <div className="flex flex-col gap-2">
-        <label className="text-[9px] sm:text-[10px] text-[#cbc4d2] font-black uppercase tracking-wider">选择充值网络 / Network</label>
+        <label className="text-xs sm:text-xs text-[#cbc4d2] font-black uppercase tracking-wider">选择充值网络 / Network</label>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {networks.map((network) => (
             <Button
@@ -37,7 +37,7 @@ export default function RechargePanel({
       </div>
 
       <div className="bg-white/3 rounded-2xl p-4 border border-white/5 space-y-3">
-        <span className="font-extrabold text-[#cfbcff] block text-[10px] sm:text-xs uppercase tracking-wide">
+        <span className="font-extrabold text-[#cfbcff] block text-xs sm:text-xs uppercase tracking-wide">
           专属 USDT {rechargeNetwork === 'TRX' ? 'TRC-20' : 'ERC-20'} 地址:
         </span>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -57,9 +57,9 @@ export default function RechargePanel({
       <div className="bg-amber-500/5 rounded-2xl p-4 border border-amber-500/10 space-y-2.5 text-[#cbc4d2]/90">
         <div className="flex items-center gap-2 text-[#e7c365]">
           <AlertTriangle className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
-          <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider">充值重要提示与规则 (Deposit Precautions)</span>
+          <span className="text-xs sm:text-xs font-black uppercase tracking-wider">充值重要提示与规则 (Deposit Precautions)</span>
         </div>
-        <ul className="list-disc pl-4 space-y-1.5 text-[10px] sm:text-[11px] font-medium leading-relaxed">
+        <ul className="list-disc pl-4 space-y-1.5 text-xs sm:text-xs font-medium leading-relaxed">
           <li>最小起充金额为 <strong className="text-white">10 USDT</strong>，低于该额度的订单将无法入账核销，且不可返还。</li>
           <li>请勿向专属充值账户发送非 USDT 的其它数字资产，否则可能造成资产永久流失。</li>
           <li>区块链网络检测通过后，系统将实时统计并安全入账您的协议余额。</li>

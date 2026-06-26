@@ -34,7 +34,7 @@ export default function NetworkGraph({
 
         <div className="relative z-10 flex flex-col items-center justify-center pt-4 pb-12 w-full">
           {/* Top text identifier in tree card box */}
-          <div className="mb-6 bg-[#1c1822] border border-white/5 px-4 py-1.5 rounded-full text-[9px] font-mono tracking-widest text-[#cbc4d2]/50 flex items-center gap-1.5 uppercase select-none">
+          <div className="mb-6 bg-[#1c1822] border border-white/5 px-4 py-1.5 rounded-full text-xs font-mono tracking-widest text-[#cbc4d2]/50 flex items-center gap-1.5 uppercase select-none">
             <span className="w-1.5 h-1.5 rounded-full bg-[#cfbcff] animate-pulse"></span>
             EASTERN RANK LEVEL-2 GROUP MEMBER
           </div>
@@ -50,7 +50,7 @@ export default function NetworkGraph({
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                 </svg>
               </div>
-              <div className="absolute bottom-0 right-0 bg-[#cfbcff] text-[#1c1822] text-[9px] font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#16131c] shadow">
+              <div className="absolute bottom-0 right-0 bg-[#cfbcff] text-[#1c1822] text-xs font-black w-5 h-5 rounded-full flex items-center justify-center border-2 border-[#16131c] shadow">
                 L2
               </div>
             </div>
@@ -59,16 +59,16 @@ export default function NetworkGraph({
             <h4 className="text-xl font-black text-white mt-4 font-sans tracking-wide">ID: 721099</h4>
             
             {/* Verification label */}
-            <p className="text-[10px] font-bold text-[#cfbcff]/85 tracking-widest mt-1 uppercase select-none">VERIFIED MEMBER - SEP 2023</p>
+            <p className="text-xs font-bold text-[#cfbcff]/85 tracking-widest mt-1 uppercase select-none">VERIFIED MEMBER - SEP 2023</p>
             
             {/* Division stat parameters */}
             <div className="grid grid-cols-2 gap-4 mt-6 pt-5 border-t border-white/5 select-none font-sans">
               <div className="text-left pl-3">
-                <p className="text-[10px] text-[#cbc4d2]/40 font-bold uppercase tracking-wide">直属推荐</p>
+                <p className="text-xs text-[#cbc4d2]/40 font-bold uppercase tracking-wide">直属推荐</p>
                 <p className="text-lg font-extrabold text-[#cbc4d2] font-mono mt-0.5">156</p>
               </div>
               <div className="text-right pr-3 border-l border-white/5">
-                <p className="text-[10px] text-[#cbc4d2]/40 font-bold uppercase tracking-wide">团队业绩</p>
+                <p className="text-xs text-[#cbc4d2]/40 font-bold uppercase tracking-wide">团队业绩</p>
                 <p className="text-lg font-extrabold text-[#cfbcff] font-mono mt-0.5">89.2k</p>
               </div>
             </div>
@@ -87,7 +87,7 @@ export default function NetworkGraph({
                   <button
                     key={lvl}
                     onClick={() => setLevelFilter(lvl)}
-                    className={`px-3 py-1 rounded-full text-[11px] font-bold transition-all ${
+                    className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${
                       levelFilter === lvl 
                         ? 'bg-[#cfbcff] text-[#210c44]' 
                         : 'text-[#cbc4d2]/70 hover:text-white'
@@ -134,7 +134,7 @@ export default function NetworkGraph({
               <div className="hidden md:block overflow-x-auto scrollbar-hide">
                 <table className="w-full text-left">
                   <thead>
-                    <tr className="border-b border-white/5 bg-white/2 text-[#cbc4d2]/60 text-[10px] font-bold uppercase tracking-wider">
+                    <tr className="border-b border-white/5 bg-white/2 text-[#cbc4d2]/60 text-xs font-bold uppercase tracking-wider">
                       <th className="p-4 px-6">下线标识 UID</th>
                       <th className="p-4 px-6">层级代理</th>
                       <th className="p-4 px-6 text-right">直属推荐</th>

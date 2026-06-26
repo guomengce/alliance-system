@@ -28,7 +28,7 @@ export default function MarketPanel({
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-2">
         <div className="bg-[#1c1824]/20 p-5 rounded-2xl border border-white/5 flex flex-col justify-between space-y-6 lg:space-y-4">
           <div>
-            <span className="text-[10px] text-[#cbc4d2]/60 font-bold uppercase tracking-wider block">所选时段价格</span>
+            <span className="text-xs text-[#cbc4d2]/60 font-bold uppercase tracking-wider block">所选时段价格</span>
             <div className="flex items-baseline gap-2 mt-2">
               <span className="text-3xl font-mono font-black text-[#cfbcff] tracking-tight">{activeData.price.toFixed(4)}</span>
               <span className="text-xs font-semibold text-[#cbc4d2]">USDT</span>
@@ -76,7 +76,7 @@ export default function MarketPanel({
         </div>
 
         <div className="lg:col-span-2 bg-[#1c1824]/20 p-5 rounded-2xl border border-white/5 flex flex-col justify-between min-h-[220px]">
-          <div className="flex justify-between items-center text-[10px] text-[#cbc4d2]/50 font-semibold mb-2 font-mono">
+          <div className="flex justify-between items-center text-xs text-[#cbc4d2]/50 font-semibold mb-2 font-mono">
             <span>昨日走势行情</span>
             <span className="text-[#e7c365]">1 USDT = 10 TROO 汇率溢价基准</span>
           </div>
@@ -90,7 +90,7 @@ export default function MarketPanel({
             />
           </div>
 
-          <div className="flex justify-between items-center text-[10px] text-[#cbc4d2]/30 mt-3 font-mono font-bold select-none border-t border-white/5 pt-2 px-1">
+          <div className="flex justify-between items-center text-xs text-[#cbc4d2]/30 mt-3 font-mono font-bold select-none border-t border-white/5 pt-2 px-1">
             {marketData.map((d, i) => (
               <span key={i} className={`transition-colors duration-150 ${activeIndex === i ? 'text-[#cfbcff] font-extrabold' : ''}`}>
                 {d.time}

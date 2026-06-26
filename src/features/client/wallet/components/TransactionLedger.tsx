@@ -50,7 +50,7 @@ export default function TransactionLedger({
               title="复制订单编号"
             />
             {isCopied && (
-              <span className="text-[10px] text-emerald-400 font-bold bg-emerald-500/10 px-1 py-0.5 rounded">
+              <span className="text-xs text-emerald-400 font-bold bg-emerald-500/10 px-1 py-0.5 rounded">
                 已复制
               </span>
             )}
@@ -121,7 +121,7 @@ export default function TransactionLedger({
       <div className="p-4 sm:p-6 border-b border-white/5 flex flex-col xl:flex-row xl:items-center justify-between gap-4">
         <div className="flex flex-col gap-1">
           <h3 className="font-bold tracking-tight text-white text-sm sm:text-base uppercase">交易历史 (Historical Ledger)</h3>
-          <p className="text-[10px] sm:text-xs text-[#cbc4d2]/50">查找并筛选所有的资金账单往来记录</p>
+          <p className="text-xs sm:text-xs text-[#cbc4d2]/50">查找并筛选所有的资金账单往来记录</p>
         </div>
 
         <div className="flex flex-col md:flex-row md:items-center gap-3">
@@ -163,7 +163,7 @@ export default function TransactionLedger({
               <div key={txn.id} className={`pt-4 ${index === 0 ? 'pt-0' : ''} space-y-3`}>
                 <div className="flex justify-between items-start">
                   <div className="flex items-center gap-1.5">
-                    <span className="font-mono text-[10px] font-semibold text-[#cfbcff] bg-[#cfbcff]/5 px-1.5 py-0.5 rounded border border-[#cfbcff]/10">
+                    <span className="font-mono text-xs font-semibold text-[#cfbcff] bg-[#cfbcff]/5 px-1.5 py-0.5 rounded border border-[#cfbcff]/10">
                       {txn.id}
                     </span>
                     <Button
@@ -175,7 +175,7 @@ export default function TransactionLedger({
                       }}
                     />
                     {isCopied && (
-                      <span className="text-[9px] text-emerald-400 font-bold bg-emerald-500/10 px-1 py-0.5 rounded">
+                      <span className="text-xs text-emerald-400 font-bold bg-emerald-500/10 px-1 py-0.5 rounded">
                         已复制
                       </span>
                     )}
@@ -192,7 +192,7 @@ export default function TransactionLedger({
                       <span className="font-semibold text-white/90">{getNormalizedTypeLabel(txn.type, txn.typeLabel)}</span>
                     </div>
                     <p className="font-bold text-white text-[12px] sm:text-xs">{txn.desc}</p>
-                    <p className="text-[10px] text-[#cbc4d2]/70 font-mono">{txn.time}</p>
+                    <p className="text-xs text-[#cbc4d2]/70 font-mono">{txn.time}</p>
                   </div>
 
                   <div className="text-right shrink-0 ml-3">
@@ -213,7 +213,7 @@ export default function TransactionLedger({
           </div>
         )}
       </div>
-      <div className="p-4 px-6 bg-white/2 flex items-center justify-between text-[11px] sm:text-xs text-[#cbc4d2]">
+      <div className="p-4 px-6 bg-white/2 flex items-center justify-between text-xs sm:text-xs text-[#cbc4d2]">
         <span>显示 1-{filteredTransactions.length} 条，共 {filteredTransactions.length} 条</span>
       </div>
     </section>

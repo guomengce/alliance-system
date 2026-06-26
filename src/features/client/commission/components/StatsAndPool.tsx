@@ -29,7 +29,7 @@ export default function StatsAndPool({
             </div>
             <span className="text-[#b4eeb4] text-xs font-bold">+12.5%</span>
           </div>
-          <p className="text-[#cbc4d2]/70 text-[10px] font-bold uppercase tracking-wider mb-1">累计下线返佣总额 (Total Earned)</p>
+          <p className="text-[#cbc4d2]/70 text-xs font-bold uppercase tracking-wider mb-1">累计下线返佣总额 (Total Earned)</p>
           <h3 className="text-2.5xl font-black text-white font-mono flex items-baseline">
             <span className="text-sm font-medium opacity-60 mr-1">¥</span>
             {cumulativeCommissions.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
@@ -43,14 +43,14 @@ export default function StatsAndPool({
             <div className="p-2 bg-[#cfbcff]/15 rounded-lg text-[#cfbcff]">
               <Clock className="w-4 h-4 animate-pulse" />
             </div>
-            <span className="text-[#cfbcff] text-[10px] font-bold uppercase font-mono px-2 py-0.5 rounded-full bg-[#cfbcff]/10 border border-[#cfbcff]/10">代收中</span>
+            <span className="text-[#cfbcff] text-xs font-bold uppercase font-mono px-2 py-0.5 rounded-full bg-[#cfbcff]/10 border border-[#cfbcff]/10">代收中</span>
           </div>
-          <p className="text-[#cbc4d2]/70 text-[10px] font-bold uppercase tracking-wider mb-1">当前待处理代收收益 (Pending Settle)</p>
+          <p className="text-[#cbc4d2]/70 text-xs font-bold uppercase tracking-wider mb-1">当前待处理代收收益 (Pending Settle)</p>
           <h3 className="text-2.5xl font-black text-[#cfbcff] font-mono flex items-baseline">
             <span className="text-sm font-medium opacity-60 mr-1">¥</span>
             {pendingBalance.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
           </h3>
-          <p className="text-[10px] text-[#cbc4d2]/50 font-bold mt-1.5 flex items-center gap-1.5 border-t border-white/5 pt-1.5">
+          <p className="text-xs text-[#cbc4d2]/50 font-bold mt-1.5 flex items-center gap-1.5 border-t border-white/5 pt-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-[#00e676] animate-pulse"></span>
             系统将于次日 (D+1) 凌晨 2:00 自动汇算入账
           </p>
@@ -60,12 +60,12 @@ export default function StatsAndPool({
         <div className="grid grid-cols-2 gap-4">
           {/* Completed arrived */}
           <div className="glass-card p-4 rounded-[18px] relative overflow-hidden group border-l-2 border-l-[#00e676]/35">
-            <p className="text-[#cbc4d2]/60 text-[9px] font-bold uppercase tracking-wider mb-1">已到账金额</p>
+            <p className="text-[#cbc4d2]/60 text-xs font-bold uppercase tracking-wider mb-1">已到账金额</p>
             <h4 className="text-lg font-black text-white font-mono flex items-baseline">
               <span className="text-xs opacity-60 mr-0.5">¥</span>
               {arrivedCommissions.toLocaleString('zh-CN', { minimumFractionDigits: 1 })}
             </h4>
-            <div className="mt-1 flex items-center gap-1 text-[9px] text-[#00e676]/90 font-bold">
+            <div className="mt-1 flex items-center gap-1 text-xs text-[#00e676]/90 font-bold">
               <span className="w-1 h-1 rounded-full bg-[#00e676]"></span>
               <span>划转成功</span>
             </div>
@@ -73,12 +73,12 @@ export default function StatsAndPool({
 
           {/* Failed and audit list */}
           <div className="glass-card p-4 rounded-[18px] relative overflow-hidden group border-l-2 border-l-[#ffb4ab]/35">
-            <p className="text-[#cbc4d2]/60 text-[9px] font-bold uppercase tracking-wider mb-1">历史异常款</p>
+            <p className="text-[#cbc4d2]/60 text-xs font-bold uppercase tracking-wider mb-1">历史异常款</p>
             <h4 className="text-lg font-black text-white font-mono flex items-baseline">
               <span className="text-xs opacity-60 mr-0.5">¥</span>
               {failedCommissions.toLocaleString('zh-CN', { minimumFractionDigits: 1 })}
             </h4>
-            <div className="mt-1 flex items-center gap-1 text-[9px] text-red-400 font-bold">
+            <div className="mt-1 flex items-center gap-1 text-xs text-red-400 font-bold">
               <span className="w-1 h-1 rounded-full bg-red-400"></span>
               <span>异常审计</span>
             </div>
@@ -125,7 +125,7 @@ export default function StatsAndPool({
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <p className="text-2xl font-black text-white">{usedPercent.toFixed(0)}%</p>
-                <p className="text-[10px] text-[#cbc4d2] font-bold uppercase tracking-wider mt-0.5">已使用</p>
+                <p className="text-xs text-[#cbc4d2] font-bold uppercase tracking-wider mt-0.5">已使用</p>
               </div>
             </div>
           </div>
@@ -134,7 +134,7 @@ export default function StatsAndPool({
           <div className="md:col-span-7 space-y-4">
             <div className="bg-white/[0.02] border border-white/5 p-4 rounded-xl flex justify-between items-center hover:bg-white/[0.04] transition-colors">
               <div>
-                <span className="text-[10px] text-[#cbc4d2]/60 font-black uppercase tracking-wider">剩余额度</span>
+                <span className="text-xs text-[#cbc4d2]/60 font-black uppercase tracking-wider">剩余额度</span>
                 <p className="text-lg font-bold text-white font-mono mt-0.5">
                   ¥{commissionPoolRemaining.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
                 </p>
@@ -144,7 +144,7 @@ export default function StatsAndPool({
 
             <div className="bg-white/[0.02] border border-white/5 p-4 rounded-xl flex justify-between items-center hover:bg-white/[0.04] transition-colors">
               <div>
-                <span className="text-[10px] text-[#cbc4d2]/60 font-black uppercase tracking-wider">总额度</span>
+                <span className="text-xs text-[#cbc4d2]/60 font-black uppercase tracking-wider">总额度</span>
                 <p className="text-lg font-bold text-white font-mono mt-0.5">
                   ¥{commissionPoolLimit.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
                 </p>

@@ -19,7 +19,7 @@ export default function WithdrawPanel({
   return (
     <div className="space-y-4">
       <div className="flex flex-col gap-2">
-        <label className="text-[9px] sm:text-[10px] text-[#cbc4d2] font-semibold uppercase tracking-wider">选择提现协议网络 / Network</label>
+        <label className="text-xs sm:text-xs text-[#cbc4d2] font-semibold uppercase tracking-wider">选择提现协议网络 / Network</label>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {networks.map((network) => (
             <Button
@@ -35,7 +35,7 @@ export default function WithdrawPanel({
       </div>
 
       <div className="flex flex-col gap-2">
-        <label className="text-[9px] sm:text-[10px] text-[#cbc4d2] font-semibold uppercase">接收方链上钱包地址 (Address)</label>
+        <label className="text-xs sm:text-xs text-[#cbc4d2] font-semibold uppercase">接收方链上钱包地址 (Address)</label>
         <Input
           className="alliance-antd-wallet-form-input"
           onChange={(e) => onAddressInputChange(e.target.value)}
@@ -46,7 +46,7 @@ export default function WithdrawPanel({
       </div>
 
       <div className="flex flex-col gap-2">
-        <label className="text-[9px] sm:text-[10px] text-[#cbc4d2] font-semibold uppercase">提现数量 / Withdraw Amount (USDT)</label>
+        <label className="text-xs sm:text-xs text-[#cbc4d2] font-semibold uppercase">提现数量 / Withdraw Amount (USDT)</label>
         <Input
           className="alliance-antd-wallet-form-input is-amount"
           min="1"
@@ -61,7 +61,7 @@ export default function WithdrawPanel({
           type="number"
           value={amountInput}
         />
-        <span className="text-[9px] sm:text-[10px] text-[#cbc4d2]/50 block">当前可用协议余额: {usdtBalance.toLocaleString('zh-CN')} USDT</span>
+        <span className="text-xs sm:text-xs text-[#cbc4d2]/50 block">当前可用协议余额: {usdtBalance.toLocaleString('zh-CN')} USDT</span>
       </div>
 
       <div className="pt-2">
@@ -77,9 +77,9 @@ export default function WithdrawPanel({
       <div className="bg-amber-500/5 rounded-2xl p-4 border border-amber-500/10 space-y-2 text-[#cbc4d2]/90">
         <div className="flex items-center gap-2 text-[#e7c365]">
           <AlertTriangle className="w-3.5 sm:w-4 h-3.5 sm:h-4" />
-          <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider">提现安全须知与规则 (Withdraw Precautions)</span>
+          <span className="text-xs sm:text-xs font-black uppercase tracking-wider">提现安全须知与规则 (Withdraw Precautions)</span>
         </div>
-        <ul className="list-disc pl-4 space-y-1.5 text-[10px] sm:text-[11px] font-medium leading-relaxed">
+        <ul className="list-disc pl-4 space-y-1.5 text-xs sm:text-xs font-medium leading-relaxed">
           <li>提现起提门槛：<strong className="text-white">{withdrawNetwork === 'TRX' ? '20' : '40'} USDT</strong>。</li>
           <li>提现手续费：{withdrawNetwork === 'TRX' ? 'TRC-20 每笔固定收取 1.5 USDT' : 'ERC-20 每笔固定收取 8 USDT Gas 费用'}。</li>
           <li>请双重检测您的提现目标地址与收款网络：<span className="text-white font-bold">{withdrawNetwork} 网络</span>。</li>

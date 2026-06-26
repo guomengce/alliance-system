@@ -8,7 +8,7 @@ export default function TeamOverview({ recentActivities }: TeamOverviewProps) {
       <div className="flex justify-between items-center pb-2 border-b border-white/5">
         <div className="flex items-center gap-3">
           <h2 className="text-base font-bold text-white uppercase tracking-wider">团队概览</h2>
-          <span className="text-[10px] text-[#cbc4d2] opacity-60">Team Overview</span>
+          <span className="text-xs text-[#cbc4d2] opacity-60">Team Overview</span>
         </div>
       </div>
 
@@ -39,21 +39,21 @@ export default function TeamOverview({ recentActivities }: TeamOverviewProps) {
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <span className="text-sm font-bold text-white">成员分布</span>
-              <span className="text-[9px] text-[#cbc4d2] uppercase">L1-L5 Depth</span>
+              <span className="text-xs text-[#cbc4d2] uppercase">L1-L5 Depth</span>
             </div>
           </div>
           <div className="space-y-3 mt-4 sm:mt-0">
             <div className="flex items-center gap-3">
               <span className="w-2.5 h-2.5 rounded-full bg-[#cfbcff] glow-accent"></span>
               <div className="flex flex-col">
-                <span className="text-[10px] text-[#cbc4d2]">直接推荐 L1</span>
+                <span className="text-xs text-[#cbc4d2]">直接推荐 L1</span>
                 <span className="text-xs font-bold text-white">35%</span>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <span className="w-2.5 h-2.5 rounded-full bg-[#cdc0e9] glow-accent"></span>
               <div className="flex flex-col">
-                <span className="text-[10px] text-[#cbc4d2]">间接推荐 L2-L5</span>
+                <span className="text-xs text-[#cbc4d2]">间接推荐 L2-L5</span>
                 <span className="text-xs font-bold text-white">65%</span>
               </div>
             </div>

@@ -14,5 +14,5 @@ export const selectTheme: NonNullable<ThemeConfig['components']>['Select'] = {
   optionSelectedBg: 'rgba(207, 188, 255, 0.14)',
   optionSelectedColor: t.primaryLight,
   selectorBg: t.bgControlDeep,
-  singleItemHeightLG: 40,
+  singleItemHeightLG: 50,
 };

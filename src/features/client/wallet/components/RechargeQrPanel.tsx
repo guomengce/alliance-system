@@ -37,7 +37,7 @@ export default function RechargeQrPanel({ rechargeNetwork }: RechargeQrPanelProp
       <span className="text-xs text-white/90 font-black tracking-widest text-center">
         数字二维码安全扫码
       </span>
-      <span className="text-[10px] text-[#cfbcff] font-bold text-center mt-1.5 uppercase font-[#cfbcff]/10 px-2.5 py-0.5 rounded-full border border-[#cfbcff]/15">
+      <span className="text-xs text-[#cfbcff] font-bold text-center mt-1.5 uppercase font-[#cfbcff]/10 px-2.5 py-0.5 rounded-full border border-[#cfbcff]/15">
         USDT - {rechargeNetwork} 专用
       </span>
     </div>

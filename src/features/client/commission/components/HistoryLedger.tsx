@@ -41,7 +41,7 @@ export default function HistoryLedger({
       <div className="hidden md:block overflow-x-auto scrollbar-hide">
         <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="text-[#cbc4d2] text-[11px] font-bold border-b border-white/5 bg-white/2 uppercase">
+            <tr className="text-[#cbc4d2] text-xs font-bold border-b border-white/5 bg-white/2 uppercase">
               <th className="p-4 px-6">流水单号</th>
               <th className="p-4 px-6">来源用户</th>
               <th className="p-4 px-6 text-right">对方订单金额</th>
@@ -57,7 +57,7 @@ export default function HistoryLedger({
                 <td className="p-4 px-6 font-mono text-xs text-[#cbc4d2]">{item.id}</td>
                 <td className="p-4 px-6">
                   <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full bg-[#36343a] text-[9px] flex items-center justify-center text-[#cfbcff] font-bold">
+                    <div className="w-6 h-6 rounded-full bg-[#36343a] text-xs flex items-center justify-center text-[#cfbcff] font-bold">
                       {item.userLetter}
                     </div>
                     <span className="font-semibold text-white/90">{item.user}</span>
@@ -65,7 +65,7 @@ export default function HistoryLedger({
                 </td>
                 <td className="p-4 px-6 text-right font-bold text-white font-mono">¥ {item.amount.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}</td>
                 <td className="p-4 px-6 text-center">
-                  <span className="px-2 py-0.5 bg-[#cfbcff]/10 text-[#cfbcff] text-[10px] rounded font-extrabold uppercase border border-[#cfbcff]/20">
+                  <span className="px-2 py-0.5 bg-[#cfbcff]/10 text-[#cfbcff] text-xs rounded font-extrabold uppercase border border-[#cfbcff]/20">
                     {item.level}
                   </span>
                 </td>
@@ -74,7 +74,7 @@ export default function HistoryLedger({
                 </td>
                 <td className="p-4 px-6 text-center text-xs text-[#cbc4d2]/70 font-mono whitespace-nowrap">{item.time}</td>
                 <td className="p-4 px-6 text-center whitespace-nowrap">
-                  <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold ${
+                  <span className={`px-2.5 py-0.5 rounded-full text-xs font-extrabold ${
                     item.status === 'success' ? 'bg-emerald-950/40 text-emerald-400 border border-emerald-800/30' :
                     item.status === 'pending' ? 'bg-[#cfbcff]/10 text-[#cfbcff] border border-[#cfbcff]/20' :
                     'bg-rose-950/40 text-rose-400 border border-rose-800/30'
@@ -94,15 +94,15 @@ export default function HistoryLedger({
           <div key={item.id} className={`space-y-3 ${index > 0 ? 'pt-4' : ''}`}>
             <div className="flex justify-between items-start">
               <div>
-                <span className="font-mono text-[10px] text-[#cbc4d2] bg-white/5 px-2 py-0.5 rounded border border-white/5">{item.id}</span>
+                <span className="font-mono text-xs text-[#cbc4d2] bg-white/5 px-2 py-0.5 rounded border border-white/5">{item.id}</span>
                 <div className="flex items-center gap-2 mt-2">
-                  <div className="w-6 h-6 rounded-full bg-[#36343a] text-[9px] flex items-center justify-center text-[#cfbcff] font-bold">
+                  <div className="w-6 h-6 rounded-full bg-[#36343a] text-xs flex items-center justify-center text-[#cfbcff] font-bold">
                     {item.userLetter}
                   </div>
                   <span className="font-semibold text-white/90 text-xs">{item.user}</span>
                 </div>
               </div>
-              <span className={`px-2 py-0.5 rounded-full text-[9px] font-extrabold ${
+              <span className={`px-2 py-0.5 rounded-full text-xs font-extrabold ${
                 item.status === 'success' ? 'bg-emerald-950/40 text-emerald-400 border border-emerald-800/30' :
                 item.status === 'pending' ? 'bg-[#cfbcff]/10 text-[#cfbcff] border border-[#cfbcff]/20' :
                 'bg-rose-950/40 text-rose-400 border border-rose-800/30'
@@ -113,23 +113,23 @@ export default function HistoryLedger({
 
             <div className="grid grid-cols-2 gap-3 text-xs pt-1">
               <div>
-                <p className="text-[#cbc4d2]/40 text-[10px] font-semibold font-mono">对方订单 / 层级</p>
+                <p className="text-[#cbc4d2]/40 text-xs font-semibold font-mono">对方订单 / 层级</p>
                 <p className="text-white font-mono mt-0.5">
                   ¥ {item.amount.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
-                  <span className="ml-1.5 px-1 py-0.2 bg-[#cfbcff]/10 text-[#cfbcff] text-[8px] rounded uppercase">
+                  <span className="ml-1.5 px-1 py-0.2 bg-[#cfbcff]/10 text-[#cfbcff] text-xs rounded uppercase">
                     {item.level}
                   </span>
                 </p>
               </div>
               <div>
-                <p className="text-[#cbc4d2]/40 text-[10px] font-semibold font-mono text-right">您的收益金</p>
+                <p className="text-[#cbc4d2]/40 text-xs font-semibold font-mono text-right">您的收益金</p>
                 <p className="text-[#00e676] font-extrabold font-mono text-right mt-0.5">
                   +¥ {item.reward.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
                 </p>
               </div>
             </div>
 
-            <div className="flex justify-between items-center text-[10px] text-[#cbc4d2]/50 font-mono">
+            <div className="flex justify-between items-center text-xs text-[#cbc4d2]/50 font-mono">
               <span>结算时间</span>
               <span>{item.time}</span>
             </div>

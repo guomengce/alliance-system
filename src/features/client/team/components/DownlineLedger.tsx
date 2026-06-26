@@ -14,7 +14,7 @@ export default function DownlineLedger({
       <div className="p-6 border-b border-white/5 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex flex-col gap-1">
           <h3 className="font-bold tracking-tight text-white text-base">下属成员详情表</h3>
-          <p className="text-[11px] text-[#cbc4d2]/40">实时展示直属、二代及网络裂变用户的业绩质押明细列表</p>
+          <p className="text-xs text-[#cbc4d2]/40">实时展示直属、二代及网络裂变用户的业绩质押明细列表</p>
         </div>
         
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full md:w-auto">
@@ -44,7 +44,7 @@ export default function DownlineLedger({
       <div className="hidden md:block overflow-x-auto scrollbar-hide">
         <table className="w-full text-left">
           <thead>
-            <tr className="border-b border-white/5 bg-white/2 text-[#cbc4d2] text-[10px] font-bold uppercase tracking-wider">
+            <tr className="border-b border-white/5 bg-white/2 text-[#cbc4d2] text-xs font-bold uppercase tracking-wider">
               <th className="p-4 px-6">用户 ID</th>
               <th className="p-4 px-6 xl:text-center">注册时间</th>
               <th className="p-4 px-6 xl:text-center">节点层级</th>

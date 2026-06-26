@@ -52,7 +52,7 @@ export default function PlansList({
                 </p>
 
                 <div className="mt-2.5 flex items-baseline gap-2">
-                  <span className="text-[11px] text-[#cbc4d2]/60 uppercase font-black tracking-wide">起购门槛:</span>
+                  <span className="text-xs text-[#cbc4d2]/60 uppercase font-black tracking-wide">起购门槛:</span>
                   <span className="text-xl sm:text-2xl font-mono font-black text-white tracking-tight">
                     {plan.price.toLocaleString()}
                   </span>
@@ -62,7 +62,7 @@ export default function PlansList({
 
               <div className="col-span-12 lg:col-span-8 xl:col-span-6 grid grid-cols-2 sm:grid-cols-4 gap-3 border-t lg:border-t-0 lg:border-l border-white/10 pt-4 lg:pt-0 lg:pl-6 xl:pl-8">
                 <div className="flex flex-col justify-center bg-white/2 p-3 rounded-xl border border-white/5 transition-all hover:bg-white/5">
-                  <span className="text-[10px] sm:text-xs font-bold text-[#cbc4d2]/50 uppercase mb-1 tracking-wider leading-tight">
+                  <span className="text-xs sm:text-xs font-bold text-[#cbc4d2]/50 uppercase mb-1 tracking-wider leading-tight">
                     佣金池放款额
                   </span>
                   <span className="text-xs sm:text-sm md:text-base lg:text-sm xl:text-lg font-mono font-black text-emerald-400">
@@ -71,7 +71,7 @@ export default function PlansList({
                 </div>
 
                 <div className="flex flex-col justify-center bg-[#cfbcff]/2 p-3 rounded-xl border border-[#cfbcff]/5 transition-all hover:bg-[#cfbcff]/5 animate-none">
-                  <span className="text-[10px] sm:text-xs font-bold text-[#cfbcff]/60 uppercase mb-1 tracking-wider leading-tight">
+                  <span className="text-xs sm:text-xs font-bold text-[#cfbcff]/60 uppercase mb-1 tracking-wider leading-tight">
                     充值返赠比例
                   </span>
                   <span className="text-xs sm:text-sm md:text-base lg:text-sm xl:text-lg font-mono font-black text-[#cfbcff]">
@@ -80,7 +80,7 @@ export default function PlansList({
                 </div>
 
                 <div className="flex flex-col justify-center bg-white/2 p-3 rounded-xl border border-white/5 transition-all hover:bg-white/5">
-                  <span className="text-[10px] sm:text-xs font-bold text-[#cbc4d2]/50 uppercase mb-1 tracking-wider leading-tight">
+                  <span className="text-xs sm:text-xs font-bold text-[#cbc4d2]/50 uppercase mb-1 tracking-wider leading-tight">
                     立即释放买入
                   </span>
                   <span className="text-xs sm:text-sm md:text-base lg:text-sm xl:text-lg font-mono font-black text-white">
@@ -89,7 +89,7 @@ export default function PlansList({
                 </div>
 
                 <div className="flex flex-col justify-center bg-white/2 p-3 rounded-xl border border-white/5 transition-all hover:bg-white/5">
-                  <span className="text-[10px] sm:text-xs font-bold text-[#e7c365]/60 uppercase mb-1 tracking-wider leading-tight">
+                  <span className="text-xs sm:text-xs font-bold text-[#e7c365]/60 uppercase mb-1 tracking-wider leading-tight">
                     排队等待锁定
                   </span>
                   <span className="text-xs sm:text-sm md:text-base lg:text-sm xl:text-lg font-mono font-black text-[#e7c365]">

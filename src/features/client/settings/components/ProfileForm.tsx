@@ -17,7 +17,7 @@ export default function ProfileForm({
        <form onSubmit={onUpdateProfile} className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col gap-2">
-            <label className="text-[10px] text-[#cbc4d2] font-semibold uppercase tracking-wider">用户昵称 (Nickname)</label>
+            <label className="text-xs text-[#cbc4d2] font-semibold uppercase tracking-wider">用户昵称 (Nickname)</label>
             <input 
               type="text" 
               value={tempNickname}
@@ -27,7 +27,7 @@ export default function ProfileForm({
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-[10px] text-[#cbc4d2] font-semibold uppercase tracking-wider">安全收据邮箱 (Secured Email)</label>
+            <label className="text-xs text-[#cbc4d2] font-semibold uppercase tracking-wider">安全收据邮箱 (Secured Email)</label>
             <input 
               type="email" 
               value={tempEmail}

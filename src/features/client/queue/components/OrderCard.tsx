@@ -15,25 +15,25 @@ export default function OrderCard({ item, onSelectDetailOrder }: OrderCardProps)
           <h5 className="font-extrabold text-sm text-white tracking-wide group-hover:text-[#cfbcff] transition-colors truncate">
             {item.name}
           </h5>
-          <p className="text-[10px] text-[#cbc4d2]/30 font-mono mt-1">
+          <p className="text-xs text-[#cbc4d2]/30 font-mono mt-1">
             订单编号 ID: <span className="text-[#cbc4d2]/50">{item.id}</span>
           </p>
         </div>
         <div className="shrink-0">
           {item.status === 'released' && (
-            <span className="inline-flex items-center px-2.5 py-0.5 bg-emerald-950/50 text-emerald-400 border border-emerald-500/25 rounded-full text-[10px] font-bold">
+            <span className="inline-flex items-center px-2.5 py-0.5 bg-emerald-950/50 text-emerald-400 border border-emerald-500/25 rounded-full text-xs font-bold">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-1.5"></span>
               {item.statusLabel}
             </span>
           )}
           {item.status === 'partially_released' && (
-            <span className="inline-flex items-center px-2.5 py-0.5 bg-[#cfbcff]/15 text-[#cfbcff] border border-[#cfbcff]/30 rounded-full text-[10px] font-bold">
+            <span className="inline-flex items-center px-2.5 py-0.5 bg-[#cfbcff]/15 text-[#cfbcff] border border-[#cfbcff]/30 rounded-full text-xs font-bold">
               <span className="w-1.5 h-1.5 rounded-full bg-[#cfbcff] animate-pulse mr-1.5"></span>
               {item.statusLabel}
             </span>
           )}
           {item.status === 'queueing' && (
-            <span className="inline-flex items-center px-2.5 py-0.5 bg-amber-950/50 text-amber-400 border border-amber-500/25 rounded-full text-[10px] font-bold">
+            <span className="inline-flex items-center px-2.5 py-0.5 bg-amber-950/50 text-amber-400 border border-amber-500/25 rounded-full text-xs font-bold">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse mr-1.5"></span>
               {item.statusLabel}
             </span>
@@ -43,25 +43,25 @@ export default function OrderCard({ item, onSelectDetailOrder }: OrderCardProps)
 
       <div className="grid grid-cols-2 gap-x-4 gap-y-3 pt-2 border-t border-b border-white/5 py-3 relative z-10">
         <div>
-          <span className="text-[#cbc4d2]/40 text-[9px] font-bold uppercase tracking-wider block">认购方案金额</span>
+          <span className="text-[#cbc4d2]/40 text-xs font-bold uppercase tracking-wider block">认购方案金额</span>
           <span className="text-white font-mono font-black text-sm block mt-0.5">
             ¥ {item.amount.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
           </span>
         </div>
         <div>
-          <span className="text-[#cbc4d2]/40 text-[9px] font-bold uppercase tracking-wider block">排队锁定金额 (31%)</span>
+          <span className="text-[#cbc4d2]/40 text-xs font-bold uppercase tracking-wider block">排队锁定金额 (31%)</span>
           <span className="text-[#cbc4d2]/80 font-mono font-semibold text-sm block mt-0.5">
             ¥ {item.originalLock.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
           </span>
         </div>
         <div>
-          <span className="text-[#cbc4d2]/40 text-[9px] font-bold uppercase tracking-wider block">已解锁并买入</span>
+          <span className="text-[#cbc4d2]/40 text-xs font-bold uppercase tracking-wider block">已解锁并买入</span>
           <span className="text-[#cfbcff] font-mono font-black text-sm block mt-0.5">
             ¥ {item.released.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
           </span>
         </div>
         <div>
-          <span className="text-amber-400/60 text-[9px] font-bold uppercase tracking-wider block">剩余锁定�?</span>
+          <span className="text-amber-400/60 text-xs font-bold uppercase tracking-wider block">剩余锁定中</span>
           <span className="text-amber-400 font-mono font-black text-sm block mt-0.5">
             ¥ {item.remainingLock.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
           </span>
@@ -69,7 +69,7 @@ export default function OrderCard({ item, onSelectDetailOrder }: OrderCardProps)
       </div>
 
       <div className="space-y-1.5 relative z-10">
-        <div className="flex items-center justify-between text-[11px] font-bold">
+        <div className="flex items-center justify-between text-xs font-bold">
           <span className="text-[#cbc4d2]/50">解锁买入进度 (Unlock Ratio)</span>
           <span className="text-white font-mono">{percentComplete}%</span>
         </div>
@@ -82,13 +82,13 @@ export default function OrderCard({ item, onSelectDetailOrder }: OrderCardProps)
       </div>
 
       <div className="pt-2.5 border-t border-white/5 flex justify-between items-center relative z-10">
-        <span className="text-[10px] text-[#cbc4d2]/30 font-bold uppercase font-mono">
+        <span className="text-xs text-[#cbc4d2]/30 font-bold uppercase font-mono">
           UNLOCK HISTORY ({item.unlockHistory?.length || 0})
         </span>
         <button
           type="button"
           onClick={() => onSelectDetailOrder(item)}
-          className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#cfbcff] hover:text-[#e5d5ff] hover:underline transition-colors cursor-pointer"
+          className="inline-flex items-center gap-1 text-xs font-semibold text-[#cfbcff] hover:text-[#e5d5ff] hover:underline transition-colors cursor-pointer"
         >
           查看明细
           <ChevronRight className="w-3.5 h-3.5" />

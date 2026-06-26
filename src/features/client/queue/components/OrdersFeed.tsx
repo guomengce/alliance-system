@@ -36,7 +36,7 @@ export default function OrdersFeed({
               <span className="w-2 h-2 rounded-full bg-[#cfbcff] animate-bounce"></span>
               <span className="w-2 h-2 rounded-full bg-[#cfbcff] animate-bounce [animation-delay:0.2s]"></span>
               <span className="w-2 h-2 rounded-full bg-[#cfbcff] animate-bounce [animation-delay:0.4s]"></span>
-              <span className="text-[10px] text-[#cbc4d2]/45 font-mono font-bold uppercase tracking-wider ml-1">链上计算同步�?..</span>
+              <span className="text-xs text-[#cbc4d2]/45 font-mono font-bold uppercase tracking-wider ml-1">链上计算同步中...</span>
             </div>
           )}
 
@@ -45,9 +45,9 @@ export default function OrdersFeed({
               <button
                 type="button"
                 onClick={onLoadMoreOrders}
-                className="text-[10px] font-bold text-[#cfbcff]/50 hover:text-[#cfbcff] font-mono tracking-wider transition-colors cursor-pointer py-2 px-4 rounded-xl border border-white/5 bg-white/[0.01]"
+                className="text-xs font-bold text-[#cfbcff]/50 hover:text-[#cfbcff] font-mono tracking-wider transition-colors cursor-pointer py-2 px-4 rounded-xl border border-white/5 bg-white/[0.01]"
               >
-                向下滚动或点击加载更�?(LOAD MORE)
+                向下滚动或点击加载更多 (LOAD MORE)
               </button>
             </div>
           )}

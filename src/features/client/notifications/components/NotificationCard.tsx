@@ -36,14 +36,14 @@ export default function NotificationCard({
       <div className="flex-1 space-y-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-xs bg-white/5 text-[#cbc4d2] px-2 py-0.5 rounded font-black text-[10px] uppercase">
+            <span className="text-xs bg-white/5 text-[#cbc4d2] px-2 py-0.5 rounded font-black text-xs uppercase">
               {notification.categoryLabel}
             </span>
             {notification.isUnread && (
               <span className="w-1.5 h-1.5 rounded-full bg-[#ffb4ab]" />
             )}
           </div>
-          <span className="text-[10px] text-[#cbc4d2]/60 font-mono font-bold">{notification.time}</span>
+          <span className="text-xs text-[#cbc4d2]/60 font-mono font-bold">{notification.time}</span>
         </div>
 
         <h3 className="text-sm font-black text-white leading-snug">{notification.title}</h3>

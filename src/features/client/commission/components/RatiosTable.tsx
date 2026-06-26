@@ -9,14 +9,14 @@ export default function RatiosTable({ ratios }: RatiosTableProps) {
           <Percent className="w-5 h-5 text-[#cfbcff]" />
           <h4 className="text-sm md:text-base font-bold text-white">佣金下线比例说明</h4>
         </div>
-        <span className="px-3 py-0.5 bg-[#cfbcff]/10 text-[#cfbcff] text-[10px] rounded-full font-bold uppercase tracking-wider border border-[#cfbcff]/10">
+        <span className="px-3 py-0.5 bg-[#cfbcff]/10 text-[#cfbcff] text-xs rounded-full font-bold uppercase tracking-wider border border-[#cfbcff]/10">
           当前最高层级: L5
         </span>
       </div>
       <div className="hidden md:block overflow-x-auto scrollbar-hide">
         <table className="w-full text-left">
           <thead>
-            <tr className="text-[#cbc4d2]/80 text-[11px] font-bold uppercase tracking-wider border-b border-white/5 bg-white/2">
+            <tr className="text-[#cbc4d2]/80 text-xs font-bold uppercase tracking-wider border-b border-white/5 bg-white/2">
               <th className="p-4 px-6">代理等级</th>
               <th className="p-4 px-6">返佣计算比例</th>
               <th className="p-4 px-6 text-right">结算周期</th>
@@ -43,11 +43,11 @@ export default function RatiosTable({ ratios }: RatiosTableProps) {
             </div>
             <div className="grid grid-cols-2 gap-3 text-xs">
               <div>
-                <p className="text-[#cbc4d2]/40 text-[10px] font-bold font-mono">返佣计算比例</p>
+                <p className="text-[#cbc4d2]/40 text-xs font-bold font-mono">返佣计算比例</p>
                 <p className="text-white font-semibold font-mono mt-0.5">{item.ratio}</p>
               </div>
               <div>
-                <p className="text-[#cbc4d2]/40 text-[10px] font-bold font-mono text-right">结算周期</p>
+                <p className="text-[#cbc4d2]/40 text-xs font-bold font-mono text-right">结算周期</p>
                 <p className="text-[#cbc4d2] font-mono mt-0.5 text-right">{item.cycle}</p>
               </div>
             </div>

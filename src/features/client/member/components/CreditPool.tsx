@@ -31,7 +31,7 @@ export default function CreditPool({
           <span className="text-4xl font-extrabold text-white leading-none">
             {CREDIT_POOL_PROGRESS_PERCENT}<span className="text-lg">%</span>
           </span>
-          <span className="text-[10px] text-[#cbc4d2] font-bold uppercase tracking-widest mt-1">已占用</span>
+          <span className="text-xs text-[#cbc4d2] font-bold uppercase tracking-widest mt-1">已占用</span>
         </div>
       </div>
 

@@ -33,7 +33,7 @@ export default function ActionTabs({ activeAction, onToggleAction }: ActionTabsP
         </Button>
       ))}
 
-      <div className="w-full sm:w-auto sm:ml-auto flex items-center gap-1 text-[10px] sm:text-xs text-[#cbc4d2] opacity-60 font-medium">
+      <div className="w-full sm:w-auto sm:ml-auto flex items-center gap-1 text-xs sm:text-xs text-[#cbc4d2] opacity-60 font-medium">
         <Info className="w-3.5 h-3.5 text-[#cfbcff]" />
         <span>交易流程均经多重安全链上校验</span>
       </div>

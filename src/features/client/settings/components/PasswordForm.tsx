@@ -19,7 +19,7 @@ export default function PasswordForm({
       <form onSubmit={onUpdatePasswords} className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col gap-2">
-            <label className="text-[10px] text-[#cbc4d2] font-semibold uppercase tracking-wider">原始登录密码</label>
+            <label className="text-xs text-[#cbc4d2] font-semibold uppercase tracking-wider">原始登录密码</label>
             <div className="relative">
               <input 
                 type={showPassword ? 'text' : 'password'} 
@@ -39,7 +39,7 @@ export default function PasswordForm({
           </div>
 
           <div className="flex flex-col gap-2">
-            <label className="text-[10px] text-[#cbc4d2] font-semibold uppercase tracking-wider">新设定登录密码</label>
+            <label className="text-xs text-[#cbc4d2] font-semibold uppercase tracking-wider">新设定登录密码</label>
             <input 
               type="password" 
               value={newPassword}

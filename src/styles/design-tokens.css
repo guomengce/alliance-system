@@ -65,7 +65,7 @@
   --app-font-size-table-header: 12px;
   --app-font-size-caption: 12px;
   --app-font-size-tag: 12px;
-  --app-font-size-min: 11px;
+  --app-font-size-min: 12px;
   --app-line-height-tight: 1.25;
   --app-line-height-body: 1.5;
   --app-line-height-control: 1.35;
@@ -146,6 +146,7 @@
 :where(.ant-btn-primary):not(.ant-btn-dangerous):focus {
   background: linear-gradient(90deg, #6750a4, #cfbcff) !important;
   border-color: transparent !important;
+  border-left-color: #6750a4 !important;
   color: var(--app-color-text-primary) !important;
 }
 

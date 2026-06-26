@@ -57,25 +57,25 @@ export default function DetailModal({
               </h3>
             </div>
 
-            <div className="space-y-4 text-[11px] sm:text-xs">
+            <div className="space-y-4 text-xs sm:text-xs">
               <div className="bg-[#141218] p-3.5 sm:p-4 rounded-xl border border-white/5 flex justify-between items-center">
                 <div>
-                  <span className="text-[9px] sm:text-[10px] text-[#cbc4d2]/40 font-bold uppercase block">方案名称</span>
+                  <span className="text-xs sm:text-xs text-[#cbc4d2]/40 font-bold uppercase block">方案名称</span>
                   <span className="text-sm sm:text-base font-black text-white block mt-0.5">{detailModalItem.name} 专属合约</span>
                 </div>
                 <div className="text-right">
-                  <span className="text-[9px] sm:text-[10px] text-[#cbc4d2]/40 font-bold uppercase block">当前状态</span>
+                  <span className="text-xs sm:text-xs text-[#cbc4d2]/40 font-bold uppercase block">当前状态</span>
                   <Tag className={`alliance-antd-subscribe-status-tag mt-1 ${getStatusClass(detailModalItem)}`}>
                     {detailModalItem.isConfirmation ? '待确认签署' : detailModalItem.status}
                   </Tag>
                 </div>
               </div>
 
-              <div className="space-y-3 bg-white/3 p-3.5 sm:p-4 rounded-xl border border-white/5 text-[11px] sm:text-xs">
+              <div className="space-y-3 bg-white/3 p-3.5 sm:p-4 rounded-xl border border-white/5 text-xs sm:text-xs">
                 <div className="flex justify-between items-center gap-2">
                   <span className="text-[#cbc4d2]/70">交易订单识别号 (Order No.)</span>
                   <div className="flex items-center gap-1.5 font-mono text-white font-semibold flex-wrap justify-end">
-                    <span className="text-[10px] sm:text-xs">{detailModalItem.id}</span>
+                    <span className="text-xs sm:text-xs">{detailModalItem.id}</span>
                     <Button className="alliance-antd-subscribe-copy-button" onClick={() => handleCopyText(detailModalItem.id)}>
                       {copiedId === detailModalItem.id ? '已复制' : '复制'}
                     </Button>
@@ -105,7 +105,7 @@ export default function DetailModal({
               </div>
 
               <div className="bg-[#141218]/50 p-3.5 sm:p-4 rounded-xl border border-white/5 space-y-2">
-                <div className="flex justify-between items-center text-[9px] sm:text-[10px]">
+                <div className="flex justify-between items-center text-xs sm:text-xs">
                   <span className="text-[#cbc4d2]/60 uppercase font-bold">立即买入 TROO 比例</span>
                   <span className="font-bold font-mono text-[#cfbcff]">{detailModalItem.isConfirmation ? '100%' : `${detailModalItem.progress}%`}</span>
                 </div>
@@ -117,7 +117,7 @@ export default function DetailModal({
                   strokeColor="#b794f6"
                   trailColor="rgba(54, 52, 58, 0.72)"
                 />
-                <p className="text-[9px] sm:text-[10px] text-[#cbc4d2]/50 italic leading-relaxed">
+                <p className="text-xs sm:text-xs text-[#cbc4d2]/50 italic leading-relaxed">
                   * 该理财参与协议通过系统进行订单买入操作。在30天投资锁定期后，全部收益与分红可随时提取。
                 </p>
               </div>
