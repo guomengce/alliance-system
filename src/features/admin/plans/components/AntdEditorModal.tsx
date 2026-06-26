@@ -60,7 +60,7 @@ export function AntdEditorModal({
             <h4 className="text-sm font-black text-white">
               {editingPlan ? '修改理财套餐配置参数' : '创建配置全新流动性理财套餐'}
             </h4>
-            <p className="text-[10px] text-[#cbc4d2]/40 font-mono mt-0.5">
+            <p className="text-xs text-[#cbc4d2]/40 font-mono mt-0.5">
               请仔细填写各项数值参数，确认提交后系统认购渠道将即时生效更新。
             </p>
           </div>
@@ -106,7 +106,7 @@ export function AntdEditorModal({
         </div>
 
         <div className="border-t border-white/5 pt-4 space-y-3">
-          <p className="text-[10px] font-black uppercase text-[#cfbcff] tracking-wider">
+          <p className="text-xs font-black uppercase text-[#cfbcff] tracking-wider">
             TROO 股票赠送、买入及排队精算设置
           </p>
 
@@ -149,7 +149,7 @@ export function AntdEditorModal({
             </Form.Item>
           </div>
 
-          <p className="text-[9px] text-[#cbc4d2]/30 italic leading-normal">
+          <p className="text-xs text-[#cbc4d2]/30 italic leading-normal">
             * 联动精算提示：系统自动保障 [买入比例] 与 [排队比例] 两项权重和等于 100%，当前已设定为 {formBuyRatio}% / {formQueueRatio}%。
           </p>
         </div>

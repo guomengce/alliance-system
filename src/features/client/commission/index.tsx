@@ -45,10 +45,6 @@ export default function CommissionView({
         onExport={handleExport}
       />
 
-      {successMsg && (
-        <AlertBanner message={successMsg} type="success" onClose={() => setSuccessMsg('')} />
-      )}
-
       {/* Grid boxes representing standard commission boxes & the new Graphic Pool Monitor */}
       <StatsAndPool
         cumulativeCommissions={cumulativeCommissions}

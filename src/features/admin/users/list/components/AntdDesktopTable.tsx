@@ -26,7 +26,7 @@ export default function AntdDesktopTable({
           </Avatar>
           <div>
             <p className="font-extrabold text-xs text-white leading-tight">{user.nickname || '未设置昵称'}</p>
-            <p className="font-mono text-[10px] text-[#cbc4d2]/50 mt-0.5">UID: {user.uid}</p>
+            <p className="font-mono text-xs text-[#cbc4d2]/50 mt-0.5">UID: {user.uid}</p>
           </div>
         </div>
       ),
@@ -36,8 +36,8 @@ export default function AntdDesktopTable({
       key: 'contact',
       render: (_, user) => (
         <div>
-          <p className="text-white font-mono text-[11px] font-bold">{user.phone || '暂无绑定手机'}</p>
-          <p className="text-[#cbc4d2]/50 font-mono text-[10px] mt-0.5">{user.email || `${user.uid}@alliance.com`}</p>
+          <p className="text-white font-mono text-[13px] font-bold">{user.phone || '暂无绑定手机'}</p>
+          <p className="text-[#cbc4d2]/50 font-mono text-xs mt-0.5">{user.email || `${user.uid}@alliance.com`}</p>
         </div>
       ),
     },
@@ -65,7 +65,7 @@ export default function AntdDesktopTable({
       render: (_, user) => (
         <div>
           <p className="font-bold text-[#cfbcff] font-mono text-xs">{user.nodeSize} 个下级</p>
-          <p className="text-emerald-400 font-bold font-mono text-[10px] mt-0.5">
+          <p className="text-emerald-400 font-bold font-mono text-xs mt-0.5">
             USDT {user.volume.toLocaleString()}
           </p>
         </div>

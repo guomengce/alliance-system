@@ -54,27 +54,27 @@ export default function WalletDetailsModal({
             {/* Total assets display stats card */}
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-3.5 text-xs font-mono">
               <div className="bg-[#110e16] p-3 rounded-xl border border-white/5 text-center">
-                <span className="text-[10px] text-[#cbc4d2]/45 font-sans block">可用资产 (U)</span>
+                <span className="text-xs text-[#cbc4d2]/45 font-sans block">可用资产 (U)</span>
                 <span className="text-xs font-bold text-emerald-400">{(selectedWalletMember.usdtBalance || 0).toLocaleString()}</span>
               </div>
               <div className="bg-[#110e16] p-3 rounded-xl border border-white/5 text-center">
-                <span className="text-[10px] text-cyan-400 font-sans block">冻结资金 (U)</span>
+                <span className="text-xs text-cyan-400 font-sans block">冻结资金 (U)</span>
                 <span className="text-xs font-bold text-cyan-400">{(selectedWalletMember.frozenBalance || 0).toLocaleString()}</span>
               </div>
               <div className="bg-[#110e16] p-3 rounded-xl border border-white/5 text-center">
-                <span className="text-[10px] text-[#cfbcff] font-sans block">TROO 股票股数</span>
+                <span className="text-xs text-[#cfbcff] font-sans block">TROO 股票股数</span>
                 <span className="text-xs font-bold text-[#cfbcff]">{(selectedWalletMember.trooBalance || 0).toLocaleString()}</span>
               </div>
               <div className="bg-[#110e16] p-3 rounded-xl border border-white/5 text-center">
-                <span className="text-[10px] text-amber-500 font-sans block">在途待核 U</span>
+                <span className="text-xs text-amber-500 font-sans block">在途待核 U</span>
                 <span className="text-xs font-bold text-amber-500">{(selectedWalletMember.pendingBalance || 0).toLocaleString()}</span>
               </div>
               <div className="bg-[#110e16] p-3 rounded-xl border border-[#e7c365]/20 text-center relative overflow-hidden">
-                <span className="text-[10px] text-[#e7c365]/80 font-sans block font-bold">排队待解锁 (U)</span>
+                <span className="text-xs text-[#e7c365]/80 font-sans block font-bold">排队待解锁 (U)</span>
                 <span className="text-xs font-black text-[#e7c365]">
                   {((selectedWalletMember.pendingBalance || 1500) * 1.5).toLocaleString(undefined, {minimumFractionDigits: 2})}
                 </span>
-                <p className="text-[8px] text-[#e7c365]/40 leading-none mt-1 font-sans">等代下代认购</p>
+                <p className="text-xs text-[#e7c365]/40 leading-none mt-1 font-sans">等代下代认购</p>
               </div>
             </div>
 
@@ -87,7 +87,7 @@ export default function WalletDetailsModal({
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10.5px] uppercase font-bold text-[#cbc4d2]/50">可用余额(USDT)</label>
+                  <label className="text-[13px] uppercase font-bold text-[#cbc4d2]/50">可用余额(USDT)</label>
                   <input
                     type="number"
                     value={adjustUsdt}
@@ -96,7 +96,7 @@ export default function WalletDetailsModal({
                   />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10.5px] uppercase font-bold text-[#cbc4d2]/50">冻结资产(USDT)</label>
+                  <label className="text-[13px] uppercase font-bold text-[#cbc4d2]/50">冻结资产(USDT)</label>
                   <input
                     type="number"
                     value={adjustFrozen}
@@ -105,7 +105,7 @@ export default function WalletDetailsModal({
                   />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10.5px] uppercase font-bold text-[#cbc4d2]/50">TROO股票量(股)</label>
+                  <label className="text-[13px] uppercase font-bold text-[#cbc4d2]/50">TROO股票量(股)</label>
                   <input
                     type="number"
                     value={adjustTroo}
@@ -117,7 +117,7 @@ export default function WalletDetailsModal({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs pt-2">
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10.5px] uppercase font-bold text-[#cbc4d2]/50">运营风控状态</label>
+                  <label className="text-[13px] uppercase font-bold text-[#cbc4d2]/50">运营风控状态</label>
                   <select
                     value={adjustStatus}
                     onChange={(e) => setAdjustStatus(e.target.value)}
@@ -130,7 +130,7 @@ export default function WalletDetailsModal({
                 </div>
 
                 <div className="flex flex-col justify-end">
-                  <p className="text-[10px] text-[#cbc4d2]/30 italic leading-tight">
+                  <p className="text-xs text-[#cbc4d2]/30 italic leading-tight">
                     * 对账计算备忘：调整可用或冻结金额后，保存操作将直接改写对应会员的中心财务大底单结构。
                   </p>
                 </div>
@@ -155,7 +155,7 @@ export default function WalletDetailsModal({
             </div>
 
             {/* Bottom tips */}
-            <div className="p-3.5 bg-red-950/20 border border-red-500/10 rounded-2xl text-[10px] text-red-200/80 leading-normal text-left">
+            <div className="p-3.5 bg-red-950/20 border border-red-500/10 rounded-2xl text-xs text-red-200/80 leading-normal text-left">
               ⚠ **合规和安全提示**：人工财务调整为高级后门操作，任何对此特定加盟会员可用USDT与TROO股票硬改写的行为，都会被平台写入审计全周期日志存根。
             </div>
 

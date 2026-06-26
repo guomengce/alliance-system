@@ -19,7 +19,7 @@ export default function AntdSummaryCards({
     <div className="grid grid-cols-1 md:grid-cols-3 gap-5 font-sans">
       <AntdCard className="alliance-antd-commission-summary-card">
         <div className="space-y-1">
-          <span className="text-[10px] text-[#cbc4d2]/40 block uppercase tracking-wider">{SUMMARY_TEXT.creditedTotal}</span>
+          <span className="text-xs text-[#cbc4d2]/40 block uppercase tracking-wider">{SUMMARY_TEXT.creditedTotal}</span>
           <span className="text-xl font-extrabold text-[#cfbcff] font-mono">
             {totalCreditedAmount.toLocaleString(undefined, { minimumFractionDigits: 2 })} USDT
           </span>
@@ -29,7 +29,7 @@ export default function AntdSummaryCards({
 
       <AntdCard className="alliance-antd-commission-summary-card">
         <div className="space-y-1">
-          <span className="text-[10px] text-[#cbc4d2]/40 block uppercase tracking-wider">{SUMMARY_TEXT.abnormal}</span>
+          <span className="text-xs text-[#cbc4d2]/40 block uppercase tracking-wider">{SUMMARY_TEXT.abnormal}</span>
           <span className="text-xl font-extrabold text-amber-400 font-mono">
             {abnormalAuditCount} {SUMMARY_TEXT.auditUnit}
           </span>
@@ -39,7 +39,7 @@ export default function AntdSummaryCards({
 
       <AntdCard className="alliance-antd-commission-summary-card">
         <div className="space-y-1">
-          <span className="text-[10px] text-[#cbc4d2]/40 block uppercase tracking-wider">{SUMMARY_TEXT.overflowTotal}</span>
+          <span className="text-xs text-[#cbc4d2]/40 block uppercase tracking-wider">{SUMMARY_TEXT.overflowTotal}</span>
           <span className="text-xl font-extrabold text-red-400 font-mono">
             {totalOverflowAmount.toLocaleString(undefined, { minimumFractionDigits: 2 })} USDT
           </span>

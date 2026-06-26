@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import type { RegisteredUser } from '../../hooks/types';
 import {
   RESET_DEMO_CODE,
+  findDemoLoginAccount,
   createRegisteredUser,
   findRegisteredUser,
   getRegistrationIdentity,
@@ -41,6 +42,20 @@ describe('auth utils', () => {
   it('validates password length with the existing minimum length', () => {
     expect(isValidAuthPassword('123')).toBe(false);
     expect(isValidAuthPassword('1234')).toBe(true);
+  });
+
+  it('finds only the configured demo login accounts', () => {
+    expect(findDemoLoginAccount(' CLIENT@ALLIANCE.COM ', 'password123')).toMatchObject({
+      email: 'client@alliance.com',
+      portalMode: 'client',
+      role: null,
+    });
+    expect(findDemoLoginAccount(' ppyybb888@gmail.com ', 'admin1234')).toMatchObject({
+      email: 'ppyybb888@gmail.com',
+      portalMode: 'admin',
+      role: 'SUPER_ADMIN',
+    });
+    expect(findDemoLoginAccount('ppyybb888@gmail.com', 'password123')).toBeUndefined();
   });
 
   it('detects admin and client registration identity from email', () => {

@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { getInitialClientHomeData } from '../../../../mock/client/home';
 import {
   MARKET_CHART_HEIGHT,
-  MARKET_CHART_WIDTH,
-  getMarketChartPaths,
+  buildMarketChartOption,
   getYesterdayDateString
 } from '../utils';
 
@@ -13,24 +12,17 @@ export function useHomeMarket() {
 
   const activeIndex = hoveredIndex !== null ? hoveredIndex : marketData.length - 1;
   const activeData = marketData[activeIndex];
-  const { points, linePath, areaPath } = getMarketChartPaths(
-    marketData,
-    MARKET_CHART_WIDTH,
-    MARKET_CHART_HEIGHT
-  );
+  const chartOption = buildMarketChartOption(marketData, activeIndex);
   const yesterdayDateStr = getYesterdayDateString();
 
   return {
     activeData,
     activeIndex,
-    areaPath,
+    chartOption,
     chartHeight: MARKET_CHART_HEIGHT,
-    chartWidth: MARKET_CHART_WIDTH,
     hoveredIndex,
-    linePath,
     marketData,
     orders,
-    points,
     setHoveredIndex,
     yesterdayDateStr
   };

@@ -1,5 +1,5 @@
 import type { AdminRole, PortalMode, RegisteredUser } from '../../hooks/types';
-import { normalizeAuthEmail } from './utils';
+import { findDemoLoginAccount, normalizeAuthEmail } from './utils';
 
 interface AuthenticatedUser {
   email: string;
@@ -98,7 +98,13 @@ export const loginWithBackend = async (
   _deps: LoginDeps = {}
 ): Promise<AuthSessionResult> => {
   const email = normalizeBackendEmail(payload.email);
-  return createLocalSession(email, getNicknameFromEmail(email), 'admin', 'SUPER_ADMIN');
+  const account = findDemoLoginAccount(email, payload.password);
+
+  if (!account) {
+    throw new Error('账号或密码错误，请使用指定的客户端或管理端测试账号登录');
+  }
+
+  return createLocalSession(email, account.nickname, account.portalMode, account.role);
 };
 
 export const registerWithBackend = async (

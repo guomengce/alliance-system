@@ -31,24 +31,24 @@ export default function AntdReservesMobile({
             <div className="flex justify-between items-start border-b border-white/5 pb-2">
               <div>
                 <span className="font-mono text-white font-extrabold text-[#cfbcff]">{withdrawal.id}</span>
-                <div className="text-[10px] text-[#cbc4d2]/40 font-mono mt-0.5">UID: {withdrawal.id.slice(-6)}</div>
+                <div className="text-xs text-[#cbc4d2]/40 font-mono mt-0.5">UID: {withdrawal.id.slice(-6)}</div>
               </div>
               <span className="text-emerald-400 font-mono font-black text-xs text-right">
                 {(Math.abs(withdrawal.amount) - withdrawalFee).toLocaleString()} USDT
               </span>
             </div>
 
-            <div className="grid grid-cols-2 gap-y-2.5 gap-x-4 font-mono text-[11px] pb-1">
+            <div className="grid grid-cols-2 gap-y-2.5 gap-x-4 font-mono text-[13px] pb-1">
               <div>
-                <span className="text-[#cbc4d2]/40 text-[9px] font-sans block leading-none mb-1">{RESERVES_TEXT.gross}</span>
+                <span className="text-[#cbc4d2]/40 text-xs font-sans block leading-none mb-1">{RESERVES_TEXT.gross}</span>
                 <span className="text-[#ffb4ab] font-bold">-{Math.abs(withdrawal.amount).toLocaleString()} U</span>
               </div>
               <div>
-                <span className="text-[#cbc4d2]/40 text-[9px] font-sans block leading-none mb-1">{RESERVES_TEXT.fee}</span>
+                <span className="text-[#cbc4d2]/40 text-xs font-sans block leading-none mb-1">{RESERVES_TEXT.fee}</span>
                 <span className="text-white/60">{withdrawalFee} USDT</span>
               </div>
               <div className="col-span-2">
-                <span className="text-[#cbc4d2]/40 text-[9px] font-sans block leading-none mb-1">TRC20 \u5730\u5740</span>
+                <span className="text-[#cbc4d2]/40 text-xs font-sans block leading-none mb-1">TRC20 \u5730\u5740</span>
                 <span className="text-white/75 truncate block select-all" title="TYX78Hqskm82K1Hshq82Ksh918Ksw">
                   Tx78HqsmB...{withdrawal.id.slice(-4)}
                 </span>

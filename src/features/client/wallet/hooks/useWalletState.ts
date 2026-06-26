@@ -23,7 +23,7 @@ export const useWalletState = ({
   usdtBalance
 }: UseWalletStateParams) => {
   const [filterType, setFilterType] = useState<string>('all');
-  const [activeAction, setActiveAction] = useState<ActionType>('none');
+  const [activeAction, setActiveAction] = useState<ActionType>('recharge');
   const [successMsg, setSuccessMsg] = useState<string>('');
   const [errorMsg, setErrorMsg] = useState<string>('');
   const [searchVal, setSearchVal] = useState<string>('');

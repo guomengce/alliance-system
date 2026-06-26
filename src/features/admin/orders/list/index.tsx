@@ -19,14 +19,15 @@ export default function ListView({
         <div className="space-y-4">
           <div className="block md:hidden space-y-3">
             {orders.map((order) => (
-              <AntdOrderMobileCard
-                key={order.id}
-                order={order}
-                setSelectedOrder={setSelectedOrder}
-                setDetailSearchQuery={setDetailSearchQuery}
-                onConfirmOrderArrival={onConfirmOrderArrival}
-                onCancelOrder={onCancelOrder}
-              />
+              <div key={order.id}>
+                <AntdOrderMobileCard
+                  order={order}
+                  setSelectedOrder={setSelectedOrder}
+                  setDetailSearchQuery={setDetailSearchQuery}
+                  onConfirmOrderArrival={onConfirmOrderArrival}
+                  onCancelOrder={onCancelOrder}
+                />
+              </div>
             ))}
           </div>
           <AntdOrdersTable

@@ -36,7 +36,7 @@ function PlanCard({ plan, onOpenEditModal, onTogglePlanStatus }: AntdPlanCardPro
             <PlanStatusTag plan={plan} />
           </Space>
 
-          <p className="text-[14px] text-[#cbc4d2]/50 font-mono">
+          <p className="text-[13px] text-[#cbc4d2]/50 font-mono">
             套餐标识代码：<span className="text-[#cfbcff] select-all font-bold">{plan.id.toUpperCase()}</span>
           </p>
 

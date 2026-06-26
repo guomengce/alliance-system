@@ -8,14 +8,14 @@ import {
 } from './actions';
 
 describe('local auth actions', () => {
-  it('logs in locally without calling the backend api or storing a token', async () => {
+  it('logs in locally as an admin with the configured admin account', async () => {
     const api = {
       login: vi.fn(),
     };
     const saveToken = vi.fn();
 
     const result = await loginWithBackend(
-      { email: ' ADMIN_CENTER@ALLIANCE.COM ', password: 'admin1234', remember: true },
+      { email: ' PPYYBB888@GMAIL.COM ', password: 'admin1234', remember: true },
       { api, saveToken }
     );
 
@@ -25,12 +25,31 @@ describe('local auth actions', () => {
       message: 'local login ok',
       token: '',
       user: {
-        email: 'admin_center@alliance.com',
-        nickname: 'Admin Center',
+        email: 'ppyybb888@gmail.com',
+        nickname: 'Alliance Admin',
         portalMode: 'admin',
         role: 'SUPER_ADMIN',
       },
     });
+  });
+
+  it('logs in locally as a client with the configured client account', async () => {
+    const result = await loginWithBackend(
+      { email: ' CLIENT@ALLIANCE.COM ', password: 'password123', remember: true },
+    );
+
+    expect(result.user).toEqual({
+      email: 'client@alliance.com',
+      nickname: 'Alliance Client',
+      portalMode: 'client',
+      role: null,
+    });
+  });
+
+  it('rejects unknown credentials', async () => {
+    await expect(
+      loginWithBackend({ email: 'client@alliance.com', password: 'wrong-pass', remember: false })
+    ).rejects.toThrow('账号或密码错误');
   });
 
   it('registers locally as a client without calling the backend api or storing a token', async () => {

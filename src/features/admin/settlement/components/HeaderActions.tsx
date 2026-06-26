@@ -20,7 +20,7 @@ export default function HeaderActions({
             <RefreshCw className="w-4 h-4 text-[#cfbcff]" />
             <span>结算列表</span>
           </h3>
-          <p className="text-[11px] text-[#cbc4d2]/50 mt-0.5 leading-tight">
+          <p className="text-[13px] text-[#cbc4d2]/50 mt-0.5 leading-tight">
             浏览与检索所有会员 D+1 结算日志、扣税明细、手动触发全盟自动结算扣缴及超额回笼对账。
           </p>
         </div>

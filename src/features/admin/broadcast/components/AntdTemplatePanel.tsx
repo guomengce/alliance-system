@@ -22,7 +22,7 @@ export default function AntdTemplatePanel({
     <AntdCard className="alliance-antd-broadcast-card alliance-antd-broadcast-template-card lg:col-span-5">
       <div>
         <h4 className="text-xs font-black uppercase text-amber-400 tracking-wider pb-2 border-b border-white/5">{TEXT.title}</h4>
-        <p className="text-[11px] text-[#cbc4d2]/50 mt-1.5 leading-relaxed font-sans">{TEXT.desc}</p>
+        <p className="text-[13px] text-[#cbc4d2]/50 mt-1.5 leading-relaxed font-sans">{TEXT.desc}</p>
 
         <label className="mt-4 flex flex-col gap-2 font-mono text-xs">
           <span className="text-white font-sans text-xs font-bold block">{TEXT.label}</span>

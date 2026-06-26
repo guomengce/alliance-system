@@ -17,7 +17,7 @@ export default function HeaderTabs({ activeTab, setActiveTab }: HeaderTabsProps)
             <Wallet className="w-4 h-4 text-[#cfbcff]" />
             <span>财务列表</span>
           </h3>
-          <p className="text-[11px] text-[#cbc4d2]/50 mt-0.5 leading-tight">
+          <p className="text-[13px] text-[#cbc4d2]/50 mt-0.5 leading-tight">
             浏览与审计平台公司财务大库、会员个人钱包余额以及各项出金审批。
           </p>
         </div>

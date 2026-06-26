@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { Button } from 'antd';
 import { Filter } from 'lucide-react';
 import type { OrdersFeedProps } from '../types';
 import OrderCard from './OrderCard';
@@ -33,22 +34,22 @@ export default function OrdersFeed({
 
           {loadingMoreOrders && (
             <div className="flex items-center justify-center py-4 gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#cfbcff] animate-bounce"></span>
-              <span className="w-2 h-2 rounded-full bg-[#cfbcff] animate-bounce [animation-delay:0.2s]"></span>
-              <span className="w-2 h-2 rounded-full bg-[#cfbcff] animate-bounce [animation-delay:0.4s]"></span>
-              <span className="text-[10px] text-[#cbc4d2]/45 font-mono font-bold uppercase tracking-wider ml-1">链上计算同步�?..</span>
+              <span className="w-2 h-2 rounded-full bg-[#cfbcff] animate-bounce" />
+              <span className="w-2 h-2 rounded-full bg-[#cfbcff] animate-bounce [animation-delay:0.2s]" />
+              <span className="w-2 h-2 rounded-full bg-[#cfbcff] animate-bounce [animation-delay:0.4s]" />
+              <span className="text-xs text-[#cbc4d2]/45 font-mono font-bold uppercase tracking-wider ml-1">链上计算同步中...</span>
             </div>
           )}
 
           {!loadingMoreOrders && visibleOrdersCount < filteredOrders.length && (
             <div className="text-center pt-2">
-              <button
-                type="button"
+              <Button
+                type="text"
                 onClick={onLoadMoreOrders}
-                className="text-[10px] font-bold text-[#cfbcff]/50 hover:text-[#cfbcff] font-mono tracking-wider transition-colors cursor-pointer py-2 px-4 rounded-xl border border-white/5 bg-white/[0.01]"
+                className="alliance-antd-queue-link-button"
               >
-                向下滚动或点击加载更�?(LOAD MORE)
-              </button>
+                向下滚动或点击加载更多 (LOAD MORE)
+              </Button>
             </div>
           )}
         </>

@@ -26,14 +26,11 @@ export default function HomeView({
   const {
     activeData,
     activeIndex,
-    areaPath,
     chartHeight,
-    chartWidth,
+    chartOption,
     hoveredIndex,
-    linePath,
     marketData,
     orders,
-    points,
     setHoveredIndex,
     yesterdayDateStr
   } = useHomeMarket();
@@ -58,12 +55,9 @@ export default function HomeView({
       <MarketPanel
         activeData={activeData}
         activeIndex={activeIndex}
+        chartOption={chartOption}
         hoveredIndex={hoveredIndex}
         marketData={marketData}
-        points={points}
-        linePath={linePath}
-        areaPath={areaPath}
-        chartWidth={chartWidth}
         chartHeight={chartHeight}
         yesterdayDateStr={yesterdayDateStr}
         setHoveredIndex={setHoveredIndex}

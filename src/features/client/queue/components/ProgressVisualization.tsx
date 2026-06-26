@@ -22,7 +22,7 @@ export default function ProgressVisualization({
           <span className="text-2xl md:text-3.5xl font-black font-mono text-[#cfbcff] block leading-none tracking-tight">
             {overallProgressPercent}%
           </span>
-          <span className="text-[9px] text-[#cbc4d2]/40 font-bold uppercase tracking-widest font-mono">
+          <span className="text-xs text-[#cbc4d2]/40 font-bold uppercase tracking-widest font-mono">
             OVERALL PROGRESS
           </span>
         </div>
@@ -30,7 +30,7 @@ export default function ProgressVisualization({
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
         <div className="relative pb-3 flex flex-col justify-between">
-          <span className="text-[11px] font-bold text-[#cbc4d2]/60 tracking-wide">
+          <span className="text-xs font-bold text-[#cbc4d2]/60 tracking-wide">
             原始锁定金额 (31%)
           </span>
           <p className="text-2xl font-black font-mono text-white mt-1.5 tracking-tight">
@@ -40,7 +40,7 @@ export default function ProgressVisualization({
         </div>
 
         <div className="relative pb-3 flex flex-col justify-between">
-          <span className="text-[11px] font-bold text-[#cbc4d2]/60 tracking-wide">
+          <span className="text-xs font-bold text-[#cbc4d2]/60 tracking-wide">
             已解锁买入金额
           </span>
           <p className="text-2xl font-black font-mono text-[#cfbcff] mt-1.5 tracking-tight">
@@ -50,7 +50,7 @@ export default function ProgressVisualization({
         </div>
 
         <div className="relative pb-3 flex flex-col justify-between">
-          <span className="text-[11px] font-bold text-[#cbc4d2]/60 tracking-wide">
+          <span className="text-xs font-bold text-[#cbc4d2]/60 tracking-wide">
             剩余锁定
           </span>
           <p className="text-2xl font-black font-mono text-white mt-1.5 tracking-tight">

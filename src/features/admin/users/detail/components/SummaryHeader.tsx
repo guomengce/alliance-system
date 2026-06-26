@@ -15,7 +15,7 @@ export function SummaryHeader({ editingUser, formNickname, formStatus, formTier,
             <span>返回联盟正式注册代表名册</span>
           </button>
 
-          <span className="text-[10px] text-[#cbc4d2]/40 font-bold font-mono">
+          <span className="text-xs text-[#cbc4d2]/40 font-bold font-mono">
             SECURE CLIENT OVERLAY CONTROL
           </span>
         </div>
@@ -32,7 +32,7 @@ export function SummaryHeader({ editingUser, formNickname, formStatus, formTier,
             <div className="space-y-2 flex-1 text-center md:text-left">
               <div className="flex flex-col md:flex-row md:items-center gap-3 justify-center md:justify-start">
                 <h1 className="text-lg md:text-xl font-extrabold text-white leading-tight">{formNickname || '未设置昵称'}</h1>
-                <span className="bg-[#cfbcff]/10 text-[#cfbcff] text-[10px] font-black uppercase px-2 py-0.5 rounded border border-[#cfbcff]/20 w-fit mx-auto md:mx-0 tracking-wider">
+                <span className="bg-[#cfbcff]/10 text-[#cfbcff] text-xs font-black uppercase px-2 py-0.5 rounded border border-[#cfbcff]/20 w-fit mx-auto md:mx-0 tracking-wider">
                   {formTier || '特约合伙代表'}
                 </span>
               </div>

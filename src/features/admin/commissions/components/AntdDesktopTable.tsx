@@ -25,7 +25,7 @@ export default function AntdDesktopTable({ commissions, onSelectCommission }: De
       render: (_, commission) => (
         <div className="flex flex-col font-mono font-bold text-white">
           <span>{commission.id}</span>
-          <span className="text-[9px] text-[#cbc4d2]/30 font-normal">
+          <span className="text-xs text-[#cbc4d2]/30 font-normal">
             {COMMISSION_TEXT.source}: {commission.orderId}
           </span>
         </div>
@@ -49,7 +49,7 @@ export default function AntdDesktopTable({ commissions, onSelectCommission }: De
       render: (_, commission) => (
         <div>
           <p className="text-[#cbc4d2] font-semibold">{commission.uid}</p>
-          <p className="text-[9px] text-[#cbc4d2]/40 font-sans truncate max-w-[130px]">
+          <p className="text-xs text-[#cbc4d2]/40 font-sans truncate max-w-[130px]">
             {commission.recipientNickname}
           </p>
         </div>

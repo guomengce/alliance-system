@@ -53,7 +53,7 @@ export default function AntdReservesDesktop({
       dataIndex: 'id',
       key: 'address',
       render: (id: Transaction['id']) => (
-        <span className="text-[#cbc4d2]/80 font-mono text-[11px] truncate max-w-[200px] block" title="TYX78Hqskm82K1Hshq82Ksh918Ksw">
+        <span className="text-[#cbc4d2]/80 font-mono text-[13px] truncate max-w-[200px] block" title="TYX78Hqskm82K1Hshq82Ksh918Ksw">
           TRC20: Tx78HqsmB...{id.slice(-4)}
         </span>
       ),

@@ -37,7 +37,7 @@ export function EditAccountModal({
               </div>
               <div className="text-left">
                 <h4 className="text-sm font-black text-white">持权管理账号详情与特权修定</h4>
-                <p className="text-[10px] text-[#cbc4d2]/40 font-mono mt-0.5">EDIT PRIVILEGED ACCOUNT</p>
+                <p className="text-xs text-[#cbc4d2]/40 font-mono mt-0.5">EDIT PRIVILEGED ACCOUNT</p>
               </div>
             </div>
 
@@ -45,16 +45,16 @@ export function EditAccountModal({
               
               {/* Account username (Read-only status) */}
               <div className="flex flex-col gap-1.5 bg-[#110e16] p-3 rounded-xl border border-white/5 font-mono">
-                <span className="text-[10px] font-bold text-[#cbc4d2]/40 uppercase animate-pulse">验证账号标识 (ID)</span>
+                <span className="text-xs font-bold text-[#cbc4d2]/40 uppercase animate-pulse">验证账号标识 (ID)</span>
                 <span className="text-sm text-white font-extrabold flex items-center gap-2">
                   <span className="text-[#cfbcff]">{editingAccount.username}</span>
-                  <span className="text-[10px] text-[#cbc4d2]/30">({editingAccount.id})</span>
+                  <span className="text-xs text-[#cbc4d2]/30">({editingAccount.id})</span>
                 </span>
               </div>
 
               {/* Editable Name/Nickname */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] font-bold text-[#cbc4d2]/60 uppercase">持权管理员姓名/昵称 (必填)</label>
+                <label className="text-xs font-bold text-[#cbc4d2]/60 uppercase">持权管理员姓名/昵称 (必填)</label>
                 <input 
                   type="text"
                   required
@@ -67,7 +67,7 @@ export function EditAccountModal({
 
               {/* Editable Email */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] font-bold text-[#cbc4d2]/60 uppercase">联络与安全警报邮箱 (必填)</label>
+                <label className="text-xs font-bold text-[#cbc4d2]/60 uppercase">联络与安全警报邮箱 (必填)</label>
                 <input 
                   type="email"
                   required
@@ -80,7 +80,7 @@ export function EditAccountModal({
 
               {/* Change Core Role Assignment */}
               <div className="flex flex-col gap-1.5 font-sans">
-                <label className="text-[10px] font-bold text-[#cbc4d2]/60 uppercase">指派核心角色权能机制</label>
+                <label className="text-xs font-bold text-[#cbc4d2]/60 uppercase">指派核心角色权能机制</label>
                 <select
                   value={editRole}
                   onChange={(e) => setEditRole(e.target.value)}
@@ -94,7 +94,7 @@ export function EditAccountModal({
                   ))}
                 </select>
                 {editingAccount.username === 'admin_master' && (
-                  <p className="text-[9px] text-[#cbc4d2]/30 italic leading-normal">
+                  <p className="text-xs text-[#cbc4d2]/30 italic leading-normal">
                     * 根节点初始主管理员 master 的角色挂接锁定为超级管理员，不可降权或更改。
                   </p>
                 )}
@@ -102,8 +102,8 @@ export function EditAccountModal({
 
               {/* Display corresponding permissions list dynamically */}
               <div className="p-3 bg-[#110e16]/80 rounded-xl border border-white/5 space-y-1.5 font-sans">
-                <span className="text-[10.5px] font-black text-[#cfbcff]/80 uppercase block">映射的子版块读写特权范围 (权限)：</span>
-                <div className="text-[10px] text-[#cbc4d2]/60 leading-normal space-y-1.5 max-h-[110px] overflow-y-auto scrollbar-thin">
+                <span className="text-[13px] font-black text-[#cfbcff]/80 uppercase block">映射的子版块读写特权范围 (权限)：</span>
+                <div className="text-xs text-[#cbc4d2]/60 leading-normal space-y-1.5 max-h-[110px] overflow-y-auto scrollbar-thin">
                   {(() => {
                     const matchedRole = roles.find(r => r.roleCode === editRole);
                     if (!matchedRole || matchedRole.permissions.length === 0) {
@@ -114,7 +114,7 @@ export function EditAccountModal({
                       return (
                         <div key={pmCode} className="flex items-center gap-1.5 text-white/85">
                           <Check className="w-3 h-3 text-emerald-400 shrink-0" />
-                          <span>{permDef?.name || pmCode} <span className="text-[8px] font-mono opacity-45">[{pmCode}]</span></span>
+                          <span>{permDef?.name || pmCode} <span className="text-xs font-mono opacity-45">[{pmCode}]</span></span>
                         </div>
                       );
                     });
@@ -124,7 +124,7 @@ export function EditAccountModal({
 
               {/* Edit Account Status selection */}
               <div className="flex flex-col gap-1.5 font-sans">
-                <label className="text-[10px] font-bold text-[#cbc4d2]/60 uppercase">安全管制状态设定</label>
+                <label className="text-xs font-bold text-[#cbc4d2]/60 uppercase">安全管制状态设定</label>
                 <select
                   value={editStatus}
                   onChange={(e) => setEditStatus(e.target.value as any)}
@@ -141,15 +141,15 @@ export function EditAccountModal({
               <div className="p-3 bg-red-950/20 border border-red-500/15 rounded-2xl flex flex-col gap-2 font-sans">
                 <div className="flex items-center gap-1.5 text-red-400">
                   <Lock className="w-3.5 h-3.5" />
-                  <span className="font-extrabold text-[10px] uppercase tracking-wide">账号密码安全及口令重置</span>
+                  <span className="font-extrabold text-xs uppercase tracking-wide">账号密码安全及口令重置</span>
                 </div>
-                <p className="text-[10px] text-[#cbc4d2]/60 leading-relaxed text-left">
+                <p className="text-xs text-[#cbc4d2]/60 leading-relaxed text-left">
                   若由于离线密钥失落、多点异动异常或面临密码重核，建议一键强制重置该持权人的后台访问密码。
                 </p>
                 <button
                   type="button"
                   onClick={() => handleResetPassword(editingAccount.username)}
-                  className="bg-red-500/10 hover:bg-red-500/25 active:scale-95 text-red-300 font-bold px-3 py-2.5 rounded-xl transition-all cursor-pointer border border-red-500/20 flex items-center justify-center gap-1.5 text-[11px] mt-1"
+                  className="bg-red-500/10 hover:bg-red-500/25 active:scale-95 text-red-300 font-bold px-3 py-2.5 rounded-xl transition-all cursor-pointer border border-red-500/20 flex items-center justify-center gap-1.5 text-[13px] mt-1"
                 >
                   <RefreshCw className="w-3.5 h-3.5" />
                   <span>重置用户密码 (Reset Password)</span>

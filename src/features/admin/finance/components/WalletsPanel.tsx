@@ -22,7 +22,7 @@ export default function WalletsPanel({
         <Coins className="w-4 h-4 text-[#cfbcff]" />
         联盟代表个人USDT、冻结及TROO股票财富存余普查
       </h4>
-      <p className="text-[10px] text-[#cbc4d2]/50 mt-0.5">
+      <p className="text-xs text-[#cbc4d2]/50 mt-0.5">
         实时监管特定代收理财代表的可用、排队在途、冻结等各项细项指标，点击“钱包纠偏详情”极速拨乱反正。
       </p>
     </div>
@@ -71,7 +71,7 @@ export default function WalletsPanel({
               <tr key={d.uid} className="hover:bg-white/[0.015]">
                 <td className="py-3.5 px-4 font-sans">
                   <p className="font-extrabold text-white text-xs">{d.nickname || '新同盟会员'}</p>
-                  <p className="font-mono text-[10px] text-[#cbc4d2]/40 mt-0.5">UID: {d.uid}</p>
+                  <p className="font-mono text-xs text-[#cbc4d2]/40 mt-0.5">UID: {d.uid}</p>
                 </td>
                 <td className="py-3.5 px-4 font-mono text-emerald-400 font-extrabold">{d.usdtBalance?.toLocaleString(undefined, {minimumFractionDigits: 2}) || '0.00'} U</td>
                 <td className="py-3.5 px-4 font-mono text-cyan-400 font-extrabold">{d.frozenBalance?.toLocaleString(undefined, {minimumFractionDigits: 2}) || '0.00'} U</td>
@@ -81,7 +81,7 @@ export default function WalletsPanel({
                   USDT {totalWealth.toLocaleString(undefined, {minimumFractionDigits: 2})}
                 </td>
                 <td className="py-3.5 px-4 text-center">
-                  <span className={`text-[9px] font-black uppercase px-2 py-0.5 rounded-full ${
+                  <span className={`text-xs font-black uppercase px-2 py-0.5 rounded-full ${
                     d.status === 'normal' ? 'bg-emerald-500/10 text-emerald-400' :
                     d.status === 'frozen' ? 'bg-amber-500/10 text-amber-400' : 'bg-red-500/10 text-red-400'
                   }`}>
@@ -123,9 +123,9 @@ export default function WalletsPanel({
             <div className="flex justify-between items-center border-b border-white/5 pb-2.5">
               <div>
                 <span className="font-extrabold text-white text-sm">{d.nickname || '新同盟会员'}</span>
-                <div className="text-[10px] text-[#cbc4d2]/40 font-mono mt-0.5">UID: {d.uid}</div>
+                <div className="text-xs text-[#cbc4d2]/40 font-mono mt-0.5">UID: {d.uid}</div>
               </div>
-              <span className={`text-[9.5px] font-black uppercase px-2.5 py-0.5 rounded ${
+              <span className={`text-xs font-black uppercase px-2.5 py-0.5 rounded ${
                 d.status === 'normal' ? 'bg-emerald-500/10 text-emerald-400' :
                 d.status === 'frozen' ? 'bg-amber-500/10 text-amber-400' : 'bg-red-500/10 text-red-100'
               }`}>
@@ -133,25 +133,25 @@ export default function WalletsPanel({
               </span>
             </div>
 
-            <div className="grid grid-cols-2 gap-y-3 gap-x-4 font-mono text-[11px] pb-1">
+            <div className="grid grid-cols-2 gap-y-3 gap-x-4 font-mono text-[13px] pb-1">
               <div>
-                <span className="text-[#cbc4d2]/40 text-[9px] font-sans block leading-none mb-1">可用资金 (USDT)</span>
+                <span className="text-[#cbc4d2]/40 text-xs font-sans block leading-none mb-1">可用资金 (USDT)</span>
                 <span className="text-emerald-400 font-extrabold block text-xs">{d.usdtBalance?.toLocaleString(undefined, {minimumFractionDigits: 2}) || '0.00'} U</span>
               </div>
               <div>
-                <span className="text-[#cbc4d2]/40 text-[9px] font-sans block leading-none mb-1">冻结资产 (USDT)</span>
+                <span className="text-[#cbc4d2]/40 text-xs font-sans block leading-none mb-1">冻结资产 (USDT)</span>
                 <span className="text-cyan-400 font-extrabold block text-xs">{d.frozenBalance?.toLocaleString(undefined, {minimumFractionDigits: 2}) || '0.00'} U</span>
               </div>
               <div>
-                <span className="text-[#cbc4d2]/40 text-[9px] font-sans block leading-none mb-1">TROO 股票量</span>
+                <span className="text-[#cbc4d2]/40 text-xs font-sans block leading-none mb-1">TROO 股票量</span>
                 <span className="text-[#cfbcff] font-extrabold block text-xs">{d.trooBalance?.toLocaleString(undefined, {minimumFractionDigits: 0}) || '0'} TROO</span>
               </div>
               <div>
-                <span className="text-[#cbc4d2]/40 text-[9px] font-sans block leading-none mb-1">在途佣金</span>
+                <span className="text-[#cbc4d2]/40 text-xs font-sans block leading-none mb-1">在途佣金</span>
                 <span className="text-amber-500 font-bold block text-xs">{d.pendingBalance?.toLocaleString(undefined, {minimumFractionDigits: 2}) || '0.00'} U</span>
               </div>
               <div className="col-span-2 pt-2 border-t border-white/5">
-                <span className="text-[#cbc4d2]/40 text-[9px] font-sans block leading-none mb-1">总资产折合 (Combined)</span>
+                <span className="text-[#cbc4d2]/40 text-xs font-sans block leading-none mb-1">总资产折合 (Combined)</span>
                 <span className="text-white font-black text-xs font-mono">USDT {totalWealth.toLocaleString(undefined, {minimumFractionDigits: 2})}</span>
               </div>
             </div>

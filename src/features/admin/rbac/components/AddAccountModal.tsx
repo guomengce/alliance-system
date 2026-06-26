@@ -34,13 +34,13 @@ export function AddAccountModal({
               </div>
               <div className="text-left">
                 <h4 className="text-sm font-black text-white">分拨授权新后台管理员账户</h4>
-                <p className="text-[10px] text-[#cbc4d2]/40 font-mono mt-0.5">CREATE BACKOFFICE ENTRANCE</p>
+                <p className="text-xs text-[#cbc4d2]/40 font-mono mt-0.5">CREATE BACKOFFICE ENTRANCE</p>
               </div>
             </div>
 
             <div className="space-y-4 text-xs text-left text-sans">
               <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] font-bold text-[#cbc4d2]/60 uppercase">设置登录账号名 (必填/唯一)</label>
+                <label className="text-xs font-bold text-[#cbc4d2]/60 uppercase">设置登录账号名 (必填/唯一)</label>
                 <input 
                   type="text"
                   required
@@ -52,7 +52,7 @@ export function AddAccountModal({
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] font-bold text-[#cbc4d2]/60 uppercase">管理员真实姓名/昵称名称 (必填)</label>
+                <label className="text-xs font-bold text-[#cbc4d2]/60 uppercase">管理员真实姓名/昵称名称 (必填)</label>
                 <input 
                   type="text"
                   required
@@ -64,7 +64,7 @@ export function AddAccountModal({
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] font-bold text-[#cbc4d2]/60 uppercase">工作邮箱地址 (必填)</label>
+                <label className="text-xs font-bold text-[#cbc4d2]/60 uppercase">工作邮箱地址 (必填)</label>
                 <input 
                   type="email"
                   required
@@ -76,7 +76,7 @@ export function AddAccountModal({
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] font-bold text-[#cbc4d2]/60 uppercase">指派初始关联挂接角色</label>
+                <label className="text-xs font-bold text-[#cbc4d2]/60 uppercase">指派初始关联挂接角色</label>
                 <select
                   value={newRole}
                   onChange={(e) => setNewRole(e.target.value)}

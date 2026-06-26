@@ -1,3 +1,4 @@
+import { Button } from 'antd';
 import type { SupportCardProps } from '../types';
 
 export default function SupportCard({ setSuccessMsg }: SupportCardProps) {
@@ -16,23 +17,24 @@ export default function SupportCard({ setSuccessMsg }: SupportCardProps) {
       </div>
 
       <div className="flex flex-col sm:flex-row gap-2.5">
-        <a 
-          href="https://t.me/" 
-          target="_blank" 
+        <Button
+          type="primary"
+          href="https://t.me/"
+          target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 py-2.5 rounded-xl bg-gradient-to-tr from-[#6750a4] to-[#cfbcff] text-[#110e16] font-black text-xs text-center flex items-center justify-center gap-1.5 hover:brightness-110 shadow-lg active:scale-95 transition-all"
+          className="alliance-antd-settings-support-button flex-1"
         >
-          <span>联系 Telegram 客服</span>
-        </a>
-        <button 
+          联系 Telegram 客服
+        </Button>
+        <Button
           onClick={() => {
             navigator.clipboard.writeText('TS-889425001');
-            setSuccessMsg('已自动复制您的专属白金客户工单编号: TS-889425001');
+            setSuccessMsg('已自动复制您的专属白金客户工单编号：TS-889425001');
           }}
-          className="py-2.5 px-4 rounded-xl border border-white/10 hover:bg-white/5 text-[#cfbcff] font-bold text-xs active:scale-[0.98] transition-all"
+          className="alliance-antd-settings-secondary-button"
         >
           复制客服工单
-        </button>
+        </Button>
       </div>
     </div>
   );

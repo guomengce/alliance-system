@@ -45,19 +45,19 @@ export default function WithdrawalAuditModal({
               {/* Core Financial Block */}
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3.5 text-left font-mono">
                 <div className="bg-[#110e16] p-3 rounded-xl border border-white/5 col-span-2 md:col-span-1">
-                  <span className="text-[10px] text-[#cbc4d2]/40 font-sans block">申请提现毛额</span>
+                  <span className="text-xs text-[#cbc4d2]/40 font-sans block">申请提现毛额</span>
                   <span className="text-sm font-extrabold text-[#ffb4ab]">
                     -{Math.abs(selectedWithdrawal.amount).toLocaleString(undefined, {minimumFractionDigits: 2})} U
                   </span>
                 </div>
                 <div className="bg-[#110e16] p-3 rounded-xl border border-white/5">
-                  <span className="text-[10px] text-[#cbc4d2]/40 font-sans block">划转及Gas手续费</span>
+                  <span className="text-xs text-[#cbc4d2]/40 font-sans block">划转及Gas手续费</span>
                   <span className="text-sm font-bold text-white/70">
                     {withdrawalFee.toLocaleString(undefined, {minimumFractionDigits: 2})} U
                   </span>
                 </div>
                 <div className="bg-[#110e16] p-3 rounded-xl border border-emerald-500/20 text-emerald-400">
-                  <span className="text-[10px] text-emerald-400/60 font-sans block font-bold">最终实拨出金</span>
+                  <span className="text-xs text-emerald-400/60 font-sans block font-bold">最终实拨出金</span>
                   <span className="text-sm font-black">
                     {netAmount.toLocaleString(undefined, {minimumFractionDigits: 2})} U
                   </span>
@@ -73,23 +73,23 @@ export default function WithdrawalAuditModal({
 
                 <div className="grid grid-cols-2 gap-4 text-xs">
                   <div className="space-y-1">
-                    <span className="text-[#cbc4d2]/45 text-[10px] block leading-none">申领账户 UID:</span>
+                    <span className="text-[#cbc4d2]/45 text-xs block leading-none">申领账户 UID:</span>
                     <span className="font-mono font-bold text-white">UID {applicantUid}</span>
                   </div>
                   <div className="space-y-1">
-                    <span className="text-[#cbc4d2]/45 text-[10px] block leading-none">会员KYC级别:</span>
+                    <span className="text-[#cbc4d2]/45 text-xs block leading-none">会员KYC级别:</span>
                     <span className="text-emerald-400 font-bold">已实名 L1 / L2 级别</span>
                   </div>
                   <div className="space-y-1">
-                    <span className="text-[#cbc4d2]/45 text-[10px] block leading-none">团队直属 Sponsor:</span>
+                    <span className="text-[#cbc4d2]/45 text-xs block leading-none">团队直属 Sponsor:</span>
                     <span className="font-mono font-bold text-white">999001 (SYS)</span>
                   </div>
                   <div className="space-y-1">
-                    <span className="text-[#cbc4d2]/45 text-[10px] block leading-none">当前运营风控状态:</span>
+                    <span className="text-[#cbc4d2]/45 text-xs block leading-none">当前运营风控状态:</span>
                     <span className="text-emerald-400 font-bold">⚡ NORMAL (正轨活跃)</span>
                   </div>
                   <div className="space-y-1">
-                    <span className="text-[#cbc4d2]/45 text-[10px] block leading-none">申领发起时分:</span>
+                    <span className="text-[#cbc4d2]/45 text-xs block leading-none">申领发起时分:</span>
                     <span className="font-mono text-white/80">{selectedWithdrawal.time}</span>
                   </div>
                 </div>
@@ -109,7 +109,7 @@ export default function WithdrawalAuditModal({
                   </div>
                   <div className="flex flex-col gap-1">
                     <span className="text-[#cbc4d2]/50">外部收款目标节点地址 (Target Wallet Destination):</span>
-                    <span className="bg-black/30 p-2.5 font-mono text-[11px] text-[#cfbcff] border border-white/5 rounded-xl break-all select-all leading-normal text-left">
+                    <span className="bg-black/30 p-2.5 font-mono text-[13px] text-[#cfbcff] border border-white/5 rounded-xl break-all select-all leading-normal text-left">
                       {selectedWithdrawal.blockchainProof?.toAddress || `Tx78HqsmB82K1Hshq82Ksh918Ksw${applicantUid}`}
                     </span>
                   </div>

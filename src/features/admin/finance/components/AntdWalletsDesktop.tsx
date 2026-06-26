@@ -18,7 +18,7 @@ export default function AntdWalletsDesktop({ members, handleOpenWalletDetails }:
       render: (_, member) => (
         <div className="font-sans">
           <p className="font-extrabold text-white text-xs">{member.nickname || WALLETS_TEXT.unnamed}</p>
-          <p className="font-mono text-[10px] text-[#cbc4d2]/40 mt-0.5">UID: {member.uid}</p>
+          <p className="font-mono text-xs text-[#cbc4d2]/40 mt-0.5">UID: {member.uid}</p>
         </div>
       ),
     },

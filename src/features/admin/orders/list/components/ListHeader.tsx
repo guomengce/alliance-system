@@ -9,7 +9,7 @@ export default function ListHeader({ onExport }: OrderHeaderProps) {
           <FileText className="w-4 h-4 text-[#cfbcff]" />
           <span>订单列表</span>
         </h3>
-        <p className="text-[11px] text-[#cbc4d2]/50 mt-0.5 leading-tight">
+        <p className="text-[13px] text-[#cbc4d2]/50 mt-0.5 leading-tight">
           浏览与检索所有会员认购理财订单存证、交易哈希验证及上级同盟分拨记录。
         </p>
       </div>

@@ -1,4 +1,4 @@
-import type { ChangeEvent, Dispatch, FormEvent, SetStateAction } from 'react';
+import type { Dispatch, FormEvent, SetStateAction } from 'react';
 import type { Transaction } from '../../../types';
 
 export interface SubscribeViewProps {
@@ -57,7 +57,7 @@ export interface WorkspaceProps {
   setAmountInput: Dispatch<SetStateAction<number>>;
   setDetailModalItem: Dispatch<SetStateAction<Purchase | null>>;
   handleSelectPlan: (plan: Plan) => void;
-  handleDropdownChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+  handleDropdownChange: (planId: string) => void;
   handleSubscriptionSubmit: (e: FormEvent) => void;
   handleConfirmPurchase: () => void;
   handleCopyText: (text: string) => void;

@@ -31,29 +31,29 @@ export default function ReservesPanel({
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 font-sans">
     
     <div className="bg-gradient-to-br from-[#1b1527] to-[#14101e] border border-[#cfbcff]/15 p-5 rounded-2xl relative overflow-hidden">
-      <div className="absolute right-3.5 top-3.5 font-mono font-bold text-[8px] text-white/20 uppercase tracking-widest">Reserve USDT</div>
-      <p className="text-[10.5px] uppercase font-bold text-[#cfbcff] tracking-wider leading-none">公司保证金准备大库余额</p>
+      <div className="absolute right-3.5 top-3.5 font-mono font-bold text-xs text-white/20 uppercase tracking-widest">Reserve USDT</div>
+      <p className="text-[13px] uppercase font-bold text-[#cfbcff] tracking-wider leading-none">公司保证金准备大库余额</p>
       <div className="mt-4 flex items-baseline gap-2">
         <span className="text-2xl font-black text-white font-mono">{companyUSDT.toLocaleString()}</span>
-        <span className="text-[10px] font-bold text-[#cbc4d2]/60 font-mono">USDT</span>
+        <span className="text-xs font-bold text-[#cbc4d2]/60 font-mono">USDT</span>
       </div>
-      <p className="text-[9.5px] text-[#cbc4d2]/40 mt-2">安全代扣垫资覆盖准备率 100%</p>
+      <p className="text-xs text-[#cbc4d2]/40 mt-2">安全代扣垫资覆盖准备率 100%</p>
     </div>
 
     <div className="bg-gradient-to-br from-[#1f1915] to-[#151210] border border-amber-500/15 p-5 rounded-2xl relative overflow-hidden">
-      <div className="absolute right-3.5 top-3.5 font-mono font-bold text-[8px] text-white/20 uppercase tracking-widest">Escrow TROO</div>
-      <p className="text-[10.5px] uppercase font-bold text-[#f1bf50] tracking-wider leading-none">大仓托管股票锁定总余量</p>
+      <div className="absolute right-3.5 top-3.5 font-mono font-bold text-xs text-white/20 uppercase tracking-widest">Escrow TROO</div>
+      <p className="text-[13px] uppercase font-bold text-[#f1bf50] tracking-wider leading-none">大仓托管股票锁定总余量</p>
       <div className="mt-4 flex items-baseline gap-2">
         <span className="text-2xl font-black text-white font-mono">{companyTROO.toLocaleString()}</span>
-        <span className="text-[10px] font-bold text-[#cbc4d2]/60 font-mono">TROO</span>
+        <span className="text-xs font-bold text-[#cbc4d2]/60 font-mono">TROO</span>
       </div>
-      <p className="text-[9.5px] text-[#cbc4d2]/40 mt-2">用于理财包买入配售和下级裂变解锁返拨</p>
+      <p className="text-xs text-[#cbc4d2]/40 mt-2">用于理财包买入配售和下级裂变解锁返拨</p>
     </div>
 
     <div className="bg-[#1c1824] border border-white/5 p-5 rounded-2xl relative overflow-hidden flex flex-col justify-between">
-      <div className="absolute right-3.5 top-3.5 font-mono font-bold text-[8px] text-white/20 uppercase tracking-widest">Aggregate Users Net</div>
-      <p className="text-[10.5px] uppercase font-bold text-[#cbc4d2]/60 tracking-wider leading-none">全网代表累计总存余余额</p>
-      <div className="mt-3.5 space-y-1 font-mono text-[11px]">
+      <div className="absolute right-3.5 top-3.5 font-mono font-bold text-xs text-white/20 uppercase tracking-widest">Aggregate Users Net</div>
+      <p className="text-[13px] uppercase font-bold text-[#cbc4d2]/60 tracking-wider leading-none">全网代表累计总存余余额</p>
+      <div className="mt-3.5 space-y-1 font-mono text-[13px]">
         <div className="flex justify-between">
           <span className="text-[#cbc4d2]/40">USDT 可支配:</span>
           <span className="text-white font-bold">{totalUserUSDT.toLocaleString(undefined, {minimumFractionDigits: 2})} U</span>
@@ -107,28 +107,28 @@ export default function ReservesPanel({
                 <td className="py-4 px-4 font-mono text-[#ffb4ab] font-bold">-{Math.abs(w.amount).toLocaleString()} U</td>
                 <td className="py-4 px-4 font-mono text-[#cbc4d2]/60">{withdrawalFee} USDT</td>
                 <td className="py-4 px-4 font-mono text-emerald-400 font-extrabold">{(Math.abs(w.amount) - withdrawalFee).toLocaleString()} USDT</td>
-                <td className="py-4 px-4 text-[#cbc4d2]/80 font-mono text-[11px] truncate max-w-[200px]" title="TYX78Hqskm82K1Hshq82Ksh918Ksw">
+                <td className="py-4 px-4 text-[#cbc4d2]/80 font-mono text-[13px] truncate max-w-[200px]" title="TYX78Hqskm82K1Hshq82Ksh918Ksw">
                   TRC20: Tx78HqsmB...{w.id.slice(-4)}
                 </td>
                 <td className="py-4 px-4 text-right space-x-1.5 whitespace-nowrap">
                   <button 
                     type="button"
                     onClick={() => setSelectedWithdrawal(w)}
-                    className="bg-[#cfbcff]/10 hover:bg-[#cfbcff]/25 text-[#cfbcff] font-bold px-3 py-1.5 rounded-xl text-[10.5px] transition-all cursor-pointer font-sans"
+                    className="bg-[#cfbcff]/10 hover:bg-[#cfbcff]/25 text-[#cfbcff] font-bold px-3 py-1.5 rounded-xl text-[13px] transition-all cursor-pointer font-sans"
                   >
                     查看详情
                   </button>
                   <button 
                     type="button"
                     onClick={() => onApproveWithdrawal(w.id)}
-                    className="bg-emerald-500/10 hover:bg-emerald-500/35 text-emerald-400 font-bold px-3 py-1.5 rounded-xl text-[10.5px] transition-all cursor-pointer font-sans"
+                    className="bg-emerald-500/10 hover:bg-emerald-500/35 text-emerald-400 font-bold px-3 py-1.5 rounded-xl text-[13px] transition-all cursor-pointer font-sans"
                   >
                     通过并打款
                   </button>
                   <button 
                     type="button"
                     onClick={() => onRejectWithdrawal(w.id)}
-                    className="bg-red-500/10 hover:bg-red-500/20 text-[#ffb4ab] font-bold px-3 py-1.5 rounded-xl text-[10.5px] transition-all cursor-pointer font-sans"
+                    className="bg-red-500/10 hover:bg-red-500/20 text-[#ffb4ab] font-bold px-3 py-1.5 rounded-xl text-[13px] transition-all cursor-pointer font-sans"
                   >
                     驳回
                   </button>
@@ -152,24 +152,24 @@ export default function ReservesPanel({
             <div className="flex justify-between items-start border-b border-white/5 pb-2">
               <div>
                 <span className="font-mono text-white font-extrabold text-[#cfbcff]">{w.id}</span>
-                <div className="text-[10px] text-[#cbc4d2]/40 font-mono mt-0.5">UID: {w.id.slice(-6)}</div>
+                <div className="text-xs text-[#cbc4d2]/40 font-mono mt-0.5">UID: {w.id.slice(-6)}</div>
               </div>
               <span className="text-emerald-400 font-mono font-black text-xs text-right">
                 {(Math.abs(w.amount) - withdrawalFee).toLocaleString()} USDT
               </span>
             </div>
  
-            <div className="grid grid-cols-2 gap-y-2.5 gap-x-4 font-mono text-[11px] pb-1">
+            <div className="grid grid-cols-2 gap-y-2.5 gap-x-4 font-mono text-[13px] pb-1">
               <div>
-                <span className="text-[#cbc4d2]/40 text-[9px] font-sans block leading-none mb-1">申提金额</span>
+                <span className="text-[#cbc4d2]/40 text-xs font-sans block leading-none mb-1">申提金额</span>
                 <span className="text-[#ffb4ab] font-bold">-{Math.abs(w.amount).toLocaleString()} U</span>
               </div>
               <div>
-                <span className="text-[#cbc4d2]/40 text-[9px] font-sans block leading-none mb-1">手续费</span>
+                <span className="text-[#cbc4d2]/40 text-xs font-sans block leading-none mb-1">手续费</span>
                 <span className="text-white/60">{withdrawalFee} USDT</span>
               </div>
               <div className="col-span-2">
-                <span className="text-[#cbc4d2]/40 text-[9px] font-sans block leading-none mb-1">TRC20 地址</span>
+                <span className="text-[#cbc4d2]/40 text-xs font-sans block leading-none mb-1">TRC20 地址</span>
                 <span className="text-white/75 truncate block select-all" title="TYX78Hqskm82K1Hshq82Ksh918Ksw">
                   Tx78HqsmB...{w.id.slice(-4)}
                 </span>
