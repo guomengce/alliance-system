@@ -19,11 +19,13 @@
 .alliance-antd-form {
   color: #cbc4d2;
   font-family: var(--font-sans);
+  font-size: 12px;
+  min-font-size: 12px;
 }
 
 .alliance-antd-form .ant-form-item-label > label {
   color: rgba(203, 196, 210, 0.7) !important;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 900;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -37,6 +39,16 @@
   border-radius: 12px !important;
   box-shadow: none !important;
   color: #ffffff !important;
+  height: 52px !important;
+  padding: 10px 14px !important;
+  font-size: 12px;
+}
+
+.alliance-antd-form .ant-input::placeholder,
+.alliance-antd-form .ant-input-number::placeholder,
+.alliance-antd-form .ant-select-selection-placeholder {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .alliance-antd-form .ant-input:hover,
@@ -2501,6 +2513,7 @@
   border-radius: 16px;
   color: #cbc4d2;
   font-family: var(--font-sans);
+  margin-bottom:20px;
 }
 
 .alliance-antd-dashboard-status-card .ant-card-body {

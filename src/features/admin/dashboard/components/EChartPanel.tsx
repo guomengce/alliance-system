@@ -2,17 +2,17 @@ import { useEffect, useRef } from 'react';
 import * as echarts from 'echarts';
 import type { EChartsOption } from 'echarts';
 
-interface EChartPanelProps {
+interface AntdEChartPanelProps {
   className?: string;
   option: EChartsOption;
   onHoverIndexChange?: (index: number | null) => void;
 }
 
-export default function EChartPanel({
+export default function AntdEChartPanel({
   className,
   option,
   onHoverIndexChange
-}: EChartPanelProps) {
+}: AntdEChartPanelProps) {
   const chartRef = useRef<HTMLDivElement | null>(null);
   const chartInstanceRef = useRef<ReturnType<typeof echarts.init> | null>(null);
   const hoverHandlerRef = useRef(onHoverIndexChange);

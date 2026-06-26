@@ -1,7 +1,7 @@
 import { TrendingUp } from 'lucide-react';
 import { AntdCard } from '@/src/shared/antd/AntdCard';
 import type { TrendPanelProps } from '../types';
-import AntdEChartPanel from './AntdEChartPanel';
+import AntdEChartPanel from './EChartPanel';
 
 export default function AntdTrendPanel({
   data,
@@ -24,17 +24,17 @@ export default function AntdTrendPanel({
       <div className="space-y-4">
         <div className="grid grid-cols-3 gap-3 bg-[#1e1a26] border border-white/5 rounded-xl p-3 text-center my-2">
           <div className="text-left pl-1">
-            <span className="text-[10px] uppercase font-bold text-[#cbc4d2]/40 tracking-wider">核算日期</span>
+            <span className="text-[14px] uppercase font-bold text-[#cbc4d2]/40 tracking-wider">核算日期</span>
             <p className="text-xs font-bold text-[#cbc4d2] font-mono mt-0.5">{chart.activePoint.date}</p>
           </div>
           <div className="text-left pl-1">
-            <span className="text-[10px] uppercase font-bold text-[#cfbcff] tracking-wider flex items-center gap-1.5">
+            <span className="text-[14px] uppercase font-bold text-[#cfbcff] tracking-wider flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#cfbcff]"></span> 订阅认购金额
             </span>
             <p className="text-sm font-black text-[#cfbcff] font-mono mt-0.5">{chart.activePoint.subscriptionAmountText}</p>
           </div>
           <div className="text-left pl-1">
-            <span className="text-[10px] uppercase font-bold text-emerald-400 tracking-wider flex items-center gap-1.5">
+            <span className="text-[14px] uppercase font-bold text-emerald-400 tracking-wider flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#6750a4]"></span> D+1 结算分润
             </span>
             <p className="text-sm font-black text-emerald-400 font-mono mt-0.5">{chart.activePoint.commissionAmountText}</p>
