@@ -1,3 +1,4 @@
+import { Progress } from 'antd';
 import { Clock, TrendingUp } from 'lucide-react';
 import type { StatsAndPoolProps } from '../types';
 import { getCommissionPoolMetrics } from '../utils';
@@ -98,36 +99,25 @@ export default function StatsAndPool({
 
         {/* Middle Content Distribution (Dial & Numeric Display Cards) */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center my-auto py-2">
-          {/* SVG Progress Circle */}
+          {/* Progress Circle */}
           <div className="md:col-span-5 flex justify-center py-2">
-            <div className="relative w-36 h-36 flex items-center justify-center flex-shrink-0">
-              <svg className="w-full h-full transform -rotate-90" viewBox="0 0 144 144" width="144" height="144">
-                <circle 
-                  className="text-[#36343a]" 
-                  cx="72" cy="72" fill="transparent" r={radius} 
-                  stroke="currentColor" strokeWidth="8"
-                />
-                {/* Active fill with gradient glow */}
-                <circle 
-                  cx="72" cy="72" fill="transparent" r={radius} 
-                  stroke="url(#poolGrad)" 
-                  strokeDasharray={circumference} 
-                  strokeDashoffset={strokeDashoffset} 
-                  strokeLinecap="round" strokeWidth="8"
-                  className="transition-all duration-1000 ease-out"
-                />
-                <defs>
-                  <linearGradient id="poolGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#cfbcff" />
-                    <stop offset="100%" stopColor="#6750a4" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <p className="text-2xl font-black text-white">{usedPercent.toFixed(0)}%</p>
-                <p className="text-xs text-[#cbc4d2] font-bold uppercase tracking-wider mt-0.5">已使用</p>
-              </div>
-            </div>
+            <Progress
+              type="circle"
+              percent={Math.round(usedPercent)}
+              strokeColor={{
+                '0%': '#cfbcff',
+                '100%': '#6750a4'
+              }}
+              strokeWidth={8}
+              width={144}
+              trailColor="#36343a"
+              format={(percent) => (
+                <div className="flex flex-col items-center">
+                  <span className="text-2xl font-black text-white">{percent}%</span>
+                  <span className="text-xs text-[#cbc4d2] font-bold uppercase tracking-wider mt-0.5">已使用</span>
+                </div>
+              )}
+            />
           </div>
 
           {/* Numeric Indicators side cards */}
