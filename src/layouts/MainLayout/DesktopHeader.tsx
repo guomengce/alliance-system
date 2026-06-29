@@ -99,8 +99,8 @@ export default function DesktopHeader({ state }: DesktopHeaderProps) {
             className="flex items-center gap-3 px-3 py-1 bg-[#211f24]/30 hover:bg-[#2d2a30]/50 transition-all rounded-full border border-white/5 cursor-pointer text-left select-none group"
           >
             <div className="text-right">
-              <p className="text-xs font-bold text-white leading-tight font-sans group-hover:text-[#cfbcff] transition-colors">{nickname}</p>
-              <p className="text-[10px] text-[#cbc4d2]/50 font-mono leading-none mt-0.5">UID: {currentUid}</p>
+              <p style={{ marginBottom: '0.2rem' }} className="text-xs font-bold text-white leading-tight font-sans group-hover:text-[#cfbcff] transition-colors">{nickname}</p>
+              <p style={{ marginBottom: '0.2rem' }} className="text-[10px] text-[#cbc4d2]/50 font-mono leading-none">UID: {currentUid}</p>
             </div>
             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#6750a4] to-[#cfbcff] flex items-center justify-center shadow-md relative overflow-hidden group-hover:shadow-[#6750a4]/30 group-hover:scale-105 transition-all shrink-0">
               <span className="text-white text-xs font-black">
