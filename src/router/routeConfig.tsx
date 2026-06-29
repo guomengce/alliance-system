@@ -1,7 +1,7 @@
 import { Navigate, type RouteObject } from 'react-router-dom';
 import AdminLayout from '../layouts/AdminLayout';
 import ClientLayout from '../layouts/ClientLayout';
-import MainLayout from '../layouts/MainLayout';
+import RouteShell from '../layouts/RouteShell';
 import { AdminRouteElement } from './adminRouteElements';
 import { ClientRouteElement } from './clientRouteElements';
 import AuthGuard from './guards/AuthGuard';
@@ -36,7 +36,7 @@ export const appRouteObjects: RouteObject[] = [
     element: <AuthGuard />,
     children: [
       {
-        element: <MainLayout />,
+        element: <RouteShell />,
         children: [
           {
             path: '/client',

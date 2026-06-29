@@ -1,7 +1,7 @@
 import { Suspense, type ReactElement, type ReactNode } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
-import type { AppStateContext } from '../layouts/MainLayout/types';
+import type { AppStateContext } from '../layouts/AppShell';
 import { CLIENT_PAGE_COMPONENTS } from './pageLoaders';
 import { getRouteByRouteId } from './routes';
 

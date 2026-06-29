@@ -1,8 +1,5 @@
-import { useAppContext } from '../../context/AppContext';
-import LayoutFrame from '../MainLayout/LayoutFrame';
+import AppShell from '../AppShell';
 
 export default function ClientLayout() {
-  const state = useAppContext();
-
-  return <LayoutFrame state={state} />;
+  return <AppShell portalMode="client" />;
 }

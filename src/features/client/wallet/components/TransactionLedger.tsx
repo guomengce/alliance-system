@@ -71,7 +71,7 @@ export default function TransactionLedger({
     {
       title: '描述',
       dataIndex: 'desc',
-      render: (desc: string) => <p className="font-bold alliance-antd-table-fontSize text-white">{desc}</p>
+      render: (desc: string) => <span className="alliance-antd-wallet-description-cell font-bold alliance-antd-table-fontSize text-white">{desc}</span>
     },
     {
       title: '金额',

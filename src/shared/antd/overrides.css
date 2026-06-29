@@ -3006,6 +3006,15 @@
   background: transparent !important;
   border-bottom-color: var(--color-border-faint) !important;
   padding: 16px 24px;
+  vertical-align: middle;
+}
+
+.alliance-antd-wallet-description-cell {
+  align-items: center;
+  display: inline-flex;
+  line-height: 20px;
+  margin: 5px 0;
+  vertical-align: middle;
 }
 
 .alliance-antd-wallet-ledger-table.ant-table-wrapper .ant-table-tbody > tr:hover > td {

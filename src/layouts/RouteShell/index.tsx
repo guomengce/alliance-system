@@ -2,13 +2,16 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import { useAppContext } from '../../context/AppContext';
 
-export default function MainLayout() {
+export default function RouteShell() {
   const { triggerGlobalAlert } = useAppContext();
 
   React.useEffect(() => {
+    const nativeAlert = window.alert;
+
     window.alert = (msg: string) => {
       const msgStr = String(msg);
       let alertType: 'success' | 'error' | 'warning' | 'info' = 'success';
+
       if (
         msgStr.includes('失败') ||
         msgStr.includes('错误') ||
@@ -25,11 +28,16 @@ export default function MainLayout() {
         msgStr.includes('提示') ||
         msgStr.includes('预计') ||
         msgStr.includes('测试') ||
-        msgStr.includes('配')
+        msgStr.includes('配置')
       ) {
         alertType = 'info';
       }
+
       triggerGlobalAlert(msgStr, alertType);
+    };
+
+    return () => {
+      window.alert = nativeAlert;
     };
   }, [triggerGlobalAlert]);
 

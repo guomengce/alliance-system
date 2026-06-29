@@ -18,9 +18,9 @@ import {
   Wallet
 } from 'lucide-react';
 import { getRouteByMenuId } from '../../../router/routes';
-import type { MenuItem } from './types';
+import type { LayoutMenuItem } from '../types';
 
-const getMenuRoute = (menuId: string): Pick<MenuItem, 'label' | 'path'> => {
+const getMenuRoute = (menuId: string): Pick<LayoutMenuItem, 'label' | 'path'> => {
   const route = getRouteByMenuId(menuId);
   if (!route) {
     throw new Error(`Missing route meta for menu item: ${menuId}`);
@@ -51,7 +51,7 @@ export const getAllowedAdminMenuIds = (adminRole: string | null): string[] => {
   return ['admin-dashboard', 'admin-profile'];
 };
 
-export const ADMIN_MENU_ITEMS: MenuItem[] = [
+export const ADMIN_MENU_ITEMS: LayoutMenuItem[] = [
   { id: 'admin-dashboard', ...getMenuRoute('admin-dashboard'), icon: BarChart2 },
   { id: 'admin-users', ...getMenuRoute('admin-users'), icon: Users },
   { id: 'admin-plans', ...getMenuRoute('admin-plans'), icon: Sliders },
@@ -67,7 +67,7 @@ export const ADMIN_MENU_ITEMS: MenuItem[] = [
   { id: 'admin-logs', ...getMenuRoute('admin-logs'), icon: Terminal }
 ];
 
-export const CLIENT_MENU_ITEMS: MenuItem[] = [
+export const CLIENT_MENU_ITEMS: LayoutMenuItem[] = [
   { id: 'home', ...getMenuRoute('home'), icon: Home },
   { id: 'wallet', ...getMenuRoute('wallet'), icon: Wallet },
   { id: 'subscribe', ...getMenuRoute('subscribe'), icon: Compass },
