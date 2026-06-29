@@ -23,7 +23,7 @@
 
 .alliance-antd-form .ant-form-item-label > label {
   color: rgba(203, 196, 210, 0.7) !important;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 900;
   letter-spacing: 0.02em;
   text-transform: uppercase;
@@ -46,6 +46,199 @@
 .alliance-antd-form .ant-select-selector:hover,
 .alliance-antd-form .ant-select-focused .ant-select-selector {
   border-color: rgba(207, 188, 255, 0.45) !important;
+}
+
+.alliance-antd-auth-form.ant-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.alliance-antd-auth-form-item.ant-form-item {
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.alliance-antd-auth-form-item .ant-form-item-label {
+  padding-bottom: 6px;
+  text-align: left;
+}
+
+.alliance-antd-auth-form-item .ant-form-item-label > label {
+  color: rgba(203, 196, 210, 0.6) !important;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  height: auto;
+  line-height: 1.2;
+}
+
+.alliance-antd-auth-code-item .ant-form-item-label > label {
+  color: #cfbcff !important;
+  font-family: var(--font-mono);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.alliance-antd-auth-input.ant-input-affix-wrapper,
+.alliance-antd-auth-input.ant-input {
+  align-items: center;
+  background: #100d15 !important;
+  border: 1px solid rgba(255, 255, 255, 0.04) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  display: flex;
+  font-size: 15px !important;
+  font-weight: 600;
+  min-height: 41px;
+  padding: 10px 14px !important;
+  transition: all 0.2s ease;
+}
+
+.alliance-antd-auth-input.ant-input-affix-wrapper {
+  gap: 10px;
+}
+
+.alliance-antd-auth-input.ant-input-affix-wrapper:hover,
+.alliance-antd-auth-input.ant-input-affix-wrapper-focused,
+.alliance-antd-auth-input.ant-input:hover,
+.alliance-antd-auth-input.ant-input:focus {
+  border-color: #6750a4 !important;
+  box-shadow: 0 0 0 1px rgba(103, 80, 164, 0.3) !important;
+}
+
+.alliance-antd-auth-input .ant-input {
+  background: transparent !important;
+  color: #ffffff !important;
+  font-size: 15px !important;
+  font-weight: 600;
+}
+
+.alliance-antd-auth-input .ant-input-prefix {
+  color: rgba(203, 196, 210, 0.3);
+  margin-inline-end: 0;
+}
+
+.alliance-antd-auth-input .ant-input-suffix {
+  margin-inline-start: 0;
+}
+
+.alliance-antd-auth-input .ant-input::placeholder,
+.alliance-antd-auth-input.ant-input::placeholder {
+  color: rgba(203, 196, 210, 0.2) !important;
+  font-size: 15px !important;
+}
+
+.alliance-antd-auth-mono-input .ant-input {
+  font-family: var(--font-mono);
+}
+
+.alliance-antd-auth-primary-button.ant-btn,
+.alliance-antd-auth-primary-button.ant-btn:hover,
+.alliance-antd-auth-primary-button.ant-btn:focus {
+  align-items: center;
+  background: #6750a4 !important;
+  border-color: transparent !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 6px -1px rgba(103, 80, 164, 0.1) !important;
+  color: #ffffff !important;
+  display: inline-flex;
+  font-size: 16px !important;
+  font-weight: 700;
+  height: 41px;
+  justify-content: center;
+  line-height: 41px;
+  padding: 0 15px !important;
+  transition: all 0.2s ease;
+}
+
+.alliance-antd-auth-primary-button.ant-btn:hover,
+.alliance-antd-auth-primary-button.ant-btn:focus {
+  background: #785fb8 !important;
+  box-shadow: 0 10px 15px -3px rgba(103, 80, 164, 0.2) !important;
+  transform: scale(1.01);
+}
+
+.alliance-antd-auth-primary-button.ant-btn:active {
+  transform: scale(0.99);
+}
+
+.alliance-antd-auth-primary-button.ant-btn > span {
+  font-size: 16px !important;
+  line-height: 1 !important;
+}
+
+.alliance-antd-auth-back-button.ant-btn {
+  align-items: center;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  color: rgba(203, 196, 210, 0.4) !important;
+  display: inline-flex;
+  height: 24px;
+  justify-content: center;
+  min-width: 24px;
+  padding: 4px !important;
+  width: 24px;
+}
+
+.alliance-antd-auth-back-button.ant-btn:hover,
+.alliance-antd-auth-back-button.ant-btn:focus {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #ffffff !important;
+}
+
+.alliance-antd-auth-checkbox.ant-checkbox-wrapper {
+  align-items: center;
+  color: rgba(203, 196, 210, 0.4) !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 6px;
+  line-height: 14px;
+}
+
+.alliance-antd-auth-checkbox .ant-checkbox{
+  border-radius: 4px !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.alliance-antd-auth-checkbox .ant-checkbox:after{
+  top: 50%;
+  left: 10%;
+}
+
+.alliance-antd-auth-checkbox .ant-checkbox .ant-checkbox-input{
+  border-radius: 4px !important;
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.alliance-antd-auth-link-button.ant-btn,
+.alliance-antd-auth-inline-link-button.ant-btn {
+  color: #ffffff !important;
+  font-size: 12px;
+  font-weight: 700;
+  height: auto;
+  line-height: 1;
+  padding: 0 !important;
+}
+
+.alliance-antd-auth-inline-link-button.ant-btn {
+  margin-left: 4px;
+}
+
+.alliance-antd-auth-link-button.ant-btn:hover,
+.alliance-antd-auth-inline-link-button.ant-btn:hover {
+  color: #cfbcff !important;
+}
+
+.alliance-antd-auth-inline-link-button.ant-btn:hover {
+  text-decoration: underline;
 }
 
 .alliance-antd-button-ghost.ant-btn {
