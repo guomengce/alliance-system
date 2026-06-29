@@ -2452,6 +2452,10 @@
   padding: 16px 24px;
 }
 
+.alliance-antd-table-fontSize {
+  font-size: 14px;
+}
+
 .alliance-antd-home-orders-table.ant-table-wrapper .ant-table-tbody > tr:hover > td {
   background: rgba(255, 255, 255, 0.03) !important;
 }
