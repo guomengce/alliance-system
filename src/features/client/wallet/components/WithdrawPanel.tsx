@@ -80,9 +80,9 @@ export default function WithdrawPanel({
           <span className="text-xs sm:text-xs font-black uppercase tracking-wider">提现安全须知与规则 (Withdraw Precautions)</span>
         </div>
         <ul className="list-disc pl-4 space-y-1.5 text-xs sm:text-xs font-medium leading-relaxed">
-          <li>提现起提门槛：<strong className="text-white">{withdrawNetwork === 'TRX' ? '20' : '40'} USDT</strong>。</li>
-          <li>提现手续费：{withdrawNetwork === 'TRX' ? 'TRC-20 每笔固定收取 1.5 USDT' : 'ERC-20 每笔固定收取 8 USDT Gas 费用'}。</li>
-          <li>请双重检测您的提现目标地址与收款网络：<span className="text-white font-bold">{withdrawNetwork} 网络</span>。</li>
+          <li>提现起提门槛:{withdrawNetwork === 'TRX' ? 'TRC-20' : 'ERC-20'} 单笔最低起算金为 <strong className="text-white">{withdrawNetwork === 'TRX' ? '20' : '40'} USDT</strong>。</li>
+          <li>提现手续费：{withdrawNetwork === 'TRX' ? 'TRC-20 每笔固定收取 1.5 USDT的链上打包费,' : 'ERC-20 每笔固定收取 8 USDT 以太网络核心 Gas 费用'}。</li>
+          <li>请双重检测您的提现目标地址与收款网络：<span className="text-white font-bold">{withdrawNetwork} 网络</span>。一旦由于选错目标链导致充转错乱，资金将永久性丢失在外部黑洞。</li>
           <li>出账校验将在账单流安全审计确认后，平均 10-30 分钟在公链上广播成交。</li>
         </ul>
       </div>

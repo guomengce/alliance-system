@@ -2983,46 +2983,6 @@
   color: rgba(255, 255, 255, 0.5);
 }
 
-.alliance-antd-wallet-filter.ant-segmented {
-  background: var(--color-bg-control-hover) !important;
-  border-radius: 12px;
-  color: rgba(203, 196, 210, 0.8);
-  padding: 4px;
-}
-
-.alliance-antd-wallet-filter.ant-segmented .ant-segmented-group {
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.alliance-antd-wallet-filter.ant-segmented .ant-segmented-group::-webkit-scrollbar {
-  display: none;
-}
-
-.alliance-antd-wallet-filter.ant-segmented .ant-segmented-item {
-  border-radius: 8px;
-  color: rgba(250, 250, 250, 0.8);
-  font-size: 14px;
-  font-weight: 800;
-  line-height: 28px;
-  min-height: 28px;
-  padding: 0 8px;
-}
-
-.alliance-antd-wallet-filter.ant-segmented .ant-segmented-item:hover {
-  color: var(--color-text-main);
-}
-
-.alliance-antd-wallet-filter.ant-segmented .ant-segmented-item-selected {
-  background: var(--color-bg-control-muted) !important;
-  color: var(--color-primary-light) !important;
-}
-
-.alliance-antd-wallet-filter.ant-segmented .ant-segmented-thumb {
-  background: var(--color-bg-control-muted) !important;
-  border-radius: 8px;
-}
-
 .alliance-antd-wallet-ledger-table.ant-table-wrapper .ant-table-thead > tr > th {
   background: rgba(255, 255, 255, 0.02) !important;
   border-bottom-color: var(--color-border-faint) !important;
@@ -3302,12 +3262,12 @@
   box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
   color: var(--color-primary-contrast) !important;
   display: inline-flex;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 800;
   gap: 6px;
-  height: 38px;
+  height: 40px;
   justify-content: center;
-  padding: 0 16px;
+  padding: 0 25px;
 }
 
 .alliance-antd-finance-export-button.ant-btn:hover {
@@ -3849,10 +3809,102 @@
   padding: 0 20px;
 }
   
+.alliance-antd-wallet-filter.ant-segmented,
 .alliance-antd-commission-filter.ant-segmented,
 .alliance-antd-team-segmented.ant-segmented,
-.alliance-antd-team-view-segmented.ant-segmented,
 .alliance-antd-queue-filter.ant-segmented {
+  background: #100d14 !important;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  color: rgba(203, 196, 210, 0.8);
+  height: 40px;
+  min-height: 40px;
+  padding: 4px;
+}
+
+.alliance-antd-wallet-filter.ant-segmented .ant-segmented-group,
+.alliance-antd-commission-filter.ant-segmented .ant-segmented-group,
+.alliance-antd-team-segmented.ant-segmented .ant-segmented-group,
+.alliance-antd-queue-filter.ant-segmented .ant-segmented-group {
+  height: 32px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.alliance-antd-wallet-filter.ant-segmented .ant-segmented-group::-webkit-scrollbar,
+.alliance-antd-commission-filter.ant-segmented .ant-segmented-group::-webkit-scrollbar,
+.alliance-antd-team-segmented.ant-segmented .ant-segmented-group::-webkit-scrollbar,
+.alliance-antd-queue-filter.ant-segmented .ant-segmented-group::-webkit-scrollbar {
+  display: none;
+}
+
+.alliance-antd-wallet-filter.ant-segmented .ant-segmented-item,
+.alliance-antd-commission-filter.ant-segmented .ant-segmented-item,
+.alliance-antd-team-segmented.ant-segmented .ant-segmented-item,
+.alliance-antd-queue-filter.ant-segmented .ant-segmented-item {
+  border-radius: 8px;
+  color: rgba(203, 196, 210, 0.6);
+  font-size: 12px;
+  font-weight: 800;
+  height: 32px;
+  line-height: 32px;
+  min-height: 32px;
+  padding: 0 10px;
+  transition: color 160ms ease;
+}
+
+.alliance-antd-wallet-filter.ant-segmented .ant-segmented-item-label,
+.alliance-antd-commission-filter.ant-segmented .ant-segmented-item-label,
+.alliance-antd-team-segmented.ant-segmented .ant-segmented-item-label,
+.alliance-antd-queue-filter.ant-segmented .ant-segmented-item-label {
+  line-height: 32px;
+  min-height: 32px;
+}
+
+.alliance-antd-wallet-filter.ant-segmented .ant-segmented-item:hover,
+.alliance-antd-commission-filter.ant-segmented .ant-segmented-item:hover,
+.alliance-antd-team-segmented.ant-segmented .ant-segmented-item:hover,
+.alliance-antd-queue-filter.ant-segmented .ant-segmented-item:hover {
+  color: var(--color-text-main);
+}
+
+.alliance-antd-wallet-filter.ant-segmented .ant-segmented-item-selected,
+.alliance-antd-commission-filter.ant-segmented .ant-segmented-item-selected,
+.alliance-antd-team-segmented.ant-segmented .ant-segmented-item-selected,
+.alliance-antd-queue-filter.ant-segmented .ant-segmented-item-selected {
+  background: var(--color-bg-control-muted) !important;
+  color: var(--color-primary-light) !important;
+}
+
+.alliance-antd-wallet-filter.ant-segmented .ant-segmented-thumb,
+.alliance-antd-commission-filter.ant-segmented .ant-segmented-thumb,
+.alliance-antd-team-segmented.ant-segmented .ant-segmented-thumb,
+.alliance-antd-queue-filter.ant-segmented .ant-segmented-thumb {
+  background: var(--color-bg-control-muted) !important;
+  border-radius: 8px;
+  height: 32px;
+  transition:
+    transform 200ms cubic-bezier(0.2, 0, 0, 1),
+    width 200ms cubic-bezier(0.2, 0, 0, 1),
+    background-color 160ms ease;
+  will-change: transform, width;
+}
+
+.alliance-antd-team-segmented.ant-segmented {
+  border-radius: 999px;
+}
+
+.alliance-antd-team-segmented.ant-segmented .ant-segmented-item,
+.alliance-antd-team-segmented.ant-segmented .ant-segmented-thumb {
+  border-radius: 999px;
+}
+
+.alliance-antd-team-segmented.ant-segmented .ant-segmented-item {
+  min-width: 44px;
+  padding: 0 12px;
+}
+
+.alliance-antd-team-view-segmented.ant-segmented {
   background: #100d14;
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 12px;
@@ -3875,10 +3927,7 @@
   }
 }
   
-.alliance-antd-commission-filter.ant-segmented .ant-segmented-item,
-.alliance-antd-team-segmented.ant-segmented .ant-segmented-item,
-.alliance-antd-team-view-segmented.ant-segmented .ant-segmented-item,
-.alliance-antd-queue-filter.ant-segmented .ant-segmented-item {
+.alliance-antd-team-view-segmented.ant-segmented .ant-segmented-item {
   border-radius: 8px;
   color: rgba(203, 196, 210, 0.6);
   font-size: 12px;
@@ -3891,10 +3940,12 @@
 .alliance-antd-team-view-segmented.ant-segmented .ant-segmented-item {
   align-items: center;
   display: inline-flex;
+  height: 30px;
   justify-content: center;
-  min-height: 42px;
-  min-width: 48px;
+  min-height: 30px;
+  min-width: 30px;
   padding: 0;
+  width: 30px;
 }
 
 .alliance-antd-team-view-segmented.ant-segmented .ant-segmented-item-label {
@@ -3911,35 +3962,22 @@
   flex-shrink: 0;
 }
 
-.alliance-antd-team-segmented.ant-segmented {
-  border-radius: 12px;
-  min-height: 48px;
-  padding: 4px;
-}
-
-.alliance-antd-team-segmented.ant-segmented .ant-segmented-item {
-  min-height: 40px;
-  min-width: 56px;
-  padding: 0 12px;
-}
-
-.alliance-antd-team-segmented.ant-segmented .ant-segmented-item-label {
-  align-items: center;
-  display: inline-flex;
-  height: 100%;
-  justify-content: center;
-}
-
 .alliance-antd-team-view-segmented.ant-segmented {
   border-radius: 12px;
-  min-height: 50px;
+  height: 38px;
+  min-height: 38px;
   padding: 4px;
 }
-  
-.alliance-antd-commission-filter.ant-segmented .ant-segmented-item-selected,
-.alliance-antd-team-segmented.ant-segmented .ant-segmented-item-selected,
-.alliance-antd-team-view-segmented.ant-segmented .ant-segmented-item-selected,
-.alliance-antd-queue-filter.ant-segmented .ant-segmented-item-selected {
+
+.alliance-antd-team-view-segmented.ant-segmented .ant-segmented-group {
+  height: 30px;
+}
+
+.alliance-antd-team-view-segmented.ant-segmented .ant-segmented-thumb {
+  height: 30px;
+}
+
+.alliance-antd-team-view-segmented.ant-segmented .ant-segmented-item-selected {
   background: var(--color-primary-light) !important;
   color: #210c44 !important;
 }
@@ -3949,8 +3987,8 @@
   background: rgba(207, 188, 255, 0.14);
   border: 1px solid rgba(207, 188, 255, 0.16);
   color: var(--color-primary-light);
-  font-size: 12px;
-  font-weight: 900;
+  font-size: 12px !important;
+  font-weight: 500;
 }
   
 .alliance-antd-commission-level-tag.ant-tag,
@@ -3960,7 +3998,7 @@
   border-radius: 10px;
   color: var(--color-primary-light);
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 500;
   line-height: 18px;
   margin-inline-end: 0;
   padding: 0 8px;
@@ -4145,10 +4183,11 @@
 .alliance-antd-queue-link-button.ant-btn,
 .alliance-antd-queue-link-button.ant-btn:hover,
 .alliance-antd-queue-link-button.ant-btn:focus {
-  background: rgba(255, 255, 255, 0.01) !important;
-  border-color: rgba(255, 255, 255, 0.05) !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
   border-radius: 10px;
-  color: rgba(207, 188, 255, 0.5) !important;
+  color: #cfbcff !important;
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 800;
@@ -4158,7 +4197,7 @@
 }
   
 .alliance-antd-queue-link-button.ant-btn:hover {
-  color: var(--color-primary-light) !important;
+  color: #e5d5ff !important;
 }
   
 .alliance-antd-queue-progress.ant-progress .ant-progress-outer {
@@ -4170,7 +4209,11 @@
   border: 1px solid rgba(255, 255, 255, 0.02);
 }
   
-.alliance-antd-queue-progress.ant-progress .ant-progress-bg {
+.alliance-antd-queue-progress.ant-progress .ant-progress-bg,
+.alliance-antd-queue-progress.ant-progress .ant-progress-success-bg,
+.alliance-antd-queue-progress.ant-progress.ant-progress-status-success .ant-progress-bg {
+  background: #cfbcff !important;
+  background-color: #cfbcff !important;
   height: 8px !important;
 }
   
@@ -4178,18 +4221,25 @@
 .alliance-antd-queue-detail-button.ant-btn:hover,
 .alliance-antd-queue-detail-button.ant-btn:focus {
   align-items: center;
-  color: var(--color-primary-light) !important;
+  background: #cfbcff !important;
+  border-color: transparent !important;
+  border-radius: 10px;
+  box-shadow: none !important;
+  color: #210c44 !important;
   display: inline-flex;
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 900;
   gap: 4px;
-  height: 24px;
-  padding: 0;
+  height: 42px;
+  justify-content: center;
+  min-width: 150px;
+  padding: 0 20px;
 }
   
 .alliance-antd-queue-detail-button.ant-btn:hover {
-  color: #e5d5ff !important;
-  text-decoration: underline;
+  background: #dac8ff !important;
+  color: #210c44 !important;
+  text-decoration: none;
 }
   
 .alliance-antd-queue-modal-close.ant-btn,

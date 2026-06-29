@@ -60,9 +60,9 @@ export default function RechargePanel({
           <span className="text-xs sm:text-xs font-black uppercase tracking-wider">充值重要提示与规则 (Deposit Precautions)</span>
         </div>
         <ul className="list-disc pl-4 space-y-1.5 text-xs sm:text-xs font-medium leading-relaxed">
-          <li>最小起充金额为 <strong className="text-white">10 USDT</strong>，低于该额度的订单将无法入账核销，且不可返还。</li>
-          <li>请勿向专属充值账户发送非 USDT 的其它数字资产，否则可能造成资产永久流失。</li>
-          <li>区块链网络检测通过后，系统将实时统计并安全入账您的协议余额。</li>
+          <li>最小起充金额为 <strong className="text-white">10 USDT</strong>，任何低于该额度的订单将无法在两端网络入账核销，且不可返还。</li>
+          <li>请切勿向专属充值账户发送非 USDT 的其它数字资产。发送其它通证将可能造成资产永久流失。</li>
+          <li>区块链链上网络检测通过（通常 1-3 个确认块，5分钟内）后，系统将实时统计并安全入账您的协议余额中。</li>
           <li>充值务必保证网络协议匹配，当前选定网络协议：<span className="text-[#cfbcff] font-bold">USDT-{rechargeNetwork}</span>。</li>
         </ul>
       </div>

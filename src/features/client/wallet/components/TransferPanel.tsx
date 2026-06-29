@@ -58,10 +58,10 @@ export default function TransferPanel({
           <span className="text-xs sm:text-xs font-black uppercase tracking-wider">站内极速划转须知 (Transfer Precautions)</span>
         </div>
         <ul className="list-disc pl-4 space-y-1.5 text-xs sm:text-xs font-medium leading-relaxed">
-          <li>站内互转起拨限额：单笔仅限 <strong className="text-white">10 USDT</strong> 以上交易。</li>
-          <li>站内转移免手续费，提交后直接在底层原子更新。</li>
-          <li>一旦签字成交，<span className="text-rose-400 font-bold">不具备撤回、追踪或冲正余地</span>。</li>
-          <li>请务必与接收方多次核对 <strong className="text-white">系统 8 位 UID 识别号</strong>。</li>
+          <li>站内互转起拨限额:单笔仅限 <strong className="text-white">10 USDT</strong> 级以上交易允许通过结算。</li>
+          <li>站内转移免手续:由于隶属协议内部极速信道，不加收任何网络广播传输费，实现秒级扣款 and 写入接收方钱包。</li>
+          <li>由于此操作不经过链上二次漫游确认，划转提交直接在底层原子更新，因此<span className="text-rose-400 font-bold">一旦签字成交，不具备撤回、追踪或冲正余地</span>。</li>
+          <li>请务必与接收方多次核对 <strong className="text-white">系统 8 位 UID 识别号</strong>。转错 UID 损失需自行负单向责任。</li>
         </ul>
       </div>
     </div>

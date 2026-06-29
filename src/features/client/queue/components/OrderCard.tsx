@@ -62,7 +62,12 @@ export default function OrderCard({ item, onSelectDetailOrder }: OrderCardProps)
           <span className="text-[#cbc4d2]/50">解锁买入进度 (Unlock Ratio)</span>
           <span className="text-white font-mono">{percentComplete}%</span>
         </div>
-        <Progress className="alliance-antd-queue-progress" percent={percentComplete} showInfo={false} />
+        <Progress
+          className="alliance-antd-queue-progress"
+          percent={percentComplete}
+          showInfo={false}
+          strokeColor="#cfbcff"
+        />
       </div>
 
       <div className="pt-2.5 border-t border-white/5 flex justify-between items-center relative z-10">
