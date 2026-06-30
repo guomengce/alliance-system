@@ -1,0 +1,610 @@
+.app-shell {
+  background: transparent;
+  min-height: 100vh;
+}
+
+.app-shell__main {
+  background: transparent;
+  min-height: 100vh;
+}
+
+.app-shell__sider {
+  background: rgba(17, 14, 22, 0.8) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  bottom: 0;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+  display: none;
+  left: 0;
+  padding: 24px 16px;
+  position: fixed !important;
+  top: 0;
+  z-index: 50;
+}
+
+.app-shell__brand {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  padding: 0 12px;
+}
+
+.app-shell__brand-mark {
+  align-items: center;
+  background: linear-gradient(135deg, #6750a4, #cfbcff);
+  border-radius: 12px;
+  box-shadow: 0 10px 24px rgba(103, 80, 164, 0.2);
+  color: #ffffff;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  width: 40px;
+}
+
+.app-shell__brand-title {
+  color: #cfbcff;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 1;
+  margin: 0;
+}
+
+.app-shell__brand-subtitle {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin: 4px 0 0;
+  text-transform: uppercase;
+}
+
+.app-shell__menu.ant-menu {
+  background: transparent;
+  border-inline-end: 0 !important;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.app-shell__menu.ant-menu .ant-menu-item {
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  line-height: 48px;
+  margin: 4px 0;
+  padding-inline: 16px !important;
+}
+
+.app-shell__menu.ant-menu .ant-menu-item:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #ffffff !important;
+}
+
+.app-shell__menu.ant-menu .ant-menu-item-selected {
+  background: #6750a4 !important;
+  box-shadow: 0 10px 25px rgba(103, 80, 164, 0.15);
+  color: #ffffff !important;
+  font-weight: 800;
+}
+
+.app-shell__menu-icon {
+  height: 20px;
+  width: 20px;
+}
+
+.app-shell__menu.ant-menu .ant-menu-item .ant-menu-item-icon + span {
+  margin-inline-start: 15px;
+}
+
+.app-shell__header {
+  background: rgba(12, 10, 15, 0.8) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(24px);
+  height: 64px;
+  line-height: normal;
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.app-shell__header-inner {
+  height: 100%;
+  padding: 0 32px;
+  width: 100%;
+}
+
+.app-shell__header--desktop {
+  display: none;
+}
+
+.app-shell__header--mobile {
+  background: rgba(17, 14, 22, 0.8) !important;
+  display: flex;
+  left: 0;
+  position: fixed;
+  right: 0;
+  z-index: 50;
+}
+
+.app-shell__route-pill {
+  align-items: center;
+  background: #1c1822;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  color: rgba(203, 196, 210, 0.7);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  gap: 6px;
+  letter-spacing: 0.03em;
+  min-height: 30px;
+  padding: 6px 12px;
+}
+
+.app-shell__route-pill span {
+  color: #cfbcff;
+}
+
+.app-shell__route-pill-admin {
+  align-items: center;
+  display: inline-flex;
+  font-size: 11px;
+  font-weight: 900;
+  gap: 6px;
+  text-transform: uppercase;
+}
+
+.app-shell__icon-button.ant-btn,
+.app-shell__mobile-menu-button.ant-btn,
+.app-shell__mobile-avatar-button.ant-btn {
+  align-items: center;
+  background: #211f24 !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  border-radius: 12px;
+  color: #cbc4d2 !important;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.app-shell__icon-button.ant-btn {
+  height: 36px;
+  min-width: 36px;
+  padding: 0 12px;
+}
+
+.app-shell__icon-button.ant-btn:hover,
+.app-shell__mobile-menu-button.ant-btn:hover,
+.app-shell__mobile-avatar-button.ant-btn:hover {
+  background: #2d2a30 !important;
+  color: #ffffff !important;
+}
+
+.app-shell__language-button .ant-btn-icon {
+  display: inline-flex;
+}
+
+.app-shell__language-label {
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.app-shell__profile-button.ant-btn {
+  align-items: center;
+  background: rgba(33, 31, 36, 0.3) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  border-radius: 999px;
+  color: #ffffff !important;
+  display: inline-flex;
+  gap: 10px;
+  height: 40px;
+  padding: 4px 10px 4px 12px;
+}
+
+.app-shell__profile-button.is-admin.ant-btn {
+  border-color: rgba(207, 188, 255, 0.2) !important;
+}
+
+.app-shell__profile-button.ant-btn:hover {
+  background: rgba(45, 42, 48, 0.5) !important;
+}
+
+.app-shell__profile-copy {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.app-shell__profile-name.ant-typography,
+.app-shell__profile-uid.ant-typography {
+  margin: 0;
+}
+
+.app-shell__profile-name.ant-typography {
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 3px;
+}
+
+.app-shell__profile-uid.ant-typography {
+  color: rgba(203, 196, 210, 0.5);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1;
+}
+
+.app-shell__avatar.ant-avatar {
+  background: linear-gradient(135deg, #6750a4, #cfbcff);
+  border: 1px solid rgba(207, 188, 255, 0.3);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 900;
+  height: 30px;
+  line-height: 30px;
+  min-width: 30px;
+  width: 30px;
+}
+
+.app-shell__mobile-brand-icon {
+  color: #cfbcff;
+  height: 22px;
+  width: 22px;
+}
+
+.app-shell__mobile-brand-text {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.app-shell__mobile-menu-button.ant-btn,
+.app-shell__mobile-avatar-button.ant-btn {
+  background: transparent !important;
+  border-color: transparent !important;
+  min-width: 32px;
+  padding: 0;
+}
+
+.app-shell__mobile-avatar-button.ant-btn {
+  height: 32px;
+}
+
+@media (max-width: 767px) {
+  .app-shell__header {
+    height: 56px;
+  }
+
+  .app-shell__header--mobile {
+    background: rgba(17, 14, 22, 0.92) !important;
+  }
+
+  .app-shell__header--mobile .app-shell__header-inner {
+    gap: 10px;
+    padding: 0 14px;
+  }
+
+  .app-shell__header--mobile .ant-flex {
+    gap: 6px !important;
+    min-width: 0;
+  }
+
+  .app-shell__mobile-brand-icon {
+    height: 16px;
+    width: 16px;
+  }
+
+  .app-shell__mobile-brand-text {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+
+  .app-shell__header--mobile .app-shell__icon-button.ant-btn {
+    border-radius: 10px;
+    height: 30px;
+    min-width: 30px;
+    padding: 0 8px;
+  }
+
+  .app-shell__header--mobile .app-shell__language-button.ant-btn {
+    min-width: 52px;
+    padding: 0 8px;
+  }
+
+  .app-shell__header--mobile .app-shell__language-label {
+    font-size: 11px;
+  }
+
+  .app-shell__header--mobile .app-shell__icon-button svg {
+    height: 14px;
+    width: 14px;
+  }
+
+  .app-shell__mobile-avatar-button.ant-btn {
+    height: 30px;
+    min-width: 30px;
+  }
+
+  .app-shell__mobile-avatar-button .app-shell__avatar.ant-avatar {
+    height: 28px;
+    line-height: 28px;
+    min-width: 28px;
+    width: 28px;
+  }
+
+  .app-shell__header--mobile .ant-badge-count {
+    font-size: 9px;
+    height: 14px;
+    line-height: 14px;
+    min-width: 14px;
+    padding: 0 4px;
+  }
+}
+
+.app-shell__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0 auto;
+  max-width: 1720px;
+  min-height: calc(100vh - 64px);
+  padding: 96px 24px 96px;
+  width: 100%;
+}
+
+.app-shell__route-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.app-shell__admin-drawer .ant-drawer-content,
+.app-shell__admin-drawer .ant-drawer-body {
+  background: rgba(17, 14, 22, 0.96);
+  color: #ffffff;
+}
+
+.app-shell__admin-drawer .ant-drawer-body {
+  padding: 24px 16px;
+}
+
+.app-shell__drawer-header {
+  align-items: flex-start;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.app-shell__drawer-header .app-shell__brand {
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.app-shell__drawer-close.ant-btn {
+  background: transparent !important;
+  border-color: transparent !important;
+  color: rgba(255, 255, 255, 0.62) !important;
+  min-width: 32px;
+  padding: 0;
+}
+
+.app-shell__mobile-bottom-nav {
+  align-items: center;
+  background: rgba(17, 14, 22, 0.96);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  bottom: 0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  height: 64px;
+  justify-content: space-around;
+  left: 0;
+  padding: 0 12px;
+  position: fixed;
+  right: 0;
+  z-index: 50;
+}
+
+.app-shell__mobile-bottom-item {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  color: rgba(203, 196, 210, 0.6);
+  cursor: pointer;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-size: 9px;
+  gap: 4px;
+  justify-content: center;
+  min-width: 0;
+  padding: 4px 0;
+  white-space: nowrap;
+}
+
+.app-shell__mobile-bottom-item.is-active {
+  color: #cfbcff;
+}
+
+.app-shell__mobile-bottom-icon {
+  height: 18px;
+  width: 18px;
+}
+
+.app-shell__mobile-bottom-item.is-active .app-shell__mobile-bottom-icon {
+  transform: scale(1.1);
+}
+
+.app-shell__alert {
+  align-items: center;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 16px;
+  position: fixed;
+  z-index: 9999;
+}
+
+.app-shell__alert-backdrop {
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(12px);
+  inset: 0;
+  position: absolute;
+}
+
+.app-shell__alert-panel {
+  background: #15121b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  max-width: 384px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  z-index: 10000;
+}
+
+.app-shell__alert-strip {
+  height: 6px;
+  inset-inline: 0;
+  position: absolute;
+  top: 0;
+}
+
+.app-shell__alert-strip.is-error {
+  background: #f43f5e;
+}
+
+.app-shell__alert-strip.is-warning {
+  background: #f59e0b;
+}
+
+.app-shell__alert-strip.is-info {
+  background: #cfbcff;
+}
+
+.app-shell__alert-strip.is-success {
+  background: #34d399;
+}
+
+.app-shell__alert-body {
+  padding: 24px;
+}
+
+.app-shell__alert-content {
+  align-items: flex-start;
+  display: flex;
+  gap: 16px;
+}
+
+.app-shell__alert-icon {
+  border-radius: 12px;
+  display: inline-flex;
+  margin-top: 2px;
+  padding: 10px;
+}
+
+.app-shell__alert-icon.is-error {
+  background: rgba(244, 63, 94, 0.1);
+  color: #fb7185;
+}
+
+.app-shell__alert-icon.is-warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+}
+
+.app-shell__alert-icon.is-info {
+  background: rgba(207, 188, 255, 0.1);
+  color: #cfbcff;
+}
+
+.app-shell__alert-icon.is-success {
+  background: rgba(52, 211, 153, 0.1);
+  color: #34d399;
+}
+
+.app-shell__alert-title {
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.app-shell__alert-message {
+  color: rgba(203, 196, 210, 0.8);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.6;
+  margin: 8px 0 0;
+  white-space: pre-line;
+  word-break: break-word;
+}
+
+.app-shell__alert-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 16px;
+}
+
+.app-shell__alert-button.ant-btn {
+  background: #cfbcff !important;
+  border-color: transparent !important;
+  border-radius: 12px;
+  color: #100d14 !important;
+  font-size: 12px;
+  font-weight: 900;
+  height: 40px;
+  padding: 0 20px;
+}
+
+@media (min-width: 768px) {
+  .app-shell__sider {
+    display: flex;
+  }
+
+  .app-shell__main {
+    padding-left: 280px;
+  }
+
+  .app-shell__header--desktop {
+    display: flex;
+  }
+
+  .app-shell__header--mobile {
+    display: none;
+  }
+
+  .app-shell__content {
+    min-height: calc(100vh - 64px);
+    padding: 24px 24px 32px;
+  }
+
+  .app-shell__mobile-bottom-nav {
+    display: none;
+  }
+}
+
+@media (min-width: 1280px) {
+  .app-shell__content {
+    max-width: 1500px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .app-shell__content {
+    max-width: 1720px;
+  }
+}

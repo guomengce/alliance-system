@@ -1,6 +1,6 @@
 import { Suspense, type ReactElement, type ReactNode } from 'react';
 import { useAppContext } from '../context/AppContext';
-import type { AppStateContext } from '../layouts/MainLayout/types';
+import type { AppStateContext } from '../layouts/AppShell';
 import { ADMIN_PAGE_COMPONENTS } from './pageLoaders';
 
 type AdminRouteElementFactory = (state: AppStateContext) => ReactElement;

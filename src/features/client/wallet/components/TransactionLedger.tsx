@@ -64,14 +64,14 @@ export default function TransactionLedger({
       render: (_: Transaction['type'], txn) => (
         <div className="flex items-center gap-3">
           <span className={`w-2.5 h-2.5 rounded-full ${getTypeDotClass(txn.type)}`} />
-          <span className="font-semibold text-white/90">{getNormalizedTypeLabel(txn.type, txn.typeLabel)}</span>
+          <span className="font-semibold alliance-antd-table-fontSize text-white/90">{getNormalizedTypeLabel(txn.type, txn.typeLabel)}</span>
         </div>
       )
     },
     {
       title: '描述',
       dataIndex: 'desc',
-      render: (desc: string) => <p className="font-bold text-white">{desc}</p>
+      render: (desc: string) => <span className="alliance-antd-wallet-description-cell font-bold alliance-antd-table-fontSize text-white">{desc}</span>
     },
     {
       title: '金额',
@@ -80,7 +80,7 @@ export default function TransactionLedger({
       render: (amount: number, txn) => {
         const isPositive = amount > 0;
         return (
-          <span className={`font-mono font-bold ${isPositive ? 'text-[#00e676]' : 'text-[#ffb4ab]'}`}>
+          <span className={`font-mono font-bold alliance-antd-table-fontSize ${isPositive ? 'text-[#00e676]' : 'text-[#ffb4ab]'}`}>
             {isPositive ? '+' : ''} {amount.toLocaleString('zh-CN', { minimumFractionDigits: 2 })} {txn.currency}
           </span>
         );

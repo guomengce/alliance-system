@@ -98,7 +98,12 @@ export default function OrderDetailModal({ selectedDetailOrder, onClose }: Detai
                   <span className="text-[#cbc4d2]/50">解锁买入比例 (UNLOCK RATIO)</span>
                   <span className="text-[#cfbcff] font-mono">{detailProgressPercent}%</span>
                 </div>
-                <Progress className="alliance-antd-queue-progress" percent={detailProgressPercent} showInfo={false} />
+                <Progress
+                  className="alliance-antd-queue-progress"
+                  percent={detailProgressPercent}
+                  showInfo={false}
+                  strokeColor="#cfbcff"
+                />
               </div>
 
               <div className="space-y-2.5">
