@@ -1,3 +1,4 @@
+import './antd-overrides.css';
 import { AntdEditorModal } from './components/AntdEditorModal';
 import { AntdList } from './components/AntdList';
 import { Toolbar } from './components/Toolbar';

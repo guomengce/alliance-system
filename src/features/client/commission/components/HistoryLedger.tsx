@@ -102,7 +102,6 @@ export default function HistoryLedger({
 
       <div className="hidden md:block overflow-x-auto scrollbar-hide">
         <Table<CommissionHistoryItem>
-          className="alliance-antd-table"
           columns={columns}
           dataSource={filteredHistory}
           pagination={false}

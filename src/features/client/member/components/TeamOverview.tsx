@@ -74,7 +74,6 @@ export default function TeamOverview({ recentActivities }: TeamOverviewProps) {
         </h3>
         <div className="hidden md:block overflow-x-auto">
           <Table
-            className="alliance-antd-table"
             columns={columns}
             dataSource={tableData}
             pagination={false}

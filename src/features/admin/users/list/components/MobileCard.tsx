@@ -19,13 +19,13 @@ export default function MobileCard({
 }: MobileCardProps) {
   const renderKycStatus = () => {
     if (user.kycL2 === 'verified') {
-      return <Tag className="alliance-antd-tag alliance-antd-tag-success">L2 认证</Tag>;
+      return <Tag color="success">L2 认证</Tag>;
     }
 
     if (user.kycL2 === 'pending') {
       return (
         <>
-          <Tag className="alliance-antd-tag alliance-antd-tag-warning animate-pulse">L2 待审</Tag>
+          <Tag color="warning" className="animate-pulse">L2 待审</Tag>
           <Button
             className="alliance-antd-mini-button alliance-antd-mini-button-success"
             size="small"
@@ -38,10 +38,10 @@ export default function MobileCard({
     }
 
     if (user.kycL1 === 'verified' || user.kycL1 === undefined) {
-      return <Tag className="alliance-antd-tag alliance-antd-tag-purple">L1 认证</Tag>;
+      return <Tag color="purple">L1 认证</Tag>;
     }
 
-    return <Tag className="alliance-antd-tag alliance-antd-tag-muted">未核验</Tag>;
+    return <Tag>未核验</Tag>;
   };
 
   return (
@@ -57,7 +57,7 @@ export default function MobileCard({
           </div>
         </div>
 
-        <Tag className="alliance-antd-tag alliance-antd-tag-purple">
+        <Tag color="purple">
           Sponsor: {user.sponsor || '999001'}
         </Tag>
       </div>

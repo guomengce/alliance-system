@@ -6,14 +6,14 @@ import type { MobileOrderCardProps, OrderDetail } from '../../types';
 
 function OrderStatusTag({ status }: { status: OrderDetail['status'] }) {
   if (status === 'confirmed') {
-    return <Tag className="alliance-antd-tag alliance-antd-tag-success">已存证交割</Tag>;
+    return <Tag color="success">已存证交割</Tag>;
   }
 
   if (status === 'pending') {
-    return <Tag className="alliance-antd-tag alliance-antd-tag-warning animate-pulse">待审核</Tag>;
+    return <Tag color="warning" className="animate-pulse">待审核</Tag>;
   }
 
-  return <Tag className="alliance-antd-tag alliance-antd-tag-danger">已作废</Tag>;
+  return <Tag color="error">已作废</Tag>;
 }
 
 export default function AntdOrderMobileCard({

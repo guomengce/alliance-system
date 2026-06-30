@@ -1,0 +1,68 @@
+﻿/* Module-scoped Ant Design styles for this feature. */
+.alliance-antd-member-name-input.ant-input {
+  max-width: 180px;
+}
+
+.alliance-antd-member-account-tag.ant-tag {
+  background: rgba(207, 188, 255, 0.1);
+  border-color: rgba(207, 188, 255, 0.2);
+  border-radius: 4px;
+  color: var(--color-primary-light);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 18px;
+  margin-inline-end: 0;
+  padding: 0 10px;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.alliance-antd-member-edit-button.ant-btn,
+.alliance-antd-member-edit-button.ant-btn:hover,
+.alliance-antd-member-edit-button.ant-btn:focus {
+  background: rgba(103, 80, 164, 0.3) !important;
+  border-color: rgba(207, 188, 255, 0.2) !important;
+  border-radius: 12px;
+  color: var(--color-primary-light) !important;
+  font-weight: 800;
+  height: 42px;
+  padding: 0 24px;
+  white-space: nowrap;
+}
+
+.alliance-antd-member-edit-button.ant-btn:hover {
+  background: rgba(103, 80, 164, 0.5) !important;
+}
+
+.alliance-antd-member-credit-progress.ant-progress .ant-progress-circle-trail {
+  stroke: #36343a;
+}
+
+.alliance-antd-member-credit-progress.ant-progress .ant-progress-circle-path {
+  filter: drop-shadow(0 0 6px rgba(207, 188, 255, 0.2));
+}
+
+.alliance-antd-member-credit-button.ant-btn,
+.alliance-antd-member-credit-button.ant-btn:hover,
+.alliance-antd-member-credit-button.ant-btn:focus {
+  height: 40px !important;
+  min-height: 40px !important;
+}
+
+.alliance-antd-member-activity-avatar.ant-avatar {
+  background: #36343a;
+  color: var(--color-primary-light);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.alliance-antd-member-activity-tag.ant-tag {
+  background: transparent;
+  border: 0;
+  color: #e7c365;
+  font-size: 12px;
+  font-weight: 700;
+  margin-inline-end: 0;
+  padding: 0;
+}
+

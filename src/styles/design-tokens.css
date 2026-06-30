@@ -13,6 +13,8 @@
   --app-color-primary: #6750a4;
   --app-color-primary-light: #cfbcff;
   --app-color-primary-contrast: #381e72;
+  --app-color-blue: #60a5fa;
+  --app-color-cyan: #06b6d4;
   --app-gradient-primary: linear-gradient(90deg, #6750a4, #cfbcff);
 
   /* Text */
@@ -33,6 +35,8 @@
   /* Status */
   --app-color-success: #34d399;
   --app-color-success-strong: #00e676;
+  --app-color-submit-start: #10b981;
+  --app-color-submit-end: #2dd4bf;
   --app-color-warning: #e7c365;
   --app-color-warning-strong: #f59e0b;
   --app-color-danger: #f87171;
@@ -109,14 +113,19 @@
   --color-primary: var(--app-color-primary);
   --color-primary-light: var(--app-color-primary-light);
   --color-primary-contrast: var(--app-color-primary-contrast);
+  --color-blue: var(--app-color-blue);
+  --color-cyan: var(--app-color-cyan);
   --color-text-main: var(--app-color-text-primary);
   --color-text-secondary: var(--app-color-text-secondary);
   --color-text-muted: var(--app-color-text-muted);
   --color-text-faint: var(--app-color-text-faint);
   --color-success: var(--app-color-success-strong);
+  --color-success-soft: var(--app-color-success);
   --color-warning: var(--app-color-warning);
+  --color-warning-strong: var(--app-color-warning-strong);
   --color-error: var(--app-color-danger-strong);
   --color-danger: var(--app-color-risk);
+  --color-danger-soft: var(--app-color-danger);
   --color-info: var(--app-color-info);
   --font-size-page-title: var(--app-font-size-page-title);
   --font-size-section-title: var(--app-font-size-section-title);
@@ -141,16 +150,3 @@
   --shadow-control: var(--app-shadow-control);
 }
 
-:where(.ant-btn-primary):not(.ant-btn-dangerous),
-:where(.ant-btn-primary):not(.ant-btn-dangerous):hover,
-:where(.ant-btn-primary):not(.ant-btn-dangerous):focus {
-  background: linear-gradient(90deg, #6750a4, #cfbcff) !important;
-  border-color: transparent !important;
-  border-left-color: #6750a4 !important;
-  color: var(--app-color-text-primary) !important;
-}
-
-:where(.ant-btn-primary):not(.ant-btn-dangerous):hover,
-:where(.ant-btn-primary):not(.ant-btn-dangerous):focus {
-  filter: brightness(1.06);
-}

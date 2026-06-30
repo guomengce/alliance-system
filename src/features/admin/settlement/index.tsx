@@ -1,3 +1,4 @@
+import './antd-overrides.css';
 import AntdDetailModal from './components/AntdDetailModal';
 import AntdHeaderActions from './components/AntdHeaderActions';
 import AntdSettlementList from './components/AntdSettlementList';

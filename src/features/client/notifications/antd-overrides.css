@@ -1,0 +1,113 @@
+﻿/* Module-scoped Ant Design styles for this feature. */
+.alliance-antd-notification-tabs.ant-segmented {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.alliance-antd-notification-tabs.ant-segmented .ant-segmented-group {
+  gap: 8px;
+}
+
+.alliance-antd-notification-tabs.ant-segmented .ant-segmented-item {
+  border-radius: 12px;
+  color: rgba(203, 196, 210, 0.8);
+  font-size: 12px;
+  font-weight: 800;
+  min-height: 38px;
+  padding: 0 18px;
+}
+
+.alliance-antd-notification-tabs.ant-segmented .ant-segmented-item-selected {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: var(--color-primary-light) !important;
+}
+
+.alliance-antd-notification-tab-badge.ant-badge {
+  position: absolute;
+  right: -9px;
+  top: -5px;
+}
+
+.alliance-antd-notification-action.ant-btn,
+.alliance-antd-notification-action.ant-btn:hover,
+.alliance-antd-notification-action.ant-btn:focus {
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px;
+  color: var(--color-primary-light) !important;
+  font-size: 12px;
+  font-weight: 800;
+  height: 34px;
+  padding: 0 16px;
+}
+
+.alliance-antd-notification-action.ant-btn:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.alliance-antd-notification-danger-action.ant-btn,
+.alliance-antd-notification-danger-action.ant-btn:hover,
+.alliance-antd-notification-danger-action.ant-btn:focus {
+  background: rgba(244, 63, 94, 0.1) !important;
+  border-color: transparent !important;
+  border-radius: 12px;
+  color: #fda4af !important;
+  font-size: 12px;
+  font-weight: 800;
+  height: 34px;
+  padding: 0 16px;
+}
+
+.alliance-antd-notification-danger-action.ant-btn:hover {
+  background: rgba(244, 63, 94, 0.2) !important;
+}
+
+.alliance-antd-notification-category-tag.ant-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border: 0;
+  border-radius: 4px;
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 18px;
+  margin-inline-end: 0;
+  padding: 0 8px;
+  text-transform: uppercase;
+}
+
+.alliance-antd-notification-check-button.ant-btn,
+.alliance-antd-notification-check-button.ant-btn:hover,
+.alliance-antd-notification-check-button.ant-btn:focus {
+  align-items: center;
+  background: transparent !important;
+  border-color: transparent !important;
+  border-radius: 6px;
+  display: inline-flex;
+  height: 28px;
+  justify-content: center;
+  min-width: 28px;
+  padding: 0;
+}
+
+.alliance-antd-notification-check-button.ant-btn:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.alliance-antd-notification-check-button.is-unread.ant-btn,
+.alliance-antd-notification-check-button.is-unread.ant-btn:hover,
+.alliance-antd-notification-check-button.is-unread.ant-btn:focus {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.alliance-antd-notification-check-button.is-read.ant-btn,
+.alliance-antd-notification-check-button.is-read.ant-btn:hover,
+.alliance-antd-notification-check-button.is-read.ant-btn:focus {
+  color: #00e676 !important;
+}
+
+.alliance-antd-notification-check-button.ant-btn svg {
+  color: currentColor;
+  stroke: currentColor;
+}
+

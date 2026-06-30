@@ -81,7 +81,6 @@ export default function DownlineLedger({
 
       <div className="hidden md:block overflow-x-auto scrollbar-hide">
         <Table<DownlineMember>
-          className="alliance-antd-table"
           columns={columns}
           dataSource={downlines}
           pagination={false}

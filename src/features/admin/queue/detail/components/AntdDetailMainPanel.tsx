@@ -205,7 +205,7 @@ export function AntdDetailMainPanel({
 
         <div className="hidden md:block border border-white/5 rounded-2xl overflow-hidden bg-[#120f1a]/50 text-xs">
           <Table<QueueTrigger>
-            className="alliance-antd-table alliance-antd-queue-history-table"
+            className="alliance-antd-queue-history-table"
             columns={columns}
             dataSource={filteredHistory}
             pagination={false}

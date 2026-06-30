@@ -1,0 +1,258 @@
+﻿/* Module-scoped Ant Design styles for this feature. */
+/* Admin settlement Ant Design replacements */
+.alliance-antd-settlement-primary-button.ant-btn,
+.alliance-antd-settlement-primary-button.ant-btn:hover,
+.alliance-antd-settlement-primary-button.ant-btn:focus {
+  align-items: center;
+  background: linear-gradient(90deg, #6750a4, #cfbcff) !important;
+  border-color: transparent !important;
+  border-radius: 12px;
+  box-shadow: 0 10px 15px -8px rgba(103, 80, 164, 0.5);
+  color: #ffffff !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  gap: 6px;
+  height: 38px;
+  padding: 0 16px;
+}
+
+.alliance-antd-settlement-primary-button.ant-btn:hover {
+  filter: brightness(1.08);
+}
+
+.alliance-antd-settlement-primary-button.ant-btn:active {
+  transform: scale(0.95);
+}
+
+.alliance-antd-settlement-primary-button.ant-btn[disabled] {
+  opacity: 0.5;
+}
+
+.alliance-antd-settlement-guide-card.ant-card {
+  background: rgba(23, 19, 30, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  color: #cbc4d2;
+  font-family: var(--font-sans);
+}
+
+.alliance-antd-settlement-guide-card .ant-card-body {
+  padding: 20px;
+}
+
+.alliance-antd-settlement-table.ant-table-wrapper .ant-table {
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.alliance-antd-settlement-table.ant-table-wrapper .ant-table-thead > tr > th {
+  background: rgba(255, 255, 255, 0.01) !important;
+  color: rgba(203, 196, 210, 0.5) !important;
+  font-size: 12px;
+  font-weight: 900;
+  padding: 16px !important;
+}
+
+.alliance-antd-settlement-table.ant-table-wrapper .ant-table-tbody > tr > td {
+  padding: 14px 16px !important;
+}
+
+.alliance-antd-settlement-status-tag.ant-tag {
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 18px;
+  margin-inline-end: 0;
+  padding: 0 8px;
+}
+
+.alliance-antd-settlement-status-tag.is-success {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+}
+
+.alliance-antd-settlement-status-tag.is-danger {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+}
+
+.alliance-antd-settlement-status-tag.is-critical {
+  background: #450a0a;
+  border-color: rgba(239, 68, 68, 0.25);
+  color: #f59e0b;
+}
+
+.alliance-antd-settlement-status-tag.is-purple {
+  background: rgba(207, 188, 255, 0.1);
+  border-color: rgba(207, 188, 255, 0.12);
+  color: #cfbcff;
+}
+
+.alliance-antd-settlement-action-button.ant-btn,
+.alliance-antd-settlement-action-button.ant-btn:hover,
+.alliance-antd-settlement-action-button.ant-btn:focus,
+.alliance-antd-settlement-mobile-action-button.ant-btn,
+.alliance-antd-settlement-mobile-action-button.ant-btn:hover,
+.alliance-antd-settlement-mobile-action-button.ant-btn:focus {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: transparent !important;
+  border-radius: 8px;
+  color: #ffffff !important;
+  display: inline-flex;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 800;
+  gap: 4px;
+  height: 26px;
+  padding: 0 10px;
+}
+
+.alliance-antd-settlement-action-button.ant-btn:hover,
+.alliance-antd-settlement-mobile-action-button.ant-btn:hover {
+  background: rgba(207, 188, 255, 0.1) !important;
+  color: #cfbcff !important;
+}
+
+.alliance-antd-settlement-action-button.ant-btn:active,
+.alliance-antd-settlement-mobile-action-button.ant-btn:active {
+  transform: scale(0.95);
+}
+
+.alliance-antd-settlement-mobile-card.ant-card {
+  background: rgba(29, 25, 37, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  color: #cbc4d2;
+  font-family: var(--font-sans);
+}
+
+.alliance-antd-settlement-mobile-card .ant-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+}
+
+.alliance-antd-settlement-mobile-action-button.ant-btn,
+.alliance-antd-settlement-mobile-action-button.ant-btn:hover,
+.alliance-antd-settlement-mobile-action-button.ant-btn:focus {
+  border-radius: 12px;
+  font-size: 12px;
+  height: 30px;
+  padding: 0 12px;
+}
+
+.alliance-antd-settlement-modal-root .ant-modal-mask {
+  background: rgba(0, 0, 0, 0.85) !important;
+  backdrop-filter: blur(12px);
+}
+
+.alliance-antd-settlement-modal.ant-modal {
+  color: #cbc4d2;
+}
+
+.alliance-antd-settlement-modal.ant-modal .ant-modal-content {
+  background: #181421 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85) !important;
+  color: #cbc4d2 !important;
+  padding: 24px !important;
+}
+
+@media (min-width: 768px) {
+  .alliance-antd-settlement-modal.ant-modal .ant-modal-content {
+    padding: 32px !important;
+  }
+}
+
+.alliance-antd-settlement-modal.ant-modal .ant-modal-body {
+  background: transparent !important;
+  color: #cbc4d2 !important;
+  padding: 0 !important;
+}
+
+.alliance-antd-settlement-modal.ant-modal .ant-modal-close {
+  color: rgba(203, 196, 210, 0.6) !important;
+  inset-inline-end: 16px !important;
+  top: 16px !important;
+}
+
+.alliance-antd-settlement-modal.ant-modal .ant-modal-close:hover {
+  color: #ffffff !important;
+}
+
+.alliance-antd-settlement-warn-button.ant-btn,
+.alliance-antd-settlement-warn-button.ant-btn:hover,
+.alliance-antd-settlement-warn-button.ant-btn:focus,
+.alliance-antd-settlement-resolve-button.ant-btn,
+.alliance-antd-settlement-resolve-button.ant-btn:hover,
+.alliance-antd-settlement-resolve-button.ant-btn:focus,
+.alliance-antd-settlement-close-button.ant-btn,
+.alliance-antd-settlement-close-button.ant-btn:hover,
+.alliance-antd-settlement-close-button.ant-btn:focus {
+  align-items: center;
+  border-radius: 12px;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  gap: 6px;
+  justify-content: center;
+}
+
+.alliance-antd-settlement-warn-button.ant-btn,
+.alliance-antd-settlement-warn-button.ant-btn:hover,
+.alliance-antd-settlement-warn-button.ant-btn:focus {
+  background: rgba(245, 158, 11, 0.1) !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+  color: #fcd34d !important;
+  height: auto;
+  min-height: 46px;
+  padding: 10px 14px;
+  white-space: normal;
+}
+
+.alliance-antd-settlement-warn-button.ant-btn:hover {
+  background: rgba(245, 158, 11, 0.2) !important;
+}
+
+.alliance-antd-settlement-resolve-button.ant-btn,
+.alliance-antd-settlement-resolve-button.ant-btn:hover,
+.alliance-antd-settlement-resolve-button.ant-btn:focus {
+  background: linear-gradient(90deg, #6750a4, #cfbcff) !important;
+  border-color: transparent !important;
+  color: #ffffff !important;
+  height: auto;
+  min-height: 46px;
+  padding: 10px 14px;
+  white-space: normal;
+}
+
+.alliance-antd-settlement-resolve-button.ant-btn:hover {
+  filter: brightness(1.08);
+}
+
+.alliance-antd-settlement-close-button.ant-btn,
+.alliance-antd-settlement-close-button.ant-btn:hover,
+.alliance-antd-settlement-close-button.ant-btn:focus {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: transparent !important;
+  color: #ffffff !important;
+  height: 38px;
+  padding: 0 20px;
+}
+
+.alliance-antd-settlement-close-button.ant-btn:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.alliance-antd-settlement-warn-button.ant-btn:active,
+.alliance-antd-settlement-resolve-button.ant-btn:active,
+.alliance-antd-settlement-close-button.ant-btn:active {
+  transform: scale(0.95);
+}
+

@@ -128,7 +128,6 @@ export default function NetworkGraph({
             <div className="bg-[#1c1824]/30 rounded-2xl overflow-hidden shadow-xl border border-white/5">
               <div className="hidden md:block overflow-x-auto scrollbar-hide">
                 <Table<DownlineMember>
-                  className="alliance-antd-table"
                   columns={columns}
                   dataSource={downlines}
                   pagination={false}

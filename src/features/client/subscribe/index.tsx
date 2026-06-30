@@ -1,3 +1,4 @@
+import './antd-overrides.css';
 import Workspace from './components/Workspace';
 import { useSubscribeState } from './hooks/useSubscribeState';
 import type { SubscribeViewProps } from './types';

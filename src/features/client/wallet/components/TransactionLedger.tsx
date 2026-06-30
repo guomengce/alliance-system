@@ -144,7 +144,7 @@ export default function TransactionLedger({
       </div>
 
       <Table<Transaction>
-        className="alliance-antd-table alliance-antd-wallet-ledger-table hidden md:block"
+        className="alliance-antd-wallet-ledger-table hidden md:block"
         columns={columns}
         dataSource={filteredTransactions}
         locale={{

@@ -37,7 +37,7 @@ export default function AntdDesktopTable({ commissions, onSelectCommission }: De
       key: 'level',
       align: 'center',
       render: (level: CommissionPayout['level']) => (
-        <Tag className="alliance-antd-tag alliance-antd-tag-purple">
+        <Tag color="purple">
           {level}
           {COMMISSION_TEXT.generation}
         </Tag>
@@ -95,7 +95,7 @@ export default function AntdDesktopTable({ commissions, onSelectCommission }: De
   return (
     <div className="hidden md:block overflow-x-auto border border-white/5 bg-[#1d1925]/20 rounded-2xl p-1">
       <Table<CommissionPayout>
-        className="alliance-antd-table alliance-antd-commission-table"
+        className="alliance-antd-commission-table"
         columns={columns}
         dataSource={commissions}
         pagination={false}

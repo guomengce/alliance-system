@@ -7,14 +7,14 @@ type AntdOrdersTableProps = Omit<ListViewProps, 'exportMockCSV'>;
 
 function OrderStatusTag({ status }: { status: OrderDetail['status'] }) {
   if (status === 'confirmed') {
-    return <Tag className="alliance-antd-tag alliance-antd-tag-success">完成/已交割</Tag>;
+    return <Tag color="success">完成/已交割</Tag>;
   }
 
   if (status === 'pending') {
-    return <Tag className="alliance-antd-tag alliance-antd-tag-warning animate-pulse">待审核入账</Tag>;
+    return <Tag color="warning" className="animate-pulse">待审核入账</Tag>;
   }
 
-  return <Tag className="alliance-antd-tag alliance-antd-tag-danger">已中止作废</Tag>;
+  return <Tag color="error">已中止作废</Tag>;
 }
 
 export default function AntdOrdersTable({
@@ -137,7 +137,7 @@ export default function AntdOrdersTable({
   return (
     <div className="hidden md:block overflow-x-auto border border-white/5 rounded-2xl bg-[#1c1825]/40 p-1">
       <Table<OrderDetail>
-        className="alliance-antd-table alliance-antd-orders-table"
+        className="alliance-antd-orders-table"
         columns={columns}
         dataSource={orders}
         pagination={false}

@@ -1,3 +1,4 @@
+import './antd-overrides.css';
 import MetricGrid from './components/MetricGrid';
 import AntdStatusHeader from './components/StatusHeader';
 import AntdTrendPanel from './components/TrendEchart';

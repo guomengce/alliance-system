@@ -1,0 +1,306 @@
+﻿/* Module-scoped Ant Design styles for this feature. */
+/* Admin logs Ant Design replacements */
+.alliance-antd-logs-simulate-button.ant-btn,
+.alliance-antd-logs-simulate-button.ant-btn:hover,
+.alliance-antd-logs-simulate-button.ant-btn:focus,
+.alliance-antd-logs-export-button.ant-btn,
+.alliance-antd-logs-export-button.ant-btn:hover,
+.alliance-antd-logs-export-button.ant-btn:focus,
+.alliance-antd-logs-clear-button.ant-btn,
+.alliance-antd-logs-clear-button.ant-btn:hover,
+.alliance-antd-logs-clear-button.ant-btn:focus {
+  align-items: center;
+  border-radius: 12px;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  gap: 6px;
+  height: 34px;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.alliance-antd-logs-simulate-button.ant-btn,
+.alliance-antd-logs-simulate-button.ant-btn:hover,
+.alliance-antd-logs-simulate-button.ant-btn:focus {
+  background: rgba(103, 80, 164, 0.3) !important;
+  border-color: rgba(207, 188, 255, 0.2) !important;
+  color: #cfbcff !important;
+  padding: 0 16px;
+}
+
+.alliance-antd-logs-simulate-button.ant-btn:hover {
+  background: rgba(103, 80, 164, 0.5) !important;
+}
+
+.alliance-antd-logs-export-button.ant-btn,
+.alliance-antd-logs-export-button.ant-btn:hover,
+.alliance-antd-logs-export-button.ant-btn:focus {
+  background: rgba(207, 188, 255, 0.1) !important;
+  border-color: rgba(207, 188, 255, 0.2) !important;
+  color: #cfbcff !important;
+  padding: 0 16px;
+}
+
+.alliance-antd-logs-export-button.ant-btn:hover {
+  background: rgba(207, 188, 255, 0.2) !important;
+}
+
+.alliance-antd-logs-clear-button.ant-btn,
+.alliance-antd-logs-clear-button.ant-btn:hover,
+.alliance-antd-logs-clear-button.ant-btn:focus {
+  background: rgba(244, 63, 94, 0.15) !important;
+  border-color: rgba(244, 63, 94, 0.2) !important;
+  color: #fda4af !important;
+  height: 34px;
+  padding: 0;
+  width: 34px;
+}
+
+.alliance-antd-logs-clear-button.ant-btn:hover {
+  background: rgba(244, 63, 94, 0.25) !important;
+}
+
+.alliance-antd-logs-simulate-button.ant-btn:active,
+.alliance-antd-logs-export-button.ant-btn:active,
+.alliance-antd-logs-clear-button.ant-btn:active {
+  transform: scale(0.95);
+}
+
+.alliance-antd-logs-simulate-button.ant-btn[disabled],
+.alliance-antd-logs-export-button.ant-btn[disabled],
+.alliance-antd-logs-clear-button.ant-btn[disabled] {
+  opacity: 0.4;
+}
+
+.alliance-antd-logs-metric-card.ant-card {
+  background: #16121c;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  color: #cbc4d2;
+  font-family: var(--font-sans);
+}
+
+.alliance-antd-logs-metric-card .ant-card-body {
+  padding: 16px;
+}
+
+.alliance-antd-logs-filter-panel {
+  background: #16121c;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+}
+
+.alliance-antd-logs-search.ant-input-affix-wrapper {
+  background: rgba(30, 25, 39, 0.9) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  font-size: 12px;
+  font-weight: 600;
+  min-height: 42px;
+  padding: 0 14px;
+}
+
+.alliance-antd-logs-search.ant-input-affix-wrapper:hover,
+.alliance-antd-logs-search.ant-input-affix-wrapper-focused {
+  border-color: rgba(207, 188, 255, 0.5) !important;
+  box-shadow: 0 0 0 1px rgba(207, 188, 255, 0.2) !important;
+}
+
+.alliance-antd-logs-search .ant-input {
+  background: transparent !important;
+  color: #ffffff !important;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.alliance-antd-logs-search .ant-input::placeholder {
+  color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.alliance-antd-logs-filter-button.ant-btn,
+.alliance-antd-logs-filter-button.ant-btn:hover,
+.alliance-antd-logs-filter-button.ant-btn:focus {
+  background: transparent !important;
+  border-color: transparent !important;
+  border-radius: 8px;
+  box-shadow: none !important;
+  color: rgba(203, 196, 210, 0.5) !important;
+  font-size: 12px;
+  font-weight: 900;
+  height: 24px;
+  padding: 0 12px;
+  text-transform: capitalize;
+}
+
+.alliance-antd-logs-filter-button.ant-btn:hover {
+  color: #ffffff !important;
+}
+
+.alliance-antd-logs-filter-button.ant-btn.is-active {
+  background: #6750a4 !important;
+  color: #ffffff !important;
+}
+
+.alliance-antd-logs-select.ant-select .ant-select-selector {
+  background: #201b2a !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  color: #cbc4d2 !important;
+  font-size: 12px;
+  min-height: 32px;
+}
+
+.alliance-antd-logs-select.ant-select:hover .ant-select-selector,
+.alliance-antd-logs-select.ant-select-focused .ant-select-selector {
+  border-color: rgba(207, 188, 255, 0.4) !important;
+}
+
+.alliance-antd-logs-select .ant-select-selection-item {
+  color: #cbc4d2 !important;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.alliance-antd-logs-select .ant-select-arrow {
+  color: rgba(207, 188, 255, 0.75);
+}
+
+.alliance-antd-logs-table.ant-table-wrapper .ant-table {
+  background: transparent;
+  color: #cbc4d2;
+}
+
+.alliance-antd-logs-table.ant-table-wrapper .ant-table-container,
+.alliance-antd-logs-table.ant-table-wrapper .ant-table-content,
+.alliance-antd-logs-table.ant-table-wrapper .ant-table-thead > tr > th,
+.alliance-antd-logs-table.ant-table-wrapper .ant-table-tbody > tr > td {
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+.alliance-antd-logs-table.ant-table-wrapper .ant-table-thead > tr > th {
+  background: rgba(32, 27, 42, 0.3) !important;
+  color: rgba(203, 196, 210, 0.5) !important;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  padding: 16px 18px !important;
+  text-transform: uppercase;
+}
+
+.alliance-antd-logs-table.ant-table-wrapper .ant-table-tbody > tr > td {
+  color: rgba(203, 196, 210, 0.82);
+  padding: 14px 18px !important;
+}
+
+.alliance-antd-logs-table.ant-table-wrapper .ant-table-tbody > tr {
+  cursor: pointer;
+}
+
+.alliance-antd-logs-table.ant-table-wrapper .ant-table-tbody > tr:hover > td {
+  background: rgba(255, 255, 255, 0.02) !important;
+}
+
+.alliance-antd-logs-table.ant-table-wrapper .ant-table-tbody > tr:hover p {
+  color: #cfbcff !important;
+}
+
+.alliance-antd-logs-table.ant-table-wrapper .ant-table-cell::before {
+  display: none;
+}
+
+.alliance-antd-logs-table .ant-empty {
+  margin: 0;
+}
+
+.alliance-antd-logs-table .ant-empty-description {
+  margin: 0;
+}
+
+.alliance-antd-logs-tag.ant-tag,
+.alliance-antd-logs-severity-tag.ant-tag {
+  margin-inline-end: 0;
+}
+
+.alliance-antd-logs-severity-tag {
+  width: fit-content;
+}
+
+.alliance-antd-logs-severity-tag.ant-tag {
+  width: auto;
+}
+
+.alliance-antd-logs-modal-root .ant-modal-mask {
+  background: rgba(0, 0, 0, 0.75) !important;
+  backdrop-filter: blur(12px);
+}
+
+.alliance-antd-logs-modal.ant-modal {
+  color: #cbc4d2;
+}
+
+.alliance-antd-logs-modal.ant-modal .ant-modal-content {
+  background: #120f18 !important;
+  border: 1px solid rgba(207, 188, 255, 0.2) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85) !important;
+  color: #cbc4d2 !important;
+  max-height: 92vh;
+  overflow: hidden;
+  padding: 20px !important;
+}
+
+@media (min-width: 640px) {
+  .alliance-antd-logs-modal.ant-modal .ant-modal-content {
+    padding: 28px !important;
+  }
+}
+
+.alliance-antd-logs-modal.ant-modal .ant-modal-body {
+  background: transparent !important;
+  color: #cbc4d2 !important;
+  padding: 0 !important;
+}
+
+.alliance-antd-logs-modal.ant-modal .ant-modal-close {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-radius: 8px;
+  color: #cbc4d2 !important;
+  inset-inline-end: 20px !important;
+  top: 20px !important;
+}
+
+.alliance-antd-logs-modal.ant-modal .ant-modal-close:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.alliance-antd-logs-modal-confirm.ant-btn,
+.alliance-antd-logs-modal-confirm.ant-btn:hover,
+.alliance-antd-logs-modal-confirm.ant-btn:focus {
+  background: #cfbcff !important;
+  border-color: transparent !important;
+  border-radius: 12px;
+  color: #24134c !important;
+  font-size: 12px;
+  font-weight: 900;
+  height: 34px;
+  padding: 0 20px;
+}
+
+.alliance-antd-logs-modal-confirm.ant-btn:hover {
+  background: #ebdfff !important;
+}
+
+.alliance-antd-logs-modal-confirm.ant-btn:active {
+  transform: scale(0.95);
+}
+

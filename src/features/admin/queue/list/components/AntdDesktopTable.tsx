@@ -82,7 +82,7 @@ export function AntdDesktopTable({ lockedRoster, onOpenDetails }: DesktopTablePr
   return (
     <div className="hidden md:block overflow-x-auto border border-white/5 bg-[#1d1925]/20 rounded-2xl p-1">
       <Table<QueueRoster>
-        className="alliance-antd-table alliance-antd-queue-table"
+        className="alliance-antd-queue-table"
         columns={columns}
         dataSource={lockedRoster}
         pagination={false}

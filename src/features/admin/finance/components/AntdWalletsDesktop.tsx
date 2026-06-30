@@ -83,7 +83,7 @@ export default function AntdWalletsDesktop({ members, handleOpenWalletDetails }:
   return (
     <div className="hidden md:block overflow-x-auto border border-white/5 bg-[#1d1925]/20 rounded-2xl pr-1">
       <Table<DownlineMember>
-        className="alliance-antd-table alliance-antd-finance-table"
+        className="alliance-antd-finance-table"
         columns={columns}
         dataSource={members}
         pagination={false}

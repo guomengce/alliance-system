@@ -1,3 +1,4 @@
+import './antd-overrides.css';
 import PageView from '../../../shared/components/PageView';
 import CreditPool from './components/CreditPool';
 import KycCard from './components/KycCard';

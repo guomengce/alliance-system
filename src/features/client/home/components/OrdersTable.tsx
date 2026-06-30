@@ -77,7 +77,7 @@ export default function OrdersTable({
 
       <div className="hidden md:block overflow-x-auto scrollbar-hide">
         <Table<HomeOrder>
-          className="alliance-antd-table alliance-antd-home-orders-table"
+          className="alliance-antd-home-orders-table"
           columns={columns}
           dataSource={orders}
           pagination={false}

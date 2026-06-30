@@ -79,9 +79,9 @@ export default function AntdLogsList({
       key: 'moduleName',
       width: '15%',
       render: (_, log) => (
-        <span className={categoryTagClassName(log.category)}>
+        <Tag className={categoryTagClassName(log.category)}>
           {log.moduleName}
-        </span>
+        </Tag>
       ),
     },
     {
@@ -124,7 +124,7 @@ export default function AntdLogsList({
     <div className="bg-[#16121c]/90 border border-white/5 rounded-2xl overflow-hidden shadow-xl">
       <div className="hidden lg:block overflow-x-auto">
         <Table<AdminLog>
-          className="alliance-antd-table alliance-antd-logs-table"
+          className="alliance-antd-logs-table"
           columns={columns}
           dataSource={filteredLogs}
           locale={{ emptyText: <Empty image={null} description={<EmptyState />} /> }}
@@ -161,12 +161,12 @@ export default function AntdLogsList({
                   </span>
                 </div>
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <span className={`px-1.5 py-0.5 border rounded text-xs font-black tracking-wide leading-none whitespace-nowrap ${getCategoryBadge(log.category)}`}>
+                  <Tag className={categoryTagClassName(log.category)}>
                     {log.moduleName}
-                  </span>
-                    <span className={`alliance-antd-logs-severity-tag px-1.5 py-0.5 text-[8.5px] uppercase font-black tracking-wider rounded inline-flex leading-none ${getSeverityBadge(log.severity)}`}>
-                      {log.severity}
-                    </span>
+                  </Tag>
+                  <Tag className={severityTagClassName(log.severity)}>
+                    {log.severity}
+                  </Tag>
                 </div>
               </div>
 

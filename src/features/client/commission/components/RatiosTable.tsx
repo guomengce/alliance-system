@@ -39,7 +39,6 @@ export default function RatiosTable({ ratios }: RatiosTableProps) {
 
       <div className="hidden md:block overflow-x-auto scrollbar-hide">
         <Table<CommissionRatio>
-          className="alliance-antd-table"
           columns={columns}
           dataSource={ratios}
           pagination={false}

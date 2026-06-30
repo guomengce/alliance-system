@@ -1,3 +1,5 @@
+import '../../shared/antd/queue-overrides.css';
+import './antd-overrides.css';
 import PageView from '../../../shared/components/PageView';
 import DownlineLedger from './components/DownlineLedger';
 import Header from './components/Header';

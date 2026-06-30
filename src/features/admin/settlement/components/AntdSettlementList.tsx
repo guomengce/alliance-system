@@ -168,7 +168,7 @@ export default function AntdSettlementList({
 
       <div className="hidden md:block overflow-x-auto border border-white/5 bg-[#1d1925]/20 rounded-2xl p-1">
         <Table<SettlementItem>
-          className="alliance-antd-table alliance-antd-settlement-table"
+          className="alliance-antd-settlement-table"
           columns={columns}
           dataSource={settlementTransactions}
           pagination={false}

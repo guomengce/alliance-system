@@ -50,12 +50,12 @@ describe('auth utils', () => {
       portalMode: 'client',
       role: null,
     });
-    expect(findDemoLoginAccount(' ppyybb888@gmail.com ', 'admin1234')).toMatchObject({
+    expect(findDemoLoginAccount(' ppyybb888@gmail.com3 ', 'admin1234')).toMatchObject({
       email: 'ppyybb888@gmail.com',
       portalMode: 'admin',
       role: 'SUPER_ADMIN',
     });
-    expect(findDemoLoginAccount('ppyybb888@gmail.com', 'password123')).toBeUndefined();
+    expect(findDemoLoginAccount('ppyybb888@gmail.com4', 'password123')).toBeUndefined();
   });
 
   it('detects admin and client registration identity from email', () => {
@@ -89,14 +89,14 @@ describe('auth utils', () => {
   });
 
   it('creates registered users with the existing mock identity fields', () => {
-    expect(createRegisteredUser(' operator@alliance.system ', 'safe-pass', '运营')).toEqual({
+    expect(createRegisteredUser(' operator@alliance.system2 ', 'safe-pass', '运营')).toEqual({
       email: 'operator@alliance.system',
       password: 'safe-pass',
       nickname: '运营 (运营专员)',
       portalMode: 'admin',
       role: 'OPERATOR',
     });
-    expect(createRegisteredUser(' client@example.com ', 'safe-pass', '会员')).toEqual({
+    expect(createRegisteredUser(' client@example.com1 ', 'safe-pass', '会员')).toEqual({
       email: 'client@example.com',
       password: 'safe-pass',
       nickname: '会员',

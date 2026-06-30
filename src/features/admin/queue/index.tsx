@@ -1,3 +1,4 @@
+import '../../shared/antd/queue-overrides.css';
 import { AntdDetailsView } from './detail/AntdDetailsView';
 import { useQueueState } from './hooks/useQueueState';
 import { AntdRosterView } from './list/AntdRosterView';

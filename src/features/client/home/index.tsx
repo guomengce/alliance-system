@@ -1,3 +1,4 @@
+import './antd-overrides.css';
 import PageView from '../../../shared/components/PageView';
 import AssetsAndCredit from './components/AssetsAndCredit';
 import Banner from './components/Banner';

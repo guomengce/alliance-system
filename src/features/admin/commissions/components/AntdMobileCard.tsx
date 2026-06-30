@@ -25,7 +25,7 @@ export default function AntdMobileCard({ payout: p, onSelectCommission }: Mobile
             {MOBILE_TEXT.source}: {p.orderId}
           </p>
         </div>
-        <Tag className="alliance-antd-tag alliance-antd-tag-purple alliance-antd-commission-mobile-tag">
+        <Tag color="purple" className="alliance-antd-commission-mobile-tag">
           {p.level}
           {MOBILE_TEXT.generation}
         </Tag>
