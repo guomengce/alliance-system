@@ -1,0 +1,190 @@
+﻿/* Module-scoped Ant Design styles for this feature. */
+.alliance-antd-home-quick-button.ant-btn {
+  background: rgba(28, 24, 36, 0.72) !important;
+  border-color: var(--color-border-soft) !important;
+  border-radius: 16px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.22);
+  color: var(--color-text-main) !important;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: auto;
+  min-height: 148px;
+  padding: 20px;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  width: 100%;
+}
+
+.alliance-antd-home-quick-button.ant-btn:hover,
+.alliance-antd-home-quick-button.ant-btn:focus {
+  background: rgba(28, 24, 36, 0.86) !important;
+  border-color: rgba(207, 188, 255, 0.32) !important;
+  box-shadow: 0 18px 60px rgba(103, 80, 164, 0.16);
+  color: var(--color-text-main) !important;
+  transform: translateY(-1px);
+}
+
+.alliance-antd-home-quick-button .ant-btn-icon {
+  margin-inline-end: 0 !important;
+}
+
+.alliance-antd-home-quick-button .ant-btn-icon > div {
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.alliance-antd-home-quick-button.ant-btn:hover .ant-btn-icon > div,
+.alliance-antd-home-quick-button.ant-btn:focus .ant-btn-icon > div {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.alliance-antd-home-orders-table.ant-table-wrapper .ant-table-thead > tr > th {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border-bottom-color: var(--color-border-faint) !important;
+  color: rgba(203, 196, 210, 0.8) !important;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 16px 24px;
+  text-transform: uppercase;
+}
+
+.alliance-antd-home-orders-table.ant-table-wrapper .ant-table-thead > tr > th::before {
+  display: none !important;
+}
+
+.alliance-antd-home-orders-table.ant-table-wrapper .ant-table-tbody > tr > td {
+  background: transparent !important;
+  border-bottom-color: var(--color-border-faint) !important;
+  padding: 16px 24px;
+}
+
+.alliance-antd-home-orders-table.ant-table-wrapper .ant-table-tbody > tr:hover > td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+.alliance-antd-home-status.ant-tag {
+  border-radius: var(--radius-pill);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 20px;
+  margin: 0;
+  padding: 0 10px;
+}
+
+.alliance-antd-home-status.is-pending {
+  background: rgba(103, 80, 164, 0.3);
+  border-color: rgba(207, 188, 255, 0.2);
+  color: var(--color-primary-light);
+}
+
+.alliance-antd-home-status.is-active {
+  background: rgba(231, 195, 101, 0.2);
+  border-color: rgba(231, 195, 101, 0.2);
+  color: var(--color-warning);
+}
+
+.alliance-antd-home-market-tag.ant-tag {
+  align-items: center;
+  border-radius: 8px;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 900;
+  gap: 4px;
+  line-height: 20px;
+  margin: 0;
+  padding: 0 8px;
+}
+
+.alliance-antd-home-market-tag.is-up {
+  background: rgba(0, 230, 118, 0.1);
+  border-color: rgba(0, 230, 118, 0.2);
+  color: var(--color-success);
+}
+
+.alliance-antd-home-market-tag.is-down {
+  background: rgba(251, 113, 133, 0.1);
+  border-color: rgba(251, 113, 133, 0.2);
+  color: var(--color-danger);
+}
+
+/* Client home card and button variants moved out of shared Ant Design overrides. */
+.alliance-antd-glass-card.ant-card {
+  background: rgba(28, 24, 36, 0.72);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  color: var(--color-text-main);
+  overflow: hidden;
+}
+
+.alliance-antd-glass-card.ant-card .ant-card-body {
+  padding: 0;
+}
+
+.alliance-antd-button-primary.ant-btn,
+.alliance-antd-button-primary.ant-btn:hover,
+.alliance-antd-button-primary.ant-btn:focus {
+  align-items: center;
+  background: var(--color-primary-light) !important;
+  border-color: transparent !important;
+  border-radius: var(--radius-control);
+  color: var(--color-primary-contrast) !important;
+  display: inline-flex;
+  font-weight: 800;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 32px;
+}
+
+.alliance-antd-button-gradient.ant-btn,
+.alliance-antd-button-gradient.ant-btn:hover,
+.alliance-antd-button-gradient.ant-btn:focus {
+  align-items: center;
+  background-image: linear-gradient(to right, var(--color-primary), var(--color-primary-light)) !important;
+  border-color: transparent !important;
+  border-left-color: var(--color-primary) !important;
+  border-radius: 10px;
+  color: var(--color-text-main) !important;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 900;
+  gap: 4px;
+  height: 44px;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 18px;
+  width: 100%;
+}
+
+.alliance-antd-button-muted.ant-btn,
+.alliance-antd-button-muted.ant-btn:hover,
+.alliance-antd-button-muted.ant-btn:focus {
+  background: var(--color-bg-control-muted) !important;
+  border-color: var(--color-border-faint) !important;
+  border-radius: var(--radius-control);
+  color: var(--color-primary-light) !important;
+  font-size: 12px;
+  font-weight: 800;
+  min-height: 40px;
+  width: 100%;
+}
+
+.alliance-antd-link-button.ant-btn,
+.alliance-antd-link-button.ant-btn:hover,
+.alliance-antd-link-button.ant-btn:focus {
+  align-items: center;
+  background: transparent !important;
+  border-color: transparent !important;
+  color: var(--color-primary-light) !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  gap: 4px;
+  height: auto;
+  padding: 0;
+}
+
+.alliance-antd-link-button.ant-btn:hover span {
+  text-decoration: underline;
+}
+

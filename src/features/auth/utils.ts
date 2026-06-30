@@ -1,12 +1,41 @@
 import type { AdminRole, PortalMode, RegisteredUser } from '../../hooks/types';
 
 export const RESET_DEMO_CODE = '123456';
+export const CLIENT_DEMO_EMAIL = 'client@alliance.com';
+export const CLIENT_DEMO_PASSWORD = 'password123';
+export const ADMIN_DEMO_EMAIL = 'ppyybb888@gmail.com';
+export const ADMIN_DEMO_PASSWORD = 'admin1234';
 
 export interface RegistrationIdentity {
   portalMode: PortalMode;
   role: AdminRole;
   isTestSystemMail: boolean;
 }
+
+export interface DemoLoginAccount {
+  email: string;
+  password: string;
+  nickname: string;
+  portalMode: PortalMode;
+  role: AdminRole;
+}
+
+export const DEMO_LOGIN_ACCOUNTS: DemoLoginAccount[] = [
+  {
+    email: CLIENT_DEMO_EMAIL,
+    password: CLIENT_DEMO_PASSWORD,
+    nickname: 'Alliance Client',
+    portalMode: 'client',
+    role: null,
+  },
+  {
+    email: ADMIN_DEMO_EMAIL,
+    password: ADMIN_DEMO_PASSWORD,
+    nickname: 'Alliance Admin',
+    portalMode: 'admin',
+    role: 'SUPER_ADMIN',
+  },
+];
 
 export function normalizeAuthEmail(email: string): string {
   return email.trim();
@@ -30,6 +59,17 @@ export function findRegisteredUser(
 
   return registeredUsers.find(
     user => user.email.trim().toLowerCase() === normalizedEmail,
+  );
+}
+
+export function findDemoLoginAccount(
+  email: string,
+  password: string,
+): DemoLoginAccount | undefined {
+  const normalizedEmail = normalizeAuthEmail(email).toLowerCase();
+
+  return DEMO_LOGIN_ACCOUNTS.find(
+    account => account.email.toLowerCase() === normalizedEmail && account.password === password,
   );
 }
 

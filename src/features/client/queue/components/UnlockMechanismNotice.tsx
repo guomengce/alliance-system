@@ -11,7 +11,7 @@ export default function UnlockMechanismNotice() {
         <p className="text-[#cbc4d2]/70 font-medium">
           当您的 L1 层级下线成功认购，系统将自动从您的排队账户中解锁该订单金额 of 10%。仅限 L1 直推成员。
         </p>
-        <p className="text-[#cfbcff]/90 font-mono text-[10px] font-bold uppercase tracking-wider">
+        <p className="text-[#cfbcff]/90 font-mono text-xs font-bold uppercase tracking-wider">
           计算公式：解锁金额 = L1 订单金额 × 10%
         </p>
       </div>

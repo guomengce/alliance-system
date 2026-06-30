@@ -1,3 +1,5 @@
+import './antd-overrides.css';
+import '../shared/antd-overrides.css';
 import AntdHeaderTabs from './components/AntdHeaderTabs';
 import AntdLedgerPanel from './components/AntdLedgerPanel';
 import AntdReservesPanel from './components/AntdReservesPanel';

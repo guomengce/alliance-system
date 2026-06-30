@@ -1,0 +1,98 @@
+﻿/* Module-scoped Ant Design styles for this feature. */
+/* Admin dashboard Ant Design replacements */
+.alliance-antd-dashboard-status-card.ant-card {
+  background: rgba(28, 24, 34, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  color: #cbc4d2;
+  font-family: var(--font-sans);
+  margin-bottom:20px;
+}
+
+/* Admin dashboard Ant Design replacements */
+.alliance-antd-dashboard-status-card.ant-card {
+  background: rgba(28, 24, 34, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  color: #cbc4d2;
+  font-family: var(--font-sans);
+}
+
+.alliance-antd-dashboard-status-card .ant-card-body {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+@media (min-width: 640px) {
+  .alliance-antd-dashboard-status-card .ant-card-body {
+    align-items: center;
+    flex-direction: row;
+  }
+}
+
+.alliance-antd-dashboard-metric-card.ant-card {
+  background: #16131c;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  color: #cbc4d2;
+  font-family: var(--font-sans);
+  overflow: hidden;
+  position: relative;
+}
+
+.alliance-antd-dashboard-metric-card .ant-card-body {
+  padding: 18px;
+  position: relative;
+}
+
+.alliance-antd-dashboard-panel-card.ant-card {
+  background: #141119;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  color: #cbc4d2;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-sans);
+}
+
+.alliance-antd-dashboard-panel-card .ant-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+.alliance-antd-dashboard-change-tag.ant-tag {
+  align-items: center;
+  border-radius: 8px;
+  display: inline-flex;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  gap: 4px;
+  line-height: 18px;
+  margin-inline-end: 0;
+  padding: 1px 8px;
+}
+
+.alliance-antd-dashboard-change-tag.ant-tag.is-up {
+  background: rgba(0, 230, 118, 0.1);
+  border-color: rgba(0, 230, 118, 0.2);
+  color: #00e676;
+}
+
+.alliance-antd-dashboard-change-tag.ant-tag.is-down {
+  background: rgba(244, 63, 94, 0.1);
+  border-color: rgba(244, 63, 94, 0.2);
+  color: #fb7185;
+  justify-content: center;
+  min-height: 42px;
+  padding: 10px 24px;
+  width: 100%;
+}
+

@@ -14,32 +14,35 @@ const STATUS_TEXT = {
 
 export default function AntdStatusBadge({ status, variant }: StatusBadgeProps) {
   const isMobile = variant === 'mobile';
-  const baseClassName = isMobile
-    ? 'alliance-antd-tag alliance-antd-commission-mobile-tag'
-    : 'alliance-antd-tag';
+  const mobileClassName = isMobile ? 'alliance-antd-commission-mobile-tag' : undefined;
+  const pendingClassName = isMobile ? `${mobileClassName} animate-pulse` : 'animate-pulse';
 
   if (status === 'credited') {
-    return <Tag className={`${baseClassName} alliance-antd-tag-success`}>{STATUS_TEXT.credited}</Tag>;
+    return <Tag color="success" className={mobileClassName}>{STATUS_TEXT.credited}</Tag>;
   }
 
   if (status === 'pending') {
-    return <Tag className={`${baseClassName} alliance-antd-tag-warning animate-pulse`}>{STATUS_TEXT.pending}</Tag>;
+    return (
+      <Tag color="warning" className={pendingClassName}>
+        {STATUS_TEXT.pending}
+      </Tag>
+    );
   }
 
   if (status === 'pool_insufficient') {
-    return <Tag className={`${baseClassName} alliance-antd-tag-pool`}>{STATUS_TEXT.poolInsufficient}</Tag>;
+    return <Tag color="warning" className={mobileClassName}>{STATUS_TEXT.poolInsufficient}</Tag>;
   }
 
   if (status === 'intercepted') {
     return (
-      <Tag className={`${baseClassName} alliance-antd-tag-danger`}>
+      <Tag color="error" className={mobileClassName}>
         {isMobile ? STATUS_TEXT.intercepted : STATUS_TEXT.interceptedDesktop}
       </Tag>
     );
   }
 
   return (
-    <Tag className={`${baseClassName} alliance-antd-tag-danger`}>
+    <Tag color="error" className={mobileClassName}>
       {isMobile ? STATUS_TEXT.failed : STATUS_TEXT.failedDesktop}
     </Tag>
   );

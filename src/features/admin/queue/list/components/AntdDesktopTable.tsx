@@ -25,7 +25,7 @@ export function AntdDesktopTable({ lockedRoster, onOpenDetails }: DesktopTablePr
           <div className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
           <div>
             <p className="text-white leading-none font-bold text-xs">{roster.uid}</p>
-            <p className="text-[10px] text-[#cbc4d2]/40 font-normal mt-1">{roster.nickname}</p>
+            <p className="text-xs text-[#cbc4d2]/40 font-normal mt-1">{roster.nickname}</p>
           </div>
         </div>
       ),
@@ -82,7 +82,7 @@ export function AntdDesktopTable({ lockedRoster, onOpenDetails }: DesktopTablePr
   return (
     <div className="hidden md:block overflow-x-auto border border-white/5 bg-[#1d1925]/20 rounded-2xl p-1">
       <Table<QueueRoster>
-        className="alliance-antd-table alliance-antd-queue-table"
+        className="alliance-antd-queue-table"
         columns={columns}
         dataSource={lockedRoster}
         pagination={false}

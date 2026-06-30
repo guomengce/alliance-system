@@ -23,7 +23,7 @@ export function ProfileBanner({ uid, nickname }: ProfileBannerProps) {
         <div className="space-y-3 flex-1 text-center md:text-left">
           <div className="flex flex-col md:flex-row md:items-center gap-3 justify-center md:justify-start">
             <h1 className="text-xl md:text-2xl font-black text-white">{nickname}</h1>
-            <span className="bg-[#cfbcff]/10 text-[#cfbcff] text-[10px] font-black uppercase px-2.5 py-0.5 rounded border border-[#cfbcff]/20 w-fit mx-auto md:mx-0 tracking-wider">
+            <span className="bg-[#cfbcff]/10 text-[#cfbcff] text-xs font-black uppercase px-2.5 py-0.5 rounded border border-[#cfbcff]/20 w-fit mx-auto md:mx-0 tracking-wider">
               SYSTEM SUPERUSER
             </span>
           </div>

@@ -11,14 +11,14 @@ interface AntdHeaderAndActionsProps {
 
 function OrderStatusTag({ status }: { status: 'confirmed' | 'pending' | 'cancelled' }) {
   if (status === 'confirmed') {
-    return <span className="text-[10px] font-black px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400">已完成交割</span>;
+    return <span className="text-xs font-black px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400">已完成交割</span>;
   }
 
   if (status === 'pending') {
-    return <span className="text-[10px] font-black px-3 py-1.5 rounded-full bg-amber-500/10 text-amber-400">待安全审核</span>;
+    return <span className="text-xs font-black px-3 py-1.5 rounded-full bg-amber-500/10 text-amber-400">待安全审核</span>;
   }
 
-  return <span className="text-[10px] font-black px-3 py-1.5 rounded-full bg-red-500/10 text-red-400">已拒绝注销</span>;
+  return <span className="text-xs font-black px-3 py-1.5 rounded-full bg-red-500/10 text-red-400">已拒绝注销</span>;
 }
 
 export default function AntdHeaderAndActions({
@@ -59,7 +59,7 @@ export default function AntdHeaderAndActions({
           <div className="h-4 w-px bg-white/10 hidden sm:block" />
 
           <div className="text-left">
-            <span className="text-[10px] uppercase text-[#cbc4d2]/40 font-mono tracking-wider block">订单穿透详情审计</span>
+            <span className="text-xs uppercase text-[#cbc4d2]/40 font-mono tracking-wider block">订单穿透详情审计</span>
             <p className="text-sm font-black text-white font-mono mt-0.5">{selectedOrder.id}</p>
           </div>
         </div>
@@ -76,7 +76,7 @@ export default function AntdHeaderAndActions({
               <Landmark className="w-4 h-4 animate-pulse" />
               <span>待确认的流动性质押认购订单</span>
             </h4>
-            <p className="text-[11px] text-[#cbc4d2]/70 leading-relaxed max-w-2xl">
+            <p className="text-[13px] text-[#cbc4d2]/70 leading-relaxed max-w-2xl">
               该笔订单交割额度为
               <strong className="text-white font-mono"> {selectedOrder.amount.toLocaleString()} USDT</strong>。
               请在核查链上付款哈希后决定是否下发股票及派发佣金。

@@ -57,7 +57,7 @@ export default function AntdDetailModal({
               <Sparkles className="w-4 h-4 text-[#cfbcff]" />
               <span>{TEXT.title}</span>
             </h4>
-            <p className="text-[10px] text-[#cbc4d2]/45 font-mono">{TEXT.ticket} {selectedTx.id}</p>
+            <p className="text-xs text-[#cbc4d2]/45 font-mono">{TEXT.ticket} {selectedTx.id}</p>
           </div>
 
           <div className="space-y-3 bg-[#110e16] p-4.5 rounded-2xl border border-white/5 font-mono text-xs text-[#cbc4d2]/80">
@@ -93,17 +93,17 @@ export default function AntdDetailModal({
                 <AlertTriangle className="w-4 h-4 text-red-400 shrink-0" />
                 <span>{TEXT.warningTitle}</span>
               </p>
-              <p className="leading-relaxed text-[11px] font-sans">
+              <p className="leading-relaxed text-[13px] font-sans">
                 {TEXT.warningPrefix} <strong>{selectedTx.remainingPoolCapacity} USDT</strong>{TEXT.warningMiddle} <strong>{selectedTx.spilloverClipped} USDT</strong> {TEXT.warningEnd}
               </p>
-              <p className="text-[10px] text-white/30 font-sans italic">
+              <p className="text-xs text-white/30 font-sans italic">
                 {TEXT.warningNote}
               </p>
             </div>
           )}
 
           <div className="pt-2 space-y-3 text-left">
-            <span className="text-[10px] text-[#cbc4d2]/40 font-black uppercase tracking-wider block font-sans">{TEXT.command}</span>
+            <span className="text-xs text-[#cbc4d2]/40 font-black uppercase tracking-wider block font-sans">{TEXT.command}</span>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs font-sans">
               <Button
                 className="alliance-antd-settlement-warn-button"
@@ -122,7 +122,7 @@ export default function AntdDetailModal({
               </Button>
             </div>
 
-            <p className="text-[10px] text-[#cbc4d2]/30 text-center leading-normal font-sans">
+            <p className="text-xs text-[#cbc4d2]/30 text-center leading-normal font-sans">
               {TEXT.note}
             </p>
           </div>

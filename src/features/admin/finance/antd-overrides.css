@@ -1,0 +1,327 @@
+﻿/* Module-scoped Ant Design styles for this feature. */
+/* Admin finance Ant Design replacements */
+.alliance-antd-finance-tabs.ant-tabs {
+  color: #cbc4d2;
+  font-family: var(--font-sans);
+  margin-bottom: 0;
+}
+
+.alliance-antd-finance-tabs.ant-tabs > .ant-tabs-nav {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin: 0;
+}
+
+.alliance-antd-finance-tabs.ant-tabs > .ant-tabs-nav::before {
+  border-bottom: 0;
+}
+
+.alliance-antd-finance-tabs .ant-tabs-nav-list {
+  gap: 20px;
+}
+
+.alliance-antd-finance-tabs .ant-tabs-tab {
+  color: rgba(203, 196, 210, 0.4);
+  font-size: 12px;
+  font-weight: 800;
+  margin: 0 !important;
+  padding: 0 0 10px;
+}
+
+.alliance-antd-finance-tabs .ant-tabs-tab:hover,
+.alliance-antd-finance-tabs .ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #cfbcff !important;
+}
+
+.alliance-antd-finance-tabs .ant-tabs-tab-btn {
+  color: inherit !important;
+}
+
+.alliance-antd-finance-tabs .ant-tabs-ink-bar {
+  background: #cfbcff !important;
+  height: 2px !important;
+}
+
+.alliance-antd-finance-tabs .ant-tabs-content-holder {
+  display: none;
+}
+
+.alliance-antd-finance-reserve-card.ant-card {
+  border-radius: 16px;
+  color: #cbc4d2;
+  font-family: var(--font-sans);
+  overflow: hidden;
+  position: relative;
+}
+
+.alliance-antd-finance-reserve-card.ant-card.is-usdt {
+  background: linear-gradient(135deg, #1b1527, #14101e);
+  border: 1px solid rgba(207, 188, 255, 0.15);
+}
+
+.alliance-antd-finance-reserve-card.ant-card.is-troo {
+  background: linear-gradient(135deg, #1f1915, #151210);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+}
+
+.alliance-antd-finance-reserve-card.ant-card.is-users {
+  background: #1c1824;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.alliance-antd-finance-reserve-card .ant-card-body {
+  padding: 20px;
+}
+
+.alliance-antd-finance-table.ant-table-wrapper .ant-table {
+  font-size: 12px;
+}
+
+.alliance-antd-finance-table.ant-table-wrapper .ant-table-thead > tr > th {
+  background: rgba(255, 255, 255, 0.01) !important;
+  color: rgba(203, 196, 210, 0.5) !important;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 12px 16px !important;
+}
+
+.alliance-antd-finance-table.ant-table-wrapper .ant-table-tbody > tr > td {
+  padding: 14px 16px !important;
+}
+
+.alliance-antd-finance-mini-button.ant-btn,
+.alliance-antd-finance-mini-button.ant-btn:hover,
+.alliance-antd-finance-mini-button.ant-btn:focus,
+.alliance-antd-finance-action-button.ant-btn,
+.alliance-antd-finance-action-button.ant-btn:hover,
+.alliance-antd-finance-action-button.ant-btn:focus {
+  border-color: transparent !important;
+  border-radius: 12px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 800;
+  height: 28px;
+  padding: 0 12px;
+}
+
+.alliance-antd-finance-mini-button.is-purple,
+.alliance-antd-finance-mini-button.is-purple:hover,
+.alliance-antd-finance-mini-button.is-purple:focus {
+  background: rgba(207, 188, 255, 0.1) !important;
+  color: #cfbcff !important;
+}
+
+.alliance-antd-finance-mini-button.is-success,
+.alliance-antd-finance-mini-button.is-success:hover,
+.alliance-antd-finance-mini-button.is-success:focus {
+  background: rgba(16, 185, 129, 0.1) !important;
+  color: #34d399 !important;
+}
+
+.alliance-antd-finance-mini-button.is-danger,
+.alliance-antd-finance-mini-button.is-danger:hover,
+.alliance-antd-finance-mini-button.is-danger:focus {
+  background: rgba(239, 68, 68, 0.1) !important;
+  color: #ffb4ab !important;
+}
+
+.alliance-antd-finance-action-button.ant-btn,
+.alliance-antd-finance-action-button.ant-btn:hover,
+.alliance-antd-finance-action-button.ant-btn:focus {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #cbc4d2 !important;
+  display: inline-flex;
+  gap: 4px;
+}
+
+.alliance-antd-finance-action-button.ant-btn:hover {
+  background: rgba(207, 188, 255, 0.15) !important;
+  color: #cfbcff !important;
+}
+
+.alliance-antd-finance-mini-button.ant-btn:active,
+.alliance-antd-finance-action-button.ant-btn:active {
+  transform: scale(0.95);
+}
+
+.alliance-antd-finance-mobile-card.ant-card {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  color: #cbc4d2;
+  font-family: var(--font-sans);
+}
+
+.alliance-antd-finance-mobile-card .ant-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+}
+
+.alliance-antd-finance-mobile-button.ant-btn,
+.alliance-antd-finance-mobile-button.ant-btn:hover,
+.alliance-antd-finance-mobile-button.ant-btn:focus {
+  border-color: transparent !important;
+  border-radius: 12px;
+  flex: 1;
+  font-size: 12px;
+  font-weight: 800;
+  height: 34px;
+  padding: 0 12px;
+}
+
+.alliance-antd-finance-mobile-button.is-muted,
+.alliance-antd-finance-mobile-button.is-muted:hover,
+.alliance-antd-finance-mobile-button.is-muted:focus {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #cbc4d2 !important;
+}
+
+.alliance-antd-finance-mobile-button.is-success,
+.alliance-antd-finance-mobile-button.is-success:hover,
+.alliance-antd-finance-mobile-button.is-success:focus {
+  background: rgba(16, 185, 129, 0.1) !important;
+  color: #34d399 !important;
+}
+
+.alliance-antd-finance-mobile-button.is-danger,
+.alliance-antd-finance-mobile-button.is-danger:hover,
+.alliance-antd-finance-mobile-button.is-danger:focus {
+  background: rgba(239, 68, 68, 0.1) !important;
+  color: #ffb4ab !important;
+}
+
+.alliance-antd-finance-search.ant-input-affix-wrapper {
+  background: #1c1824 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  font-size: 12px;
+  min-height: 36px;
+}
+
+.alliance-antd-finance-search.ant-input-affix-wrapper:hover,
+.alliance-antd-finance-search.ant-input-affix-wrapper-focused {
+  border-color: rgba(207, 188, 255, 0.45) !important;
+}
+
+.alliance-antd-finance-search .ant-input {
+  background: transparent !important;
+  color: #ffffff !important;
+  font-size: 12px;
+}
+
+.alliance-antd-finance-search .ant-input::placeholder {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.alliance-antd-finance-status-tag.ant-tag {
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 18px;
+  margin-inline-end: 0;
+  padding: 0 8px;
+  text-transform: uppercase;
+}
+
+.alliance-antd-finance-status-tag.is-success {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.12);
+  color: #34d399;
+}
+
+.alliance-antd-finance-status-tag.is-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.12);
+  color: #f59e0b;
+}
+
+.alliance-antd-finance-status-tag.is-danger {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.12);
+  color: #f87171;
+}
+
+.alliance-antd-finance-status-tag.is-purple {
+  background: rgba(207, 188, 255, 0.1);
+  border-color: rgba(207, 188, 255, 0.12);
+  color: #cfbcff;
+}
+
+.alliance-antd-finance-mobile-full-button.ant-btn,
+.alliance-antd-finance-mobile-full-button.ant-btn:hover,
+.alliance-antd-finance-mobile-full-button.ant-btn:focus,
+.alliance-antd-finance-mobile-voucher-button.ant-btn,
+.alliance-antd-finance-mobile-voucher-button.ant-btn:hover,
+.alliance-antd-finance-mobile-voucher-button.ant-btn:focus {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: transparent !important;
+  border-radius: 12px;
+  color: #cbc4d2 !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  gap: 6px;
+  height: 38px;
+  justify-content: center;
+}
+
+.alliance-antd-finance-mobile-full-button.ant-btn {
+  width: 100%;
+}
+
+.alliance-antd-finance-mobile-voucher-button.ant-btn {
+  flex-shrink: 0;
+  padding: 0 12px;
+}
+
+.alliance-antd-finance-mobile-full-button.ant-btn:hover,
+.alliance-antd-finance-mobile-voucher-button.ant-btn:hover {
+  background: rgba(207, 188, 255, 0.15) !important;
+  color: #cfbcff !important;
+}
+
+.alliance-antd-finance-select.ant-select {
+  min-width: 220px;
+}
+
+.alliance-antd-finance-select.ant-select .ant-select-selector {
+  background: #211f24 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  min-height: 38px;
+}
+
+.alliance-antd-finance-select .ant-select-selection-item {
+  color: #ffffff !important;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.alliance-antd-finance-select .ant-select-arrow {
+  color: rgba(207, 188, 255, 0.75);
+}
+
+.alliance-antd-finance-export-button.ant-btn,
+.alliance-antd-finance-export-button.ant-btn:hover,
+.alliance-antd-finance-export-button.ant-btn:focus {
+  align-items: center;
+  background: rgba(207, 188, 255, 0.05) !important;
+  border-color: rgba(207, 188, 255, 0.1) !important;
+  border-radius: 12px;
+  color: #cfbcff !important;
+  min-height: 38px;
+  padding: 10px 20px;
+  transition: all 0.15s ease;
+}
+
+.alliance-antd-finance-export-button.ant-btn:hover {
+  background: rgba(207, 188, 255, 0.15) !important;
+}
+

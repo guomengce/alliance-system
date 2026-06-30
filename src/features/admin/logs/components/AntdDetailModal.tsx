@@ -50,7 +50,7 @@ export default function AntdDetailModal({
                 <h3 className="text-base sm:text-lg font-black text-white tracking-tight uppercase">
                   {TEXT.title}
                 </h3>
-                <p className="text-[10px] font-mono text-[#cfbcff]/60 font-bold tracking-widest mt-0.5">
+                <p className="text-xs font-mono text-[#cfbcff]/60 font-bold tracking-widest mt-0.5">
                   ID: {activeDetailLog.id}
                 </p>
               </div>
@@ -60,38 +60,38 @@ export default function AntdDetailModal({
           <div className="flex-grow overflow-y-auto space-y-4 pr-1.5 custom-scrollbar pb-1 text-left">
             <div className="grid grid-cols-2 gap-4 pb-4 border-b border-white/5 text-xs">
               <div className="space-y-1">
-                <span className="text-[10px] text-[#cbc4d2]/45 font-bold uppercase tracking-wider block">{TEXT.time}</span>
+                <span className="text-xs text-[#cbc4d2]/45 font-bold uppercase tracking-wider block">{TEXT.time}</span>
                 <span className="font-mono text-white tracking-tight block break-all">{activeDetailLog.timestamp}</span>
               </div>
               <div className="space-y-1">
-                <span className="text-[10px] text-[#cbc4d2]/45 font-bold uppercase tracking-wider block">{TEXT.severity}</span>
+                <span className="text-xs text-[#cbc4d2]/45 font-bold uppercase tracking-wider block">{TEXT.severity}</span>
                 <span className="block mt-0.5">
-                  <Tag className={`alliance-antd-logs-severity-tag px-2 py-0.5 text-[9.5px] uppercase font-black tracking-wider rounded-md leading-none ${getSeverityBadge(activeDetailLog.severity)}`}>
+                  <Tag className={`alliance-antd-logs-severity-tag px-2 py-0.5 text-xs uppercase font-black tracking-wider rounded-md leading-none ${getSeverityBadge(activeDetailLog.severity)}`}>
                     {activeDetailLog.severity}
                   </Tag>
                 </span>
               </div>
               <div className="space-y-1 col-span-2 sm:col-span-1">
-                <span className="text-[10px] text-[#cbc4d2]/45 font-bold uppercase tracking-wider block">{TEXT.operator}</span>
+                <span className="text-xs text-[#cbc4d2]/45 font-bold uppercase tracking-wider block">{TEXT.operator}</span>
                 <span className="font-black text-white tracking-tight block truncate max-w-full" title={activeDetailLog.operator}>
                   {activeDetailLog.operator}
                 </span>
               </div>
               <div className="space-y-1 col-span-2 sm:col-span-1">
-                <span className="text-[10px] text-[#cbc4d2]/45 font-bold uppercase tracking-wider block">{TEXT.ip}</span>
+                <span className="text-xs text-[#cbc4d2]/45 font-bold uppercase tracking-wider block">{TEXT.ip}</span>
                 <span className="font-mono text-white tracking-tight block">{activeDetailLog.ipAddress}</span>
               </div>
             </div>
 
             <div className="space-y-1">
-              <span className="text-[10px] text-[#cbc4d2]/45 font-bold uppercase tracking-wider block">{TEXT.action}</span>
+              <span className="text-xs text-[#cbc4d2]/45 font-bold uppercase tracking-wider block">{TEXT.action}</span>
               <p className="text-sm font-black text-white leading-tight">
                 {activeDetailLog.action}
               </p>
             </div>
 
             <div className="space-y-1">
-              <span className="text-[10px] text-[#cbc4d2]/45 font-bold uppercase tracking-wider block">{TEXT.details}</span>
+              <span className="text-xs text-[#cbc4d2]/45 font-bold uppercase tracking-wider block">{TEXT.details}</span>
               <p className="text-xs sm:text-[13px] text-[#cbc4d2]/85 leading-relaxed font-semibold whitespace-pre-wrap break-all">
                 {activeDetailLog.details}
               </p>
@@ -99,10 +99,10 @@ export default function AntdDetailModal({
 
             {activeDetailLog.payload && (
               <div className="space-y-1.5 animate-fadeIn">
-                <span className="text-[10px] text-[#cbc4d2]/45 font-bold uppercase tracking-wider block">{TEXT.payload}</span>
-                <div className="bg-[#0b080f] rounded-xl border border-white/5 p-3.5 font-mono text-[11px] text-emerald-400 overflow-x-auto max-h-44 custom-scrollbar relative leading-relaxed tab-size-2">
+                <span className="text-xs text-[#cbc4d2]/45 font-bold uppercase tracking-wider block">{TEXT.payload}</span>
+                <div className="bg-[#0b080f] rounded-xl border border-white/5 p-3.5 font-mono text-[13px] text-emerald-400 overflow-x-auto max-h-44 custom-scrollbar relative leading-relaxed tab-size-2">
                   <pre className="whitespace-pre text-left">{activeDetailLog.payload}</pre>
-                  <span className="absolute top-2 right-2 text-[9px] font-bold text-white/20 select-none">{TEXT.data}</span>
+                  <span className="absolute top-2 right-2 text-xs font-bold text-white/20 select-none">{TEXT.data}</span>
                 </div>
               </div>
             )}

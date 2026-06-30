@@ -53,7 +53,7 @@ export default function AntdReservesDesktop({
       dataIndex: 'id',
       key: 'address',
       render: (id: Transaction['id']) => (
-        <span className="text-[#cbc4d2]/80 font-mono text-[11px] truncate max-w-[200px] block" title="TYX78Hqskm82K1Hshq82Ksh918Ksw">
+        <span className="text-[#cbc4d2]/80 font-mono text-[13px] truncate max-w-[200px] block" title="TYX78Hqskm82K1Hshq82Ksh918Ksw">
           TRC20: Tx78HqsmB...{id.slice(-4)}
         </span>
       ),
@@ -81,7 +81,7 @@ export default function AntdReservesDesktop({
   return (
     <div className="hidden md:block overflow-x-auto border border-white/5 bg-[#1d1925]/20 rounded-2xl pr-1">
       <Table<Transaction>
-        className="alliance-antd-table alliance-antd-finance-table"
+        className="alliance-antd-finance-table"
         columns={columns}
         dataSource={pendingWithdrawals}
         locale={{ emptyText: <Empty image={null} description={<span className="text-white/30 font-semibold italic text-xs">{RESERVES_TEXT.empty}</span>} /> }}

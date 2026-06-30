@@ -38,11 +38,11 @@ const EmptyState = () => (
 );
 
 const categoryTagClassName = (category: AdminLog['category']) => (
-  `alliance-antd-logs-tag px-2 py-0.5 border rounded-lg text-[11px] font-black tracking-wide leading-0 whitespace-nowrap ${getCategoryBadge(category)}`
+  `alliance-antd-logs-tag px-2 py-0.5 border rounded-lg text-[13px] font-black tracking-wide leading-0 whitespace-nowrap ${getCategoryBadge(category)}`
 );
 
 const severityTagClassName = (severity: AdminLog['severity']) => (
-  `alliance-antd-logs-severity-tag px-2.5 py-1 text-[9.5px] uppercase font-black tracking-wider rounded-md inline-flex items-center justify-center min-w-[72px] leading-none ${getSeverityBadge(severity)}`
+  `alliance-antd-logs-severity-tag px-2.5 py-1 text-xs uppercase font-black tracking-wider rounded-md inline-flex items-center justify-center min-w-[72px] leading-none ${getSeverityBadge(severity)}`
 );
 
 export default function AntdLogsList({
@@ -79,9 +79,9 @@ export default function AntdLogsList({
       key: 'moduleName',
       width: '15%',
       render: (_, log) => (
-        <span className={categoryTagClassName(log.category)}>
+        <Tag className={categoryTagClassName(log.category)}>
           {log.moduleName}
-        </span>
+        </Tag>
       ),
     },
     {
@@ -124,7 +124,7 @@ export default function AntdLogsList({
     <div className="bg-[#16121c]/90 border border-white/5 rounded-2xl overflow-hidden shadow-xl">
       <div className="hidden lg:block overflow-x-auto">
         <Table<AdminLog>
-          className="alliance-antd-table alliance-antd-logs-table"
+          className="alliance-antd-logs-table"
           columns={columns}
           dataSource={filteredLogs}
           locale={{ emptyText: <Empty image={null} description={<EmptyState />} /> }}
@@ -156,17 +156,17 @@ export default function AntdLogsList({
                     {log.id}
                   </span>
                   <span className="h-3 w-px bg-white/10" />
-                  <span className="text-[10px] text-[#cbc4d2]/45 font-mono">
+                  <span className="text-xs text-[#cbc4d2]/45 font-mono">
                     {log.timestamp.replace(/^\d{4}-/, '')}
                   </span>
                 </div>
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <span className={`px-1.5 py-0.5 border rounded text-[9px] font-black tracking-wide leading-none whitespace-nowrap ${getCategoryBadge(log.category)}`}>
+                  <Tag className={categoryTagClassName(log.category)}>
                     {log.moduleName}
-                  </span>
-                    <span className={`alliance-antd-logs-severity-tag px-1.5 py-0.5 text-[8.5px] uppercase font-black tracking-wider rounded inline-flex leading-none ${getSeverityBadge(log.severity)}`}>
-                      {log.severity}
-                    </span>
+                  </Tag>
+                  <Tag className={severityTagClassName(log.severity)}>
+                    {log.severity}
+                  </Tag>
                 </div>
               </div>
 
@@ -176,7 +176,7 @@ export default function AntdLogsList({
                 </h4>
               </div>
 
-              <div className="flex items-center justify-between text-[10.5px] text-[#cbc4d2]/40 font-semibold border-t border-white/5 pt-2 mt-0.5 flex-wrap gap-2">
+              <div className="flex items-center justify-between text-[13px] text-[#cbc4d2]/40 font-semibold border-t border-white/5 pt-2 mt-0.5 flex-wrap gap-2">
                 <div className="flex items-center gap-1.5">
                   <span className="text-white/45">{TEXT.operatorLabel}</span>
                   <span className="text-[#cfbcff] font-bold font-mono truncate max-w-[150px] sm:max-w-none">{log.operator}</span>
@@ -191,7 +191,7 @@ export default function AntdLogsList({
         <div className="font-semibold text-center sm:text-left">
           {TEXT.showing} {filteredLogs.length} {TEXT.filtered} ({TEXT.pool}: {logs.length} {TEXT.events})
         </div>
-        <div className="font-mono text-[10px]">
+        <div className="font-mono text-xs">
           Node Signature: SECURE_WAF_LOGGER_V3B
         </div>
       </div>

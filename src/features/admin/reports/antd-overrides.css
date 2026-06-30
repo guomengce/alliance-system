@@ -1,0 +1,48 @@
+﻿/* Module-scoped Ant Design styles for this feature. */
+.alliance-antd-report-metric-card.ant-card,
+.alliance-antd-report-chart-card.ant-card {
+  background: rgba(31, 26, 38, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  color: #cbc4d2;
+  font-family: var(--font-sans);
+}
+
+.alliance-antd-report-metric-card.ant-card {
+  background: #1c1824;
+  border-radius: 12px;
+}
+
+.alliance-antd-report-metric-card .ant-card-body {
+  padding: 16px;
+}
+
+.alliance-antd-report-chart-card.ant-card {
+  background: #1a1622;
+}
+
+.alliance-antd-report-chart-card .ant-card-body {
+  padding: 20px;
+}
+
+.alliance-antd-report-export-button.ant-btn {
+  margin-top: 0;
+  padding: 0 16px;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .alliance-antd-report-export-button.ant-btn {
+    width: auto;
+  }
+}
+
+.alliance-antd-report-progress .ant-progress-inner {
+  background: #110e16 !important;
+  border-radius: 9999px;
+}
+
+.alliance-antd-report-progress .ant-progress-bg {
+  border-radius: 9999px !important;
+}
+

@@ -36,7 +36,7 @@ function PlanCard({ plan, onOpenEditModal, onTogglePlanStatus }: AntdPlanCardPro
             <PlanStatusTag plan={plan} />
           </Space>
 
-          <p className="text-[11px] text-[#cbc4d2]/50 font-mono">
+          <p className="text-[13px] text-[#cbc4d2]/50 font-mono">
             套餐标识代码：<span className="text-[#cfbcff] select-all font-bold">{plan.id.toUpperCase()}</span>
           </p>
 
@@ -111,8 +111,8 @@ export function AntdList({ plans, onOpenEditModal, onTogglePlanStatus }: ListPro
             <HelpCircle className="w-4 h-4 text-[#cfbcff] mt-0.5" />
           </Tooltip>
           <div className="space-y-1.5">
-            <p className="font-extrabold text-white">理财配置及数值对算关系指南：</p>
-            <ul className="list-disc pl-4 space-y-1 opacity-80 leading-relaxed font-sans">
+            <p className="font-extrabold text-white text-[16px]">理财配置及数值对算关系指南：</p>
+            <ul className="list-disc pl-4 space-y-1 opacity-80 leading-relaxed text-[14px]">
               <li><strong>佣金额度</strong>：该套餐被认购后，用户最多能够核扣获取的下线推广佣金绝对值。</li>
               <li><strong>买入比例与排队比例</strong>：用于指导用户认购套餐时本金中购买 TROO 与投入队列池的分配。</li>
               <li><strong>股票赠送比例</strong>：针对高净值认购级别给予的特殊赠送比例。</li>

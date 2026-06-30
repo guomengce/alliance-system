@@ -3,7 +3,7 @@ import { AnimatePresence } from 'motion/react';
 import { BrowserRouter } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import AppRouter from './router';
-import { allianceAntdTheme } from './shared/antd/theme';
+import { allianceAntdTheme } from './styles/antd';
 
 function AppContent() {
   return (

@@ -26,7 +26,7 @@ export default function AntdDesktopTable({
           </Avatar>
           <div>
             <p className="font-extrabold text-xs text-white leading-tight">{user.nickname || '未设置昵称'}</p>
-            <p className="font-mono text-[10px] text-[#cbc4d2]/50 mt-0.5">UID: {user.uid}</p>
+            <p className="font-mono text-xs text-[#cbc4d2]/50 mt-0.5">UID: {user.uid}</p>
           </div>
         </div>
       ),
@@ -36,8 +36,8 @@ export default function AntdDesktopTable({
       key: 'contact',
       render: (_, user) => (
         <div>
-          <p className="text-white font-mono text-[11px] font-bold">{user.phone || '暂无绑定手机'}</p>
-          <p className="text-[#cbc4d2]/50 font-mono text-[10px] mt-0.5">{user.email || `${user.uid}@alliance.com`}</p>
+          <p className="text-white font-mono text-[13px] font-bold">{user.phone || '暂无绑定手机'}</p>
+          <p className="text-[#cbc4d2]/50 font-mono text-xs mt-0.5">{user.email || `${user.uid}@alliance.com`}</p>
         </div>
       ),
     },
@@ -46,7 +46,7 @@ export default function AntdDesktopTable({
       dataIndex: 'sponsor',
       key: 'sponsor',
       render: (sponsor) => (
-        <Tag className="alliance-antd-tag alliance-antd-tag-purple">
+        <Tag color="purple">
           {sponsor || '999001 (SYS)'}
         </Tag>
       ),
@@ -65,7 +65,7 @@ export default function AntdDesktopTable({
       render: (_, user) => (
         <div>
           <p className="font-bold text-[#cfbcff] font-mono text-xs">{user.nodeSize} 个下级</p>
-          <p className="text-emerald-400 font-bold font-mono text-[10px] mt-0.5">
+          <p className="text-emerald-400 font-bold font-mono text-xs mt-0.5">
             USDT {user.volume.toLocaleString()}
           </p>
         </div>
@@ -77,10 +77,10 @@ export default function AntdDesktopTable({
       render: (_, user) => (
         <Space size={6} className="alliance-antd-status-space">
           {user.kycL2 === 'verified' ? (
-            <Tag className="alliance-antd-tag alliance-antd-tag-success">L2 认证</Tag>
+            <Tag color="success">L2 认证</Tag>
           ) : user.kycL2 === 'pending' ? (
             <>
-              <Tag className="alliance-antd-tag alliance-antd-tag-warning animate-pulse">L2 待审</Tag>
+              <Tag color="warning" className="animate-pulse">L2 待审</Tag>
               <Button
                 className="alliance-antd-mini-button alliance-antd-mini-button-success"
                 size="small"
@@ -91,9 +91,9 @@ export default function AntdDesktopTable({
               </Button>
             </>
           ) : user.kycL1 === 'verified' || user.kycL1 === undefined ? (
-            <Tag className="alliance-antd-tag alliance-antd-tag-purple">L1 认证</Tag>
+            <Tag color="purple">L1 认证</Tag>
           ) : (
-            <Tag className="alliance-antd-tag alliance-antd-tag-muted">未核验</Tag>
+            <Tag>未核验</Tag>
           )}
         </Space>
       ),
@@ -104,7 +104,6 @@ export default function AntdDesktopTable({
       align: 'center',
       render: (_, user) => (
         <Button
-          className="alliance-antd-action-button"
           icon={<Edit className="w-3.5" />}
           size="small"
           onClick={() => onStartEditing(user)}
@@ -118,7 +117,6 @@ export default function AntdDesktopTable({
   return (
     <div className="hidden md:block overflow-x-auto border border-white/5 rounded-2xl bg-[#1c1825]/40 p-1">
       <Table<DownlineMember>
-        className="alliance-antd-table"
         columns={columns}
         dataSource={users}
         pagination={false}

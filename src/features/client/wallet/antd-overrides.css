@@ -1,0 +1,589 @@
+﻿/* Module-scoped Ant Design styles for this feature. */
+.alliance-antd-wallet-action-button.ant-btn,
+.alliance-antd-wallet-action-button.ant-btn:hover,
+.alliance-antd-wallet-action-button.ant-btn:focus {
+  align-items: center;
+  border-radius: 12px;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  gap: 6px;
+  justify-content: center;
+}
+
+@media (min-width: 640px) {
+  .alliance-antd-wallet-action-button.ant-btn,
+  .alliance-antd-wallet-action-button.ant-btn:hover,
+  .alliance-antd-wallet-action-button.ant-btn:focus {
+    font-size: 14px;
+    min-height: 46px;
+    padding: 14px 32px;
+  }
+}
+
+.alliance-antd-wallet-action-button.is-active.ant-btn,
+.alliance-antd-wallet-action-button.is-active.ant-btn:hover,
+.alliance-antd-wallet-action-button.is-active.ant-btn:focus {
+  background: var(--color-primary) !important;
+  border-color: transparent !important;
+    box-shadow: none;
+  color: var(--color-text-main) !important;
+  transform: none;
+}
+
+.alliance-antd-wallet-action-button.is-primary-idle.ant-btn,
+.alliance-antd-wallet-action-button.is-primary-idle.ant-btn:hover,
+.alliance-antd-wallet-action-button.is-primary-idle.ant-btn:focus {
+  background: var(--color-primary) !important;
+  border-color: transparent !important;
+  box-shadow: var(--shadow-control);
+  color: var(--color-text-main) !important;
+}
+
+.alliance-antd-wallet-action-button.is-idle.ant-btn {
+  background: var(--color-bg-control-hover) !important;
+  border-color: var(--color-border-control) !important;
+  color: var(--color-text-main) !important;
+}
+
+.alliance-antd-wallet-action-button.is-idle.ant-btn:hover,
+.alliance-antd-wallet-action-button.is-idle.ant-btn:focus {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: var(--color-text-main) !important;
+  transform: scale(1.02);
+}
+
+.alliance-antd-wallet-action-button.is-muted.ant-btn,
+.alliance-antd-wallet-action-button.is-muted.ant-btn:hover,
+.alliance-antd-wallet-action-button.is-muted.ant-btn:focus {
+  background: rgba(20, 18, 24, 0.72) !important;
+  border-color: var(--color-border-soft) !important;
+  color: rgba(203, 196, 210, 0.62) !important;
+  opacity: 1;
+}
+
+.alliance-antd-wallet-action-button.is-muted.ant-btn:hover,
+.alliance-antd-wallet-action-button.is-muted.ant-btn:focus {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  color: rgba(203, 196, 210, 0.86) !important;
+}
+
+.alliance-antd-wallet-search.ant-input-affix-wrapper {
+  background: var(--color-bg-control-hover) !important;
+  border-color: var(--color-border-faint) !important;
+  border-radius: 12px;
+  color: var(--color-text-main);
+  min-height: 40px;
+  padding: 6px 12px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .alliance-antd-wallet-search.ant-input-affix-wrapper {
+    width: 240px;
+  }
+}
+
+.alliance-antd-wallet-search.ant-input-affix-wrapper-focused,
+.alliance-antd-wallet-search.ant-input-affix-wrapper:focus,
+.alliance-antd-wallet-search.ant-input-affix-wrapper:hover {
+  border-color: rgba(207, 188, 255, 0.4) !important;
+  box-shadow: none;
+}
+
+.alliance-antd-wallet-search.ant-input-affix-wrapper input.ant-input {
+  background: transparent !important;
+  color: var(--color-text-main);
+  font-size: 14px;
+}
+
+.alliance-antd-wallet-search.ant-input-affix-wrapper input.ant-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.alliance-antd-wallet-search .ant-input-clear-icon {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.alliance-antd-wallet-filter.ant-segmented {
+  background: var(--color-bg-control-hover) !important;
+  border-radius: 12px;
+  color: rgba(203, 196, 210, 0.8);
+  padding: 4px;
+}
+
+.alliance-antd-wallet-filter.ant-segmented .ant-segmented-group {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.alliance-antd-wallet-filter.ant-segmented .ant-segmented-group::-webkit-scrollbar {
+  display: none;
+}
+
+.alliance-antd-wallet-filter.ant-segmented .ant-segmented-item {
+  border-radius: 8px;
+  color: rgba(250, 250, 250, 0.8);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 28px;
+  min-height: 28px;
+  padding: 0 8px;
+}
+
+.alliance-antd-wallet-filter.ant-segmented .ant-segmented-item:hover {
+  color: var(--color-text-main);
+}
+
+.alliance-antd-wallet-filter.ant-segmented .ant-segmented-item-selected {
+  background: var(--color-bg-control-muted) !important;
+  color: var(--color-primary-light) !important;
+}
+
+.alliance-antd-wallet-filter.ant-segmented .ant-segmented-thumb {
+  background: var(--color-bg-control-muted) !important;
+  border-radius: 8px;
+}
+
+.alliance-antd-wallet-ledger-table.ant-table-wrapper .ant-table-thead > tr > th {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-bottom-color: var(--color-border-faint) !important;
+  color: var(--color-text-secondary) !important;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 16px 24px;
+  text-transform: uppercase;
+}
+
+.alliance-antd-wallet-ledger-table.ant-table-wrapper .ant-table-thead > tr > th::before {
+  display: none !important;
+}
+
+.alliance-antd-wallet-ledger-table.ant-table-wrapper .ant-table-tbody > tr > td {
+  background: transparent !important;
+  border-bottom-color: var(--color-border-faint) !important;
+  padding: 16px 24px;
+}
+
+.alliance-antd-wallet-ledger-table.ant-table-wrapper .ant-table-tbody > tr:hover > td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+.alliance-antd-wallet-ledger-table.ant-table-wrapper .ant-empty-description {
+  color: rgba(203, 196, 210, 0.5);
+}
+
+.alliance-antd-wallet-status-tag.ant-tag {
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 18px;
+  margin: 0;
+  padding: 0 10px;
+  text-transform: capitalize;
+}
+
+.alliance-antd-wallet-status-tag.is-mobile.ant-tag {
+  font-size: 12px;
+  line-height: 16px;
+  padding: 0 8px;
+}
+
+.alliance-antd-wallet-status-tag.is-success {
+  background: rgba(6, 78, 59, 0.4);
+  border-color: rgba(6, 95, 70, 0.3);
+  color: #34d399;
+}
+
+.alliance-antd-wallet-status-tag.is-pending {
+  background: rgba(207, 188, 255, 0.1);
+  border-color: rgba(207, 188, 255, 0.2);
+  color: var(--color-primary-light);
+}
+
+.alliance-antd-wallet-status-tag.is-locked {
+  background: rgba(120, 53, 15, 0.4);
+  border-color: rgba(146, 64, 14, 0.3);
+  color: #fbbf24;
+}
+
+.alliance-antd-wallet-status-tag.is-failed {
+  background: rgba(136, 19, 55, 0.4);
+  border-color: rgba(159, 18, 57, 0.3);
+  color: var(--color-danger);
+}
+
+.alliance-antd-wallet-icon-button.ant-btn,
+.alliance-antd-wallet-icon-button.ant-btn:hover,
+.alliance-antd-wallet-icon-button.ant-btn:focus {
+  align-items: center;
+  background: transparent !important;
+  border-color: transparent !important;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.4) !important;
+  display: inline-flex;
+  height: 24px;
+  justify-content: center;
+  min-width: 24px;
+  padding: 0;
+}
+
+.alliance-antd-wallet-icon-button.ant-btn:hover,
+.alliance-antd-wallet-icon-button.ant-btn:focus {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: var(--color-text-main) !important;
+}
+
+.alliance-antd-wallet-panel-close.ant-btn,
+.alliance-antd-wallet-panel-close.ant-btn:hover,
+.alliance-antd-wallet-panel-close.ant-btn:focus {
+  align-items: center;
+  background: transparent !important;
+  border-color: transparent !important;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.5) !important;
+  display: inline-flex;
+  height: 32px;
+  justify-content: center;
+  min-width: 32px;
+  padding: 0;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
+.alliance-antd-wallet-panel-close.ant-btn:hover,
+.alliance-antd-wallet-panel-close.ant-btn:focus {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: var(--color-text-main) !important;
+}
+
+.alliance-antd-wallet-network-segmented.ant-segmented {
+  background: transparent !important;
+  color: rgba(203, 196, 210, 0.7);
+  width: 100%;
+}
+
+.alliance-antd-wallet-network-segmented.ant-segmented .ant-segmented-group {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .alliance-antd-wallet-network-segmented.ant-segmented .ant-segmented-group {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.alliance-antd-wallet-network-segmented.ant-segmented .ant-segmented-item {
+  background: rgba(20, 18, 24, 0.45);
+  border: 1px solid var(--color-border-control);
+  border-radius: 12px;
+  color: rgba(203, 196, 210, 0.7);
+  display: flex;
+  font-size: 12px;
+  font-weight: 800;
+  justify-content: center;
+  line-height: 44px;
+  min-height: 44px;
+  min-width: 0;
+  width: 100%;
+}
+
+.alliance-antd-wallet-network-segmented.ant-segmented .ant-segmented-item-label {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.alliance-antd-wallet-network-segmented.ant-segmented .ant-segmented-item:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--color-text-main);
+}
+
+.alliance-antd-wallet-network-segmented.ant-segmented .ant-segmented-item-selected {
+  background: var(--color-primary) !important;
+  border-color: var(--color-primary-light) !important;
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.25);
+  color: var(--color-text-main) !important;
+}
+
+.alliance-antd-wallet-network-segmented.ant-segmented .ant-segmented-item-selected,
+.alliance-antd-wallet-network-segmented.ant-segmented .ant-segmented-item-selected:hover,
+.alliance-antd-wallet-network-segmented.ant-segmented .ant-segmented-item-selected .ant-segmented-item-label {
+  background: var(--color-primary) !important;
+  color: var(--color-text-main) !important;
+}
+
+.alliance-antd-wallet-network-segmented.ant-segmented .ant-segmented-item-selected .ant-segmented-item-label {
+  border-radius: 11px;
+}
+
+.alliance-antd-wallet-network-segmented.ant-segmented .ant-segmented-thumb {
+  display: none;
+}
+
+.alliance-antd-wallet-network-button.ant-btn,
+.alliance-antd-wallet-network-button.ant-btn:hover,
+.alliance-antd-wallet-network-button.ant-btn:focus {
+  align-items: center;
+  background: rgba(20, 18, 24, 0.45) !important;
+  border-color: var(--color-border-control) !important;
+  border-radius: var(--radius-control);
+  color: var(--color-text-main) !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  gap: 8px;
+  height: 44px;
+  justify-content: center;
+  min-height: 44px;
+  width: 100%;
+}
+
+.alliance-antd-wallet-network-button.ant-btn:hover,
+.alliance-antd-wallet-network-button.ant-btn:focus {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: var(--color-text-main) !important;
+}
+
+.alliance-antd-wallet-network-button.is-active.ant-btn,
+.alliance-antd-wallet-network-button.is-active.ant-btn:hover,
+.alliance-antd-wallet-network-button.is-active.ant-btn:focus {
+  background: var(--color-primary) !important;
+  border-color: var(--color-primary-light) !important;
+  box-shadow: var(--shadow-control);
+  color: var(--color-text-main) !important;
+}
+
+.alliance-antd-wallet-form-input.ant-input,
+.alliance-antd-wallet-form-input.ant-input-affix-wrapper {
+  background: var(--color-bg-control) !important;
+  border-color: var(--color-border-control) !important;
+  border-radius: var(--radius-input);
+  color: var(--color-text-main);
+  font-size: 13px;
+  min-height: 42px;
+  padding: 10px 16px;
+}
+
+.alliance-antd-wallet-form-input.ant-input:hover,
+.alliance-antd-wallet-form-input.ant-input:focus,
+.alliance-antd-wallet-form-input.ant-input-affix-wrapper:hover,
+.alliance-antd-wallet-form-input.ant-input-affix-wrapper-focused {
+  border-color: var(--color-primary-light) !important;
+  box-shadow: 0 0 0 1px rgba(207, 188, 255, 0.35);
+}
+
+.alliance-antd-wallet-form-input.ant-input::placeholder,
+.alliance-antd-wallet-form-input.ant-input-affix-wrapper input.ant-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.alliance-antd-wallet-form-input.ant-input-affix-wrapper input.ant-input {
+  background: transparent !important;
+  color: var(--color-text-main);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.alliance-antd-wallet-form-input.is-amount.ant-input-affix-wrapper {
+  padding-right: 10px;
+}
+
+.alliance-antd-wallet-max-button.ant-btn,
+.alliance-antd-wallet-max-button.ant-btn:hover,
+.alliance-antd-wallet-max-button.ant-btn:focus {
+  background: transparent !important;
+  border-color: transparent !important;
+  color: var(--color-primary-light) !important;
+  font-size: 14px;
+  font-weight: 900;
+  height: auto;
+  min-width: 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.alliance-antd-wallet-max-button.ant-btn:hover span,
+.alliance-antd-wallet-max-button.ant-btn:focus span {
+  text-decoration: underline;
+}
+
+.alliance-antd-wallet-submit-button.ant-btn,
+.alliance-antd-wallet-submit-button.ant-btn:hover,
+.alliance-antd-wallet-submit-button.ant-btn:focus {
+  align-items: center;
+  background: var(--color-primary-light) !important;
+  border-color: transparent !important;
+  border-radius: var(--radius-control);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.35);
+  color: var(--color-primary-contrast) !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  gap: 6px;
+  height: 38px;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+  .alliance-antd-wallet-submit-button.ant-btn,
+  .alliance-antd-wallet-submit-button.ant-btn:hover,
+  .alliance-antd-wallet-submit-button.ant-btn:focus {
+    width: auto;
+  }
+}
+
+.alliance-antd-wallet-submit-button.ant-btn:hover,
+.alliance-antd-wallet-submit-button.ant-btn:focus {
+  filter: brightness(1.1);
+}
+
+.alliance-antd-wallet-copy-button.ant-btn,
+.alliance-antd-wallet-copy-button.ant-btn:hover,
+.alliance-antd-wallet-copy-button.ant-btn:focus {
+  align-items: center;
+  background: rgba(207, 188, 255, 0.15) !important;
+  border-color: rgba(207, 188, 255, 0.15) !important;
+  border-radius: var(--radius-control);
+  color: var(--color-primary-light) !important;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 800;
+  gap: 6px;
+  justify-content: center;
+  min-height: 36px;
+  padding: 8px 14px;
+  text-transform: uppercase;
+}
+
+.alliance-antd-wallet-copy-button.ant-btn:hover,
+.alliance-antd-wallet-copy-button.ant-btn:focus {
+  background: rgba(207, 188, 255, 0.25) !important;
+}
+
+.alliance-antd-wallet-modal-close.ant-btn,
+.alliance-antd-wallet-modal-close.ant-btn:hover,
+.alliance-antd-wallet-modal-close.ant-btn:focus {
+  align-items: center;
+  background: transparent !important;
+  border-color: transparent !important;
+  border-radius: 999px;
+  box-shadow: none !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  display: inline-flex;
+  height: 32px;
+  justify-content: center;
+  min-width: 32px;
+  padding: 0;
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
+.alliance-antd-wallet-modal-close.ant-btn:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: var(--color-text-main) !important;
+}
+
+.alliance-antd-wallet-copy-button.ant-btn,
+.alliance-antd-wallet-copy-button.ant-btn:hover,
+.alliance-antd-wallet-copy-button.ant-btn:focus {
+  align-items: center;
+  background: rgba(207, 188, 255, 0.15) !important;
+  border-color: rgba(207, 188, 255, 0.15) !important;
+  border-radius: 6px;
+  color: var(--color-primary-light) !important;
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 900;
+  gap: 4px;
+  height: 24px;
+  padding: 0 10px;
+  text-transform: uppercase;
+}
+
+.alliance-antd-wallet-copy-button.ant-btn:hover {
+  background: rgba(207, 188, 255, 0.25) !important;
+}
+
+.alliance-antd-wallet-status-tag.ant-tag {
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 18px;
+  margin-top: 4px;
+  padding: 0 9px;
+}
+
+.alliance-antd-wallet-status-tag.is-success {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.25);
+  color: #34d399;
+}
+
+.alliance-antd-wallet-status-tag.is-pending {
+  background: rgba(207, 188, 255, 0.1);
+  border-color: rgba(207, 188, 255, 0.2);
+  color: var(--color-primary-light);
+}
+
+.alliance-antd-wallet-status-tag.is-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.25);
+  color: #f59e0b;
+}
+
+.alliance-antd-wallet-status-tag.is-danger {
+  background: rgba(248, 113, 113, 0.1);
+  border-color: rgba(248, 113, 113, 0.25);
+  color: #f87171;
+}
+
+.alliance-antd-wallet-modal-secondary.ant-btn,
+.alliance-antd-wallet-modal-secondary.ant-btn:hover,
+.alliance-antd-wallet-modal-secondary.ant-btn:focus {
+  background: #211f24 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px;
+  color: var(--color-text-main) !important;
+  font-size: 12px;
+  font-weight: 700;
+  height: 36px;
+  padding: 0 20px;
+}
+
+.alliance-antd-wallet-modal-secondary.ant-btn:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Client wallet link button variant moved out of shared Ant Design overrides. */
+.alliance-antd-link-button.ant-btn,
+.alliance-antd-link-button.ant-btn:hover,
+.alliance-antd-link-button.ant-btn:focus {
+  align-items: center;
+  background: transparent !important;
+  border-color: transparent !important;
+  color: var(--color-primary-light) !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  gap: 4px;
+  height: auto;
+  padding: 0;
+}
+
+.alliance-antd-link-button.ant-btn:hover span {
+  text-decoration: underline;
+}
+

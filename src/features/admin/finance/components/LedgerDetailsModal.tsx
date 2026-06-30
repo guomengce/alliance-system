@@ -30,7 +30,7 @@ export default function LedgerDetailsModal({
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                 <span>平台链上财务记账核心凭证</span>
               </h4>
-              <p className="text-[10px] text-[#cbc4d2]/40 font-mono">TICKET ID: {selectedLedgerItem.id}</p>
+              <p className="text-xs text-[#cbc4d2]/40 font-mono">TICKET ID: {selectedLedgerItem.id}</p>
             </div>
 
             <div className="space-y-3 bg-[#110e16] p-4.5 rounded-2xl border border-white/5 font-mono text-xs text-[#cbc4d2]/90">
@@ -59,7 +59,7 @@ export default function LedgerDetailsModal({
             </div>
 
             {(selectedLedgerItem.type === 'withdraw' || selectedLedgerItem.type === 'recharge') && (
-              <div className="space-y-2.5 bg-gradient-to-r from-purple-950/20 to-indigo-950/20 p-4 rounded-2xl border border-indigo-500/20 font-mono text-[11px]">
+              <div className="space-y-2.5 bg-gradient-to-r from-purple-950/20 to-indigo-950/20 p-4 rounded-2xl border border-indigo-500/20 font-mono text-[13px]">
                 <p className="text-xs font-bold text-[#cfbcff] flex items-center gap-1.5 border-b border-white/5 pb-1.5 font-sans">
                   <span className="inline-block w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
                   🌐 链上智能合约区块凭证 (Blockchain Proof)
@@ -71,7 +71,7 @@ export default function LedgerDetailsModal({
                   </div>
                   <div className="flex flex-col gap-0.5 mt-1">
                     <span className="text-white/45">链上交易哈希 (TXID):</span>
-                    <span className="text-[#cfbcff] bg-black/40 p-2 rounded text-[10px] break-all select-all border border-white/5 block text-left">
+                    <span className="text-[#cfbcff] bg-black/40 p-2 rounded text-xs break-all select-all border border-white/5 block text-left">
                       {selectedLedgerItem.blockchainProof?.txid || (selectedLedgerItem.id.replace('TXN-', '0x') + 'fa' + Math.floor(10293120).toString(16) + '8a9c')}
                     </span>
                   </div>
@@ -87,7 +87,7 @@ export default function LedgerDetailsModal({
                     <span className="text-white/45">平台燃气储备:</span>
                     <span className="text-white">{selectedLedgerItem.blockchainProof?.gasFee || (selectedLedgerItem.type === 'withdraw' ? '15.0' : '1.5')} USDT</span>
                   </div>
-                  <div className="border-t border-white/5 pt-1.5 flex flex-col gap-1 text-[10px] opacity-80">
+                  <div className="border-t border-white/5 pt-1.5 flex flex-col gap-1 text-xs opacity-80">
                     <div className="flex justify-between">
                       <span className="text-white/45">发款源地址:</span>
                       <span className="text-white/80 select-all font-mono">{selectedLedgerItem.blockchainProof?.fromAddress || 'Tx78HqsmB82K1Hshq82Ksh918Ksw'}</span>
@@ -102,8 +102,8 @@ export default function LedgerDetailsModal({
             )}
 
             <div className="p-3.5 bg-white/2 rounded-xl border border-white/5 space-y-1.5 text-xs text-[#cbc4d2]/85">
-              <p className="font-bold text-white text-[11px]">资金流动记录描述如下：</p>
-              <p className="leading-relaxed text-[11px] font-sans opacity-80">{selectedLedgerItem.desc}</p>
+              <p className="font-bold text-white text-[13px]">资金流动记录描述如下：</p>
+              <p className="leading-relaxed text-[13px] font-sans opacity-80">{selectedLedgerItem.desc}</p>
             </div>
 
             <div className="pt-2 flex justify-end text-xs">

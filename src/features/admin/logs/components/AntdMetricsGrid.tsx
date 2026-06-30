@@ -51,7 +51,7 @@ export default function AntdMetricsGrid({ logs }: MetricsGridProps) {
     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
       {metrics.map(metric => (
         <AntdCard key={metric.label} className="alliance-antd-logs-metric-card">
-          <div className="text-[10px] text-[#cbc4d2]/50 font-black uppercase tracking-wider">
+          <div className="text-xs text-[#cbc4d2]/50 font-black uppercase tracking-wider">
             {metric.label}
           </div>
           <div className={`text-lg sm:text-2xl font-mono font-black mt-1.5 flex items-center gap-2 ${metric.valueClassName}`}>

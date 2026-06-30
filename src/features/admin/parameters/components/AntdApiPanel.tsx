@@ -23,7 +23,7 @@ export default function AntdApiPanel({ apiPriceUrl, setApiPriceUrl, onTestApiPri
           <Globe className="w-4 h-4 text-[#5fc4ff]" />
           {TEXT.title}
         </h4>
-        <p className="text-[11px] text-[#cbc4d2]/50 leading-relaxed mt-2">{TEXT.desc}</p>
+        <p className="text-[13px] text-[#cbc4d2]/50 leading-relaxed mt-2">{TEXT.desc}</p>
 
         <div className="space-y-4 mt-4 text-xs font-mono">
           <label className="flex flex-col gap-1.5">
@@ -36,7 +36,7 @@ export default function AntdApiPanel({ apiPriceUrl, setApiPriceUrl, onTestApiPri
             />
           </label>
 
-          <div className="flex justify-between items-center bg-[#110e16] p-2.5 rounded-xl border border-white/5 text-[10.5px]">
+          <div className="flex justify-between items-center bg-[#110e16] p-2.5 rounded-xl border border-white/5 text-[13px]">
             <span className="text-[#cbc4d2]/50 font-sans">{TEXT.feedback}</span>
             <span className="text-emerald-400 font-bold font-mono">{TEXT.connected}</span>
           </div>

@@ -23,7 +23,7 @@ export default function AntdCommissionPanel({
           <Coins className="w-4 h-4 text-[#cfbcff]" />
           {TEXT.title}
         </h4>
-        <p className="text-[11px] text-[#cbc4d2]/50 leading-relaxed mt-2">{TEXT.desc}</p>
+        <p className="text-[13px] text-[#cbc4d2]/50 leading-relaxed mt-2">{TEXT.desc}</p>
 
         <div className="space-y-2.5 mt-4">
           {['L1', 'L2', 'L3', 'L4', 'L5'].map((level) => (

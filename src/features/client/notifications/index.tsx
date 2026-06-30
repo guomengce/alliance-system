@@ -1,3 +1,4 @@
+import './antd-overrides.css';
 import PageView from '../../../shared/components/PageView';
 import CategoryTabs from './components/CategoryTabs';
 import HeaderActions from './components/HeaderActions';

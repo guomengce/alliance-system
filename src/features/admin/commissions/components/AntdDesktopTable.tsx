@@ -25,7 +25,7 @@ export default function AntdDesktopTable({ commissions, onSelectCommission }: De
       render: (_, commission) => (
         <div className="flex flex-col font-mono font-bold text-white">
           <span>{commission.id}</span>
-          <span className="text-[9px] text-[#cbc4d2]/30 font-normal">
+          <span className="text-xs text-[#cbc4d2]/30 font-normal">
             {COMMISSION_TEXT.source}: {commission.orderId}
           </span>
         </div>
@@ -37,7 +37,7 @@ export default function AntdDesktopTable({ commissions, onSelectCommission }: De
       key: 'level',
       align: 'center',
       render: (level: CommissionPayout['level']) => (
-        <Tag className="alliance-antd-tag alliance-antd-tag-purple">
+        <Tag color="purple">
           {level}
           {COMMISSION_TEXT.generation}
         </Tag>
@@ -49,7 +49,7 @@ export default function AntdDesktopTable({ commissions, onSelectCommission }: De
       render: (_, commission) => (
         <div>
           <p className="text-[#cbc4d2] font-semibold">{commission.uid}</p>
-          <p className="text-[9px] text-[#cbc4d2]/40 font-sans truncate max-w-[130px]">
+          <p className="text-xs text-[#cbc4d2]/40 font-sans truncate max-w-[130px]">
             {commission.recipientNickname}
           </p>
         </div>
@@ -95,7 +95,7 @@ export default function AntdDesktopTable({ commissions, onSelectCommission }: De
   return (
     <div className="hidden md:block overflow-x-auto border border-white/5 bg-[#1d1925]/20 rounded-2xl p-1">
       <Table<CommissionPayout>
-        className="alliance-antd-table alliance-antd-commission-table"
+        className="alliance-antd-commission-table"
         columns={columns}
         dataSource={commissions}
         pagination={false}

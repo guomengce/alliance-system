@@ -1,3 +1,4 @@
+import './antd-overrides.css';
 import PageView from '../../../shared/components/PageView';
 import DevicesPanel from './components/DevicesPanel';
 import FeedbackMessages from './components/FeedbackMessages';

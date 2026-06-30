@@ -1,3 +1,4 @@
+import '../../shared/antd/commission-overrides.css';
 import PageView from '../../../shared/components/PageView';
 import AlertBanner from '../../../shared/components/AlertBanner';
 import Header from './components/Header';
@@ -44,10 +45,6 @@ export default function CommissionView({
         onIncreaseLimit={handleIncreaseLimit}
         onExport={handleExport}
       />
-
-      {successMsg && (
-        <AlertBanner message={successMsg} type="success" onClose={() => setSuccessMsg('')} />
-      )}
 
       {/* Grid boxes representing standard commission boxes & the new Graphic Pool Monitor */}
       <StatsAndPool

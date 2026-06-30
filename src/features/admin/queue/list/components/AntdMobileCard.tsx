@@ -20,7 +20,7 @@ export function AntdMobileCard({ roster: r, onOpenDetails }: MobileCardProps) {
           <div className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
           <div>
             <p className="text-white leading-none font-bold text-xs">{r.uid}</p>
-            <p className="text-[10px] text-[#cbc4d2]/40 font-normal mt-1">{r.nickname}</p>
+            <p className="text-xs text-[#cbc4d2]/40 font-normal mt-1">{r.nickname}</p>
           </div>
         </div>
         <Tag className="alliance-antd-queue-count-tag">
@@ -28,17 +28,17 @@ export function AntdMobileCard({ roster: r, onOpenDetails }: MobileCardProps) {
         </Tag>
       </div>
 
-      <div className="grid grid-cols-3 gap-1.5 text-[11px] border-t border-b border-white/5 py-2.5 font-mono text-center">
+      <div className="grid grid-cols-3 gap-1.5 text-[13px] border-t border-b border-white/5 py-2.5 font-mono text-center">
         <div>
-          <span className="text-[#cbc4d2]/40 text-[9px] block font-sans text-left">{TEXT.original}</span>
+          <span className="text-[#cbc4d2]/40 text-xs block font-sans text-left">{TEXT.original}</span>
           <p className="text-[#cbc4d2]/80 mt-0.5 text-left truncate">USDT {r.original.toLocaleString()}</p>
         </div>
         <div>
-          <span className="text-[#cbc4d2]/40 text-[9px] block font-sans">{TEXT.current}</span>
+          <span className="text-[#cbc4d2]/40 text-xs block font-sans">{TEXT.current}</span>
           <p className="text-amber-300 font-extrabold mt-0.5 truncate">USDT {r.current.toLocaleString()}</p>
         </div>
         <div>
-          <span className="text-[#cbc4d2]/40 text-[9px] block font-sans text-right">{TEXT.unlocked}</span>
+          <span className="text-[#cbc4d2]/40 text-xs block font-sans text-right">{TEXT.unlocked}</span>
           <p className="text-emerald-400 font-extrabold mt-0.5 text-right truncate">USDT {r.unlocked.toLocaleString()}</p>
         </div>
       </div>

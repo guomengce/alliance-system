@@ -1,3 +1,4 @@
+import './antd-overrides.css';
 import DetailView from './detail';
 import ListView from './list';
 import { useOrdersState } from './hooks/useOrdersState';

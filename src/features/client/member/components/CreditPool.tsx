@@ -1,14 +1,13 @@
+import { Button, Progress } from 'antd';
 import { AlertCircle } from 'lucide-react';
 import type { CreditPoolProps } from '../types';
-import { CREDIT_POOL_PROGRESS_PERCENT, getCreditPoolRing } from '../utils';
+import { CREDIT_POOL_PROGRESS_PERCENT } from '../utils';
 
 export default function CreditPool({
   remainingCredit,
   totalCredit,
   onRaiseCredit
 }: CreditPoolProps) {
-  const { radius, circumference, strokeDashoffset } = getCreditPoolRing(CREDIT_POOL_PROGRESS_PERCENT);
-
   return (
     <div className="lg:col-span-4 glass-card rounded-2xl p-6 md:p-8 flex flex-col items-center justify-between">
       <div className="w-full flex justify-between items-center border-b border-white/5 pb-2">
@@ -16,22 +15,20 @@ export default function CreditPool({
         <AlertCircle className="w-4.5 h-4.5 text-[#cbc4d2] opacity-40" />
       </div>
 
-      <div className="relative w-48 h-48 my-6">
-        <svg className="w-full h-full -rotate-90" viewBox="0 0 192 192" width="192" height="192">
-          <circle className="text-[#36343a]" cx="96" cy="96" fill="transparent" r={radius} stroke="currentColor" strokeWidth="12"></circle>
-          <circle 
-            className="text-[#cfbcff] transition-all duration-1000 ease-out" 
-            cx="96" cy="96" fill="transparent" r={radius} 
-            stroke="currentColor" strokeDasharray={circumference} strokeDashoffset={strokeDashoffset} 
-            strokeLinecap="round" strokeWidth="12" 
-            style={{ filter: 'drop-shadow(0 0 6px rgba(207, 188, 255, 0.2))' }}
-          ></circle>
-        </svg>
+      <div className="relative w-48 h-48 my-6 flex items-center justify-center">
+        <Progress
+          type="circle"
+          percent={CREDIT_POOL_PROGRESS_PERCENT}
+          size={192}
+          strokeWidth={6}
+          showInfo={false}
+          className="alliance-antd-member-credit-progress"
+        />
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <span className="text-4xl font-extrabold text-white leading-none">
             {CREDIT_POOL_PROGRESS_PERCENT}<span className="text-lg">%</span>
           </span>
-          <span className="text-[10px] text-[#cbc4d2] font-bold uppercase tracking-widest mt-1">已占用</span>
+          <span className="text-xs text-[#cbc4d2] font-bold uppercase tracking-widest mt-1">已占用</span>
         </div>
       </div>
 
@@ -50,12 +47,13 @@ export default function CreditPool({
         </div>
       </div>
 
-      <button 
+      <Button
+        type="primary"
         onClick={onRaiseCredit}
-        className="w-full py-3 mt-6 rounded-xl bg-[#cfbcff] text-[#381e72] font-extrabold hover:brightness-110 shadow-lg shadow-[#cfbcff]/10 hover:shadow-[#cfbcff]/20 active:scale-95 transition-all text-sm"
+        className="alliance-antd-member-credit-button w-full mt-6"
       >
         提升信用额度
-      </button>
+      </Button>
     </div>
   );
 }

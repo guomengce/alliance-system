@@ -35,7 +35,7 @@ export const useTeamState = ({ downlines }: UseTeamStateParams) => {
     setExporting(true);
     setTimeout(() => {
       setExporting(false);
-      notifyInfo('鍥㈤槦鏁版嵁鎶ヨ〃宸茬敓鎴愬苟鍑嗗瀵煎嚭 (Downline_Ledger_Export.csv)');
+      notifyInfo('团队数据报表已生成并准备导出 (Downline_Ledger_Export.csv)');
     }, 1500);
   };
 

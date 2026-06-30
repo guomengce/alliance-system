@@ -1,3 +1,4 @@
+import { Button, Form } from 'antd';
 import { AnimatePresence, motion } from 'motion/react';
 import { X } from 'lucide-react';
 import AlertBanner from '../../../../shared/components/AlertBanner';
@@ -6,6 +7,12 @@ import RechargePanel from './RechargePanel';
 import RechargeQrPanel from './RechargeQrPanel';
 import TransferPanel from './TransferPanel';
 import WithdrawPanel from './WithdrawPanel';
+
+const titles = {
+  recharge: '安全智能充值系统',
+  withdraw: '链上提现申请授权',
+  transfer: '站内用户资金划转'
+};
 
 export default function ActionPanel({
   activeAction,
@@ -37,17 +44,14 @@ export default function ActionPanel({
           transition={{ duration: 0.25 }}
           className="glass-card rounded-2xl p-6 relative overflow-hidden overflow-y-auto"
         >
-          <button
+          <Button
+            className="alliance-antd-wallet-panel-close"
+            icon={<X className="w-5 h-5" />}
             onClick={onClose}
-            className="absolute right-4 top-4 text-white/50 hover:text-white transition-colors p-1 rounded-full hover:bg-white/5 cursor-pointer"
-          >
-            <X className="w-5 h-5" />
-          </button>
+          />
 
           <h3 className="text-sm sm:text-base font-bold text-white mb-4 sm:mb-5 uppercase tracking-wider flex items-center gap-2">
-            {activeAction === 'recharge' && '安全智能充值系统'}
-            {activeAction === 'withdraw' && '链上提现申请授权'}
-            {activeAction === 'transfer' && '站内用户资金划转'}
+            {titles[activeAction]}
           </h3>
 
           {errorMsg && (
@@ -57,7 +61,7 @@ export default function ActionPanel({
           )}
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-            <form onSubmit={onSubmit} className="lg:col-span-2 space-y-5">
+            <Form component="form" onSubmitCapture={onSubmit} className="lg:col-span-2 space-y-5">
               {activeAction === 'recharge' && (
                 <RechargePanel
                   rechargeNetwork={rechargeNetwork}
@@ -88,7 +92,7 @@ export default function ActionPanel({
                   usdtBalance={usdtBalance}
                 />
               )}
-            </form>
+            </Form>
 
             {activeAction === 'recharge' && (
               <RechargeQrPanel rechargeNetwork={rechargeNetwork} />

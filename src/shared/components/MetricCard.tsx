@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+﻿import React, { ReactNode } from 'react';
 import { LucideIcon } from 'lucide-react';
 
 interface MetricCardProps {
@@ -37,7 +37,7 @@ export default function MetricCard({
       <div className={`absolute -right-8 -top-8 w-32 h-32 ${hoverGradientColor}/5 blur-[60px] rounded-full group-hover:${hoverGradientColor}/10 transition-all duration-500`} />
       
       <div className="flex justify-between items-start z-10">
-        <span className="text-[10px] sm:text-xs font-semibold text-[#cbc4d2]/70 uppercase tracking-widest font-sans">
+        <span className="text-xs sm:text-xs font-semibold text-[#cbc4d2]/70 uppercase tracking-widest font-sans">
           {label}
         </span>
         <span className="w-8 h-8 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center text-[#cfbcff] group-hover:scale-105 group-hover:text-white group-hover:bg-[#cfbcff]/20 transition-all duration-300 shrink-0">
@@ -51,7 +51,7 @@ export default function MetricCard({
         </h2>
         
         {subtext && (
-          <div className="flex items-center gap-1.5 mt-2 text-[10px] sm:text-xs text-[#cfbcff]/70 font-semibold font-sans">
+          <div className="flex items-center gap-1.5 mt-2 text-xs sm:text-xs text-[#cfbcff]/70 font-semibold font-sans">
             {subIcon && <span className="shrink-0">{subIcon}</span>}
             <span className="truncate">{subtext}</span>
           </div>

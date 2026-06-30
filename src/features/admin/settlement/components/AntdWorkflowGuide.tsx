@@ -26,34 +26,34 @@ export default function AntdWorkflowGuide() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
             <div className="relative pl-4 border-l border-white/10 space-y-1">
               <p className="font-extrabold text-white">{TEXT.step1Title}</p>
-              <p className="text-[#cbc4d2]/60 text-[10px] leading-relaxed">{TEXT.step1Desc}</p>
+              <p className="text-[#cbc4d2]/60 text-xs leading-relaxed">{TEXT.step1Desc}</p>
             </div>
 
             <div className="relative pl-4 border-l border-white/10 space-y-1">
               <p className="font-extrabold text-[#e7c365]">{TEXT.step2Title}</p>
-              <p className="text-[#cbc4d2]/60 text-[10px] leading-relaxed">{TEXT.step2Desc}</p>
+              <p className="text-[#cbc4d2]/60 text-xs leading-relaxed">{TEXT.step2Desc}</p>
             </div>
 
             <div className="relative pl-4 border-l border-white/10 space-y-1">
               <p className="font-extrabold text-emerald-400">{TEXT.step3Title}</p>
-              <p className="text-[#cbc4d2]/60 text-[10px] leading-relaxed">{TEXT.step3Desc}</p>
+              <p className="text-[#cbc4d2]/60 text-xs leading-relaxed">{TEXT.step3Desc}</p>
             </div>
           </div>
         </div>
 
         <div className="md:col-span-4 bg-[#110e16]/60 p-4.5 border border-white/5 rounded-xl flex flex-col justify-between space-y-2">
           <div className="space-y-1.5">
-            <p className="text-[10px] font-black uppercase text-[#cbc4d2]/40 tracking-wider">{TEXT.auditTitle}</p>
-            <div className="flex justify-between items-center text-[11px] text-[#cbc4d2]/70 font-mono leading-none">
+            <p className="text-xs font-black uppercase text-[#cbc4d2]/40 tracking-wider">{TEXT.auditTitle}</p>
+            <div className="flex justify-between items-center text-[13px] text-[#cbc4d2]/70 font-mono leading-none">
               <span>{TEXT.total}</span>
               <span className="font-black text-white">6,050 U</span>
             </div>
-            <div className="flex justify-between items-center text-[11px] text-[#cbc4d2]/70 font-mono leading-none">
+            <div className="flex justify-between items-center text-[13px] text-[#cbc4d2]/70 font-mono leading-none">
               <span>{TEXT.clipped}</span>
               <span className="font-extrabold text-red-400">1,650 U</span>
             </div>
           </div>
-          <p className="text-[9px] text-[#cbc4d2]/35 italic leading-tight">
+          <p className="text-xs text-[#cbc4d2]/35 italic leading-tight">
             {TEXT.note}
           </p>
         </div>

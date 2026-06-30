@@ -1,5 +1,6 @@
-import { Card } from 'antd';
 import { DollarSign, Sliders } from 'lucide-react';
+
+import { AntdCard } from '../../../../../shared/antd/AntdCard';
 
 const TEXT = {
   title: '\u667a\u80fd\u6821\u5bf9\u76d1\u63a7\u89c4\u8303',
@@ -15,7 +16,7 @@ const TEXT = {
 
 export function AntdCalibrationGuidePanel() {
   return (
-    <Card className="alliance-antd-queue-side-card lg:col-span-4">
+    <AntdCard className="alliance-antd-queue-side-card lg:col-span-4">
       <div className="space-y-4">
         <h4 className="text-xs font-black text-[#f1bf50] flex items-center gap-1.5 uppercase tracking-wider font-sans border-b border-white/5 pb-2">
           <Sliders className="w-4 h-4 text-[#f1bf50]" />
@@ -24,8 +25,8 @@ export function AntdCalibrationGuidePanel() {
         <div className="text-xs text-[#cbc4d2]/70 space-y-4 leading-relaxed font-sans">
           <p>{TEXT.desc}</p>
           <div className="p-3 bg-[#110e16] rounded-xl border border-white/5 space-y-2">
-            <p className="font-extrabold text-white text-[10.5px]">{TEXT.formulaTitle}</p>
-            <p className="text-[10px] leading-relaxed text-[#cbc4d2]/60">{TEXT.formulaDesc}</p>
+            <p className="font-extrabold text-white text-[13px]">{TEXT.formulaTitle}</p>
+            <p className="text-xs leading-relaxed text-[#cbc4d2]/60">{TEXT.formulaDesc}</p>
           </div>
         </div>
       </div>
@@ -35,8 +36,8 @@ export function AntdCalibrationGuidePanel() {
           <DollarSign className="w-4 h-4 text-[#cfbcff]" />
           <span>{TEXT.riskTitle}</span>
         </p>
-        <p className="text-[#cbc4d2]/75 leading-relaxed text-[11px]">{TEXT.riskDesc}</p>
+        <p className="text-[#cbc4d2]/75 leading-relaxed text-[13px]">{TEXT.riskDesc}</p>
       </div>
-    </Card>
+    </AntdCard>
   );
 }

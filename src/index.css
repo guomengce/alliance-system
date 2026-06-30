@@ -24,6 +24,7 @@ body {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.06);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-bottom:20px;
 }
 
 .glass-card:hover {
@@ -70,4 +71,142 @@ body {
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* Ant Design Table Global Styles */
+.ant-table-wrapper {
+  font-family: "Inter", sans-serif;
+}
+
+.ant-table {
+  background: transparent;
+  color: #e6e0e9;
+}
+
+.ant-table-thead > tr > th {
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: #cbc4d2;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 12px 16px;
+}
+
+.ant-table-thead > tr > th::before {
+  display: none;
+}
+
+.ant-table-tbody > tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.ant-table-tbody > tr:last-child {
+  border-bottom: none;
+}
+
+.ant-table-tbody > tr > td {
+  padding: 14px 16px;
+  color: #e6e0e9;
+}
+
+.ant-table-tbody > tr:hover > td {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.ant-table-tbody > tr.ant-table-row-selected > td {
+  background: rgba(103, 80, 164, 0.15);
+}
+
+.ant-table-cell {
+  transition: background-color 0.15s ease;
+}
+
+.ant-table-empty {
+  background: transparent;
+}
+
+.ant-table-empty .ant-empty-description {
+  color: #cbc4d2;
+}
+
+.ant-table-summary > tr > td {
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Ant Design Card Global Styles */
+.ant-card {
+  background: rgba(26, 22, 32, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+}
+
+.ant-card-head {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+.ant-card-body {
+  padding: 16px;
+}
+
+/* Ant Design Tag Global Styles */
+.ant-tag {
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+}
+
+/* Ant Design Statistic Global Styles */
+.ant-statistic-content {
+  color: #ffffff;
+}
+
+.ant-statistic-title {
+  color: #cbc4d2;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Ant Design Progress Global Styles */
+.ant-progress-circle .ant-progress-text {
+  color: #ffffff;
+  font-weight: 900;
+}
+
+/* Ant Design Button Global Styles */
+.ant-btn {
+  font-weight: 700;
+  border-radius: 12px;
+}
+
+.ant-btn-primary {
+  background: linear-gradient(135deg, #6750a4 0%, #cfbcff 100%);
+  border: none;
+  color: #110e16;
+}
+
+.ant-btn-primary:hover {
+  background: linear-gradient(135deg, #7c6aab 0%, #d4c8ff 100%);
+  border: none;
+}
+
+/* Ant Design Alert Global Styles */
+.ant-alert {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+}
+
+.ant-alert-success {
+  border-color: rgba(0, 230, 118, 0.2);
+}
+
+.ant-alert-success .ant-alert-icon {
+  color: #00e676;
 }

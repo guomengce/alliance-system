@@ -1,0 +1,135 @@
+﻿/* Module-scoped Ant Design styles for this feature. */
+.alliance-antd-settings-form-item.ant-form-item {
+  margin-bottom: 0;
+}
+
+.alliance-antd-settings-form-item.ant-form-item .ant-form-item-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.alliance-antd-settings-form-item.ant-form-item .ant-form-item-label,
+.alliance-antd-settings-form-item.ant-form-item .ant-form-item-control {
+  flex: none;
+  max-width: 100%;
+  width: 100%;
+}
+
+.alliance-antd-settings-form-item.ant-form-item .ant-form-item-label {
+  padding-bottom: 8px;
+}
+
+.alliance-antd-settings-form-item.ant-form-item .ant-form-item-label > label {
+  color: var(--color-text-secondary);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.alliance-antd-settings-eye-button.ant-btn,
+.alliance-antd-settings-eye-button.ant-btn:hover,
+.alliance-antd-settings-eye-button.ant-btn:focus {
+  align-items: center;
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  color: rgba(255, 255, 255, 0.5) !important;
+  display: inline-flex;
+  height: 24px;
+  justify-content: center;
+  min-width: 24px;
+  padding: 0;
+}
+
+.alliance-antd-settings-eye-button.ant-btn:hover {
+  color: var(--color-text-main) !important;
+}
+
+.alliance-antd-settings-submit-button.ant-btn,
+.alliance-antd-settings-submit-button.ant-btn:hover,
+.alliance-antd-settings-submit-button.ant-btn:focus {
+  border-radius: 8px !important;
+  font-size: 16px !important;
+  font-weight: 800 !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  padding: 0 18px !important;
+}
+
+.alliance-antd-settings-secondary-button.ant-btn,
+.alliance-antd-settings-secondary-button.ant-btn:hover,
+.alliance-antd-settings-secondary-button.ant-btn:focus {
+  align-items: center;
+  background: transparent !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px;
+  color: var(--color-primary-light) !important;
+  display: inline-flex;
+  font-size: 16px;
+  font-weight: 800;
+  height: 44px;
+  justify-content: center;
+  line-height: 44px;
+  min-height: 44px;
+  padding: 0 16px;
+}
+
+.alliance-antd-settings-secondary-button.ant-btn:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.alliance-antd-settings-support-button.ant-btn,
+.alliance-antd-settings-support-button.ant-btn:hover,
+.alliance-antd-settings-support-button.ant-btn:focus {
+  align-items: center;
+  display: inline-flex;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  height: 44px !important;
+  justify-content: center;
+  line-height: 44px !important;
+  min-height: 44px !important;
+  padding: 0 18px !important;
+}
+
+.alliance-antd-settings-logout-button.ant-btn,
+.alliance-antd-settings-logout-button.ant-btn:hover,
+.alliance-antd-settings-logout-button.ant-btn:focus {
+  background: transparent !important;
+  border-color: rgba(244, 63, 94, 0.1) !important;
+  border-radius: 12px;
+  color: #ffb4ab !important;
+  font-size: 16px;
+  font-weight: 800;
+  height: 48px;
+}
+
+.alliance-antd-settings-logout-button.ant-btn:hover {
+  background: rgba(244, 63, 94, 0.1) !important;
+}
+
+.alliance-antd-settings-version-tag.ant-tag,
+.alliance-antd-settings-current-tag.ant-tag {
+  background: rgba(207, 188, 255, 0.1);
+  border-color: rgba(207, 188, 255, 0.2);
+  border-radius: 999px;
+  color: var(--color-primary-light);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 18px;
+  margin-inline-end: 0;
+  padding: 0 9px;
+}
+
+.alliance-antd-settings-current-tag.ant-tag {
+  background: rgba(0, 230, 118, 0.1);
+  border-color: rgba(0, 230, 118, 0.25);
+  color: #00e676;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 0 6px;
+}
+

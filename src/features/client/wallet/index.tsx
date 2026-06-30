@@ -1,3 +1,4 @@
+import './antd-overrides.css';
 import PageView from '../../../shared/components/PageView';
 import AlertBanner from '../../../shared/components/AlertBanner';
 import ActionPanel from './components/ActionPanel';

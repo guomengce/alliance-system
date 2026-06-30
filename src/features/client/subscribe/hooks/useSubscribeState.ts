@@ -1,4 +1,4 @@
-import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import {
   getInitialClientPlans,
   getInitialClientSubscribeOrders
@@ -54,8 +54,8 @@ export function useSubscribeState({
     setErrorMsg('');
   };
 
-  const handleDropdownChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const plan = plans.find(p => p.id === e.target.value);
+  const handleDropdownChange = (planId: string) => {
+    const plan = plans.find(p => p.id === planId);
     if (plan) {
       handleSelectPlan(plan);
     }

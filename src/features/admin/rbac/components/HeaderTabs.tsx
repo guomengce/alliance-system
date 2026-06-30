@@ -29,7 +29,7 @@ export default function HeaderTabs({
             <ShieldCheck className="w-5 h-5 text-[#cfbcff]" />
             <span>管核控制中心 & RBAC 权限网格</span>
           </h3>
-          <p className="text-[11px] text-[#cbc4d2]/50 leading-relaxed font-sans max-w-2xl">
+          <p className="text-[13px] text-[#cbc4d2]/50 leading-relaxed font-sans max-w-2xl">
             基于角色访问控制模型（RBAC）隔离运营、风控与底层结算。安全多维防刷，提供高等级分权管理与实时钩选授权。
           </p>
         </div>

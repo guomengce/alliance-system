@@ -21,24 +21,24 @@ export default function AntdMobileCard({ payout: p, onSelectCommission }: Mobile
       <div className="flex justify-between items-start">
         <div>
           <span className="font-extrabold text-xs text-white font-mono">{p.id}</span>
-          <p className="text-[9px] text-[#cbc4d2]/30 font-mono mt-0.5">
+          <p className="text-xs text-[#cbc4d2]/30 font-mono mt-0.5">
             {MOBILE_TEXT.source}: {p.orderId}
           </p>
         </div>
-        <Tag className="alliance-antd-tag alliance-antd-tag-purple alliance-antd-commission-mobile-tag">
+        <Tag color="purple" className="alliance-antd-commission-mobile-tag">
           {p.level}
           {MOBILE_TEXT.generation}
         </Tag>
       </div>
 
-      <div className="grid grid-cols-2 gap-2 text-[11px] border-t border-b border-white/5 py-2 font-mono">
+      <div className="grid grid-cols-2 gap-2 text-[13px] border-t border-b border-white/5 py-2 font-mono">
         <div>
-          <span className="text-[#cbc4d2]/40 text-[9px] block font-sans">{MOBILE_TEXT.uidLabel}</span>
+          <span className="text-[#cbc4d2]/40 text-xs block font-sans">{MOBILE_TEXT.uidLabel}</span>
           <p className="text-[#cbc4d2] font-semibold">{p.uid}</p>
-          <p className="text-[9px] text-[#cbc4d2]/40 font-sans truncate">{p.recipientNickname}</p>
+          <p className="text-xs text-[#cbc4d2]/40 font-sans truncate">{p.recipientNickname}</p>
         </div>
         <div>
-          <span className="text-[#cbc4d2]/40 text-[9px] block font-sans">
+          <span className="text-[#cbc4d2]/40 text-xs block font-sans">
             {p.status === 'intercepted' ? MOBILE_TEXT.interceptedAmount : MOBILE_TEXT.normalAmount}
           </span>
           <p className={`${p.status === 'intercepted' ? 'text-red-400' : 'text-emerald-400'} font-extrabold text-xs mt-0.5`}>
@@ -47,9 +47,9 @@ export default function AntdMobileCard({ payout: p, onSelectCommission }: Mobile
         </div>
       </div>
 
-      <div className="flex justify-between items-center text-[11px] gap-2">
+      <div className="flex justify-between items-center text-[13px] gap-2">
         <div>
-          <span className="text-[#cbc4d2]/40 text-[9px] block font-sans">{MOBILE_TEXT.statusLabel}</span>
+          <span className="text-[#cbc4d2]/40 text-xs block font-sans">{MOBILE_TEXT.statusLabel}</span>
           <div className="mt-1">
             <AntdStatusBadge status={p.status} variant="mobile" />
           </div>

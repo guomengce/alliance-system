@@ -15,7 +15,7 @@ export default function AntdCommissionAllocationPanel({
   return (
     <div className="bg-[#120f1a] p-5 rounded-2xl border border-white/5 text-xs text-[#cbc4d2]/90 text-left space-y-4">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/5 pb-3">
-        <h5 className="text-[11px] font-black uppercase text-emerald-400 flex items-center gap-1.5 tracking-wider">
+        <h5 className="text-[13px] font-black uppercase text-emerald-400 flex items-center gap-1.5 tracking-wider">
           <ShieldCheck className="w-4 h-4" />
           <span>对应上级同盟链条推广佣金穿透分拨明细 (Alliance L1-L5 distribution trace)</span>
         </h5>
@@ -33,7 +33,7 @@ export default function AntdCommissionAllocationPanel({
       </div>
 
       <div className="hidden md:block border border-white/5 rounded-xl overflow-hidden bg-[#181421]/60">
-        <div className="grid grid-cols-5 bg-white/3 py-2.5 px-3.5 text-[9px] font-black uppercase tracking-wider text-[#cbc4d2]/40 border-b border-white/5">
+        <div className="grid grid-cols-5 bg-white/3 py-2.5 px-3.5 text-xs font-black uppercase tracking-wider text-[#cbc4d2]/40 border-b border-white/5">
           <span>层级 / 代数</span>
           <span>承接代管人 UID</span>
           <span>昵称属性</span>
@@ -67,17 +67,17 @@ export default function AntdCommissionAllocationPanel({
                 <span className="font-sans text-[#cfbcff] font-bold text-xs">{alloc.level}</span>
                 <span className="text-emerald-400 font-extrabold text-xs font-mono">USDT {alloc.amount.toLocaleString()}</span>
               </div>
-              <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-[11px] font-mono">
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-[13px] font-mono">
                 <div>
-                  <span className="text-[#cbc4d2]/40 text-[9px] font-sans block leading-none mb-1">承接人 UID</span>
+                  <span className="text-[#cbc4d2]/40 text-xs font-sans block leading-none mb-1">承接人 UID</span>
                   <span className="text-white font-medium block">{alloc.targetUid}</span>
                 </div>
                 <div>
-                  <span className="text-[#cbc4d2]/40 text-[9px] font-sans block leading-none mb-1">返佣比例</span>
+                  <span className="text-[#cbc4d2]/40 text-xs font-sans block leading-none mb-1">返佣比例</span>
                   <span className="text-white/80 block font-bold">{alloc.rate}%</span>
                 </div>
                 <div className="col-span-2">
-                  <span className="text-[#cbc4d2]/40 text-[9px] font-sans block leading-none mb-1">昵称及属性</span>
+                  <span className="text-[#cbc4d2]/40 text-xs font-sans block leading-none mb-1">昵称及属性</span>
                   <span className="text-[#cbc4d2]/90 block font-sans truncate" title={alloc.nickname}>
                     {alloc.nickname}
                   </span>
@@ -92,7 +92,7 @@ export default function AntdCommissionAllocationPanel({
         )}
       </div>
 
-      <div className="p-3 bg-[#cfbcff]/5 border border-[#cfbcff]/10 rounded-xl text-[11px] text-[#cbc4d2] space-y-1.5 leading-relaxed font-sans">
+      <div className="p-3 bg-[#cfbcff]/5 border border-[#cfbcff]/10 rounded-xl text-[13px] text-[#cbc4d2] space-y-1.5 leading-relaxed font-sans">
         <p className="font-extrabold text-[#cfbcff] flex items-center gap-1">
           <ShieldCheck className="w-3.5 h-3.5 text-[#cfbcff]" />
           <span>分销推广佣金分配核心逻辑说明</span>

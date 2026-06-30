@@ -1,3 +1,4 @@
+import '../shared/antd-overrides.css';
 import AntdApiPanel from './components/AntdApiPanel';
 import AntdCommissionPanel from './components/AntdCommissionPanel';
 import AntdLimitsPanel from './components/AntdLimitsPanel';

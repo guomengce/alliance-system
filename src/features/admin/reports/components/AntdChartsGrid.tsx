@@ -55,13 +55,13 @@ export function AntdChartsGrid({ distributionLogs, packageSegments }: ChartsGrid
             <div key={log.period} className="flex justify-between items-center text-xs bg-[#211c2b]/50 p-3 rounded-xl border border-white/2 font-sans">
               <div className="space-y-1">
                 <p className="font-bold text-white">{log.period}</p>
-                <p className="text-[10px] text-[#cbc4d2]/50 font-mono">
+                <p className="text-xs text-[#cbc4d2]/50 font-mono">
                   {TEXT.total}: {log.total} ({log.count})
                 </p>
               </div>
               <div className="text-right">
                 <p className="font-extrabold text-emerald-400 font-mono">{log.profit}</p>
-                <span className="text-[9px] text-[#cfbcff] font-bold">{log.status}</span>
+                <span className="text-xs text-[#cfbcff] font-bold">{log.status}</span>
               </div>
             </div>
           ))}
