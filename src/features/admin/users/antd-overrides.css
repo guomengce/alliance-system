@@ -69,3 +69,6 @@
   padding: 0 12px;
 }
 
+.alliance-antd-admin-user-detail-segmented.ant-segmented {
+  margin-bottom: 20px;
+}

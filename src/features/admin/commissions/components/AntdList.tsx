@@ -1,4 +1,4 @@
-import { Button, Empty, Input } from 'antd';
+import { Empty, Input, Segmented } from 'antd';
 import { Coins, X } from 'lucide-react';
 
 import type { ActiveTab, ListProps } from '../types';
@@ -13,11 +13,11 @@ const LIST_TEXT = {
   emptyHint: '\u60a8\u53ef\u4ee5\u5c1d\u8bd5\u6e05\u7a7a\u5173\u952e\u8bcd\u6216\u70b9\u51fb\u5176\u4ed6\u5206\u7c7b\u9009\u9879',
 };
 
-const TAB_OPTIONS: Array<{ key: ActiveTab; label: string; className: string }> = [
-  { key: 'all', label: '\u5168\u90e8\u660e\u7ec6', className: 'is-all' },
-  { key: 'credited', label: '\u5df2\u5165\u6c60\u5212\u8d26', className: 'is-credited' },
-  { key: 'blocked', label: '\u989d\u5ea6\u6c60\u963b\u585e', className: 'is-blocked' },
-  { key: 'intercepted', label: '\u53d7\u963b\u62e6\u622a\u56de\u7b3c', className: 'is-intercepted' },
+const TAB_OPTIONS: Array<{ value: ActiveTab; label: string }> = [
+  { value: 'all', label: '\u5168\u90e8\u660e\u7ec6' },
+  { value: 'credited', label: '\u5df2\u5165\u6c60\u5212\u8d26' },
+  { value: 'blocked', label: '\u989d\u5ea6\u6c60\u963b\u585e' },
+  { value: 'intercepted', label: '\u53d7\u963b\u62e6\u622a\u56de\u7b3c' },
 ];
 
 export default function AntdList({
@@ -41,9 +41,9 @@ export default function AntdList({
         </div>
       </div>
 
-      <div className="space-y-3 pt-1">
+      <div className="alliance-antd-admin-commission-toolbar flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 pt-1">
         <Input
-          className="alliance-antd-commission-search"
+          className="alliance-antd-commission-search w-full lg:max-w-[520px]"
           value={commissionSearch}
           onChange={(event) => onCommissionSearchChange(event.target.value)}
           placeholder={LIST_TEXT.searchPlaceholder}
@@ -60,17 +60,13 @@ export default function AntdList({
           }
         />
 
-        <div className="flex flex-wrap items-center gap-2 select-none border-b border-white/5 pb-2">
-          {TAB_OPTIONS.map((tab) => (
-            <Button
-              key={tab.key}
-              className={`alliance-antd-commission-tab ${tab.className} ${activeTab === tab.key ? 'is-active' : ''}`}
-              size="small"
-              onClick={() => onActiveTabChange(tab.key)}
-            >
-              {tab.label}
-            </Button>
-          ))}
+        <div className="select-none lg:ml-auto">
+          <Segmented<ActiveTab>
+            className="alliance-antd-admin-segmented-tabs"
+            options={TAB_OPTIONS}
+            value={activeTab}
+            onChange={onActiveTabChange}
+          />
         </div>
       </div>
 

@@ -16,9 +16,18 @@
   transition: color 160ms ease;
 }
 
+.alliance-antd-commission-filter.ant-segmented .ant-segmented-item:hover {
+  color: var(--color-text-main);
+}
+
 .alliance-antd-commission-filter.ant-segmented .ant-segmented-item-selected {
   background: var(--color-primary-light) !important;
   color: #210c44 !important;
+}
+
+.alliance-antd-commission-filter.ant-segmented .ant-segmented-thumb {
+  background: var(--color-primary-light) !important;
+  border-radius: 8px;
 }
 
 .alliance-antd-commission-avatar.ant-avatar {

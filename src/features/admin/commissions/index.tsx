@@ -1,4 +1,5 @@
 import '../../shared/antd/commission-overrides.css';
+import '../shared/antd-overrides.css';
 import AntdDetailsPanel from './components/AntdDetailsPanel';
 import AntdList from './components/AntdList';
 import AntdSummaryCards from './components/AntdSummaryCards';
