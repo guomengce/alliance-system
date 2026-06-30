@@ -16,7 +16,7 @@ const getStatusClass = (purchase: Purchase) => {
   if (purchase.isConfirmation) return 'is-warning';
   if (purchase.statusType === 'success') return 'is-success';
   if (purchase.statusType === 'failed') return 'is-failed';
-  return 'is-pending';
+  return 'is-running';
 };
 
 export default function DetailModal({

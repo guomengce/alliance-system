@@ -1,0 +1,443 @@
+/* Shared commission Ant Design overrides for admin and client commission pages. */
+.alliance-antd-commission-filter.ant-segmented {
+  background: #100d14;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.alliance-antd-commission-filter.ant-segmented .ant-segmented-item {
+  border-radius: 8px;
+  color: rgba(203, 196, 210, 0.6);
+  font-size: 12px;
+  font-weight: 800;
+  min-height: 28px;
+  padding: 0 10px;
+  transition: color 160ms ease;
+}
+
+.alliance-antd-commission-filter.ant-segmented .ant-segmented-item-selected {
+  background: var(--color-primary-light) !important;
+  color: #210c44 !important;
+}
+
+.alliance-antd-commission-avatar.ant-avatar {
+  background: rgba(207, 188, 255, 0.14);
+  border: 1px solid rgba(207, 188, 255, 0.16);
+  color: var(--color-primary-light);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.alliance-antd-commission-level-tag.ant-tag {
+  background: rgba(207, 188, 255, 0.1);
+  border-color: rgba(207, 188, 255, 0.16);
+  border-radius: 10px;
+  color: var(--color-primary-light);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 18px;
+  margin-inline-end: 0;
+  padding: 0 8px;
+}
+
+.alliance-antd-commission-action-button,
+.alliance-antd-commission-action-button:hover,
+.alliance-antd-commission-action-button:focus {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: transparent !important;
+  border-radius: 8px;
+  color: #ffffff !important;
+  display: inline-flex;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  gap: 4px;
+  height: 24px;
+  padding: 0 10px;
+}
+
+.alliance-antd-commission-action-button:hover {
+  background: rgba(207, 188, 255, 0.1) !important;
+  color: #cfbcff !important;
+}
+
+.alliance-antd-commission-action-button:active {
+  transform: scale(0.95);
+}
+
+.alliance-antd-commission-summary-card.ant-card {
+  background: #1c1824;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  color: #cbc4d2;
+}
+
+.alliance-antd-commission-summary-card .ant-card-body {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 18px;
+}
+
+.alliance-antd-commission-search.ant-input-affix-wrapper {
+  background: #1c1824 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  padding: 8px 12px;
+}
+
+.alliance-antd-commission-search.ant-input-affix-wrapper:hover,
+.alliance-antd-commission-search.ant-input-affix-wrapper-focused {
+  border-color: rgba(207, 188, 255, 0.5) !important;
+}
+
+.alliance-antd-commission-search .ant-input {
+  background: transparent !important;
+  color: #ffffff !important;
+  font-size: 12px;
+}
+
+.alliance-antd-commission-search .ant-input::placeholder {
+  color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.alliance-antd-commission-tab.ant-btn {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: transparent !important;
+  border-radius: 8px;
+  color: rgba(203, 196, 210, 0.7) !important;
+  font-size: 12px;
+  font-weight: 700;
+  height: 30px;
+  letter-spacing: 0.025em;
+  padding: 0 12px;
+}
+
+.alliance-antd-commission-tab.ant-btn:hover,
+.alliance-antd-commission-tab.ant-btn:focus {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: rgba(203, 196, 210, 0.9) !important;
+}
+
+.alliance-antd-commission-tab.ant-btn.is-active.is-all {
+  background: #cfbcff !important;
+  color: #24134c !important;
+}
+
+.alliance-antd-commission-tab.ant-btn.is-active.is-credited {
+  background: rgba(16, 185, 129, 0.2) !important;
+  border-color: rgba(16, 185, 129, 0.3) !important;
+  color: #6ee7b7 !important;
+}
+
+.alliance-antd-commission-tab.ant-btn.is-active.is-blocked {
+  background: rgba(245, 158, 11, 0.2) !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+  color: #fcd34d !important;
+}
+
+.alliance-antd-commission-tab.ant-btn.is-active.is-intercepted {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  background: rgba(239, 68, 68, 0.3) !important;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+  color: #fca5a5 !important;
+}
+
+.alliance-antd-commission-mobile-card.ant-card {
+  background: rgba(29, 25, 37, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  color: #cbc4d2;
+  font-family: var(--font-sans);
+}
+
+.alliance-antd-commission-mobile-card .ant-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+}
+
+.alliance-antd-commission-mobile-tag.ant-tag {
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 16px;
+  margin-inline-end: 0;
+  padding: 0 6px;
+}
+
+.alliance-antd-commission-mobile-action-button.ant-btn,
+.alliance-antd-commission-mobile-action-button.ant-btn:hover,
+.alliance-antd-commission-mobile-action-button.ant-btn:focus {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: transparent !important;
+  border-radius: 12px;
+  color: #ffffff !important;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 700;
+  height: 30px;
+  padding: 0 10px;
+}
+
+.alliance-antd-commission-mobile-action-button.ant-btn:hover {
+  background: rgba(207, 188, 255, 0.1) !important;
+  color: #cfbcff !important;
+}
+
+.alliance-antd-commission-mobile-action-button.ant-btn:active {
+  transform: scale(0.95);
+}
+
+.alliance-antd-commission-modal-root .ant-modal-mask {
+  background: rgba(0, 0, 0, 0.85) !important;
+  backdrop-filter: blur(12px);
+}
+
+.alliance-antd-commission-modal.ant-modal {
+  color: #cbc4d2;
+}
+
+.alliance-antd-commission-modal.ant-modal .ant-modal-content {
+  background: #181421 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75) !important;
+  color: #cbc4d2 !important;
+  max-height: 90vh;
+  padding: 20px !important;
+}
+
+@media (min-width: 768px) {
+  .alliance-antd-commission-modal.ant-modal .ant-modal-content {
+    padding: 28px !important;
+  }
+}
+
+.alliance-antd-commission-modal.ant-modal .ant-modal-body {
+  background: transparent !important;
+  color: #cbc4d2 !important;
+}
+
+.alliance-antd-commission-modal.ant-modal .ant-modal-close {
+  color: rgba(203, 196, 210, 0.6) !important;
+  inset-inline-end: 16px !important;
+  top: 16px !important;
+}
+
+.alliance-antd-commission-modal.ant-modal .ant-modal-close:hover {
+  color: #ffffff !important;
+}
+
+.alliance-antd-commission-modal.ant-modal .ant-modal-title {
+  background: transparent !important;
+  color: #ffffff !important;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.alliance-antd-commission-modal.ant-modal .ant-modal-header {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+}
+
+.alliance-antd-commission-modal.ant-modal .ant-modal-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: 16px;
+  padding-top: 12px;
+}
+
+.alliance-antd-commission-force-button.ant-btn,
+.alliance-antd-commission-force-button.ant-btn:hover,
+.alliance-antd-commission-force-button.ant-btn:focus {
+  align-items: center;
+  background: linear-gradient(90deg, #6750a4, #cfbcff) !important;
+  border-color: transparent !important;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25);
+  color: #ffffff !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  gap: 6px;
+  height: 42px;
+  justify-content: center;
+  padding: 0 12px;
+  width: 100%;
+}
+
+.alliance-antd-commission-force-button.ant-btn:hover {
+  filter: brightness(1.1);
+}
+
+.alliance-antd-commission-adjust-button.ant-btn,
+.alliance-antd-commission-adjust-button.ant-btn:hover,
+.alliance-antd-commission-adjust-button.ant-btn:focus,
+.alliance-antd-commission-close-button.ant-btn,
+.alliance-antd-commission-close-button.ant-btn:hover,
+.alliance-antd-commission-close-button.ant-btn:focus {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px;
+  color: #ffffff !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 4px;
+  height: 42px;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+.alliance-antd-commission-adjust-button.ant-btn {
+  color: #cbc4d2 !important;
+  width: 100%;
+}
+
+.alliance-antd-commission-adjust-button.ant-btn:hover,
+.alliance-antd-commission-close-button.ant-btn:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.alliance-antd-commission-close-button.ant-btn {
+  height: 34px;
+}
+
+.alliance-antd-commission-force-button.ant-btn:active,
+.alliance-antd-commission-adjust-button.ant-btn:active,
+.alliance-antd-commission-close-button.ant-btn:active {
+  transform: scale(0.95);
+}
+
+.alliance-antd-commission-adjust-input.ant-input-number {
+  background: #110e16 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  width: 100%;
+}
+
+.alliance-antd-commission-adjust-input.ant-input-number:hover,
+.alliance-antd-commission-adjust-input.ant-input-number-focused {
+  border-color: rgba(207, 188, 255, 0.45) !important;
+}
+
+.alliance-antd-commission-adjust-input .ant-input-number-input {
+  color: #ffffff !important;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  height: 42px;
+}
+
+.alliance-antd-commission-status-tag.ant-tag,
+.alliance-antd-queue-status-tag.ant-tag {
+  align-items: center;
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 900;
+  gap: 6px;
+  height: 22px;
+  line-height: 20px;
+  margin-inline-end: 0;
+  padding: 0 10px;
+}
+
+.alliance-antd-commission-status-tag.is-success,
+.alliance-antd-queue-status-tag.is-success {
+  background: rgba(0, 230, 118, 0.1);
+  border-color: rgba(0, 230, 118, 0.24);
+  color: #00e676;
+}
+
+.alliance-antd-commission-status-tag.is-pending {
+  background: rgba(103, 80, 164, 0.24) !important;
+  border-color: rgba(207, 188, 255, 0.24) !important;
+  color: #cfbcff !important;
+}
+
+.alliance-antd-queue-status-tag.is-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.25);
+  color: #f59e0b;
+}
+
+.alliance-antd-commission-status-tag.is-danger {
+  background: rgba(248, 113, 113, 0.1);
+  border-color: rgba(248, 113, 113, 0.26);
+  color: #ff6b8a;
+}
+
+.alliance-antd-commission-live-tag.ant-tag {
+  align-items: center;
+  background: rgba(0, 230, 118, 0.08) !important;
+  border-color: rgba(0, 230, 118, 0.2) !important;
+  border-radius: 10px !important;
+  color: #00e676 !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 900;
+  gap: 8px;
+  height: 38px;
+  margin-inline-end: 0;
+  padding: 0 16px;
+}
+
+.alliance-antd-commission-limit-button.ant-btn,
+.alliance-antd-commission-limit-button.ant-btn:hover,
+.alliance-antd-commission-limit-button.ant-btn:focus {
+  align-items: center;
+  background: linear-gradient(90deg, #6750a4, #cfbcff) !important;
+  border: 0 !important;
+  border-radius: 10px;
+  box-shadow: 0 10px 22px rgba(103, 80, 164, 0.22);
+  color: #160f22 !important;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 900;
+  gap: 6px;
+  height: 38px;
+  padding: 0 18px;
+}
+
+.alliance-antd-commission-limit-button.ant-btn:hover,
+.alliance-antd-commission-limit-button.ant-btn:focus {
+  filter: brightness(1.04);
+}
+
+.alliance-antd-commission-export-button.ant-btn,
+.alliance-antd-commission-export-button.ant-btn:hover,
+.alliance-antd-commission-export-button.ant-btn:focus {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(207, 188, 255, 0.22) !important;
+  border-radius: 10px;
+  box-shadow: none;
+  color: #cfbcff !important;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 900;
+  gap: 7px;
+  height: 38px;
+  padding: 0 17px;
+}
+
+.alliance-antd-commission-export-button.ant-btn:hover,
+.alliance-antd-commission-export-button.ant-btn:focus {
+  background: rgba(207, 188, 255, 0.08) !important;
+  border-color: rgba(207, 188, 255, 0.34) !important;
+}

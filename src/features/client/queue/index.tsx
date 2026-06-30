@@ -1,4 +1,4 @@
-import '../../shared/antd/queue-overrides.css';
+import './queue-overrides.css';
 import { Unlock } from 'lucide-react';
 import PageView from '../../../shared/components/PageView';
 import AlertBanner from '../../../shared/components/AlertBanner';

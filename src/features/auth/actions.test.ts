@@ -81,7 +81,7 @@ describe('local auth actions', () => {
     const result = await requestBackendResetCode({ email: ' USER@EXAMPLE.COM ' }, { api });
 
     expect(api.requestReset).not.toHaveBeenCalled();
-    expect(result).toEqual({ message: 'local reset code ready', resetToken: '000000' });
+    expect(result).toEqual({ message: '系统重置密码安全验证码已被分发，演示核验码为', resetToken: '123456' });
   });
 
   it('resets password locally without calling the backend api', async () => {

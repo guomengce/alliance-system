@@ -2,20 +2,33 @@
 .alliance-antd-notification-tabs.ant-segmented {
   background: transparent;
   border: 0;
+  min-height: 42px;
   padding: 0;
 }
 
 .alliance-antd-notification-tabs.ant-segmented .ant-segmented-group {
+  align-items: center;
   gap: 8px;
+  min-height: 42px;
 }
 
 .alliance-antd-notification-tabs.ant-segmented .ant-segmented-item {
+  align-items: center;
   border-radius: 12px;
   color: rgba(203, 196, 210, 0.8);
+  display: inline-flex;
   font-size: 12px;
   font-weight: 800;
+  height: 38px;
   min-height: 38px;
   padding: 0 18px;
+}
+
+.alliance-antd-notification-tabs.ant-segmented .ant-segmented-item-label {
+  align-items: center;
+  display: inline-flex;
+  height: 38px;
+  line-height: 38px;
 }
 
 .alliance-antd-notification-tabs.ant-segmented .ant-segmented-item-selected {
@@ -24,9 +37,15 @@
 }
 
 .alliance-antd-notification-tab-badge.ant-badge {
-  position: absolute;
+  align-items: center;
+  display: inline-flex;
+  line-height: 1;
+  position: relative;
+}
+
+.alliance-antd-notification-tab-badge.ant-badge .ant-badge-dot {
   right: -9px;
-  top: -5px;
+  top: 2px;
 }
 
 .alliance-antd-notification-action.ant-btn,
@@ -110,4 +129,3 @@
   color: currentColor;
   stroke: currentColor;
 }
-

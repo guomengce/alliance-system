@@ -1,0 +1,380 @@
+/* Shared queue Ant Design overrides for admin and client queue surfaces. */
+.alliance-antd-queue-filter.ant-segmented {
+  background: #100d14;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.alliance-antd-queue-filter.ant-segmented .ant-segmented-item {
+  border-radius: 8px;
+  color: rgba(203, 196, 210, 0.6);
+  font-size: 12px;
+  font-weight: 800;
+  min-height: 28px;
+  padding: 0 10px;
+  transition: color 160ms ease;
+}
+
+.alliance-antd-queue-filter.ant-segmented .ant-segmented-item-selected {
+  background: var(--color-primary-light) !important;
+  color: #210c44 !important;
+}
+
+.alliance-antd-queue-guide-card.ant-card,
+.alliance-antd-queue-side-card.ant-card {
+  background: transparent;
+  border: 0;
+  color: #cbc4d2;
+  font-family: var(--font-sans);
+}
+
+.alliance-antd-queue-guide-card .ant-card-body {
+  padding: 0;
+}
+
+.alliance-antd-queue-side-card.ant-card {
+  background: #1a1622;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  height: fit-content;
+}
+
+.alliance-antd-queue-side-card .ant-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.alliance-antd-queue-count-tag.ant-tag {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 18px;
+  margin-inline-end: 0;
+  padding: 0 10px;
+}
+
+.alliance-antd-queue-action-button.ant-btn,
+.alliance-antd-queue-action-button.ant-btn:hover,
+.alliance-antd-queue-action-button.ant-btn:focus,
+.alliance-antd-queue-mobile-action-button.ant-btn,
+.alliance-antd-queue-mobile-action-button.ant-btn:hover,
+.alliance-antd-queue-mobile-action-button.ant-btn:focus,
+.alliance-antd-queue-back-button.ant-btn,
+.alliance-antd-queue-back-button.ant-btn:hover,
+.alliance-antd-queue-back-button.ant-btn:focus {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px;
+  color: #cbc4d2 !important;
+  display: inline-flex;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 800;
+  gap: 4px;
+  height: 30px;
+  justify-content: center;
+  padding: 0 14px;
+}
+
+.alliance-antd-queue-action-button.ant-btn:hover,
+.alliance-antd-queue-mobile-action-button.ant-btn:hover {
+  background: rgba(207, 188, 255, 0.15) !important;
+  color: #cfbcff !important;
+}
+
+.alliance-antd-queue-back-button.ant-btn {
+  color: #ffffff !important;
+  height: 34px;
+  padding: 0 14px;
+}
+
+.alliance-antd-queue-action-button.ant-btn:active,
+.alliance-antd-queue-mobile-action-button.ant-btn:active,
+.alliance-antd-queue-back-button.ant-btn:active,
+.alliance-antd-queue-edit-button.ant-btn:active,
+.alliance-antd-queue-cancel-button.ant-btn:active,
+.alliance-antd-queue-save-button.ant-btn:active {
+  transform: scale(0.95);
+}
+
+.alliance-antd-queue-mobile-card.ant-card {
+  background: rgba(29, 25, 37, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  color: #cbc4d2;
+  font-family: var(--font-sans);
+}
+
+.alliance-antd-queue-mobile-card .ant-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+}
+
+.alliance-antd-queue-detail-tag.ant-tag {
+  background: rgba(207, 188, 255, 0.1);
+  border: 0;
+  border-radius: 9999px;
+  color: #cfbcff;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 20px;
+  margin-inline-end: 0;
+  padding: 0 10px;
+  text-transform: uppercase;
+}
+
+.alliance-antd-queue-edit-button.ant-btn,
+.alliance-antd-queue-edit-button.ant-btn:hover,
+.alliance-antd-queue-edit-button.ant-btn:focus {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px;
+  color: #cbc4d2 !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  gap: 4px;
+  height: 30px;
+  padding: 0 12px;
+}
+
+.alliance-antd-queue-edit-button.ant-btn.is-active {
+  background: rgba(245, 158, 11, 0.2) !important;
+  border-color: rgba(245, 158, 11, 0.3) !important;
+  color: #fcd34d !important;
+}
+
+.alliance-antd-queue-number-input.ant-input-number,
+.alliance-antd-queue-search.ant-input-affix-wrapper {
+  background: #110e16 !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  width: 100%;
+}
+
+.alliance-antd-queue-search.ant-input-affix-wrapper {
+  max-width: 320px;
+  padding: 8px 12px;
+}
+
+.alliance-antd-queue-number-input.ant-input-number:hover,
+.alliance-antd-queue-number-input.ant-input-number-focused,
+.alliance-antd-queue-search.ant-input-affix-wrapper:hover,
+.alliance-antd-queue-search.ant-input-affix-wrapper-focused {
+  border-color: rgba(207, 188, 255, 0.5) !important;
+}
+
+.alliance-antd-queue-number-input .ant-input-number-input,
+.alliance-antd-queue-search .ant-input {
+  background: transparent !important;
+  color: #ffffff !important;
+  font-size: 12px;
+}
+
+.alliance-antd-queue-number-input.is-warning .ant-input-number-input {
+  color: #fcd34d !important;
+}
+
+.alliance-antd-queue-number-input.is-success .ant-input-number-input {
+  color: #34d399 !important;
+}
+
+.alliance-antd-queue-search .ant-input::placeholder {
+  color: rgba(203, 196, 210, 0.3) !important;
+}
+
+.alliance-antd-queue-cancel-button.ant-btn,
+.alliance-antd-queue-cancel-button.ant-btn:hover,
+.alliance-antd-queue-cancel-button.ant-btn:focus {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: transparent !important;
+  border-radius: 12px;
+  color: #ffffff !important;
+  font-size: 12px;
+  font-weight: 800;
+  height: 40px;
+  padding: 0 16px;
+}
+
+.alliance-antd-queue-save-button.ant-btn,
+.alliance-antd-queue-save-button.ant-btn:hover,
+.alliance-antd-queue-save-button.ant-btn:focus {
+  align-items: center;
+  background: linear-gradient(90deg, #f59e0b, #fcd34d) !important;
+  border-color: transparent !important;
+  border-radius: 12px;
+  color: #0f172a !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 900;
+  gap: 4px;
+  height: 40px;
+  padding: 0 24px;
+}
+
+.alliance-antd-queue-save-button.ant-btn:hover {
+  filter: brightness(1.1);
+}
+
+.alliance-antd-queue-history-table .ant-table-body {
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+.table-font-size {
+  font-size: 14px;
+}
+
+.alliance-antd-queue-manual-tag.ant-tag {
+  background: rgba(251, 191, 36, 0.1);
+  border-color: rgba(251, 191, 36, 0.15);
+  border-radius: 6px;
+  color: #fbbf24;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 16px;
+  margin-top: 4px;
+  margin-inline-end: 0;
+  padding: 0 6px;
+  text-transform: uppercase;
+}
+
+.alliance-antd-queue-search.ant-input-affix-wrapper {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .alliance-antd-queue-search.ant-input-affix-wrapper {
+    width: 360px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .alliance-antd-queue-search.ant-input-affix-wrapper {
+    width: 320px;
+  }
+}
+
+.alliance-antd-commission-status-tag.ant-tag,
+.alliance-antd-queue-status-tag.ant-tag {
+  align-items: center;
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 900;
+  gap: 6px;
+  line-height: 18px;
+  margin-inline-end: 0;
+  padding: 0 9px;
+}
+
+.alliance-antd-commission-status-tag.is-success,
+.alliance-antd-queue-status-tag.is-success {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.25);
+  color: #34d399;
+}
+
+.alliance-antd-commission-status-tag.is-pending,
+.alliance-antd-queue-status-tag.is-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.25);
+  color: #f59e0b;
+}
+
+.alliance-antd-queue-status-tag.is-purple {
+  background: rgba(207, 188, 255, 0.15);
+  border-color: rgba(207, 188, 255, 0.3);
+  color: var(--color-primary-light);
+}
+
+.alliance-antd-queue-status-dot {
+  background: currentColor;
+  border-radius: 999px;
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+}
+
+.alliance-antd-queue-link-button.ant-btn,
+.alliance-antd-queue-link-button.ant-btn:hover,
+.alliance-antd-queue-link-button.ant-btn:focus {
+  background: rgba(255, 255, 255, 0.01) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+  border-radius: 10px;
+  color: rgba(207, 188, 255, 0.5) !important;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 800;
+  height: 30px;
+  letter-spacing: 0.02em;
+  padding: 0 14px;
+}
+
+.alliance-antd-queue-link-button.ant-btn:hover {
+  color: var(--color-primary-light) !important;
+}
+
+.alliance-antd-queue-progress.ant-progress .ant-progress-outer {
+  display: block;
+}
+
+.alliance-antd-queue-progress.ant-progress .ant-progress-inner {
+  background: #100d14;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.alliance-antd-queue-progress.ant-progress .ant-progress-bg {
+  height: 8px !important;
+}
+
+.alliance-antd-queue-detail-button.ant-btn,
+.alliance-antd-queue-detail-button.ant-btn:hover,
+.alliance-antd-queue-detail-button.ant-btn:focus {
+  align-items: center;
+  color: var(--color-primary-light) !important;
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 700;
+  gap: 4px;
+  height: 24px;
+  padding: 0;
+}
+
+.alliance-antd-queue-detail-button.ant-btn:hover {
+  color: #e5d5ff !important;
+  text-decoration: underline;
+}
+
+.alliance-antd-queue-modal-close.ant-btn,
+.alliance-antd-queue-modal-close.ant-btn:hover,
+.alliance-antd-queue-modal-close.ant-btn:focus {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: transparent !important;
+  border-radius: 8px;
+  color: rgba(203, 196, 210, 0.6) !important;
+  display: inline-flex;
+  height: 30px;
+  justify-content: center;
+  min-width: 30px;
+  padding: 0;
+}
+
+.alliance-antd-queue-modal-close.ant-btn:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: var(--color-text-main) !important;
+}

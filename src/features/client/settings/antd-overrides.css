@@ -50,11 +50,16 @@
 .alliance-antd-settings-submit-button.ant-btn:hover,
 .alliance-antd-settings-submit-button.ant-btn:focus {
   border-radius: 8px !important;
-  font-size: 16px !important;
+  color: #160f22 !important;
+  display: flex !important;
+  font-size: 12px !important;
   font-weight: 800 !important;
   height: 40px !important;
+  justify-content: center;
+  margin-left: auto !important;
   min-height: 40px !important;
   padding: 0 18px !important;
+  width: max-content;
 }
 
 .alliance-antd-settings-secondary-button.ant-btn,
@@ -66,7 +71,7 @@
   border-radius: 12px;
   color: var(--color-primary-light) !important;
   display: inline-flex;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 800;
   height: 44px;
   justify-content: center;
@@ -83,6 +88,7 @@
 .alliance-antd-settings-support-button.ant-btn:hover,
 .alliance-antd-settings-support-button.ant-btn:focus {
   align-items: center;
+  color: #160f22 !important;
   display: inline-flex;
   font-size: 14px !important;
   font-weight: 800 !important;
@@ -132,4 +138,3 @@
   line-height: 16px;
   padding: 0 6px;
 }
-

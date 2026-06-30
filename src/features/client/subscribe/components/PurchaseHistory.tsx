@@ -13,7 +13,7 @@ type PurchaseHistoryProps = Pick<
 const getStatusClass = (purchase: Purchase) => {
   if (purchase.statusType === 'success') return 'is-success';
   if (purchase.statusType === 'failed') return 'is-failed';
-  return 'is-pending';
+  return 'is-running';
 };
 
 export default function PurchaseHistory({
@@ -30,7 +30,7 @@ export default function PurchaseHistory({
         const isCopied = copiedId === id;
         return (
           <div className="flex items-center gap-1.5">
-            <span className="font-mono font-bold alliance-antd-table-fontSize text-white/90 select-all">{id}</span>
+            <span className="font-mono font-bold table-font-size text-white/90 select-all">{id}</span>
             <Button
               className="alliance-antd-subscribe-copy-button"
               onClick={() => handleCopyText(id)}
@@ -45,27 +45,27 @@ export default function PurchaseHistory({
     {
       title: '方案产品',
       dataIndex: 'name',
-      render: (name: string) => <span className="font-bold alliance-antd-table-fontSize text-white">{name}理财</span>
+      render: (name: string) => <span className="font-bold table-font-size text-white">{name}理财</span>
     },
     {
       title: '金额 (USDT)',
       dataIndex: 'amount',
       align: 'right',
       render: (amount: number) => (
-        <span className="font-bold alliance-antd-table-fontSize text-white font-mono">{amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+        <span className="font-bold table-font-size text-white font-mono">{amount.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
       )
     },
     {
       title: '赠送比例',
       dataIndex: 'giftRatio',
       align: 'right',
-      render: (giftRatio: number) => <span className="font-medium alliance-antd-table-fontSize text-[#cfbcff] font-mono">{giftRatio}%</span>
+      render: (giftRatio: number) => <span className="font-medium table-font-size text-[#cfbcff] font-mono">{giftRatio}%</span>
     },
     {
       title: '预计 TROO',
       dataIndex: 'troo',
       align: 'right',
-      render: (troo: number) => <span className="font-bold alliance-antd-table-fontSize text-emerald-400 font-mono">{troo.toLocaleString()}</span>
+      render: (troo: number) => <span className="font-bold table-font-size text-emerald-400 font-mono">{troo.toLocaleString()}</span>
     },
     {
       title: '日期时间',

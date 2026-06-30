@@ -17,7 +17,7 @@ export default function ForgotPasswordForm({
           className="alliance-antd-auth-back-button"
           icon={<ArrowLeft className="w-4 h-4" />}
         />
-        <h2 className="text-base font-bold text-white tracking-wide">密码重置申请</h2>
+        <h2 className="text-base font-bold text-white tracking-wide">密码重设申请</h2>
       </div>
 
       <Form

@@ -235,6 +235,10 @@
   }
 }
 
+.table-font-size {
+  font-size: 14px;
+}
+
 .alliance-antd-subscribe-copy-button.ant-btn,
 .alliance-antd-subscribe-copy-button.ant-btn:hover,
 .alliance-antd-subscribe-copy-button.ant-btn:focus,
@@ -317,6 +321,12 @@
   background: rgba(103, 80, 164, 0.3);
   border-color: rgba(207, 188, 255, 0.2);
   color: var(--color-primary-light);
+}
+
+.alliance-antd-subscribe-status-tag.is-running {
+  background: rgba(103, 80, 164, 0.34) !important;
+  border-color: rgba(207, 188, 255, 0.22) !important;
+  color: #cfbcff !important;
 }
 
 .alliance-antd-subscribe-status-tag.is-warning {
@@ -404,9 +414,8 @@
   border-radius: 12px;
   box-shadow: var(--shadow-control);
   color: var(--color-primary-contrast) !important;
-  font-size: 18px;
+  font-size: 12px;
   font-weight: 800;
   height: 38px;
   padding: 0 20px;
 }
-

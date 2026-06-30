@@ -16,20 +16,20 @@ export default function OrdersTable({
       title: '订单编号',
       dataIndex: 'id',
       key: 'id',
-      render: (id: HomeOrder['id']) => <span className="alliance-antd-table-fontSize font-mono font-medium text-white/90">{id}</span>,
+      render: (id: HomeOrder['id']) => <span className="table-font-size font-mono font-medium text-white/90">{id}</span>,
     },
     {
       title: '产品名称',
       dataIndex: 'name',
       key: 'name',
-      render: (name: HomeOrder['name']) => <span className="alliance-antd-table-fontSize text-white font-semibold">{name}</span>,
+      render: (name: HomeOrder['name']) => <span className="table-font-size text-white font-semibold">{name}</span>,
     },
     {
       title: '金额 (USDT)',
       dataIndex: 'amount',
       key: 'amount',
       align: 'right',
-      render: (amount: HomeOrder['amount']) => <span className="alliance-antd-table-fontSize font-bold text-white font-mono">{amount}</span>,
+      render: (amount: HomeOrder['amount']) => <span className="table-font-size font-bold text-white font-mono">{amount}</span>,
     },
     {
       title: '日期',

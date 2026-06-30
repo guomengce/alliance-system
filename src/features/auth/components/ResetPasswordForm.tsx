@@ -16,26 +16,26 @@ export default function ResetPasswordForm({
 }: ResetPasswordFormProps) {
   return (
     <>
-      <div className="flex items-center gap-2 mb-5">
+      <div className="alliance-auth-reset-header flex items-center gap-2 mb-5">
         <Button
           type="text"
           onClick={onBackToForgot}
           className="alliance-antd-auth-back-button"
           icon={<ArrowLeft className="w-4 h-4" />}
         />
-        <h2 className="text-base font-bold text-white tracking-wide">设置新安全密码</h2>
+        <h2 className="alliance-auth-reset-title text-base font-bold text-white tracking-wide">设置新安全密码</h2>
       </div>
 
       <Form
         component="form"
         layout="vertical"
         onSubmitCapture={onSubmit}
-        className="alliance-antd-auth-form"
+        className="alliance-antd-auth-form alliance-auth-reset-form"
         requiredMark={false}
       >
         <Form.Item
           label="演示安全核验码 (123456)"
-          className="alliance-antd-auth-form-item alliance-antd-auth-code-item"
+          className="alliance-antd-auth-form-item alliance-antd-auth-code-item alliance-auth-reset-code-item"
         >
           <Input
             type="text"

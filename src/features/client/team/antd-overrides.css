@@ -21,19 +21,21 @@
 .alliance-antd-team-view-segmented.ant-segmented .ant-segmented-item {
   align-items: center;
   display: inline-flex;
+  height: 30px;
   justify-content: center;
-  min-height: 42px;
-  min-width: 48px;
+  min-height: 30px;
+  min-width: 30px;
   padding: 0;
+  width: 30px;
 }
 
 .alliance-antd-team-view-segmented.ant-segmented .ant-segmented-item-label {
   align-items: center;
   display: inline-flex;
-  height: 100%;
+  height: 30px;
   justify-content: center;
   line-height: 1;
-  width: 100%;
+  width: 30px;
 }
 
 .alliance-antd-team-view-segmented.ant-segmented .ant-segmented-item-label svg {
@@ -42,15 +44,16 @@
 }
 
 .alliance-antd-team-segmented.ant-segmented {
-  border-radius: 12px;
-  min-height: 48px;
-  padding: 4px;
+  border-radius: 999px;
+  min-height: 32px;
+  padding: 3px;
 }
 
 .alliance-antd-team-segmented.ant-segmented .ant-segmented-item {
-  min-height: 40px;
-  min-width: 56px;
-  padding: 0 12px;
+  border-radius: 999px;
+  min-height: 26px;
+  min-width: 38px;
+  padding: 0 10px;
 }
 
 .alliance-antd-team-segmented.ant-segmented .ant-segmented-item-label {
@@ -58,11 +61,12 @@
   display: inline-flex;
   height: 100%;
   justify-content: center;
+  line-height: 26px;
 }
 
 .alliance-antd-team-view-segmented.ant-segmented {
   border-radius: 12px;
-  min-height: 50px;
+  min-height: 38px;
   padding: 4px;
 }
 
@@ -80,11 +84,15 @@
   font-weight: 900;
 }
 
+.table-font-size {
+  font-size: 14px;
+}
+
 .alliance-antd-team-level-tag.ant-tag {
   background: rgba(207, 188, 255, 0.1);
   border-color: rgba(207, 188, 255, 0.16);
   border-radius: 10px;
-  color: var(--color-primary-light);
+  color: var(--color-primary-light) !important;
   font-size: 12px;
   font-weight: 900;
   line-height: 18px;
@@ -181,4 +189,3 @@
   background: #34d399 !important;
   color: #06140f !important;
 }
-

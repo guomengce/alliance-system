@@ -1,5 +1,5 @@
 import type { AdminRole, PortalMode, RegisteredUser } from '../../hooks/types';
-import { findDemoLoginAccount, normalizeAuthEmail } from './utils';
+import { findDemoLoginAccount, normalizeAuthEmail, RESET_DEMO_CODE } from './utils';
 
 interface AuthenticatedUser {
   email: string;
@@ -122,7 +122,7 @@ export const requestBackendResetCode = async (
   _deps: RequestResetDeps = {}
 ): Promise<LocalResetResponse> => {
   normalizeBackendEmail(payload.email);
-  return { message: 'local reset code ready', resetToken: '000000' };
+  return { message: '系统重置密码安全验证码已被分发，演示核验码为', resetToken: RESET_DEMO_CODE };
 };
 
 export const resetBackendPassword = async (

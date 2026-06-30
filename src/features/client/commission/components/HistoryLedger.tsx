@@ -35,7 +35,7 @@ export default function HistoryLedger({
           <Avatar className="alliance-antd-commission-avatar" size={24}>
             {item.userLetter}
           </Avatar>
-          <span className="font-semibold alliance-antd-table-fontSize text-white/90">{item.user}</span>
+          <span className="font-semibold table-font-size text-white/90">{item.user}</span>
         </div>
       ),
     },
@@ -45,7 +45,7 @@ export default function HistoryLedger({
       key: 'amount',
       align: 'right',
       render: (amount: number) => (
-        <span className="font-bold alliance-antd-table-fontSize text-white font-mono">
+        <span className="font-bold table-font-size text-white font-mono">
           ¥ {amount.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
         </span>
       ),
@@ -63,7 +63,7 @@ export default function HistoryLedger({
       key: 'reward',
       align: 'right',
       render: (reward: number) => (
-        <span className="font-extrabold alliance-antd-table-fontSize text-[#00e676] font-mono">
+        <span className="font-extrabold table-font-size text-[#00e676] font-mono">
           +¥ {reward.toLocaleString('zh-CN', { minimumFractionDigits: 2 })}
         </span>
       ),
