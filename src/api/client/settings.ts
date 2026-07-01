@@ -25,3 +25,25 @@ export const clientSettingsApi = {
     apiClient.post<ApiEnvelope<null>, ClientChangePasswordPayload>('/client/settings/password', payload)
   )
 };
+
+export const getClientSettings = async (): Promise<ClientSettingsDto> => {
+  const response = await clientSettingsApi.get();
+  return {
+    ...response.data,
+    activeDevices: response.data.activeDevices.map((device) => ({ ...device }))
+  };
+};
+
+export const updateClientSettings = async (
+  payload: Partial<ClientSettingsDto>
+): Promise<ClientSettingsDto> => {
+  const response = await clientSettingsApi.update(payload);
+  return {
+    ...response.data,
+    activeDevices: response.data.activeDevices.map((device) => ({ ...device }))
+  };
+};
+
+export const changeClientPassword = async (payload: ClientChangePasswordPayload): Promise<void> => {
+  await clientSettingsApi.changePassword(payload);
+};

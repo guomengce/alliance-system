@@ -14,12 +14,7 @@ const TAB_LABELS = {
 };
 
 export default function AntdDetailsPanel(props: DetailsPanelProps) {
-  const {
-    activeTab,
-    setActiveTab,
-    onBack,
-    onSave,
-  } = props;
+  const { activeTab, setActiveTab, onBack, onSave } = props;
 
   const items: TabsProps['items'] = [
     { key: 'profile', label: TAB_LABELS.profile },

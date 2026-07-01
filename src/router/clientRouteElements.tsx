@@ -116,13 +116,8 @@ const clientRouteElementFactories: Record<string, ClientRouteElementFactory> = {
       onExecuteSimulation={state.handleDirectSimulation}
     />
   ),
-  notifications: (state) => routePageFrame(
-    <NotificationsView
-      notifications={state.notifications}
-      onMarkAllRead={state.onMarkAllRead}
-      onClearNotifications={state.onClearNotifications}
-      onToggleRead={state.onToggleRead}
-    />
+  notifications: () => routePageFrame(
+    <NotificationsView />
   ),
   settings: (state) => routePageFrame(
     <SettingsView

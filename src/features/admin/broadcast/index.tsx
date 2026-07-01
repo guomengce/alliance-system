@@ -13,10 +13,6 @@ export default function AdminBroadcastView({ onAddNotification }: AdminBroadcast
     handleSaveTemplate,
     handleSendBroadcast,
     notificationTemplate,
-    setBroadcastBody,
-    setBroadcastTarget,
-    setBroadcastTitle,
-    setNotificationTemplate
   } = useBroadcastState({ onAddNotification });
 
   return (
@@ -24,16 +20,12 @@ export default function AdminBroadcastView({ onAddNotification }: AdminBroadcast
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         <AntdBroadcastForm
           broadcastTarget={broadcastTarget}
-          setBroadcastTarget={setBroadcastTarget}
           broadcastTitle={broadcastTitle}
-          setBroadcastTitle={setBroadcastTitle}
           broadcastBody={broadcastBody}
-          setBroadcastBody={setBroadcastBody}
           onSendBroadcast={handleSendBroadcast}
         />
         <AntdTemplatePanel
           notificationTemplate={notificationTemplate}
-          setNotificationTemplate={setNotificationTemplate}
           onSaveTemplate={handleSaveTemplate}
         />
       </div>

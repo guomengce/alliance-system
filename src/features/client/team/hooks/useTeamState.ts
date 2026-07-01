@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getClientTeamMembers } from '../../../../api/client/team';
 import { useAppContext } from '../../../../context/AppContext';
 import type { DownlineMember } from '../../../../types';
 import { filterDownlines } from '../utils';
@@ -15,9 +16,25 @@ export const useTeamState = ({ downlines }: UseTeamStateParams) => {
   const [copiedUid, setCopiedUid] = useState<string | null>(null);
   const [copiedLink, setCopiedLink] = useState<boolean>(false);
   const [exporting, setExporting] = useState<boolean>(false);
+  const [teamMembers, setTeamMembers] = useState<DownlineMember[]>([]);
   const notifyInfo = (message: string) => triggerGlobalAlert(message, 'info');
 
-  const filteredDownlines = filterDownlines(downlines, levelFilter, searchQuery);
+  useEffect(() => {
+    let mounted = true;
+
+    getClientTeamMembers().then((members) => {
+      if (mounted) {
+        setTeamMembers(members);
+      }
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const sourceMembers = teamMembers.length > 0 ? teamMembers : downlines;
+  const filteredDownlines = filterDownlines(sourceMembers, levelFilter, searchQuery);
 
   const handleCopyUid = (uid: string) => {
     navigator.clipboard?.writeText(uid);

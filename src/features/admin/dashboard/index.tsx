@@ -1,8 +1,8 @@
 import './antd-overrides.css';
 import MetricGrid from './components/MetricGrid';
-import AntdStatusHeader from './components/StatusHeader';
-import AntdTrendPanel from './components/TrendEchart';
-import AntdTrooPricePanel from './components/TrooPrice';
+import AntdStatusHeader from './components/AntdStatusHeader';
+import AntdTrendPanel from './components/AntdTrendPanel';
+import AntdTrooPricePanel from './components/AntdTrooPricePanel';
 import { useDashboardState } from './hooks/useDashboardState';
 import type { AdminDashboardViewProps } from './types';
 

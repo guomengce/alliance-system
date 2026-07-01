@@ -1,5 +1,5 @@
 import { Input } from 'antd';
-import { Coins, Search } from 'lucide-react';
+import { Coins } from 'lucide-react';
 
 import type { DownlineMember } from '@/src/types';
 import AntdWalletsDesktop from './AntdWalletsDesktop';
@@ -73,12 +73,13 @@ export default function AntdWalletsPanel({
           </p>
         </div>
 
-        <Input
+        <Input.Search
+          allowClear
           className="alliance-antd-finance-search w-full sm:w-64"
+          defaultValue={searchMemberQuery}
+          key={searchMemberQuery}
+          onSearch={setSearchMemberQuery}
           placeholder={WALLETS_TEXT.search}
-          prefix={<Search className="w-3.5 h-3.5 text-white/40" />}
-          value={searchMemberQuery}
-          onChange={(event) => setSearchMemberQuery(event.target.value)}
         />
       </div>
 

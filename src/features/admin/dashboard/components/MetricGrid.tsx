@@ -1,24 +1,11 @@
-import { AntdCard } from '@/src/shared/antd/AntdCard';
-import type { MetricCardProps, MetricGridProps } from '../types';
-
-function MetricCard({ title, value, sub, colorClass = 'text-white' }: MetricCardProps) {
-  return (
-    <AntdCard className="alliance-antd-dashboard-metric-card group">
-      <div className="absolute right-3 top-3 w-8 h-8 rounded-full bg-white/2 flex items-center justify-center font-mono text-[14px] text-white/25">KPI</div>
-      <p className="text-[14px] uppercase tracking-wider font-bold text-[#cbc4d2]/50">{title}</p>
-      <p className={`text-xl font-bold font-mono mt-2 ${colorClass}`}>{value}</p>
-      <p className="text-[12px] text-[#cbc4d2]/40 mt-1.5 leading-none">{sub}</p>
-    </AntdCard>
-  );
-}
-
-export { MetricCard };
+import AntdMetricCard from './AntdMetricCard';
+import type { MetricGridProps } from '../types';
 
 export default function MetricGrid({ cards }: MetricGridProps) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
       {cards.map(({ key, ...card }) => (
-        <MetricCard key={key} {...card} />
+        <AntdMetricCard key={key} {...card} />
       ))}
     </div>
   );

@@ -76,9 +76,9 @@
 }
 
 .alliance-antd-home-status.is-pending {
-  background: rgba(103, 80, 164, 0.3);
-  border-color: rgba(207, 188, 255, 0.2);
-  color: var(--color-primary-light);
+  background: rgba(103, 80, 164, 0.3) !important;
+  border-color: rgba(207, 188, 255, 0.2) !important;
+  color: var(--color-primary-light) !important;
 }
 
 .alliance-antd-home-status.is-active {

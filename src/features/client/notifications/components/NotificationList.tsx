@@ -1,12 +1,24 @@
-﻿import { AnimatePresence, motion } from 'motion/react';
+import { Spin } from 'antd';
+import { AnimatePresence, motion } from 'motion/react';
 import { Bell } from 'lucide-react';
 import type { NotificationListProps } from '../types';
 import NotificationCard from './NotificationCard';
 
 export default function NotificationList({
+  loading,
   notifications,
+  updatingId,
+  onDeleteNotification,
   onToggleRead
 }: NotificationListProps) {
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-16">
+        <Spin />
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-4">
       <AnimatePresence mode="popLayout">
@@ -15,11 +27,13 @@ export default function NotificationList({
             <NotificationCard
               key={noti.id}
               notification={noti}
+              isUpdating={updatingId === noti.id}
+              onDeleteNotification={onDeleteNotification}
               onToggleRead={onToggleRead}
             />
           ))
         ) : (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="text-center py-16 bg-[#1a1620]/60 rounded-2xl border border-white/5 text-[#cbc4d2]/50 font-medium text-xs flex flex-col items-center justify-center gap-2"
@@ -32,4 +46,3 @@ export default function NotificationList({
     </div>
   );
 }
-

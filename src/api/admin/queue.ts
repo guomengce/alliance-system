@@ -40,3 +40,8 @@ export const mapAdminQueueRosterDto = (dto: AdminQueueRosterDto): QueueRoster =>
 export const getInitialAdminQueueRoster = (): QueueRoster[] => (
   INITIAL_ADMIN_QUEUE_ROSTER_DTOS.map((roster) => mapAdminQueueRosterDto(roster))
 );
+
+export const getAdminQueueRoster = async (query: AdminQueueQuery = {}): Promise<QueueRoster[]> => {
+  const response = await adminQueueApi.list(query);
+  return response.data.items.map((roster) => mapAdminQueueRosterDto(roster));
+};

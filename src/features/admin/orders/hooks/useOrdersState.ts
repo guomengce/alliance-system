@@ -1,18 +1,32 @@
-import { useState } from 'react';
-import { getInitialAdminOrders } from '../../../../api/admin/orders';
+import { useEffect, useState } from 'react';
+import { getAdminOrders } from '../../../../api/admin/orders';
 import { useAppContext } from '../../../../context/AppContext';
 import type { OrderDetail, OrderFeedbackVariant } from '../types';
 import { buildOrdersCsvContent, filterAllocations, updateOrderStatus } from '../utils';
 
 export function useOrdersState() {
   const { triggerGlobalAlert } = useAppContext();
-  const [orders, setOrders] = useState<OrderDetail[]>(() => getInitialAdminOrders());
+  const [orders, setOrders] = useState<OrderDetail[]>([]);
   const [selectedOrder, setSelectedOrder] = useState<OrderDetail | null>(null);
   const [detailSearchQuery, setDetailSearchQuery] = useState('');
 
   const filteredAllocations = selectedOrder
     ? filterAllocations(selectedOrder.commissionAllocations, detailSearchQuery)
     : [];
+
+  useEffect(() => {
+    let mounted = true;
+
+    getAdminOrders().then((nextOrders) => {
+      if (mounted) {
+        setOrders(nextOrders);
+      }
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const exportMockCSV = () => {
     const csvContent = `data:text/csv;charset=utf-8,${buildOrdersCsvContent(orders)}`;

@@ -143,6 +143,8 @@
 .alliance-antd-button-ghost.ant-btn:active,
 .alliance-antd-button-submit.ant-btn:active {
   transform: scale(0.95);
+}
+
 .alliance-antd-admin-segmented-tabs.ant-segmented {
   background: #100d14;
   border: 1px solid rgba(255, 255, 255, 0.05);

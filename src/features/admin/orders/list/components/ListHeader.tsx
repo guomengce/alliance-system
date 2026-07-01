@@ -1,3 +1,4 @@
+import { Button } from 'antd';
 import { Download, FileText } from 'lucide-react';
 import type { OrderHeaderProps } from '../../types';
 
@@ -15,13 +16,14 @@ export default function ListHeader({ onExport }: OrderHeaderProps) {
       </div>
 
       <div className="flex items-center gap-2 self-stretch sm:self-auto shrink-0">
-        <button 
-          type="button"
+        <Button
+          type="default"
           onClick={onExport}
-          className="bg-[#cfbcff]/5 hover:bg-[#cfbcff]/15 text-[#cfbcff] px-3.5 py-2 rounded-xl text-xs font-bold border border-[#cfbcff]/10 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer w-full sm:w-auto justify-center"
+          icon={<Download className="w-3.5 h-3.5" />}
+          className="w-full sm:w-auto"
         >
-          <Download className="w-3.5 h-3.5" /> 导出
-        </button>
+          导出
+        </Button>
       </div>
     </div>
   );

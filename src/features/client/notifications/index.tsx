@@ -4,40 +4,43 @@ import CategoryTabs from './components/CategoryTabs';
 import HeaderActions from './components/HeaderActions';
 import NotificationList from './components/NotificationList';
 import { useNotificationsState } from './hooks/useNotificationsState';
-import type { NotificationsViewProps } from './types';
 import { NOTIFICATION_CATEGORIES } from './utils';
 
-export default function NotificationsView({
-  notifications,
-  onMarkAllRead,
-  onClearNotifications,
-  onToggleRead
-}: NotificationsViewProps) {
+export default function NotificationsView() {
   const {
     activeCategory,
-    filteredNotifications,
-    setActiveCategory
-  } = useNotificationsState({ notifications });
+    hasNotifications,
+    loading,
+    notifications,
+    updating,
+    updatingId,
+    onDeleteNotification,
+    onMarkAllRead,
+    onSelectCategory,
+    onToggleRead
+  } = useNotificationsState();
 
   return (
     <PageView>
       <HeaderActions
-        notifications={notifications}
+        hasNotifications={hasNotifications}
+        loading={loading}
+        updating={updating}
         onMarkAllRead={onMarkAllRead}
-        onClearNotifications={onClearNotifications}
       />
 
-      {/* Tabs list categorizing */}
       <CategoryTabs
         categories={NOTIFICATION_CATEGORIES}
         notifications={notifications}
         activeCategory={activeCategory}
-        onSelectCategory={setActiveCategory}
+        onSelectCategory={onSelectCategory}
       />
 
-      {/* Main notifications history panel */}
       <NotificationList
-        notifications={filteredNotifications}
+        loading={loading}
+        notifications={notifications}
+        updatingId={updatingId}
+        onDeleteNotification={onDeleteNotification}
         onToggleRead={onToggleRead}
       />
     </PageView>

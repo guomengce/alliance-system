@@ -12,7 +12,6 @@ export default function AdminParametersView() {
     handleSaveLimits,
     handleTestApiPrice,
     l1UnlockRatio,
-    setApiPriceUrl,
     setCommissionLevels,
     setL1UnlockRatio,
     setWithdrawalFee,
@@ -24,7 +23,7 @@ export default function AdminParametersView() {
       <div>
         <h3 className="text-base font-bold text-white">全系统结算安全红线与运营参数微调面板</h3>
         <p className="text-xs text-[#cbc4d2]/60 mt-0.5">
-          可实时微调 L1-L5 各层分成占比、排队解扣门限、以及提款矿工消耗手续封顶
+          可实时微调 L1-L5 各层分成占比、排队解锁门限，以及提款矿工手续费封顶。
         </p>
       </div>
 
@@ -43,7 +42,6 @@ export default function AdminParametersView() {
         />
         <AntdApiPanel
           apiPriceUrl={apiPriceUrl}
-          setApiPriceUrl={setApiPriceUrl}
           onTestApiPrice={handleTestApiPrice}
         />
       </div>

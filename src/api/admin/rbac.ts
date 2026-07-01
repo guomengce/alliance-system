@@ -38,6 +38,12 @@ export const adminRbacApi = {
   listRoles: () => (
     apiClient.get<ApiEnvelope<ApiListResponse<AdminRoleDto>>>('/admin/rbac/roles')
   ),
+  listAccounts: () => (
+    apiClient.get<ApiEnvelope<ApiListResponse<AdminAccountDto>>>('/admin/rbac/accounts')
+  ),
+  listPermissions: () => (
+    apiClient.get<ApiEnvelope<ApiListResponse<PermissionDefinitionDto>>>('/admin/rbac/permissions')
+  ),
   updateRole: (roleId: string, payload: Partial<AdminRoleDto>) => (
     apiClient.patch<ApiEnvelope<AdminRoleDto>, Partial<AdminRoleDto>>(`/admin/rbac/roles/${roleId}`, payload)
   )
@@ -79,3 +85,18 @@ export const getInitialAdminAccounts = (): AdminAccount[] => (
 export const getInitialPermissionDefinitions = (): PermissionDefinition[] => (
   INITIAL_PERMISSION_DEFINITION_DTOS.map((permission) => mapPermissionDefinitionDto(permission))
 );
+
+export const getAdminRolePermissions = async (): Promise<RolePermission[]> => {
+  const response = await adminRbacApi.listRoles();
+  return response.data.items.map((role) => mapRolePermissionDto(role));
+};
+
+export const getAdminAccounts = async (): Promise<AdminAccount[]> => {
+  const response = await adminRbacApi.listAccounts();
+  return response.data.items.map((account) => mapAdminAccountDto(account));
+};
+
+export const getPermissionDefinitions = async (): Promise<PermissionDefinition[]> => {
+  const response = await adminRbacApi.listPermissions();
+  return response.data.items.map((permission) => mapPermissionDefinitionDto(permission));
+};

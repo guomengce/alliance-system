@@ -27,12 +27,7 @@ export default function AdminProfileView({
     passwordError,
     passwordSuccess,
     profileError,
-    profileSuccess,
-    setConfirmPassword,
-    setFormEmail,
-    setFormNickname,
-    setNewPassword,
-    setOldPassword
+    profileSuccess
   } = useProfileState({
     nickname,
     email,
@@ -61,8 +56,6 @@ export default function AdminProfileView({
           formEmail={formEmail}
           profileSuccess={profileSuccess}
           profileError={profileError}
-          setFormNickname={setFormNickname}
-          setFormEmail={setFormEmail}
           onSaveProfile={handleSaveProfile}
         />
 
@@ -73,9 +66,6 @@ export default function AdminProfileView({
           confirmPassword={confirmPassword}
           passwordSuccess={passwordSuccess}
           passwordError={passwordError}
-          setOldPassword={setOldPassword}
-          setNewPassword={setNewPassword}
-          setConfirmPassword={setConfirmPassword}
           onSavePassword={handleSavePassword}
         />
       </div>

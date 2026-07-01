@@ -19,3 +19,21 @@ export const clientMemberApi = {
     apiClient.patch<ApiEnvelope<ClientMemberDto>, Partial<ClientMemberDto>>('/client/member/profile', payload)
   )
 };
+
+export const getClientMemberProfile = async (): Promise<ClientMemberDto> => {
+  const response = await clientMemberApi.getProfile();
+  return {
+    ...response.data,
+    recentActivities: response.data.recentActivities.map((activity) => ({ ...activity }))
+  };
+};
+
+export const updateClientMemberProfile = async (
+  payload: Partial<ClientMemberDto>
+): Promise<ClientMemberDto> => {
+  const response = await clientMemberApi.updateProfile(payload);
+  return {
+    ...response.data,
+    recentActivities: response.data.recentActivities.map((activity) => ({ ...activity }))
+  };
+};

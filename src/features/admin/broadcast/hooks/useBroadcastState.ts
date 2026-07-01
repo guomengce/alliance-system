@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import { getInitialAdminBroadcastConfig } from '../../../../api/admin/broadcast';
+import { useEffect, useState } from 'react';
+import { getAdminBroadcastConfig, sendAdminBroadcast } from '../../../../api/admin/broadcast';
 import { useAppContext } from '../../../../context/AppContext';
 import type { NotificationItem } from '../../../../types';
+import type { BroadcastFormValues, TemplateFormValues } from '../types';
 import {
   createBroadcastNotification,
   getBroadcastTargetLabel,
@@ -14,28 +15,49 @@ interface UseBroadcastStateOptions {
 
 export function useBroadcastState({ onAddNotification }: UseBroadcastStateOptions) {
   const { triggerGlobalAlert } = useAppContext();
-  const initialConfig = getInitialAdminBroadcastConfig();
-  const [notificationTemplate, setNotificationTemplate] = useState<string>(initialConfig.notificationTemplate);
-  const [broadcastTitle, setBroadcastTitle] = useState<string>(initialConfig.broadcastTitle);
-  const [broadcastBody, setBroadcastBody] = useState<string>(initialConfig.broadcastBody);
-  const [broadcastTarget, setBroadcastTarget] = useState<string>(initialConfig.broadcastTarget);
+  const [notificationTemplate, setNotificationTemplate] = useState('');
+  const [broadcastTitle, setBroadcastTitle] = useState('');
+  const [broadcastBody, setBroadcastBody] = useState('');
+  const [broadcastTarget, setBroadcastTarget] = useState('all');
   const notifySuccess = (message: string) => triggerGlobalAlert(message, 'success');
   const notifyError = (message: string) => triggerGlobalAlert(message, 'error');
 
-  const handleSendBroadcast = () => {
-    const validationError = validateBroadcastForm(broadcastTitle, broadcastBody);
-    if (validationError) return notifyError(validationError);
+  useEffect(() => {
+    let mounted = true;
 
-    const newNotif = createBroadcastNotification(broadcastTitle, broadcastBody);
+    getAdminBroadcastConfig().then((config) => {
+      if (!mounted) return;
+      setNotificationTemplate(config.notificationTemplate);
+      setBroadcastTitle(config.broadcastTitle);
+      setBroadcastBody(config.broadcastBody);
+      setBroadcastTarget(config.broadcastTarget);
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const handleSendBroadcast = async ({ target, title, body }: BroadcastFormValues) => {
+    const validationError = validateBroadcastForm(title, body);
+    if (validationError) {
+      notifyError(validationError);
+      return;
+    }
+
+    await sendAdminBroadcast({ target, title, body });
+    const newNotif = createBroadcastNotification(title, body);
     onAddNotification(newNotif);
-    notifySuccess(`系统广播成功！已成功向“${getBroadcastTargetLabel(broadcastTarget)}”发送推达消息。`);
+    notifySuccess(`系统广播成功，已向 ${getBroadcastTargetLabel(target)} 发送推送消息。`);
 
+    setBroadcastTarget(target);
     setBroadcastTitle('');
     setBroadcastBody('');
   };
 
-  const handleSaveTemplate = () => {
-    notifySuccess('池限额补额推达文案模配置保存成功！');
+  const handleSaveTemplate = ({ notificationTemplate: nextTemplate }: TemplateFormValues) => {
+    setNotificationTemplate(nextTemplate);
+    notifySuccess('池告警文案模板配置保存成功。');
   };
 
   return {
@@ -44,10 +66,6 @@ export function useBroadcastState({ onAddNotification }: UseBroadcastStateOption
     broadcastTitle,
     handleSaveTemplate,
     handleSendBroadcast,
-    notificationTemplate,
-    setBroadcastBody,
-    setBroadcastTarget,
-    setBroadcastTitle,
-    setNotificationTemplate
+    notificationTemplate
   };
 }

@@ -1,4 +1,5 @@
-import { Search, ShieldCheck } from 'lucide-react';
+import { Empty, Input, Tag } from 'antd';
+import { ShieldCheck } from 'lucide-react';
 import type { CommissionAllocation, DetailViewProps } from '../../types';
 
 interface AntdCommissionAllocationPanelProps {
@@ -20,16 +21,14 @@ export default function AntdCommissionAllocationPanel({
           <span>对应上级同盟链条推广佣金穿透分拨明细 (Alliance L1-L5 distribution trace)</span>
         </h5>
 
-        <div className="relative w-full sm:w-64 shrink-0">
-          <Search className="w-3.5 h-3.5 text-[#cbc4d2]/40 absolute left-3 top-1/2 -translate-y-1/2" />
-          <input
-            type="text"
-            value={detailSearchQuery}
-            onChange={(e) => setDetailSearchQuery(e.target.value)}
-            placeholder="查找关联 UID、昵称或等级..."
-            className="bg-[#181421] border border-white/10 rounded-xl pl-8 pr-3.5 py-1.5 text-xs text-white placeholder-[#cbc4d2]/30 outline-none focus:border-[#cfbcff]/40 transition-colors w-full font-medium"
-          />
-        </div>
+        <Input.Search
+          allowClear
+          defaultValue={detailSearchQuery}
+          key={detailSearchQuery}
+          onSearch={setDetailSearchQuery}
+          placeholder="查找关联 UID、昵称或等级..."
+          className="w-full sm:w-64 shrink-0"
+        />
       </div>
 
       <div className="hidden md:block border border-white/5 rounded-xl overflow-hidden bg-[#181421]/60">
@@ -44,7 +43,7 @@ export default function AntdCommissionAllocationPanel({
           {filteredAllocations.length > 0 ? (
             filteredAllocations.map((alloc, idx) => (
               <div key={idx} className="grid grid-cols-5 py-3.5 px-3.5 items-center hover:bg-white/[0.01] transition-colors">
-                <span className="font-sans text-[#cfbcff] font-bold text-left">{alloc.level}</span>
+                <Tag color="purple">{alloc.level}</Tag>
                 <span className="text-left text-white">{alloc.targetUid}</span>
                 <span className="truncate font-sans font-medium text-[#cbc4d2] text-left">{alloc.nickname}</span>
                 <span className="text-right text-[#cbc4d2]/60 font-bold">{alloc.rate}%</span>
@@ -52,9 +51,7 @@ export default function AntdCommissionAllocationPanel({
               </div>
             ))
           ) : (
-            <div className="py-8 text-center text-[#cbc4d2]/30 font-sans text-xs">
-              未找到符合检索的分拨记录 (可尝试更改关键词)
-            </div>
+            <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="未找到符合检索的分拨记录" />
           )}
         </div>
       </div>
@@ -64,7 +61,7 @@ export default function AntdCommissionAllocationPanel({
           filteredAllocations.map((alloc, idx) => (
             <div key={idx} className="p-3.5 space-y-2 bg-white/[0.01] hover:bg-white/[0.02] transition-colors">
               <div className="flex justify-between items-center pb-2 border-b border-white/5">
-                <span className="font-sans text-[#cfbcff] font-bold text-xs">{alloc.level}</span>
+                <Tag color="purple">{alloc.level}</Tag>
                 <span className="text-emerald-400 font-extrabold text-xs font-mono">USDT {alloc.amount.toLocaleString()}</span>
               </div>
               <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-[13px] font-mono">
@@ -86,9 +83,7 @@ export default function AntdCommissionAllocationPanel({
             </div>
           ))
         ) : (
-          <div className="py-6 text-center text-[#cbc4d2]/30 font-sans text-xs">
-            未找到符合检索的分拨记录 (可尝试更改关键词)
-          </div>
+          <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="未找到符合检索的分拨记录" />
         )}
       </div>
 
@@ -98,7 +93,7 @@ export default function AntdCommissionAllocationPanel({
           <span>分销推广佣金分配核心逻辑说明</span>
         </p>
         <p>
-          本笔交易触发的推广佣金仅会返现给该会员直属 L1 上级。倘若 L1 佣金额度池已满，剩余佣金才会继续向上穿透分配，触发穿透性继续往上一层级。
+          本笔交易触发的推广佣金仅会返现给该会员直属 L1 上级。倘若 L1 佣金额度池已满，剩余佣金才会继续向上穿透分配。
         </p>
       </div>
     </div>

@@ -1,10 +1,11 @@
+import { useEffect } from 'react';
 import { Button, Form, Input, InputNumber, Modal, Select } from 'antd';
 import { Sliders } from 'lucide-react';
 
-import type { EditorModalProps } from '../types';
+import type { EditorModalProps, PlanDraft } from '../types';
 
 const giftRatioOptions = [
-  { value: 1, label: '1.00 (不赠送)' },
+  { value: 1, label: '1.00 (No gift)' },
   { value: 1.05, label: '1.05 (+5%)' },
   { value: 1.1, label: '1.10 (+10%)' },
   { value: 1.15, label: '1.15 (+15%)' },
@@ -22,8 +23,22 @@ export function AntdEditorModal({
   onClose,
   onSaveOrUpdatePlan,
 }: EditorModalProps) {
-  const updatePlanDraft = <Key extends keyof typeof planDraft>(key: Key, value: typeof planDraft[Key]) => {
-    setPlanDraft(prev => ({ ...prev, [key]: value }));
+  const [form] = Form.useForm<PlanDraft>();
+
+  useEffect(() => {
+    form.setFieldsValue(planDraft);
+  }, [form, planDraft]);
+
+  const updateLinkedRatio = (key: 'buyRatio' | 'queueRatio', value: number | null) => {
+    const nextValue = Math.min(100, Math.max(0, toSafeNumber(value)));
+    const nextDraft = {
+      ...form.getFieldsValue(),
+      [key]: nextValue,
+      [key === 'buyRatio' ? 'queueRatio' : 'buyRatio']: 100 - nextValue
+    } as PlanDraft;
+
+    setPlanDraft(nextDraft);
+    form.setFieldsValue(nextDraft);
   };
 
   return (
@@ -50,117 +65,77 @@ export function AntdEditorModal({
           </div>
           <div className="text-left">
             <h4 className="text-sm font-black text-white">
-              {editingPlan ? '修改理财套餐配置参数' : '创建全新理财套餐'}
+              {editingPlan ? 'Edit Plan Settings' : 'Create Plan'}
             </h4>
             <p className="text-xs text-[#cbc4d2]/40 font-mono mt-0.5">
-              当前编辑对象：planDraft → 保存后写回 plansResponse.data.plans
+              planDraft to plansResponse.data.plans
             </p>
           </div>
         </div>
       </div>
 
-      <Form layout="vertical" className="alliance-antd-form alliance-antd-plan-form">
-        <Form.Item label="套餐名称">
-          <Input
-            value={planDraft.name}
-            onChange={(event) => updatePlanDraft('name', event.target.value)}
-            placeholder="例如: 套餐 F (尊享版)"
-          />
+      <Form form={form} layout="vertical" className="alliance-antd-form alliance-antd-plan-form" onFinish={onSaveOrUpdatePlan}>
+        <Form.Item name="name" label="Plan Name">
+          <Input placeholder="Example: Plan F" />
         </Form.Item>
 
-        <Form.Item label="套餐描述 / 规则介绍">
-          <Input.TextArea
-            value={planDraft.description}
-            onChange={(event) => updatePlanDraft('description', event.target.value)}
-            placeholder="请输入该理财套餐展示给会员的规则、权益或说明"
-            rows={3}
-          />
+        <Form.Item name="description" label="Description">
+          <Input.TextArea placeholder="Enter plan rules, benefits, or notes" rows={3} />
         </Form.Item>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <Form.Item label="认购金额 (USDT)">
-            <InputNumber
-              value={planDraft.price}
-              min={0}
-              onChange={(value) => updatePlanDraft('price', toSafeNumber(value))}
-            />
+          <Form.Item name="price" label="Subscribe Amount (USDT)">
+            <InputNumber min={0} />
           </Form.Item>
 
-          <Form.Item label="佣金额度 (USDT)">
-            <InputNumber
-              value={planDraft.commissionLimit}
-              min={0}
-              onChange={(value) => updatePlanDraft('commissionLimit', toSafeNumber(value))}
-              className="is-success"
-              placeholder="写入佣金上限数值"
-            />
+          <Form.Item name="commissionLimit" label="Commission Limit (USDT)">
+            <InputNumber className="is-success" min={0} placeholder="Commission limit" />
           </Form.Item>
         </div>
 
         <div className="border-t border-white/5 pt-4 space-y-3">
           <p className="text-xs font-black uppercase text-[#cfbcff] tracking-wider">
-            TROO 股票赠送、买入及排队设置
+            TROO gift, buy, and queue ratios
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <Form.Item label="赠送比例">
-              <Select
-                value={planDraft.giftRatio}
-                options={giftRatioOptions}
-                popupClassName="alliance-antd-plan-select-dropdown"
-                onChange={(value) => updatePlanDraft('giftRatio', value)}
-              />
+            <Form.Item name="giftRatio" label="Gift Ratio">
+              <Select options={giftRatioOptions} popupClassName="alliance-antd-plan-select-dropdown" />
             </Form.Item>
 
-            <Form.Item label="买入比例 (%)">
+            <Form.Item name="buyRatio" label="Buy Ratio (%)">
               <InputNumber
-                value={planDraft.buyRatio}
-                min={0}
-                max={100}
                 className="is-warning"
-                onChange={(value) => {
-                  const nextValue = Math.min(100, Math.max(0, toSafeNumber(value)));
-                  setPlanDraft(prev => ({
-                    ...prev,
-                    buyRatio: nextValue,
-                    queueRatio: 100 - nextValue
-                  }));
-                }}
+                max={100}
+                min={0}
+                onChange={(value) => updateLinkedRatio('buyRatio', value)}
               />
             </Form.Item>
 
-            <Form.Item label="排队比例 (%)">
+            <Form.Item name="queueRatio" label="Queue Ratio (%)">
               <InputNumber
-                value={planDraft.queueRatio}
-                min={0}
-                max={100}
                 className="is-info"
-                onChange={(value) => {
-                  const nextValue = Math.min(100, Math.max(0, toSafeNumber(value)));
-                  setPlanDraft(prev => ({
-                    ...prev,
-                    queueRatio: nextValue,
-                    buyRatio: 100 - nextValue
-                  }));
-                }}
+                max={100}
+                min={0}
+                onChange={(value) => updateLinkedRatio('queueRatio', value)}
               />
             </Form.Item>
           </div>
 
           <p className="text-xs text-[#cbc4d2]/30 italic leading-normal">
-            当前 draft 比例：{planDraft.buyRatio}% / {planDraft.queueRatio}%，两个字段联动保持合计 100%。
+            Current ratio: {planDraft.buyRatio}% / {planDraft.queueRatio}%. These two fields stay linked at 100%.
           </p>
         </div>
-      </Form>
 
-      <div className="pt-4 border-t border-white/5 flex gap-3 text-xs">
-        <Button className="alliance-antd-button-ghost alliance-antd-plan-modal-cancel" onClick={onClose}>
-          取消
-        </Button>
-        <Button className="alliance-antd-button-submit alliance-antd-plan-modal-submit" onClick={onSaveOrUpdatePlan}>
-          {editingPlan ? '保存并更新配置' : '确认创建套餐'}
-        </Button>
-      </div>
+        <div className="pt-4 border-t border-white/5 flex gap-3 text-xs">
+          <Button className="alliance-antd-button-ghost alliance-antd-plan-modal-cancel" onClick={onClose}>
+            Cancel
+          </Button>
+          <Button className="alliance-antd-button-submit alliance-antd-plan-modal-submit" htmlType="submit" type="primary">
+            {editingPlan ? 'Save Changes' : 'Create Plan'}
+          </Button>
+        </div>
+      </Form>
     </Modal>
   );
 }

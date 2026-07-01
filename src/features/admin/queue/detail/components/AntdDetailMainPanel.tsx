@@ -1,5 +1,5 @@
 import { Button, Empty, Input, InputNumber, Table, Tag, type TableColumnsType } from 'antd';
-import { Activity, AlertTriangle, CheckCircle2, PenTool, Search, X } from 'lucide-react';
+import { Activity, AlertTriangle, CheckCircle2, PenTool } from 'lucide-react';
 import type { Dispatch, SetStateAction } from 'react';
 
 import type { QueueRoster, QueueTrigger } from '../../types';
@@ -187,19 +187,13 @@ export function AntdDetailMainPanel({
             <span>{TEXT.logTitle}</span>
           </h5>
 
-          <Input
+          <Input.Search
+            allowClear
             className="alliance-antd-queue-search"
-            value={searchQuery}
-            onChange={(event) => setSearchQuery(event.target.value)}
+            defaultValue={searchQuery}
+            key={searchQuery}
+            onSearch={setSearchQuery}
             placeholder={TEXT.searchPlaceholder}
-            prefix={<Search className="w-3.5 h-3.5 text-[#cbc4d2]/40" />}
-            suffix={
-              searchQuery ? (
-                <button type="button" onClick={() => setSearchQuery('')} className="text-[#cbc4d2]/40 hover:text-white transition-colors">
-                  <X className="w-3 h-3" />
-                </button>
-              ) : null
-            }
           />
         </div>
 

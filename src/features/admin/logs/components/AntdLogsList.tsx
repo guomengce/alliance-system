@@ -1,4 +1,4 @@
-import { Empty, Table, Tag, type TableColumnsType } from 'antd';
+import { Button, Empty, Table, Tag, type TableColumnsType } from 'antd';
 import { Database } from 'lucide-react';
 
 import { getCategoryBadge, getSeverityBadge } from '../utils';
@@ -144,9 +144,9 @@ export default function AntdLogsList({
           </div>
         ) : (
           filteredLogs.map((log) => (
-            <button
+            <Button
               key={log.id}
-              type="button"
+              type="text"
               onClick={() => setActiveDetailLog(log)}
               className="w-full text-left p-4 sm:p-5 hover:bg-white/[0.02] cursor-pointer transition-colors flex flex-col gap-3 group active:bg-white/[0.04]"
             >
@@ -182,7 +182,7 @@ export default function AntdLogsList({
                   <span className="text-[#cfbcff] font-bold font-mono truncate max-w-[150px] sm:max-w-none">{log.operator}</span>
                 </div>
               </div>
-            </button>
+            </Button>
           ))
         )}
       </div>

@@ -1,5 +1,9 @@
-import { useState } from 'react';
-import { getInitialClientMemberData } from '../../../../mock/client/member';
+import { useEffect, useState } from 'react';
+import {
+  getClientMemberProfile,
+  updateClientMemberProfile
+} from '../../../../api/client/member';
+import type { RecentActivity } from '../types';
 
 type UseMemberProfileOptions = {
   nickname: string;
@@ -15,15 +19,32 @@ export function useMemberProfile({
   const [isEditing, setIsEditing] = useState(false);
   const [tempNickname, setTempNickname] = useState(nickname);
   const [copiedLink, setCopiedLink] = useState(false);
-  const [{ recentActivities }] = useState(() => getInitialClientMemberData());
+  const [recentActivities, setRecentActivities] = useState<RecentActivity[]>([]);
+
+  useEffect(() => {
+    let mounted = true;
+
+    getClientMemberProfile().then((profile) => {
+      if (!mounted) return;
+      setRecentActivities(profile.recentActivities);
+      setTempNickname(profile.nickname);
+      onUpdateNickname(profile.nickname);
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, [onUpdateNickname]);
 
   const kycL1 = 'verified';
   const kycL2 = 'pending';
 
-  const toggleEdit = () => {
+  const toggleEdit = async () => {
     if (isEditing) {
       if (tempNickname.trim()) {
-        onUpdateNickname(tempNickname);
+        const profile = await updateClientMemberProfile({ nickname: tempNickname });
+        onUpdateNickname(profile.nickname);
+        setRecentActivities(profile.recentActivities);
       }
     }
     setIsEditing(!isEditing);

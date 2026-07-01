@@ -1,22 +1,27 @@
-import type { Dispatch, SetStateAction } from 'react';
 import type { NotificationItem } from '@/src/types';
 
 export interface AdminBroadcastViewProps {
   onAddNotification: (notification: NotificationItem) => void;
 }
 
+export interface BroadcastFormValues {
+  target: string;
+  title: string;
+  body: string;
+}
+
+export interface TemplateFormValues {
+  notificationTemplate: string;
+}
+
 export interface BroadcastFormProps {
   broadcastTarget: string;
-  setBroadcastTarget: Dispatch<SetStateAction<string>>;
   broadcastTitle: string;
-  setBroadcastTitle: Dispatch<SetStateAction<string>>;
   broadcastBody: string;
-  setBroadcastBody: Dispatch<SetStateAction<string>>;
-  onSendBroadcast: () => void;
+  onSendBroadcast: (values: BroadcastFormValues) => void;
 }
 
 export interface TemplatePanelProps {
   notificationTemplate: string;
-  setNotificationTemplate: Dispatch<SetStateAction<string>>;
-  onSaveTemplate: () => void;
+  onSaveTemplate: (values: TemplateFormValues) => void;
 }

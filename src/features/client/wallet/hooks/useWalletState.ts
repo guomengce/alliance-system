@@ -1,9 +1,12 @@
 import { useEffect, useMemo, useState, type FormEvent } from 'react';
+import {
+  getClientTransactions,
+  transferClientWallet,
+  withdrawClientWallet
+} from '../../../../api/client/wallet';
 import type { Transaction } from '../../../../types';
 import type { ActionType, NetworkType } from '../types';
 import {
-  buildTransferTransaction,
-  buildWithdrawTransaction,
   filterTransactions,
   validateTransfer,
   validateWithdraw
@@ -30,6 +33,7 @@ export const useWalletState = ({
   const [selectedTxn, setSelectedTxn] = useState<Transaction | null>(null);
   const [copySuccessId, setCopySuccessId] = useState<string>('');
   const [copiedAddress, setCopiedAddress] = useState(false);
+  const [walletTransactions, setWalletTransactions] = useState<Transaction[]>([]);
 
   const [rechargeNetwork, setRechargeNetwork] = useState<NetworkType>('TRX');
   const [withdrawNetwork, setWithdrawNetwork] = useState<NetworkType>('TRX');
@@ -52,9 +56,24 @@ export const useWalletState = ({
     }
   }, [errorMsg]);
 
+  useEffect(() => {
+    let mounted = true;
+
+    getClientTransactions().then((nextTransactions) => {
+      if (mounted) {
+        setWalletTransactions(nextTransactions);
+      }
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const sourceTransactions = walletTransactions.length > 0 ? walletTransactions : transactions;
   const filteredTransactions = useMemo(
-    () => filterTransactions(transactions, filterType, searchVal),
-    [filterType, searchVal, transactions]
+    () => filterTransactions(sourceTransactions, filterType, searchVal),
+    [filterType, searchVal, sourceTransactions]
   );
 
   const handleCopyRechargeAddress = () => {
@@ -72,7 +91,7 @@ export const useWalletState = ({
     setTimeout(() => setCopySuccessId(''), duration);
   };
 
-  const handleSubmitAction = (e: FormEvent) => {
+  const handleSubmitAction = async (e: FormEvent) => {
     e.preventDefault();
     setErrorMsg('');
     const num = parseFloat(amountInput);
@@ -92,8 +111,14 @@ export const useWalletState = ({
         setErrorMsg(validationError);
         return;
       }
+      const transaction = await withdrawClientWallet({
+        amount: num,
+        network: withdrawNetwork,
+        address: addressInput
+      });
       onUpdateBalances(-num, 0);
-      onAddTransaction(buildWithdrawTransaction(num, withdrawNetwork, addressInput));
+      onAddTransaction(transaction);
+      setWalletTransactions(prev => [transaction, ...prev]);
       setSuccessMsg(`已成功提交提现申请 ${num} USDT (${withdrawNetwork}网络)，系统正在处理`);
     } else if (activeAction === 'transfer') {
       const validationError = validateTransfer(num, usdtBalance, transferUserId);
@@ -101,8 +126,13 @@ export const useWalletState = ({
         setErrorMsg(validationError);
         return;
       }
+      const transaction = await transferClientWallet({
+        amount: num,
+        targetUid: transferUserId
+      });
       onUpdateBalances(-num, 0);
-      onAddTransaction(buildTransferTransaction(num, transferUserId));
+      onAddTransaction(transaction);
+      setWalletTransactions(prev => [transaction, ...prev]);
       setSuccessMsg(`划转成功！您已成功向平台用户 ${transferUserId} 口岸划转 ${num} USDT`);
     }
 

@@ -1,4 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import {
+  approveAdminWithdrawal,
+  getAdminFinanceLedger,
+  getAdminFinanceMembers,
+  getAdminFinanceWithdrawals,
+  rejectAdminWithdrawal,
+  updateAdminFinanceMember
+} from '../../../../api/admin/finance';
 import type { DownlineMember, Transaction } from '@/src/types';
 import { useAppContext } from '../../../../context/AppContext';
 import type { FinanceTab } from '../types';
@@ -22,7 +30,9 @@ export function useFinanceState(
   const [searchMemberQuery, setSearchMemberQuery] = useState('');
   const [ledgerTypeFilter, setLedgerTypeFilter] = useState<string>('all');
   const [searchLedgerQuery, setSearchLedgerQuery] = useState('');
-  const [fullLedger, setFullLedger] = useState<Transaction[]>(buildInitialLedger(transactions));
+  const [financeMembers, setFinanceMembers] = useState<DownlineMember[]>([]);
+  const [fullLedger, setFullLedger] = useState<Transaction[]>([]);
+  const [withdrawals, setWithdrawals] = useState<Transaction[]>([]);
   const [selectedLedgerItem, setSelectedLedgerItem] = useState<Transaction | null>(null);
   const [selectedWalletMember, setSelectedWalletMember] = useState<DownlineMember | null>(null);
   const [selectedWithdrawal, setSelectedWithdrawal] = useState<Transaction | null>(null);
@@ -31,9 +41,30 @@ export function useFinanceState(
   const [adjustFrozen, setAdjustFrozen] = useState<number>(0);
   const [adjustStatus, setAdjustStatus] = useState<string>('normal');
 
-  const totalUserUSDT = getTotalUserUSDT(downlines);
-  const totalUserTROO = getTotalUserTROO(downlines);
-  const totalUserLocked = getTotalUserLocked(downlines);
+  useEffect(() => {
+    let mounted = true;
+
+    Promise.all([
+      getAdminFinanceMembers(),
+      getAdminFinanceLedger(),
+      getAdminFinanceWithdrawals()
+    ]).then(([members, ledger, withdrawalItems]) => {
+      if (!mounted) return;
+      setFinanceMembers(members);
+      setFullLedger(buildInitialLedger(ledger));
+      setWithdrawals(withdrawalItems);
+      onUpdateDownlines?.(members);
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, [onUpdateDownlines]);
+
+  const sourceDownlines = financeMembers.length > 0 ? financeMembers : downlines;
+  const totalUserUSDT = getTotalUserUSDT(sourceDownlines);
+  const totalUserTROO = getTotalUserTROO(sourceDownlines);
+  const totalUserLocked = getTotalUserLocked(sourceDownlines);
 
   const handleOpenWalletDetails = (member: DownlineMember) => {
     setSelectedWalletMember(member);
@@ -43,16 +74,24 @@ export function useFinanceState(
     setAdjustStatus(member.status || 'normal');
   };
 
-  const handleSaveWalletAdjustment = () => {
+  const handleSaveWalletAdjustment = async () => {
     if (!selectedWalletMember) return;
 
-    const updated = applyWalletAdjustment(downlines, selectedWalletMember.uid, {
+    await updateAdminFinanceMember(selectedWalletMember.uid, {
       usdtBalance: adjustUsdt,
       trooBalance: adjustTroo,
       frozenBalance: adjustFrozen,
       status: adjustStatus as DownlineMember['status']
     });
 
+    const updated = applyWalletAdjustment(sourceDownlines, selectedWalletMember.uid, {
+      usdtBalance: adjustUsdt,
+      trooBalance: adjustTroo,
+      frozenBalance: adjustFrozen,
+      status: adjustStatus as DownlineMember['status']
+    });
+
+    setFinanceMembers(updated);
     onUpdateDownlines?.(updated);
 
     const newTx = createWalletAdjustmentTransaction(selectedWalletMember, adjustUsdt);
@@ -60,6 +99,18 @@ export function useFinanceState(
     setFullLedger(prev => [newTx, ...prev]);
     triggerGlobalAlert(`【人工财务纠偏对账成功】\n会员 ${selectedWalletMember.uid} 的资产池及状态已成功校对修改！余额更改记录已写至完整财务账簿日志中。`, 'success');
     setSelectedWalletMember(null);
+  };
+
+  const handleApproveWithdrawal = async (withdrawalId: string) => {
+    const updatedWithdrawal = await approveAdminWithdrawal(withdrawalId);
+    setWithdrawals(prev => prev.map(item => item.id === withdrawalId ? updatedWithdrawal : item));
+    triggerGlobalAlert(`提现单 ${withdrawalId} 已审核通过`, 'success');
+  };
+
+  const handleRejectWithdrawal = async (withdrawalId: string) => {
+    const updatedWithdrawal = await rejectAdminWithdrawal(withdrawalId);
+    setWithdrawals(prev => prev.map(item => item.id === withdrawalId ? updatedWithdrawal : item));
+    triggerGlobalAlert(`提现单 ${withdrawalId} 已驳回`, 'success');
   };
 
   const exportLedgerCSV = () => {
@@ -81,6 +132,8 @@ export function useFinanceState(
     adjustUsdt,
     fullLedger,
     handleOpenWalletDetails,
+    handleApproveWithdrawal,
+    handleRejectWithdrawal,
     handleSaveWalletAdjustment,
     ledgerTypeFilter,
     searchLedgerQuery,
@@ -88,6 +141,8 @@ export function useFinanceState(
     selectedLedgerItem,
     selectedWalletMember,
     selectedWithdrawal,
+    sourceDownlines,
+    withdrawals,
     exportLedgerCSV,
     setActiveTab,
     setAdjustFrozen,

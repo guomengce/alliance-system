@@ -18,3 +18,15 @@ export const clientTeamApi = {
     apiClient.get<ApiEnvelope<ApiListResponse<ClientTeamMemberDto>>>('/client/team/members', { query })
   )
 };
+
+export const getClientTeamSummary = async (): Promise<ClientTeamSummaryDto> => {
+  const response = await clientTeamApi.getSummary();
+  return { ...response.data };
+};
+
+export const getClientTeamMembers = async (
+  query: PaginationQuery = {}
+): Promise<DownlineMember[]> => {
+  const response = await clientTeamApi.listMembers(query);
+  return response.data.items.map((member) => ({ ...member }));
+};

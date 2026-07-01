@@ -17,8 +17,6 @@ import {
 
 export default function AdminFinanceView({
   pendingWithdrawals,
-  onApproveWithdrawal,
-  onRejectWithdrawal,
   downlines,
   transactions,
   onUpdateDownlines
@@ -31,7 +29,9 @@ export default function AdminFinanceView({
     adjustUsdt,
     exportLedgerCSV,
     fullLedger,
+    handleApproveWithdrawal,
     handleOpenWalletDetails,
+    handleRejectWithdrawal,
     handleSaveWalletAdjustment,
     ledgerTypeFilter,
     searchLedgerQuery,
@@ -39,6 +39,7 @@ export default function AdminFinanceView({
     selectedLedgerItem,
     selectedWalletMember,
     selectedWithdrawal,
+    sourceDownlines,
     setActiveTab,
     setAdjustFrozen,
     setAdjustStatus,
@@ -52,7 +53,8 @@ export default function AdminFinanceView({
     setSelectedWithdrawal,
     totalUserLocked,
     totalUserTROO,
-    totalUserUSDT
+    totalUserUSDT,
+    withdrawals
   } = useFinanceState(downlines, transactions, onUpdateDownlines);
 
   return (
@@ -62,7 +64,7 @@ export default function AdminFinanceView({
 
         {activeTab === 'reserves' && (
           <AntdReservesPanel
-            pendingWithdrawals={pendingWithdrawals}
+            pendingWithdrawals={withdrawals.length > 0 ? withdrawals : pendingWithdrawals}
             withdrawalFee={WITHDRAWAL_FEE}
             companyUSDT={COMPANY_USDT}
             companyTROO={COMPANY_TROO}
@@ -70,14 +72,14 @@ export default function AdminFinanceView({
             totalUserTROO={totalUserTROO}
             totalUserLocked={totalUserLocked}
             setSelectedWithdrawal={setSelectedWithdrawal}
-            onApproveWithdrawal={onApproveWithdrawal}
-            onRejectWithdrawal={onRejectWithdrawal}
+            onApproveWithdrawal={handleApproveWithdrawal}
+            onRejectWithdrawal={handleRejectWithdrawal}
           />
         )}
 
         {activeTab === 'wallets' && (
           <AntdWalletsPanel
-            downlines={downlines}
+            downlines={sourceDownlines}
             searchMemberQuery={searchMemberQuery}
             setSearchMemberQuery={setSearchMemberQuery}
             handleOpenWalletDetails={handleOpenWalletDetails}
@@ -118,8 +120,8 @@ export default function AdminFinanceView({
         selectedWithdrawal={selectedWithdrawal}
         setSelectedWithdrawal={setSelectedWithdrawal}
         withdrawalFee={WITHDRAWAL_FEE}
-        onApproveWithdrawal={onApproveWithdrawal}
-        onRejectWithdrawal={onRejectWithdrawal}
+        onApproveWithdrawal={handleApproveWithdrawal}
+        onRejectWithdrawal={handleRejectWithdrawal}
       />
     </div>
   );

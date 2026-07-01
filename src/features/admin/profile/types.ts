@@ -1,5 +1,3 @@
-import type { Dispatch, FormEvent, SetStateAction } from 'react';
-
 export interface AdminProfileViewProps {
   uid: string;
   nickname: string;
@@ -21,9 +19,7 @@ export interface ProfileFormProps {
   formEmail: string;
   profileSuccess: boolean;
   profileError: string;
-  setFormNickname: Dispatch<SetStateAction<string>>;
-  setFormEmail: Dispatch<SetStateAction<string>>;
-  onSaveProfile: (e: FormEvent) => void;
+  onSaveProfile: (values: AdminProfileFormValues) => void;
 }
 
 export interface PasswordFormProps {
@@ -32,12 +28,20 @@ export interface PasswordFormProps {
   confirmPassword: string;
   passwordSuccess: string;
   passwordError: string;
-  setOldPassword: Dispatch<SetStateAction<string>>;
-  setNewPassword: Dispatch<SetStateAction<string>>;
-  setConfirmPassword: Dispatch<SetStateAction<string>>;
-  onSavePassword: (e: FormEvent) => void;
+  onSavePassword: (values: AdminPasswordFormValues) => void;
 }
 
 export interface LogoutSectionProps {
   onLogout: () => void;
+}
+
+export interface AdminProfileFormValues {
+  nickname: string;
+  email: string;
+}
+
+export interface AdminPasswordFormValues {
+  oldPassword: string;
+  newPassword: string;
+  confirmPassword: string;
 }

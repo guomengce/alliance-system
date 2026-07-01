@@ -1,10 +1,30 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { getInitialAdminReportData } from '../../../../mock/admin/reports';
+import { getAdminReportData } from '../../../../api/admin/reports';
+import type { AdminReportDto } from '../../../../api/admin/reports';
 import { buildSettlementCsv } from '../utils';
 
 export function useReportsState() {
-  const [reportData] = useState(() => getInitialAdminReportData());
+  const [reportData, setReportData] = useState<AdminReportDto>({
+    metrics: [],
+    packageSegments: [],
+    settlementLogs: [],
+    distributionLogs: []
+  });
+
+  useEffect(() => {
+    let mounted = true;
+
+    getAdminReportData().then((nextReportData) => {
+      if (mounted) {
+        setReportData(nextReportData);
+      }
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const exportMockCSV = () => {
     const csvContent = buildSettlementCsv(reportData.settlementLogs);

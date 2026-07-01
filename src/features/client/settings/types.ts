@@ -1,4 +1,4 @@
-import type { Dispatch, FormEvent, SetStateAction } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 
 export interface SettingsViewProps {
   nickname: string;
@@ -26,9 +26,7 @@ export interface FeedbackMessagesProps {
 export interface ProfileFormProps {
   tempNickname: string;
   tempEmail: string;
-  setTempNickname: Dispatch<SetStateAction<string>>;
-  setTempEmail: Dispatch<SetStateAction<string>>;
-  onUpdateProfile: (e: FormEvent) => void;
+  onUpdateProfile: (values: ClientProfileFormValues) => void;
 }
 
 export interface PasswordFormProps {
@@ -36,9 +34,7 @@ export interface PasswordFormProps {
   oldPassword: string;
   newPassword: string;
   setShowPassword: Dispatch<SetStateAction<boolean>>;
-  setOldPassword: Dispatch<SetStateAction<string>>;
-  setNewPassword: Dispatch<SetStateAction<string>>;
-  onUpdatePasswords: (e: FormEvent) => void;
+  onUpdatePasswords: (values: ClientPasswordFormValues) => void;
 }
 
 export interface SupportCardProps {
@@ -47,4 +43,14 @@ export interface SupportCardProps {
 
 export interface DevicesPanelProps {
   activeDevices: ActiveDevice[];
+}
+
+export interface ClientProfileFormValues {
+  nickname: string;
+  email: string;
+}
+
+export interface ClientPasswordFormValues {
+  oldPassword: string;
+  newPassword: string;
 }

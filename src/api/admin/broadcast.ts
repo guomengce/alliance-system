@@ -21,6 +21,9 @@ export const adminBroadcastApi = {
   list: (query: PaginationQuery = {}) => (
     apiClient.get<ApiEnvelope<ApiListResponse<AdminBroadcastDto>>>('/admin/broadcasts', { query })
   ),
+  getConfig: () => (
+    apiClient.get<ApiEnvelope<AdminBroadcastConfigDto>>('/admin/broadcasts/config')
+  ),
   send: (payload: Partial<AdminBroadcastDto>) => (
     apiClient.post<ApiEnvelope<AdminBroadcastDto>, Partial<AdminBroadcastDto>>('/admin/broadcasts', payload)
   )
@@ -38,3 +41,15 @@ export const mapAdminBroadcastConfigDto = (
 export const getInitialAdminBroadcastConfig = (): AdminBroadcastConfigDto => (
   mapAdminBroadcastConfigDto(INITIAL_ADMIN_BROADCAST_CONFIG_DTO)
 );
+
+export const getAdminBroadcastConfig = async (): Promise<AdminBroadcastConfigDto> => {
+  const response = await adminBroadcastApi.getConfig();
+  return mapAdminBroadcastConfigDto(response.data);
+};
+
+export const sendAdminBroadcast = async (
+  payload: Partial<AdminBroadcastDto>
+): Promise<AdminBroadcastDto> => {
+  const response = await adminBroadcastApi.send(payload);
+  return { ...response.data };
+};

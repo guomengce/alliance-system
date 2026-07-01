@@ -17,3 +17,21 @@ export const adminParametersApi = {
     apiClient.patch<ApiEnvelope<AdminParametersDto>, Partial<AdminParametersDto>>('/admin/parameters', payload)
   )
 };
+
+export const getAdminParameters = async (): Promise<AdminParametersDto> => {
+  const response = await adminParametersApi.get();
+  return {
+    ...response.data,
+    commissionLevels: { ...response.data.commissionLevels }
+  };
+};
+
+export const updateAdminParameters = async (
+  payload: Partial<AdminParametersDto>
+): Promise<AdminParametersDto> => {
+  const response = await adminParametersApi.update(payload);
+  return {
+    ...response.data,
+    commissionLevels: { ...response.data.commissionLevels }
+  };
+};

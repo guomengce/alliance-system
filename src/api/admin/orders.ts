@@ -49,3 +49,8 @@ export const mapAdminOrderDto = (dto: AdminOrderDto): OrderDetail => ({
 export const getInitialAdminOrders = (): OrderDetail[] => (
   INITIAL_ADMIN_ORDER_DTOS.map((order) => mapAdminOrderDto(order))
 );
+
+export const getAdminOrders = async (query: AdminOrdersQuery = {}): Promise<OrderDetail[]> => {
+  const response = await adminOrdersApi.list(query);
+  return response.data.items.map((order) => mapAdminOrderDto(order));
+};

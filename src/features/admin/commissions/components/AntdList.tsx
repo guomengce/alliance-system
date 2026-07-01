@@ -1,5 +1,5 @@
 import { Empty, Input, Segmented } from 'antd';
-import { Coins, X } from 'lucide-react';
+import { Coins } from 'lucide-react';
 
 import type { ActiveTab, ListProps } from '../types';
 import AntdDesktopTable from './AntdDesktopTable';
@@ -24,7 +24,6 @@ export default function AntdList({
   filteredCommissions,
   commissionSearch,
   onCommissionSearchChange,
-  onClearSearch,
   activeTab,
   onActiveTabChange,
   onSelectCommission,
@@ -42,22 +41,13 @@ export default function AntdList({
       </div>
 
       <div className="alliance-antd-admin-commission-toolbar flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 pt-1">
-        <Input
+        <Input.Search
+          allowClear
           className="alliance-antd-commission-search w-full lg:max-w-[520px]"
-          value={commissionSearch}
-          onChange={(event) => onCommissionSearchChange(event.target.value)}
+          defaultValue={commissionSearch}
+          key={commissionSearch}
+          onSearch={onCommissionSearchChange}
           placeholder={LIST_TEXT.searchPlaceholder}
-          suffix={
-            commissionSearch ? (
-              <button
-                type="button"
-                onClick={onClearSearch}
-                className="text-[#cbc4d2]/40 hover:text-white transition-colors cursor-pointer"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            ) : null
-          }
         />
 
         <div className="select-none lg:ml-auto">

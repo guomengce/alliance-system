@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
-  getInitialAdminSettlementLogs,
-  getInitialAdminSettlementTransactions
+  getAdminSettlementLogs,
+  getAdminSettlementTransactions
 } from '../../../../api/admin/settlement';
 import { useAppContext } from '../../../../context/AppContext';
 import type { SettlementItem, SettleLog } from '../types';
@@ -17,12 +17,24 @@ interface UseSettlementStateParams {
 
 export function useSettlementState({ onUpdateBalances }: UseSettlementStateParams) {
   const { triggerGlobalAlert } = useAppContext();
-  const [settlementLogs, setSettlementLogs] = useState<SettleLog[]>(() => getInitialAdminSettlementLogs());
-  const [settlementTransactions, setSettlementTransactions] = useState<SettlementItem[]>(
-    () => getInitialAdminSettlementTransactions()
-  );
+  const [settlementLogs, setSettlementLogs] = useState<SettleLog[]>([]);
+  const [settlementTransactions, setSettlementTransactions] = useState<SettlementItem[]>([]);
   const [manualSettleLoading, setManualSettleLoading] = useState<boolean>(false);
   const [selectedTx, setSelectedTx] = useState<SettlementItem | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+
+    Promise.all([getAdminSettlementLogs(), getAdminSettlementTransactions()]).then(([logs, transactions]) => {
+      if (!mounted) return;
+      setSettlementLogs(logs);
+      setSettlementTransactions(transactions);
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const handleResolveException = (txId: string) => {
     setSettlementTransactions(prev => resolveSettlementException(prev, txId));

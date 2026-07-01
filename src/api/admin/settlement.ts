@@ -68,3 +68,25 @@ export const getInitialAdminSettlementTransactions = (): SettlementItem[] => (
 export const getInitialAdminSettlementLogs = (): SettleLog[] => (
   INITIAL_ADMIN_SETTLEMENT_LOG_DTOS.map((log) => mapAdminSettlementLogDto(log))
 );
+
+export const getAdminSettlementTransactions = async (
+  query: PaginationQuery = {}
+): Promise<SettlementItem[]> => {
+  const response = await adminSettlementApi.list(query);
+  return response.data.items.map((transaction) => mapAdminSettlementTransactionDto(transaction));
+};
+
+export const executeAdminSettlement = async (settlementId: string): Promise<SettlementItem> => {
+  const response = await adminSettlementApi.execute(settlementId);
+  return mapAdminSettlementTransactionDto(response.data);
+};
+
+export const getAdminSettlementLogs = async (
+  query: PaginationQuery = {}
+): Promise<SettleLog[]> => {
+  const response = await apiClient.get<ApiEnvelope<ApiListResponse<AdminSettlementLogDto>>>(
+    '/admin/settlements/logs',
+    { query }
+  );
+  return response.data.items.map((log) => mapAdminSettlementLogDto(log));
+};

@@ -1,7 +1,8 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import {
-  getInitialClientPlans,
-  getInitialClientSubscribeOrders
+  createClientSubscribeOrder,
+  getClientPlans,
+  getClientSubscribeOrders
 } from '../../../../api/client/subscribe';
 import type { Transaction } from '../../../../types';
 import type { Plan, Purchase } from '../types';
@@ -11,6 +12,19 @@ import {
   createPurchasePreview,
   finalizePurchase
 } from '../utils';
+
+const EMPTY_PLAN: Plan = {
+  id: '',
+  name: '',
+  price: 0,
+  badge: '',
+  badgeStyle: '',
+  poolLimit: 0,
+  giftRatio: 0,
+  releaseLimit: 0,
+  queueRelease: 0,
+  description: ''
+};
 
 interface UseSubscribeStateOptions {
   usdtBalance: number;
@@ -25,14 +39,33 @@ export function useSubscribeState({
   onUpdateBalances,
   onAddTransaction
 }: UseSubscribeStateOptions) {
-  const plans = getInitialClientPlans();
-  const [selectedPlan, setSelectedPlan] = useState<Plan>(plans[4]);
+  const [plans, setPlans] = useState<Plan[]>([]);
+  const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
   const [amountInput, setAmountInput] = useState<number>(50000);
   const [successMsg, setSuccessMsg] = useState<string>('');
   const [errorMsg, setErrorMsg] = useState<string>('');
   const [copiedId, setCopiedId] = useState<string>('');
   const [detailModalItem, setDetailModalItem] = useState<Purchase | null>(null);
-  const [purchases, setPurchases] = useState<Purchase[]>(() => getInitialClientSubscribeOrders());
+  const [purchases, setPurchases] = useState<Purchase[]>([]);
+
+  useEffect(() => {
+    let mounted = true;
+
+    Promise.all([getClientPlans(), getClientSubscribeOrders()]).then(([nextPlans, nextPurchases]) => {
+      if (!mounted) return;
+      const defaultPlan = nextPlans[4] ?? nextPlans[0] ?? null;
+      setPlans(nextPlans);
+      setPurchases(nextPurchases);
+      setSelectedPlan(defaultPlan);
+      if (defaultPlan) {
+        setAmountInput(defaultPlan.price);
+      }
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   useEffect(() => {
     if (successMsg) {
@@ -66,6 +99,11 @@ export function useSubscribeState({
     setErrorMsg('');
     setSuccessMsg('');
 
+    if (!selectedPlan) {
+      setErrorMsg('订阅方案加载中，请稍后再试');
+      return;
+    }
+
     if (amountInput < selectedPlan.price) {
       setErrorMsg(`当前方案的最低参与起购额度为 ${selectedPlan.price} USDT`);
       return;
@@ -79,8 +117,8 @@ export function useSubscribeState({
     setDetailModalItem(createPurchasePreview(selectedPlan, amountInput));
   };
 
-  const handleConfirmPurchase = () => {
-    if (!detailModalItem) return;
+  const handleConfirmPurchase = async () => {
+    if (!detailModalItem || !selectedPlan) return;
 
     const amount = detailModalItem.amount;
     if (amount > usdtBalance) {
@@ -98,7 +136,14 @@ export function useSubscribeState({
     onUpdateBalances(-amount, expectedTroo * 10, queueLockAmount);
     onUpdateCommissionPool(calculatedLimit, calculatedLimit);
 
-    const newPurchase: Purchase = finalizePurchase(detailModalItem);
+    const apiPurchase = await createClientSubscribeOrder({
+      planId: selectedPlan.id,
+      amount
+    });
+    const newPurchase: Purchase = {
+      ...finalizePurchase(detailModalItem),
+      ...apiPurchase
+    };
 
     setPurchases([newPurchase, ...purchases]);
     setDetailModalItem(null);
@@ -120,7 +165,7 @@ export function useSubscribeState({
     errorMsg,
     plans,
     purchases,
-    selectedPlan,
+    selectedPlan: selectedPlan ?? plans[0] ?? EMPTY_PLAN,
     handleConfirmPurchase,
     handleCopyText,
     handleDropdownChange,

@@ -23,3 +23,13 @@ export const clientHomeApi = {
     apiClient.get<ApiEnvelope<ClientHomeDto>>('/client/home/overview')
   )
 };
+
+export const getClientHomeOverview = async (): Promise<ClientHomeDto> => {
+  const response = await clientHomeApi.getOverview();
+  return {
+    ...response.data,
+    transactions: response.data.transactions.map((transaction) => ({ ...transaction })),
+    marketData: response.data.marketData.map((point) => ({ ...point })),
+    recentOrders: response.data.recentOrders.map((order) => ({ ...order }))
+  };
+};

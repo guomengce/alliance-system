@@ -19,6 +19,9 @@ export const clientSubscribeApi = {
   listPlans: (query: PaginationQuery = {}) => (
     apiClient.get<ApiEnvelope<ApiListResponse<ClientPlanDto>>>('/client/subscribe/plans', { query })
   ),
+  listOrders: (query: PaginationQuery = {}) => (
+    apiClient.get<ApiEnvelope<ApiListResponse<ClientSubscribeOrderDto>>>('/client/subscribe/orders', { query })
+  ),
   createOrder: (payload: CreateClientSubscribeOrderPayload) => (
     apiClient.post<ApiEnvelope<ClientSubscribeOrderDto>, CreateClientSubscribeOrderPayload>('/client/subscribe/orders', payload)
   )
@@ -35,3 +38,20 @@ export const getInitialClientPlans = (): Plan[] => (
 export const getInitialClientSubscribeOrders = (): Purchase[] => (
   INITIAL_CLIENT_SUBSCRIBE_ORDER_DTOS.map((order) => mapClientSubscribeOrderDto(order))
 );
+
+export const getClientPlans = async (): Promise<Plan[]> => {
+  const response = await clientSubscribeApi.listPlans();
+  return response.data.items.map((plan) => mapClientPlanDto(plan));
+};
+
+export const getClientSubscribeOrders = async (): Promise<Purchase[]> => {
+  const response = await clientSubscribeApi.listOrders();
+  return response.data.items.map((order) => mapClientSubscribeOrderDto(order));
+};
+
+export const createClientSubscribeOrder = async (
+  payload: CreateClientSubscribeOrderPayload
+): Promise<Purchase> => {
+  const response = await clientSubscribeApi.createOrder(payload);
+  return mapClientSubscribeOrderDto(response.data);
+};

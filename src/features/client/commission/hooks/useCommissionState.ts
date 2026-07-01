@@ -1,7 +1,10 @@
-import { useState } from 'react';
-import { getInitialClientCommissionData } from '../../../../mock/client/commission';
+import { useEffect, useState } from 'react';
+import {
+  getClientCommissionHistory,
+  getClientCommissionRatios
+} from '../../../../api/client/commission';
 import type { Transaction } from '../../../../types';
-import type { HistoryFilter } from '../types';
+import type { CommissionHistoryItem, CommissionRatio, HistoryFilter } from '../types';
 import {
   buildCommissionWithdrawalTransaction,
   filterCommissionHistory
@@ -24,7 +27,22 @@ export function useCommissionState({
 }: UseCommissionStateOptions) {
   const [successMsg, setSuccessMsg] = useState('');
   const [activeFilter, setActiveFilter] = useState<HistoryFilter>('all');
-  const [{ history, ratios }] = useState(() => getInitialClientCommissionData());
+  const [history, setHistory] = useState<CommissionHistoryItem[]>([]);
+  const [ratios, setRatios] = useState<CommissionRatio[]>([]);
+
+  useEffect(() => {
+    let mounted = true;
+
+    Promise.all([getClientCommissionHistory(), getClientCommissionRatios()]).then(([nextHistory, nextRatios]) => {
+      if (!mounted) return;
+      setHistory(nextHistory);
+      setRatios(nextRatios);
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const filteredHistory = filterCommissionHistory(history, activeFilter);
 

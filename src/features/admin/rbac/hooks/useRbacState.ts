@@ -1,11 +1,19 @@
-import { useState, type FormEvent } from 'react';
+import { useEffect, useState } from 'react';
 import {
-  getInitialAdminAccounts,
-  getInitialPermissionDefinitions,
-  getInitialRolePermissions
+  getAdminAccounts,
+  getAdminRolePermissions,
+  getPermissionDefinitions
 } from '../../../../api/admin/rbac';
 import { useAppContext } from '../../../../context/AppContext';
-import type { AccountStatus, AdminAccount, RbacTab, RolePermission } from '../types';
+import type {
+  AccountStatus,
+  AddAccountFormValues,
+  AddRoleFormValues,
+  AdminAccount,
+  EditAccountFormValues,
+  RbacTab,
+  RolePermission
+} from '../types';
 import {
   createAdminAccount,
   createRolePermission,
@@ -20,11 +28,11 @@ import {
 
 export function useRbacState() {
   const { triggerGlobalAlert } = useAppContext();
-  const [roles, setRoles] = useState<RolePermission[]>(() => getInitialRolePermissions());
-  const [adminUsers, setAdminUsers] = useState<AdminAccount[]>(() => getInitialAdminAccounts());
-  const [permissionInventory] = useState(() => getInitialPermissionDefinitions());
+  const [roles, setRoles] = useState<RolePermission[]>([]);
+  const [adminUsers, setAdminUsers] = useState<AdminAccount[]>([]);
+  const [permissionInventory, setPermissionInventory] = useState(() => []);
   const [activeTab, setActiveTab] = useState<RbacTab>('accounts');
-  const [selectedRoleCode, setSelectedRoleCode] = useState<string>('SUPER_ADMIN');
+  const [selectedRoleCode, setSelectedRoleCode] = useState('SUPER_ADMIN');
   const [isNewAccountModalOpen, setIsNewAccountModalOpen] = useState(false);
   const [isNewRoleModalOpen, setIsNewRoleModalOpen] = useState(false);
   const [newUsername, setNewUsername] = useState('');
@@ -39,7 +47,26 @@ export function useRbacState() {
   const [editRole, setEditRole] = useState('OPERATOR');
   const [editStatus, setEditStatus] = useState<AccountStatus>('active');
 
-  const activeRoleObj = roles.find(r => r.roleCode === selectedRoleCode) || roles[0];
+  useEffect(() => {
+    let mounted = true;
+
+    Promise.all([
+      getAdminRolePermissions(),
+      getAdminAccounts(),
+      getPermissionDefinitions()
+    ]).then(([nextRoles, nextAccounts, nextPermissions]) => {
+      if (!mounted) return;
+      setRoles(nextRoles);
+      setAdminUsers(nextAccounts);
+      setPermissionInventory(nextPermissions);
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const activeRoleObj = roles.find(role => role.roleCode === selectedRoleCode) || roles[0];
 
   const handleOpenEditAccount = (account: AdminAccount) => {
     setEditingAccount(account);
@@ -49,26 +76,31 @@ export function useRbacState() {
     setEditStatus(account.status);
   };
 
-  const handleSaveEditAccount = (event: FormEvent) => {
-    event.preventDefault();
+  const handleSaveEditAccount = ({ nickname, email, role, status }: EditAccountFormValues) => {
     if (!editingAccount) return;
-    if (!editNickname.trim() || !editEmail.trim()) {
+
+    setEditNickname(nickname);
+    setEditEmail(email);
+    setEditRole(role);
+    setEditStatus(status);
+
+    if (!nickname.trim() || !email.trim()) {
       triggerGlobalAlert('请将必填框填写完整！', 'error');
       return;
     }
-    if (!isValidEmail(editEmail)) {
+    if (!isValidEmail(email)) {
       triggerGlobalAlert('请输入合法的邮箱格式。', 'error');
       return;
     }
 
     setAdminUsers(prev => updateAdminAccount(prev, editingAccount.id, {
-      nickname: editNickname.trim(),
-      email: editEmail.trim(),
-      role: editRole,
-      status: editStatus
+      nickname: nickname.trim(),
+      email: email.trim(),
+      role,
+      status
     }));
 
-    triggerGlobalAlert(`【管理员档案修改成功】\n已成功将“${editNickname}”的信息和角色挂接完成热更新。`, 'success');
+    triggerGlobalAlert(`管理员档案修改成功，已更新 ${nickname} 的信息和角色。`, 'success');
     setEditingAccount(null);
   };
 
@@ -77,29 +109,33 @@ export function useRbacState() {
     if (customPassword === null) return;
 
     const finalPassword = customPassword.trim() || generatePassword();
-    triggerGlobalAlert(`【访问密码重置完成】\n管理员 [${username}] 的新登录校验密码为：\n${finalPassword}`, 'success');
+    triggerGlobalAlert(`访问密码重置完成：管理员 [${username}] 的新登录校验密码为：\n${finalPassword}`, 'success');
   };
 
   const handleTogglePermission = (roleCode: string, permissionCode: string) => {
     if (roleCode === 'SUPER_ADMIN') {
-      triggerGlobalAlert('【安全管控警告】超级管理员拥有全部权限，系统禁止缩减或改动 SUPER_ADMIN 权限。', 'warning');
+      triggerGlobalAlert('超级管理员拥有全部权限，系统禁止缩减或改动 SUPER_ADMIN 权限。', 'warning');
       return;
     }
 
     setRoles(prev => toggleRolePermission(prev, roleCode, permissionCode));
   };
 
-  const handleCreateAccount = (event: FormEvent) => {
-    event.preventDefault();
-    if (!newUsername.trim() || !newNickname.trim() || !newEmail.trim()) {
+  const handleCreateAccount = ({ username, nickname, email, role }: AddAccountFormValues) => {
+    setNewUsername(username);
+    setNewNickname(nickname);
+    setNewEmail(email);
+    setNewRole(role);
+
+    if (!username.trim() || !nickname.trim() || !email.trim()) {
       triggerGlobalAlert('请将必填框填写完整！', 'error');
       return;
     }
-    if (!isValidEmail(newEmail)) {
+    if (!isValidEmail(email)) {
       triggerGlobalAlert('请输入合法的邮箱格式。', 'error');
       return;
     }
-    const exists = adminUsers.some(user => user.username.toLowerCase() === newUsername.toLowerCase());
+    const exists = adminUsers.some(user => user.username.toLowerCase() === username.toLowerCase());
     if (exists) {
       triggerGlobalAlert('此管理员账号名已存在。', 'error');
       return;
@@ -108,10 +144,10 @@ export function useRbacState() {
     setAdminUsers(prev => [
       ...prev,
       createAdminAccount(prev, {
-        username: newUsername,
-        nickname: newNickname,
-        email: newEmail,
-        role: newRole
+        username,
+        nickname,
+        email,
+        role
       })
     ]);
     setIsNewAccountModalOpen(false);
@@ -119,28 +155,30 @@ export function useRbacState() {
     setNewNickname('');
     setNewEmail('');
     setNewRole('OPERATOR');
-    triggerGlobalAlert(`【系统账号分配成功】\n已成功为“${newNickname}”分拨后台入口权限，专属权限已与“${newRole}”角色联动挂载。`, 'success');
+    triggerGlobalAlert(`系统账号分配成功，已为 ${nickname} 分配后台入口权限。`, 'success');
   };
 
-  const handleCreateRole = (event: FormEvent) => {
-    event.preventDefault();
-    if (!newRoleName.trim() || !newRoleCode.trim()) {
+  const handleCreateRole = ({ roleName, roleCode }: AddRoleFormValues) => {
+    setNewRoleName(roleName);
+    setNewRoleCode(roleCode);
+
+    if (!roleName.trim() || !roleCode.trim()) {
       triggerGlobalAlert('请填写完整名称与编码。', 'error');
       return;
     }
-    const cleanCode = normalizeRoleCode(newRoleCode);
+    const cleanCode = normalizeRoleCode(roleCode);
     const codeExists = roles.some(role => role.roleCode === cleanCode);
     if (codeExists) {
       triggerGlobalAlert('存在相同编码的角色。', 'error');
       return;
     }
 
-    setRoles(prev => [...prev, createRolePermission(newRoleName, newRoleCode)]);
+    setRoles(prev => [...prev, createRolePermission(roleName, roleCode)]);
     setSelectedRoleCode(cleanCode);
     setIsNewRoleModalOpen(false);
     setNewRoleName('');
     setNewRoleCode('');
-    triggerGlobalAlert(`【创建全新角色成功】\n已建立角色“${newRoleName}”[${cleanCode}]，现在可在权限网格中勾选分权细节。`, 'success');
+    triggerGlobalAlert(`创建全新角色成功：${roleName} [${cleanCode}]。`, 'success');
   };
 
   const handleToggleAccountStatus = (id: string) => {
@@ -159,7 +197,7 @@ export function useRbacState() {
       triggerGlobalAlert('操作被驳回：底层核心账号不允许执行物理删除。', 'warning');
       return;
     }
-    if (confirm(`【操作警告】确认注销并回收管理员（UID: ${id} - ${target?.username}）的全部后台权限吗？`)) {
+    if (confirm(`确认注销并回收管理员（ID: ${id} - ${target?.username}）的全部后台权限吗？`)) {
       setAdminUsers(prev => deleteAdminAccount(prev, id));
     }
   };

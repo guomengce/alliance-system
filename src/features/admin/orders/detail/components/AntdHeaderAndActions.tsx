@@ -1,3 +1,4 @@
+import { Button, Tag } from 'antd';
 import { ArrowLeft, CheckCircle, Landmark, XCircle } from 'lucide-react';
 import type { DetailViewProps } from '../../types';
 
@@ -11,14 +12,14 @@ interface AntdHeaderAndActionsProps {
 
 function OrderStatusTag({ status }: { status: 'confirmed' | 'pending' | 'cancelled' }) {
   if (status === 'confirmed') {
-    return <span className="text-xs font-black px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400">已完成交割</span>;
+    return <Tag color="success">已完成交割</Tag>;
   }
 
   if (status === 'pending') {
-    return <span className="text-xs font-black px-3 py-1.5 rounded-full bg-amber-500/10 text-amber-400">待安全审核</span>;
+    return <Tag color="warning">待安全审核</Tag>;
   }
 
-  return <span className="text-xs font-black px-3 py-1.5 rounded-full bg-red-500/10 text-red-400">已拒绝注销</span>;
+  return <Tag color="error">已拒绝注销</Tag>;
 }
 
 export default function AntdHeaderAndActions({
@@ -47,14 +48,13 @@ export default function AntdHeaderAndActions({
     <>
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-white/5 pb-4">
         <div className="flex items-center gap-3">
-          <button
-            type="button"
+          <Button
+            type="default"
             onClick={backToList}
-            className="bg-white/5 hover:bg-[#cfbcff]/10 text-[#cfbcff] px-3.5 py-2 rounded-xl text-xs font-bold border border-[#cfbcff]/10 active:scale-95 transition-all flex items-center gap-1.5 cursor-pointer"
+            icon={<ArrowLeft className="w-3.5 h-3.5" />}
           >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>返回订单列表</span>
-          </button>
+            返回订单列表
+          </Button>
 
           <div className="h-4 w-px bg-white/10 hidden sm:block" />
 
@@ -83,22 +83,21 @@ export default function AntdHeaderAndActions({
             </p>
           </div>
           <div className="flex items-center gap-2 shrink-0">
-            <button
-              type="button"
+            <Button
+              type="primary"
               onClick={confirmOrder}
-              className="bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 font-bold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 transition-all cursor-pointer"
+              icon={<CheckCircle className="w-3.5 h-3.5" />}
             >
-              <CheckCircle className="w-3.5 h-3.5" />
               确认到账并交割
-            </button>
-            <button
-              type="button"
+            </Button>
+            <Button
+              danger
+              type="default"
               onClick={cancelOrder}
-              className="bg-red-500/10 hover:bg-red-500/20 text-red-400 font-bold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 transition-all cursor-pointer"
+              icon={<XCircle className="w-3.5 h-3.5" />}
             >
-              <XCircle className="w-3.5 h-3.5" />
               驳回拒绝
-            </button>
+            </Button>
           </div>
         </div>
       )}

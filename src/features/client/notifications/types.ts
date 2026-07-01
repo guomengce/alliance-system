@@ -1,16 +1,12 @@
 import type { NotificationItem } from '../../../types';
 
-export interface NotificationsViewProps {
-  notifications: NotificationItem[];
-  onMarkAllRead: () => void;
-  onClearNotifications: () => void;
-  onToggleRead: (id: string) => void;
-}
+export interface NotificationsViewProps {}
 
 export interface HeaderActionsProps {
-  notifications: NotificationItem[];
+  hasNotifications: boolean;
+  loading: boolean;
+  updating: boolean;
   onMarkAllRead: () => void;
-  onClearNotifications: () => void;
 }
 
 export interface CategoryTabsProps {
@@ -22,12 +18,17 @@ export interface CategoryTabsProps {
 
 export interface NotificationListProps {
   notifications: NotificationItem[];
+  loading: boolean;
+  updatingId: string | null;
+  onDeleteNotification: (id: string) => void;
   onToggleRead: (id: string) => void;
 }
 
 export interface NotificationCardProps {
   key?: string;
   notification: NotificationItem;
+  isUpdating: boolean;
+  onDeleteNotification: (id: string) => void;
   onToggleRead: (id: string) => void;
 }
 

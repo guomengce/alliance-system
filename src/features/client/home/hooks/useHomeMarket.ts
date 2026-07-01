@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { getInitialClientHomeData } from '../../../../mock/client/home';
+import { useEffect, useState } from 'react';
+import { getClientHomeOverview } from '../../../../api/client/home';
+import type { HomeOrder, TrooMarketPoint } from '../types';
 import {
   MARKET_CHART_HEIGHT,
   buildMarketChartOption,
@@ -8,10 +9,25 @@ import {
 
 export function useHomeMarket() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [{ marketData, orders }] = useState(() => getInitialClientHomeData());
+  const [marketData, setMarketData] = useState<TrooMarketPoint[]>([]);
+  const [orders, setOrders] = useState<HomeOrder[]>([]);
 
-  const activeIndex = hoveredIndex !== null ? hoveredIndex : marketData.length - 1;
-  const activeData = marketData[activeIndex];
+  useEffect(() => {
+    let mounted = true;
+
+    void getClientHomeOverview().then((overview) => {
+      if (!mounted) return;
+      setMarketData(overview.marketData);
+      setOrders(overview.recentOrders);
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const activeIndex = hoveredIndex !== null ? hoveredIndex : Math.max(0, marketData.length - 1);
+  const activeData = marketData[activeIndex] ?? { time: '', price: 0, change: 0 };
   const chartOption = buildMarketChartOption(marketData, activeIndex);
   const yesterdayDateStr = getYesterdayDateString();
 

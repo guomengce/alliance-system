@@ -24,12 +24,8 @@ export default function SettingsView({
     newPassword,
     oldPassword,
     setErrorMsg,
-    setNewPassword,
-    setOldPassword,
     setShowPassword,
     setSuccessMsg,
-    setTempEmail,
-    setTempNickname,
     showPassword,
     successMsg,
     tempEmail,
@@ -62,8 +58,6 @@ export default function SettingsView({
           <ProfileForm
             tempNickname={tempNickname}
             tempEmail={tempEmail}
-            setTempNickname={setTempNickname}
-            setTempEmail={setTempEmail}
             onUpdateProfile={handleUpdateProfile}
           />
 
@@ -73,8 +67,6 @@ export default function SettingsView({
             oldPassword={oldPassword}
             newPassword={newPassword}
             setShowPassword={setShowPassword}
-            setOldPassword={setOldPassword}
-            setNewPassword={setNewPassword}
             onUpdatePasswords={handleUpdatePasswords}
           />
         </div>

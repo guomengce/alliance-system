@@ -1,15 +1,20 @@
+import { Tag } from 'antd';
+import { AntdCard } from '@/src/shared/antd/AntdCard';
 import type { TrooPricePanelProps } from '../types';
-import EChartPanel from './EChartPanel';
+import AntdEChartPanel from './AntdEChartPanel';
 
-export default function TrooPricePanel({
+export default function AntdTrooPricePanel({
   data,
   onHoverIndexChange
 }: TrooPricePanelProps) {
   const { chart, chartOption } = data;
   const { activePoint } = chart;
+  const changeClassName = activePoint.change >= 0
+    ? 'alliance-antd-dashboard-change-tag is-up'
+    : 'alliance-antd-dashboard-change-tag is-down';
 
   return (
-    <div className="lg:col-span-5 glass-card p-6 rounded-2xl border border-white/5 bg-[#141119] flex flex-col justify-between">
+    <AntdCard className="alliance-antd-dashboard-panel-card lg:col-span-5">
       <div>
         <div className="flex justify-between items-center pb-3 border-b border-white/5">
           <span className="text-xs font-black text-[#cbc4d2]/50 tracking-wider uppercase">Yahoo Finance Feed</span>
@@ -17,18 +22,14 @@ export default function TrooPricePanel({
 
         <div className="mt-4 flex justify-between items-start">
           <div>
-            <p className="text-xs text-[#cbc4d2]/70 font-semibold">TROO / USDT 昨日行情价格</p>
+            <p className="text-[13px] text-[#cbc4d2]/70 font-semibold">TROO / USDT 昨日行情价格</p>
             <div className="flex items-center gap-3.5 mt-2">
               <span className="text-3xl font-extrabold text-white font-mono leading-none tracking-tight">
                 {activePoint.priceText}
               </span>
-              <span className={`text-xs font-bold px-2 py-0.5 rounded-lg flex items-center gap-1 font-mono ${
-                activePoint.change >= 0
-                  ? 'text-[#00e676] bg-[#00e676]/10 border border-[#00e676]/20'
-                  : 'text-rose-400 bg-rose-500/10 border border-rose-500/20'
-              }`}>
+              <Tag className={changeClassName}>
                 {activePoint.changeText}
-              </span>
+              </Tag>
             </div>
           </div>
           <div className="text-right font-mono text-xs text-[#cbc4d2]/40 select-none">
@@ -37,17 +38,17 @@ export default function TrooPricePanel({
           </div>
         </div>
 
-        <EChartPanel
+        <AntdEChartPanel
           className="relative w-full h-[110px] overflow-hidden select-none mt-6 mb-2"
           option={chartOption}
           onHoverIndexChange={onHoverIndexChange}
         />
       </div>
 
-      <div className="bg-white/3 border border-white/5 rounded-xl p-3.5 mt-5 text-xs text-[#cbc4d2]/80 space-y-2 font-sans leading-relaxed">
-        <p>汇率基准溢阶: <span className="font-bold text-[#e7c365]">1 USDT = 10 TROO</span></p>
+      <div className="bg-white/3 border border-white/5 rounded-xl p-3.5 mt-5 text-[13px] text-[#cbc4d2]/80 space-y-2 font-sans leading-relaxed">
+        <p>汇率基准溢价: <span className="font-bold text-[#e7c365]">1 USDT = 10 TROO</span></p>
         <p>订阅认购时将即时以此售价换算 70% 对应 TROO 给予承购人账户。</p>
       </div>
-    </div>
+    </AntdCard>
   );
 }

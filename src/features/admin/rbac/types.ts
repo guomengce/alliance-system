@@ -1,4 +1,4 @@
-import type { Dispatch, FormEvent, SetStateAction } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 
 export interface AdminAccount {
   id: string;
@@ -14,7 +14,7 @@ export interface AdminAccount {
 export interface RolePermission {
   roleName: string;
   roleCode: string;
-  permissions: string[]; // e.g., ['USER_MANAGE', 'PLAN_MANAGE', ...]
+  permissions: string[];
 }
 
 export interface PermissionDefinition {
@@ -25,6 +25,25 @@ export interface PermissionDefinition {
 
 export type RbacTab = 'accounts' | 'permissions';
 export type AccountStatus = AdminAccount['status'];
+
+export interface AddAccountFormValues {
+  username: string;
+  nickname: string;
+  email: string;
+  role: string;
+}
+
+export interface AddRoleFormValues {
+  roleName: string;
+  roleCode: string;
+}
+
+export interface EditAccountFormValues {
+  nickname: string;
+  email: string;
+  role: string;
+  status: AccountStatus;
+}
 
 export interface WorkspaceProps {
   permissionInventory: PermissionDefinition[];
@@ -62,11 +81,11 @@ export interface WorkspaceProps {
   setEditRole: Dispatch<SetStateAction<string>>;
   setEditStatus: Dispatch<SetStateAction<AccountStatus>>;
   handleOpenEditAccount: (u: AdminAccount) => void;
-  handleSaveEditAccount: (e: FormEvent) => void;
+  handleSaveEditAccount: (values: EditAccountFormValues) => void;
   handleResetPassword: (username: string) => void;
   handleTogglePermission: (roleCode: string, permissionCode: string) => void;
-  handleCreateAccount: (e: FormEvent) => void;
-  handleCreateRole: (e: FormEvent) => void;
+  handleCreateAccount: (values: AddAccountFormValues) => void;
+  handleCreateRole: (values: AddRoleFormValues) => void;
   handleToggleAccountStatus: (id: string) => void;
   handleDeleteAccount: (id: string) => void;
 }

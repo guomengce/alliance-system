@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getAdminUsersResponse, updateAdminUser } from '../../../../api/admin/users';
 import { useAppContext } from '../../../../context/AppContext';
 import {
-  AdminUsersApiResponse,
-  AdminUserTab,
-  KycFilter,
-  KycL1Status,
-  KycL2Status,
-  UserAccountStatus
+  type AdminUsersApiResponse,
+  type AdminUserTab,
+  type KycFilter,
+  type KycL1Status,
+  type KycL2Status,
+  type UserAccountStatus
 } from '../types';
 import {
   applyKycAudit,
@@ -17,106 +18,14 @@ import {
   transformAdminUsersResponse
 } from '../utils';
 
-const INITIAL_USERS_RESPONSE: AdminUsersApiResponse = {
-  users: [
-    {
-      uid: '889425',
-      level: 'L1',
-      tierName: '标准账户',
-      registeredAt: '2026-06-01 10:30',
-      avatarLetter: '张',
-      investedAmount: 12000,
-      profile: {
-        nickname: '张启明',
-        email: 'zhangqiming@example.com',
-        phone: '13800000001',
-        sponsor: '999001 (SYS)',
-        status: 'normal',
-      },
-      wallet: {
-        usdtBalance: 16800,
-        frozenBalance: 500,
-        trooBalance: 42000,
-        pendingBalance: 980,
-      },
-      team: {
-        nodeSize: 18,
-        volume: 58400,
-      },
-      kyc: {
-        l1: 'verified',
-        l2: 'pending',
-      },
-    },
-    {
-      uid: '889426',
-      level: 'L2',
-      tierName: '已认证',
-      registeredAt: '2026-06-03 14:12',
-      avatarLetter: '李',
-      investedAmount: 25000,
-      profile: {
-        nickname: '李明轩',
-        email: 'limingxuan@example.com',
-        phone: '13800000002',
-        sponsor: '889425',
-        status: 'normal',
-      },
-      wallet: {
-        usdtBalance: 9300,
-        frozenBalance: 0,
-        trooBalance: 18500,
-        pendingBalance: 120,
-      },
-      team: {
-        nodeSize: 7,
-        volume: 22100,
-      },
-      kyc: {
-        l1: 'verified',
-        l2: 'verified',
-      },
-    },
-    {
-      uid: '889427',
-      level: 'L1',
-      tierName: '风控冻结',
-      registeredAt: '2026-06-08 09:45',
-      avatarLetter: '王',
-      investedAmount: 3600,
-      profile: {
-        nickname: '王若溪',
-        email: 'wangruoxi@example.com',
-        phone: '13800000003',
-        sponsor: '999001 (SYS)',
-        status: 'frozen',
-      },
-      wallet: {
-        usdtBalance: 4100,
-        frozenBalance: 1500,
-        trooBalance: 6200,
-        pendingBalance: 0,
-      },
-      team: {
-        nodeSize: 3,
-        volume: 6400,
-      },
-      kyc: {
-        l1: 'verified',
-        l2: 'unverified',
-      },
-    },
-  ],
-  teamMembers: [
-    { uid: '889425', name: '张启明', level: 'L1', nodes: 18, volume: 58400 },
-    { uid: '889426', name: '李明轩', level: 'L2', nodes: 7, volume: 22100 },
-    { uid: '889427', name: '王若溪', level: 'L1', nodes: 3, volume: 6400 },
-  ],
+const EMPTY_USERS_RESPONSE: AdminUsersApiResponse = {
+  users: [],
+  teamMembers: []
 };
 
 export function useUsersState() {
   const { triggerGlobalAlert } = useAppContext();
-  const [usersResponse, setUsersResponse] = useState<AdminUsersApiResponse>(INITIAL_USERS_RESPONSE);
+  const [usersResponse, setUsersResponse] = useState<AdminUsersApiResponse>(EMPTY_USERS_RESPONSE);
   const [userSearchText, setUserSearchText] = useState<string>('');
   const [kycFilter, setKycFilter] = useState<KycFilter>('all');
   const [editingUser, setEditingUser] = useState<ReturnType<typeof transformAdminUsersResponse>['downlines'][number] | null>(null);
@@ -139,6 +48,20 @@ export function useUsersState() {
   const [formKycL1, setFormKycL1] = useState<KycL1Status>('verified');
   const [formKycL2, setFormKycL2] = useState<KycL2Status>('unverified');
 
+  useEffect(() => {
+    let mounted = true;
+
+    getAdminUsersResponse().then((response) => {
+      if (mounted) {
+        setUsersResponse(response);
+      }
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
   const { downlines, teamMembers } = transformAdminUsersResponse(usersResponse);
   const filteredDownlines = filterAdminUsers(downlines, userSearchText, kycFilter);
   const filteredTeamMembers = filterTeamMembers(teamMembers, teamSearchText);
@@ -153,9 +76,14 @@ export function useUsersState() {
     }));
   };
 
-  const handleKycAudit = (uid: string, accept: boolean) => {
+  const handleKycAudit = async (uid: string, accept: boolean) => {
     const audited = applyKycAudit(downlines, uid, accept).find(user => user.uid === uid);
     if (!audited) return;
+
+    await updateAdminUser(uid, {
+      tier: audited.tier,
+      kycL2: audited.kycL2
+    });
 
     updateUserResponse(uid, user => ({
       ...user,
@@ -191,7 +119,7 @@ export function useUsersState() {
     setFormKycL2(inferUserKycL2(user));
   };
 
-  const handleSaveInline = () => {
+  const handleSaveInline = async () => {
     if (!editingUser) return;
 
     const updatedUser = buildUpdatedUserFromForm(editingUser, {
@@ -212,6 +140,8 @@ export function useUsersState() {
       kycL1: formKycL1,
       kycL2: formKycL2
     });
+
+    await updateAdminUser(editingUser.uid, updatedUser);
 
     updateUserResponse(editingUser.uid, user => ({
       ...user,

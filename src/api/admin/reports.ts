@@ -24,3 +24,13 @@ export const adminReportsApi = {
     apiClient.get<ApiEnvelope<AdminReportDto>>('/admin/reports/summary', { query })
   )
 };
+
+export const getAdminReportData = async (query: AdminReportsQuery = {}): Promise<AdminReportDto> => {
+  const response = await adminReportsApi.getSummary(query);
+  return {
+    metrics: response.data.metrics.map((metric) => ({ ...metric })),
+    packageSegments: response.data.packageSegments.map((segment) => ({ ...segment })),
+    settlementLogs: response.data.settlementLogs.map((log) => ({ ...log })),
+    distributionLogs: response.data.distributionLogs.map((log) => ({ ...log }))
+  };
+};

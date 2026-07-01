@@ -49,3 +49,36 @@ export const clientWalletApi = {
     apiClient.post<ApiEnvelope<ClientTransactionDto>, ClientTransferPayload>('/client/wallet/transfer', payload)
   )
 };
+
+export const getClientWalletSummary = async (): Promise<ClientWalletSummaryDto> => {
+  const response = await clientWalletApi.getSummary();
+  return { ...response.data };
+};
+
+export const getClientTransactions = async (
+  query: ClientTransactionsQuery = {}
+): Promise<Transaction[]> => {
+  const response = await clientWalletApi.listTransactions(query);
+  return response.data.items.map((transaction) => ({ ...transaction }));
+};
+
+export const rechargeClientWallet = async (
+  payload: ClientRechargePayload
+): Promise<Transaction> => {
+  const response = await clientWalletApi.recharge(payload);
+  return { ...response.data };
+};
+
+export const withdrawClientWallet = async (
+  payload: ClientWithdrawPayload
+): Promise<Transaction> => {
+  const response = await clientWalletApi.withdraw(payload);
+  return { ...response.data };
+};
+
+export const transferClientWallet = async (
+  payload: ClientTransferPayload
+): Promise<Transaction> => {
+  const response = await clientWalletApi.transfer(payload);
+  return { ...response.data };
+};

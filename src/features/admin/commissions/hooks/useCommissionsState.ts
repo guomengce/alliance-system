@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
-  getInitialAdminCommissions,
-  getInitialAdminOverflowLogs
+  getAdminCommissions,
+  getAdminOverflowLogs
 } from '../../../../api/admin/commissions';
 import { useAppContext } from '../../../../context/AppContext';
 import type { ActiveTab, CommissionPayout } from '../types';
@@ -18,11 +18,25 @@ import {
 
 export function useCommissionsState() {
   const { triggerGlobalAlert } = useAppContext();
-  const [commissions, setCommissions] = useState<CommissionPayout[]>(() => getInitialAdminCommissions());
-  const [overflowLogs, setOverflowLogs] = useState(() => getInitialAdminOverflowLogs());
+  const [commissions, setCommissions] = useState<CommissionPayout[]>([]);
+  const [overflowLogs, setOverflowLogs] = useState(() => []);
   const [selectedCommission, setSelectedCommission] = useState<CommissionPayout | null>(null);
   const [activeTab, setActiveTab] = useState<ActiveTab>('all');
   const [commissionSearch, setCommissionSearch] = useState<string>('');
+
+  useEffect(() => {
+    let mounted = true;
+
+    Promise.all([getAdminCommissions(), getAdminOverflowLogs()]).then(([nextCommissions, nextOverflowLogs]) => {
+      if (!mounted) return;
+      setCommissions(nextCommissions);
+      setOverflowLogs(nextOverflowLogs);
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const totalCreditedAmount = getTotalCreditedAmount(commissions);
   const abnormalAuditCount = getAbnormalAuditCount(commissions);

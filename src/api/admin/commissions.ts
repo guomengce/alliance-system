@@ -72,3 +72,20 @@ export const getInitialAdminCommissions = (): CommissionPayout[] => (
 export const getInitialAdminOverflowLogs = (): OverflowLog[] => (
   INITIAL_ADMIN_OVERFLOW_LOG_DTOS.map((log) => mapAdminOverflowLogDto(log))
 );
+
+export const getAdminCommissions = async (
+  query: AdminCommissionsQuery = {}
+): Promise<CommissionPayout[]> => {
+  const response = await adminCommissionsApi.list(query);
+  return response.data.items.map((commission) => mapAdminCommissionDto(commission));
+};
+
+export const getAdminOverflowLogs = async (
+  query: PaginationQuery = {}
+): Promise<OverflowLog[]> => {
+  const response = await apiClient.get<ApiEnvelope<ApiListResponse<AdminOverflowLogDto>>>(
+    '/admin/commissions/overflow-logs',
+    { query }
+  );
+  return response.data.items.map((log) => mapAdminOverflowLogDto(log));
+};

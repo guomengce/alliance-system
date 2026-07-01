@@ -46,3 +46,13 @@ export const getInitialClientQueueOrders = (): QueueOrderItem[] => (
 export const getInitialClientReleaseLogs = (): ReleaseLogItem[] => (
   INITIAL_CLIENT_RELEASE_LOG_DTOS.map((log) => mapClientReleaseLogDto(log))
 );
+
+export const getClientQueueOrders = async (): Promise<QueueOrderItem[]> => {
+  const response = await clientQueueApi.listOrders();
+  return response.data.items.map((order) => mapClientQueueOrderDto(order));
+};
+
+export const getClientReleaseLogs = async (): Promise<ReleaseLogItem[]> => {
+  const response = await clientQueueApi.listReleaseLogs();
+  return response.data.items.map((log) => mapClientReleaseLogDto(log));
+};

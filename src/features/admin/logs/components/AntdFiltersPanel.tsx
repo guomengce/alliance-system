@@ -1,5 +1,5 @@
 import { Input, Segmented, Select } from 'antd';
-import { Filter, Search } from 'lucide-react';
+import { Filter } from 'lucide-react';
 
 import type { WorkspaceProps } from '../types';
 
@@ -62,12 +62,13 @@ export default function AntdFiltersPanel({
     <div className="alliance-antd-logs-filter-panel">
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="relative group flex-grow">
-          <Input
+          <Input.Search
+            allowClear
             className="alliance-antd-logs-search"
+            defaultValue={searchQuery}
+            key={searchQuery}
+            onSearch={setSearchQuery}
             placeholder={TEXT.searchPlaceholder}
-            prefix={<Search className="w-4 h-4 text-[#cbc4d2] opacity-60 group-focus-within:text-[#cfbcff] transition-colors" />}
-            value={searchQuery}
-            onChange={(event) => setSearchQuery(event.target.value)}
           />
         </div>
 

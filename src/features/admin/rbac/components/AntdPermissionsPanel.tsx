@@ -1,4 +1,4 @@
-import { Checkbox, List, Radio, Tag } from 'antd';
+import { Checkbox, List, Select, Tag } from 'antd';
 import { Key } from 'lucide-react';
 
 import { AntdCard } from '../../../../shared/antd/AntdCard';
@@ -45,23 +45,16 @@ export default function AntdPermissionsPanel({
           <span className="text-[10px] font-black uppercase text-[#cbc4d2]/40 tracking-wider block text-left">
             {TEXT.step1}
           </span>
-          <Radio.Group
-            className="alliance-antd-rbac-role-radio"
-            onChange={(event) => setSelectedRoleCode(event.target.value)}
+          <Select
+            className="alliance-antd-rbac-role-select w-full"
+            popupClassName="alliance-antd-admin-select-dropdown"
+            onChange={setSelectedRoleCode}
             value={selectedRoleCode}
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5">
-              {roles.map(role => (
-                <Radio.Button key={role.roleCode} value={role.roleCode}>
-                  <div className="flex items-center justify-between w-full">
-                    <span className="text-xs font-bold">{role.roleName}</span>
-                    <Tag className="alliance-antd-rbac-count-tag">{role.permissions.length}</Tag>
-                  </div>
-                  <span className="text-[9.5px] font-mono text-[#cbc4d2]/40">{role.roleCode}</span>
-                </Radio.Button>
-              ))}
-            </div>
-          </Radio.Group>
+            options={roles.map(role => ({
+              value: role.roleCode,
+              label: `${role.roleName} (${role.permissions.length})`
+            }))}
+          />
         </div>
 
         <div className="lg:col-span-8 space-y-3">

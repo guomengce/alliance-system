@@ -44,5 +44,5 @@ export interface EditorModalProps {
   planDraft: PlanDraft;
   setPlanDraft: Dispatch<SetStateAction<PlanDraft>>;
   onClose: () => void;
-  onSaveOrUpdatePlan: () => void;
+  onSaveOrUpdatePlan: (values: PlanDraft) => void;
 }

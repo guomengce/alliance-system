@@ -1,29 +1,35 @@
-import { Button, Form, Input } from 'antd';
+import { useEffect } from 'react';
+import { Button, Card, Form, Input } from 'antd';
 import { Eye, EyeOff, Key } from 'lucide-react';
-import type { PasswordFormProps } from '../types';
+import type { ClientPasswordFormValues, PasswordFormProps } from '../types';
 
 export default function PasswordForm({
   showPassword,
   oldPassword,
   newPassword,
   setShowPassword,
-  setOldPassword,
-  setNewPassword,
   onUpdatePasswords
 }: PasswordFormProps) {
+  const [form] = Form.useForm<ClientPasswordFormValues>();
+
+  useEffect(() => {
+    form.setFieldsValue({
+      oldPassword,
+      newPassword
+    });
+  }, [form, newPassword, oldPassword]);
+
   return (
-    <div className="glass-card rounded-2xl p-6 md:p-8">
+    <Card className="glass-card rounded-2xl p-6 md:p-8">
       <h3 className="text-base font-bold text-white mb-6 uppercase tracking-wider flex items-center gap-2">
         <Key className="w-5 h-5 text-[#cfbcff]" /> 账号登录安全密码
       </h3>
 
-      <Form component="form" layout="vertical" onSubmitCapture={onUpdatePasswords} className="space-y-4">
+      <Form form={form} layout="vertical" onFinish={onUpdatePasswords} className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Form.Item className="alliance-antd-settings-form-item" label="原始登录密码">
+          <Form.Item className="alliance-antd-settings-form-item" name="oldPassword" label="原始登录密码">
             <Input.Password
               type={showPassword ? 'text' : 'password'}
-              value={oldPassword}
-              onChange={(e) => setOldPassword(e.target.value)}
               placeholder="******"
               iconRender={() => (
                 <Button
@@ -36,13 +42,8 @@ export default function PasswordForm({
             />
           </Form.Item>
 
-          <Form.Item className="alliance-antd-settings-form-item" label="新设定登录密码">
-            <Input
-              type="password"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
-              placeholder="请输入新安全密码..."
-            />
+          <Form.Item className="alliance-antd-settings-form-item" name="newPassword" label="新设定登录密码">
+            <Input.Password placeholder="请输入新安全密码..." />
           </Form.Item>
         </div>
 
@@ -50,6 +51,6 @@ export default function PasswordForm({
           修改登录密码
         </Button>
       </Form>
-    </div>
+    </Card>
   );
 }

@@ -107,6 +107,141 @@
   height: 100%;
 }
 
+/* Search reset: one global dark search-field treatment across pages. */
+.ant-input-search {
+  border-radius: 8px !important;
+  color: #ffffff !important;
+  font-family: var(--font-sans);
+  max-width: 100%;
+}
+
+.ant-space-compact.ant-input-search {
+  align-items: center !important;
+  background: #1b1724 !important;
+  border-radius: 8px !important;
+  display: flex !important;
+  gap: 0 !important;
+  padding: 8px !important;
+}
+
+.ant-input-search .ant-input-wrapper.ant-input-group {
+  align-items: center !important;
+  background: #1b1724 !important;
+  border-radius: 8px !important;
+  display: flex !important;
+  padding: 8px !important;
+  width: 100% !important;
+}
+
+.ant-input-search .ant-input-group-addon {
+  display: none !important;
+}
+
+.ant-input-search .ant-input-search-button,
+.ant-input-search > .ant-btn {
+  display: none !important;
+}
+
+.ant-input-search .ant-input-affix-wrapper,
+.ant-input-search .ant-input {
+  background: #0f0c15 !important;
+  border: 1px solid rgba(203, 196, 210, 0.14) !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  font-size: 12px !important;
+  height: 52px !important;
+  min-height: 52px !important;
+  width: 100% !important;
+}
+
+.ant-space-compact.ant-input-search > .ant-input-affix-wrapper,
+.ant-space-compact.ant-input-search > .ant-input {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+.ant-input-search .ant-input-affix-wrapper {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='rgba(203,196,210,0.68)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") !important;
+  background-position: 14px center !important;
+  background-repeat: no-repeat !important;
+  background-size: 16px 16px !important;
+  overflow: hidden !important;
+  padding: 0 14px 0 36px !important;
+  position: relative !important;
+}
+
+.ant-input-search .ant-input-affix-wrapper > input.ant-input,
+.ant-input-search .ant-input-affix-wrapper > textarea.ant-input {
+  background: transparent !important;
+  border: 0 !important;
+  height: 50px !important;
+  line-height: 50px !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+
+.ant-input-search > .ant-input,
+.ant-input-search .ant-input-wrapper > .ant-input {
+  padding: 0 14px 0 36px !important;
+}
+
+.ant-input-search .ant-input::placeholder,
+.ant-input-search input.ant-input::placeholder {
+  color: rgba(203, 196, 210, 0.34) !important;
+  font-size: 12px !important;
+}
+
+.ant-input-search:hover .ant-input-affix-wrapper,
+.ant-input-search .ant-input-affix-wrapper-focused,
+.ant-input-search .ant-input-affix-wrapper:focus-within,
+.ant-input-search:hover .ant-input,
+.ant-input-search .ant-input:focus {
+  border-color: rgba(203, 196, 210, 0.24) !important;
+}
+
+.ant-input-search .ant-input-clear-icon {
+  color: rgba(203, 196, 210, 0.55) !important;
+}
+
+.ant-input-affix-wrapper[class*='-search']:not(.ant-input-search),
+.ant-input[class*='-search']:not(.ant-input-search) {
+  background: #0f0c15 !important;
+  border: 1px solid rgba(203, 196, 210, 0.14) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 0 8px #1b1724 !important;
+  color: #ffffff !important;
+  font-family: var(--font-sans);
+  font-size: 12px !important;
+  height: 52px !important;
+  min-height: 52px !important;
+}
+
+.ant-input-affix-wrapper[class*='-search']:not(.ant-input-search) {
+  padding: 0 14px !important;
+}
+
+.ant-input-affix-wrapper[class*='-search']:not(.ant-input-search) > input.ant-input {
+  background: transparent !important;
+  border: 0 !important;
+  height: 50px !important;
+  line-height: 50px !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+}
+
+.ant-input-affix-wrapper[class*='-search']:not(.ant-input-search) input.ant-input::placeholder,
+.ant-input[class*='-search']:not(.ant-input-search)::placeholder {
+  color: rgba(203, 196, 210, 0.34) !important;
+}
+
+.ant-input-affix-wrapper[class*='-search']:not(.ant-input-search):hover,
+.ant-input-affix-wrapper[class*='-search'].ant-input-affix-wrapper-focused,
+.ant-input[class*='-search']:not(.ant-input-search):hover,
+.ant-input[class*='-search']:not(.ant-input-search):focus {
+  border-color: rgba(203, 196, 210, 0.24) !important;
+}
+
 /* Select reset: base dark single-select control and dropdown option states. */
 .ant-select-single:not(.ant-select-customize-input) {
   height: 52px !important;

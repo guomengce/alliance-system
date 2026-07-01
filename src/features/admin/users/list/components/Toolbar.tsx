@@ -1,5 +1,5 @@
-import React from 'react';
-import { Search, Users } from 'lucide-react';
+import { Input, Select } from 'antd';
+import { Users } from 'lucide-react';
 import { KycFilter } from '../../types';
 
 interface ToolbarProps {
@@ -28,25 +28,24 @@ export default function Toolbar({
       </div>
 
       <div className="flex flex-wrap items-center gap-2 w-full lg:w-auto">
-        <div className="relative flex-grow sm:flex-grow-0">
-          <input
-            type="text"
-            value={searchText}
-            onChange={(e) => onSearchTextChange(e.target.value)}
-            placeholder="搜索昵称 / 邮箱 / UID..."
-            className="bg-[#211f24] border border-white/10 rounded-xl px-3 py-1.5 text-xs text-white placeholder-white/35 focus:ring-1 focus:ring-[#cfbcff] outline-none pl-8 w-full sm:w-48 transition-all"
-          />
-          <Search className="w-3.5 h-3.5 text-white/40 absolute left-2.5 top-1/2 -translate-y-1/2" />
-        </div>
-        <select
+        <Input.Search
+          allowClear
+          defaultValue={searchText}
+          key={searchText}
+          onSearch={onSearchTextChange}
+          placeholder="搜索昵称 / 邮箱 / UID..."
+          className="w-full sm:w-48"
+        />
+        <Select<KycFilter>
           value={kycFilter}
-          onChange={(e) => onKycFilterChange(e.target.value as KycFilter)}
-          className="bg-[#211f24] border border-white/10 rounded-xl px-3 py-1.5 text-xs text-white font-bold cursor-pointer font-sans focus:outline-none transition-all"
-        >
-          <option value="all">全部 KYC 状态</option>
-          <option value="pending">仅待 L2 终审</option>
-          <option value="verified">L2 审核通过</option>
-        </select>
+          onChange={onKycFilterChange}
+          className="min-w-36"
+          options={[
+            { value: 'all', label: '全部 KYC 状态' },
+            { value: 'pending', label: '仅待 L2 终审' },
+            { value: 'verified', label: 'L2 审核通过' }
+          ]}
+        />
       </div>
     </div>
   );

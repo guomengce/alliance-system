@@ -1,5 +1,5 @@
-import { useState, type Dispatch, type SetStateAction, type UIEvent } from 'react';
-import { getInitialClientQueueOrders, getInitialClientReleaseLogs } from '../../../../api/client/queue';
+import { useEffect, useState, type Dispatch, type SetStateAction, type UIEvent } from 'react';
+import { getClientQueueOrders, getClientReleaseLogs } from '../../../../api/client/queue';
 import type { OrderStatusFilter, QueueOrderItem, ReleaseLogItem } from '../types';
 import { filterOrders, getNextVisibleCount, getProgressPercent } from '../utils';
 
@@ -12,8 +12,8 @@ export const useQueueState = ({
   originalLocked,
   releasedAmount
 }: UseQueueStateParams) => {
-  const [orders] = useState<QueueOrderItem[]>(() => getInitialClientQueueOrders());
-  const [releaseLogs] = useState<ReleaseLogItem[]>(() => getInitialClientReleaseLogs());
+  const [orders, setOrders] = useState<QueueOrderItem[]>([]);
+  const [releaseLogs, setReleaseLogs] = useState<ReleaseLogItem[]>([]);
   const [alertSuccess, setAlertSuccess] = useState<{
     show: boolean;
     unlockedSum: number;
@@ -28,6 +28,23 @@ export const useQueueState = ({
   const [selectedDetailOrder, setSelectedDetailOrder] = useState<QueueOrderItem | null>(null);
   const [orderSearchQuery, setOrderSearchQuery] = useState('');
   const [orderStatusFilter, setOrderStatusFilter] = useState<OrderStatusFilter>('all');
+
+  useEffect(() => {
+    let mounted = true;
+
+    void Promise.all([
+      getClientQueueOrders(),
+      getClientReleaseLogs()
+    ]).then(([nextOrders, nextReleaseLogs]) => {
+      if (!mounted) return;
+      setOrders(nextOrders);
+      setReleaseLogs(nextReleaseLogs);
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const resetOrdersVisibility = () => {
     setVisibleOrdersCount(10);

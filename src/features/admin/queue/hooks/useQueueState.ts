@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { getInitialAdminQueueRoster } from '../../../../api/admin/queue';
+import { useEffect, useState } from 'react';
+import { getAdminQueueRoster } from '../../../../api/admin/queue';
 import { useAppContext } from '../../../../context/AppContext';
 import type { QueueRoster } from '../types';
 import { applyQueueCalibration, filterTriggerHistory } from '../utils';
 
 export function useQueueState() {
   const { triggerGlobalAlert } = useAppContext();
-  const [lockedRoster, setLockedRoster] = useState<QueueRoster[]>(() => getInitialAdminQueueRoster());
+  const [lockedRoster, setLockedRoster] = useState<QueueRoster[]>([]);
   const [selectedRoster, setSelectedRoster] = useState<QueueRoster | null>(null);
   const [calibCurrent, setCalibCurrent] = useState<number>(0);
   const [calibUnlocked, setCalibUnlocked] = useState<number>(0);
@@ -19,6 +19,20 @@ export function useQueueState() {
   const filteredHistory = selectedRoster
     ? filterTriggerHistory(selectedRoster.triggerHistory, searchQuery)
     : [];
+
+  useEffect(() => {
+    let mounted = true;
+
+    getAdminQueueRoster().then((roster) => {
+      if (mounted) {
+        setLockedRoster(roster);
+      }
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const handleOpenDetails = (roster: QueueRoster) => {
     setSelectedRoster(roster);

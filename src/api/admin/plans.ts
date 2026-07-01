@@ -42,3 +42,21 @@ export const mapAdminPlanDto = (dto: AdminPlanDto): Plan => ({
 export const getInitialAdminPlans = (): Plan[] => (
   INITIAL_ADMIN_PLAN_DTOS.map((plan) => mapAdminPlanDto(plan))
 );
+
+export const getAdminPlans = async (): Promise<Plan[]> => {
+  const response = await adminPlansApi.list();
+  return response.data.items.map((plan) => mapAdminPlanDto(plan));
+};
+
+export const createAdminPlan = async (payload: Partial<AdminPlanDto>): Promise<Plan> => {
+  const response = await adminPlansApi.create(payload);
+  return mapAdminPlanDto(response.data);
+};
+
+export const updateAdminPlan = async (
+  planId: string,
+  payload: Partial<AdminPlanDto>
+): Promise<Plan> => {
+  const response = await adminPlansApi.update(planId, payload);
+  return mapAdminPlanDto(response.data);
+};

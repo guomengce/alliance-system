@@ -16,8 +16,11 @@ export interface LimitsPanelProps {
   onSaveLimits: () => void;
 }
 
+export interface ApiPanelFormValues {
+  apiPriceUrl: string;
+}
+
 export interface ApiPanelProps {
   apiPriceUrl: string;
-  setApiPriceUrl: Dispatch<SetStateAction<string>>;
-  onTestApiPrice: () => void;
+  onTestApiPrice: (values: ApiPanelFormValues) => void;
 }

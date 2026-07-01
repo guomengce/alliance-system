@@ -52,7 +52,7 @@ export default function AdminUsersView() {
 
   if (editingUser) {
     return (
-      <AntdDetailsPanel
+      <DetailsPanel
         editingUser={editingUser}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
