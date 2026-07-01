@@ -17,23 +17,15 @@ const toSafeNumber = (value: number | null) => Number(value) || 0;
 
 export function AntdEditorModal({
   editingPlan,
-  formName,
-  formPrice,
-  formGiftRatio,
-  formBuyRatio,
-  formQueueRatio,
-  formCommissionLimit,
-  formDescription,
-  setFormName,
-  setFormPrice,
-  setFormGiftRatio,
-  setFormBuyRatio,
-  setFormQueueRatio,
-  setFormCommissionLimit,
-  setFormDescription,
+  planDraft,
+  setPlanDraft,
   onClose,
   onSaveOrUpdatePlan,
 }: EditorModalProps) {
+  const updatePlanDraft = <Key extends keyof typeof planDraft>(key: Key, value: typeof planDraft[Key]) => {
+    setPlanDraft(prev => ({ ...prev, [key]: value }));
+  };
+
   return (
     <Modal
       centered
@@ -58,99 +50,105 @@ export function AntdEditorModal({
           </div>
           <div className="text-left">
             <h4 className="text-sm font-black text-white">
-              {editingPlan ? '修改理财套餐配置参数' : '创建配置全新流动性理财套餐'}
+              {editingPlan ? '修改理财套餐配置参数' : '创建全新理财套餐'}
             </h4>
             <p className="text-xs text-[#cbc4d2]/40 font-mono mt-0.5">
-              请仔细填写各项数值参数，确认提交后系统认购渠道将即时生效更新。
+              当前编辑对象：planDraft → 保存后写回 plansResponse.data.plans
             </p>
           </div>
         </div>
       </div>
 
       <Form layout="vertical" className="alliance-antd-form alliance-antd-plan-form">
-        <Form.Item label="套餐标识名称">
+        <Form.Item label="套餐名称">
           <Input
-            value={formName}
-            onChange={(event) => setFormName(event.target.value)}
-            placeholder="例如: 套餐 F (尊享至尊版)"
+            value={planDraft.name}
+            onChange={(event) => updatePlanDraft('name', event.target.value)}
+            placeholder="例如: 套餐 F (尊享版)"
           />
         </Form.Item>
 
-        <Form.Item label="套餐功能描述 / 规则介绍">
+        <Form.Item label="套餐描述 / 规则介绍">
           <Input.TextArea
-            value={formDescription}
-            onChange={(event) => setFormDescription(event.target.value)}
-            placeholder="请输入该理财套餐对会员展示的具体功能描述与收益、锁定解锁规则介绍..."
+            value={planDraft.description}
+            onChange={(event) => updatePlanDraft('description', event.target.value)}
+            placeholder="请输入该理财套餐展示给会员的规则、权益或说明"
             rows={3}
           />
         </Form.Item>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <Form.Item label="认购基础理财额 (USDT)">
+          <Form.Item label="认购金额 (USDT)">
             <InputNumber
-              value={formPrice}
+              value={planDraft.price}
               min={0}
-              onChange={(value) => setFormPrice(toSafeNumber(value))}
+              onChange={(value) => updatePlanDraft('price', toSafeNumber(value))}
             />
           </Form.Item>
 
-          <Form.Item label="佣金额度绝对数值 (USDT)">
+          <Form.Item label="佣金额度 (USDT)">
             <InputNumber
-              value={formCommissionLimit}
+              value={planDraft.commissionLimit}
               min={0}
-              onChange={(value) => setFormCommissionLimit(toSafeNumber(value))}
+              onChange={(value) => updatePlanDraft('commissionLimit', toSafeNumber(value))}
               className="is-success"
-              placeholder="写入佣金极限制数值"
+              placeholder="写入佣金上限数值"
             />
           </Form.Item>
         </div>
 
         <div className="border-t border-white/5 pt-4 space-y-3">
           <p className="text-xs font-black uppercase text-[#cfbcff] tracking-wider">
-            TROO 股票赠送、买入及排队精算设置
+            TROO 股票赠送、买入及排队设置
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <Form.Item label="股票赠送加权">
+            <Form.Item label="赠送比例">
               <Select
-                value={formGiftRatio}
+                value={planDraft.giftRatio}
                 options={giftRatioOptions}
                 popupClassName="alliance-antd-plan-select-dropdown"
-                onChange={setFormGiftRatio}
+                onChange={(value) => updatePlanDraft('giftRatio', value)}
               />
             </Form.Item>
 
-            <Form.Item label="股票买入比例 (%)">
+            <Form.Item label="买入比例 (%)">
               <InputNumber
-                value={formBuyRatio}
+                value={planDraft.buyRatio}
                 min={0}
                 max={100}
                 className="is-warning"
                 onChange={(value) => {
                   const nextValue = Math.min(100, Math.max(0, toSafeNumber(value)));
-                  setFormBuyRatio(nextValue);
-                  setFormQueueRatio(100 - nextValue);
+                  setPlanDraft(prev => ({
+                    ...prev,
+                    buyRatio: nextValue,
+                    queueRatio: 100 - nextValue
+                  }));
                 }}
               />
             </Form.Item>
 
-            <Form.Item label="股票排队比例 (%)">
+            <Form.Item label="排队比例 (%)">
               <InputNumber
-                value={formQueueRatio}
+                value={planDraft.queueRatio}
                 min={0}
                 max={100}
                 className="is-info"
                 onChange={(value) => {
                   const nextValue = Math.min(100, Math.max(0, toSafeNumber(value)));
-                  setFormQueueRatio(nextValue);
-                  setFormBuyRatio(100 - nextValue);
+                  setPlanDraft(prev => ({
+                    ...prev,
+                    queueRatio: nextValue,
+                    buyRatio: 100 - nextValue
+                  }));
                 }}
               />
             </Form.Item>
           </div>
 
           <p className="text-xs text-[#cbc4d2]/30 italic leading-normal">
-            * 联动精算提示：系统自动保障 [买入比例] 与 [排队比例] 两项权重和等于 100%，当前已设定为 {formBuyRatio}% / {formQueueRatio}%。
+            当前 draft 比例：{planDraft.buyRatio}% / {planDraft.queueRatio}%，两个字段联动保持合计 100%。
           </p>
         </div>
       </Form>
@@ -160,7 +158,7 @@ export function AntdEditorModal({
           取消
         </Button>
         <Button className="alliance-antd-button-submit alliance-antd-plan-modal-submit" onClick={onSaveOrUpdatePlan}>
-          {editingPlan ? '保存并更新配置' : '确认无误，对外创建发布'}
+          {editingPlan ? '保存并更新配置' : '确认创建套餐'}
         </Button>
       </div>
     </Modal>

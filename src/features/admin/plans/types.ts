@@ -12,6 +12,16 @@ export interface Plan {
   description?: string;     // 套餐具体描述与规则
 }
 
+export interface PlanDraft {
+  name: string;
+  price: number;
+  giftRatio: number;
+  buyRatio: number;
+  queueRatio: number;
+  commissionLimit: number;
+  description: string;
+}
+
 export interface ToolbarProps {
   onOpenCreateModal: () => void;
 }
@@ -31,20 +41,8 @@ export interface PlanCardProps {
 
 export interface EditorModalProps {
   editingPlan: Plan | null;
-  formName: string;
-  formPrice: number;
-  formGiftRatio: number;
-  formBuyRatio: number;
-  formQueueRatio: number;
-  formCommissionLimit: number;
-  formDescription: string;
-  setFormName: Dispatch<SetStateAction<string>>;
-  setFormPrice: Dispatch<SetStateAction<number>>;
-  setFormGiftRatio: Dispatch<SetStateAction<number>>;
-  setFormBuyRatio: Dispatch<SetStateAction<number>>;
-  setFormQueueRatio: Dispatch<SetStateAction<number>>;
-  setFormCommissionLimit: Dispatch<SetStateAction<number>>;
-  setFormDescription: Dispatch<SetStateAction<string>>;
+  planDraft: PlanDraft;
+  setPlanDraft: Dispatch<SetStateAction<PlanDraft>>;
   onClose: () => void;
   onSaveOrUpdatePlan: () => void;
 }

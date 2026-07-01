@@ -14,7 +14,7 @@ export default function AntdLedgerMobile({ ledger, setSelectedLedgerItem }: Antd
   return (
     <div className="block md:hidden space-y-3">
       {ledger.map(item => (
-        <AntdCard key={item.id} className="alliance-antd-finance-mobile-card">
+        <AntdCard key={item.id} className="alliance-antd-mobile-card alliance-antd-finance-mobile-card">
           <div className="flex justify-between items-start border-b border-white/5 pb-2">
             <div>
               <span className="font-mono text-white font-extrabold text-[13px]">{item.id}</span>

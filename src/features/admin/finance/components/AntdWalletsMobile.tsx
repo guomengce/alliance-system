@@ -18,7 +18,7 @@ export default function AntdWalletsMobile({ members, handleOpenWalletDetails }: 
         const statusMeta = getWalletStatusMeta(member.status);
 
         return (
-          <AntdCard key={member.uid} className="alliance-antd-finance-mobile-card">
+          <AntdCard key={member.uid} className="alliance-antd-mobile-card alliance-antd-finance-mobile-card">
             <div className="flex justify-between items-center border-b border-white/5 pb-2.5">
               <div>
                 <span className="font-extrabold text-white text-sm">{member.nickname || WALLETS_TEXT.unnamed}</span>

@@ -29,66 +29,14 @@
   opacity: 0.5;
 }
 
-.alliance-antd-settlement-guide-card.ant-card {
-  background: rgba(23, 19, 30, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  color: #cbc4d2;
-  font-family: var(--font-sans);
-}
-
-.alliance-antd-settlement-guide-card .ant-card-body {
-  padding: 20px;
-}
-
 .alliance-antd-settlement-table.ant-table-wrapper .ant-table {
   font-family: var(--font-mono);
-  font-size: 12px;
-}
-
-.alliance-antd-settlement-table.ant-table-wrapper .ant-table-thead > tr > th {
-  background: rgba(255, 255, 255, 0.01) !important;
-  color: rgba(203, 196, 210, 0.5) !important;
-  font-size: 12px;
-  font-weight: 900;
-  padding: 16px !important;
-}
-
-.alliance-antd-settlement-table.ant-table-wrapper .ant-table-tbody > tr > td {
-  padding: 14px 16px !important;
-}
-
-.alliance-antd-settlement-status-tag.ant-tag {
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 900;
-  line-height: 18px;
-  margin-inline-end: 0;
-  padding: 0 8px;
-}
-
-.alliance-antd-settlement-status-tag.is-success {
-  background: rgba(16, 185, 129, 0.1);
-  border-color: rgba(16, 185, 129, 0.12);
-  color: #34d399;
-}
-
-.alliance-antd-settlement-status-tag.is-danger {
-  background: rgba(239, 68, 68, 0.1);
-  border-color: rgba(239, 68, 68, 0.12);
-  color: #f87171;
 }
 
 .alliance-antd-settlement-status-tag.is-critical {
-  background: #450a0a;
-  border-color: rgba(239, 68, 68, 0.25);
-  color: #f59e0b;
-}
-
-.alliance-antd-settlement-status-tag.is-purple {
-  background: rgba(207, 188, 255, 0.1);
-  border-color: rgba(207, 188, 255, 0.12);
-  color: #cfbcff;
+  background: #450a0a !important;
+  border-color: rgba(239, 68, 68, 0.25) !important;
+  color: #f59e0b !important;
 }
 
 .alliance-antd-settlement-action-button.ant-btn,
@@ -120,21 +68,6 @@
 .alliance-antd-settlement-action-button.ant-btn:active,
 .alliance-antd-settlement-mobile-action-button.ant-btn:active {
   transform: scale(0.95);
-}
-
-.alliance-antd-settlement-mobile-card.ant-card {
-  background: rgba(29, 25, 37, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  color: #cbc4d2;
-  font-family: var(--font-sans);
-}
-
-.alliance-antd-settlement-mobile-card .ant-card-body {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 16px;
 }
 
 .alliance-antd-settlement-mobile-action-button.ant-btn,
@@ -255,4 +188,3 @@
 .alliance-antd-settlement-close-button.ant-btn:active {
   transform: scale(0.95);
 }
-

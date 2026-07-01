@@ -1,5 +1,5 @@
-import './antd-overrides.css';
 import '../shared/antd-overrides.css';
+import './antd-overrides.css';
 import { AntdChartsGrid } from './components/AntdChartsGrid';
 import { AntdHeader } from './components/AntdHeader';
 import { AntdMetricsGrid } from './components/AntdMetricsGrid';

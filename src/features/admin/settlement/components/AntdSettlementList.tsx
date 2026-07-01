@@ -123,7 +123,7 @@ export default function AntdSettlementList({
 
       <div className="block md:hidden space-y-3">
         {settlementTransactions.map(tx => (
-          <AntdCard key={tx.id} className="alliance-antd-settlement-mobile-card">
+          <AntdCard key={tx.id} className="alliance-antd-mobile-card alliance-antd-settlement-mobile-card">
             <div className="flex justify-between items-start">
               <div>
                 <p className="text-white text-xs font-bold leading-none">{tx.memberUid}</p>
