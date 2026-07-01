@@ -1,0 +1,331 @@
+.alliance-auth-page {
+  padding-bottom: 24px;
+  padding-top: 34px;
+}
+
+.alliance-auth-shell {
+  gap: 28px;
+  max-width: 383px;
+}
+
+.alliance-auth-brand {
+  gap: 14px;
+}
+.alliance-auth-brand__title-row {
+  align-items: center;
+  display: grid !important;
+  gap: 20px !important;
+  grid-template-columns: 36px 336px;
+  justify-content: center;
+  width: 100%;
+}
+
+.alliance-auth-brand__mark {
+  align-self: center;
+  border-radius: 12px;
+  height: 36px;
+  position: static;
+  width: 36px;
+}
+
+.alliance-auth-brand__title {
+  display: flex;
+  flex-direction: column;
+  font-size: 24px;
+  font-weight: 900;
+  gap: 0;
+  letter-spacing: 0.03em;
+  line-height: 1.22;
+  margin: 0;
+  text-align: center;
+}
+
+.alliance-auth-brand__spacer {
+  display: block;
+  height: 36px;
+  width: 36px;
+}
+
+.alliance-auth-brand__subtitle {
+  color: rgba(203, 196, 210, 0.52) !important;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  margin: 0;
+  padding-left: 0;
+}
+
+.alliance-auth-card {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  border-radius: 22px !important;
+  padding: 31px 32px 30px !important;
+}
+
+.alliance-auth-login-header {
+  margin-bottom: 26px;
+}
+
+.alliance-auth-login-title {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+}
+
+.alliance-auth-login-badge {
+  border-radius: 999px;
+  font-size: 10px !important;
+  height: 20px;
+  line-height: 18px;
+  padding: 0 8px !important;
+}
+
+.alliance-antd-auth-form.ant-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.alliance-antd-auth-form-item.ant-form-item {
+  margin-bottom: 18px;
+}
+
+.alliance-antd-auth-form-item.ant-form-item .ant-form-item-label {
+  padding-bottom: 8px;
+}
+
+.alliance-antd-auth-form-item.ant-form-item .ant-form-item-label > label {
+  color: rgba(203, 196, 210, 0.56);
+  font-size: 12px;
+  font-weight: 800;
+  height: auto;
+  line-height: 1.2;
+}
+
+.alliance-antd-auth-input.ant-input-affix-wrapper,
+.alliance-antd-auth-input.ant-input {
+  background: #0d0a12 !important;
+  border-color: rgba(255, 255, 255, 0.03) !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  height: 38px !important;
+  min-height: 38px !important;
+  padding: 0 14px !important;
+}
+
+.alliance-antd-auth-input.ant-input-affix-wrapper input.ant-input {
+  color: #ffffff !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  height: 36px !important;
+  line-height: 36px !important;
+}
+
+.alliance-antd-auth-input.ant-input-affix-wrapper .ant-input-prefix {
+  color: rgba(203, 196, 210, 0.45);
+  margin-inline-end: 12px;
+}
+
+.alliance-antd-auth-input.ant-input-affix-wrapper .ant-input-suffix {
+  color: rgba(203, 196, 210, 0.45);
+}
+
+.alliance-auth-login-options {
+  margin-top: -2px;
+  padding-top: 0;
+}
+
+.ant-checkbox{
+  width: 15px !important;
+  height: 15px !important;
+  border-radius: 4px !important;
+}
+.ant-checkbox-input {
+  width: 15px !important;
+  height: 15px !important;
+}
+.ant-checkbox:after {
+  top: 50% !important;
+  left: 10% !important;
+}
+/* .alliance-antd-auth-checkbox.ant-checkbox-wrapper {
+  align-items: center;
+  color: rgba(203, 196, 210, 0.52);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 800;
+  gap: 8px;
+}
+
+.alliance-antd-auth-checkbox.ant-checkbox-wrapper .ant-checkbox {
+  align-self: center;
+  top: 0;
+}
+
+.alliance-antd-auth-checkbox.ant-checkbox-wrapper .ant-checkbox-inner {
+  background: #ffffff;
+  border-color: rgba(255, 255, 255, 0.88);
+  border-radius: 2px;
+  height: 13px;
+  width: 13px;
+}
+
+.alliance-antd-auth-checkbox.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner {
+  background: #6750a4;
+  border-color: #6750a4;
+}
+
+.alliance-antd-auth-checkbox.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner::after {
+  border-width: 2px;
+  height: 8px;
+  left: 3px;
+  top: 5.5px;
+  width: 4px;
+} */
+
+.alliance-antd-auth-link-button.ant-btn,
+.alliance-antd-auth-link-button.ant-btn:focus,
+.alliance-antd-auth-inline-link-button.ant-btn,
+.alliance-antd-auth-inline-link-button.ant-btn:focus {
+  color: #cfbcff !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+  height: 18px;
+  line-height: 18px;
+  padding: 0 !important;
+  text-decoration: none !important;
+}
+
+.alliance-antd-auth-link-button.ant-btn:hover {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.alliance-antd-auth-inline-link-button.ant-btn:hover {
+  color: #cfbcff !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+
+.alliance-antd-auth-primary-button.ant-btn,
+.alliance-antd-auth-primary-button.ant-btn:hover,
+.alliance-antd-auth-primary-button.ant-btn:focus {
+  background: #6750a4 !important;
+  border-color: #6750a4 !important;
+  border-radius: 10px !important;
+  box-shadow: none !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 900 !important;
+  height: 36px !important;
+  line-height: 36px !important;
+  margin-top: 16px !important;
+}
+
+.alliance-auth-login-divider {
+  padding-bottom: 18px;
+  padding-top: 20px;
+}
+
+.alliance-auth-login-divider span {
+  color: rgba(203, 196, 210, 0.18) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.12em;
+}
+
+.alliance-auth-register-row {
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.alliance-auth-alert-wrap {
+  margin-bottom: 24px;
+}
+
+.alliance-auth-alert-wrap.is-success > div {
+  align-items: flex-start;
+  background: rgba(0, 230, 118, 0.1) !important;
+  border-color: rgba(0, 230, 118, 0.34) !important;
+  border-radius: 10px !important;
+  color: #00e676 !important;
+  font-size: 13px !important;
+  font-weight: 900;
+  gap: 10px;
+  line-height: 1.65;
+  min-height: 76px;
+  padding: 16px 44px 16px 18px !important;
+}
+
+.alliance-auth-alert-wrap.is-success svg {
+  color: #00e676 !important;
+  height: 18px;
+  margin-top: 1px;
+  width: 18px;
+}
+
+.alliance-auth-reset-header {
+  margin-bottom: 22px;
+}
+
+.alliance-antd-auth-back-button.ant-btn,
+.alliance-antd-auth-back-button.ant-btn:hover,
+.alliance-antd-auth-back-button.ant-btn:focus {
+  align-items: center;
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  color: rgba(203, 196, 210, 0.5) !important;
+  display: inline-flex;
+  height: 24px;
+  justify-content: center;
+  min-width: 24px;
+  padding: 0 !important;
+  width: 24px;
+}
+
+.alliance-auth-reset-title {
+  font-size: 16px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.alliance-auth-reset-form .alliance-antd-auth-form-item.ant-form-item {
+  margin-bottom: 19px;
+}
+
+.alliance-auth-reset-form .alliance-antd-auth-form-item.ant-form-item .ant-form-item-label {
+  padding-bottom: 8px;
+}
+
+.alliance-auth-reset-code-item.ant-form-item .ant-form-item-label > label {
+  color: #cfbcff !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+}
+
+.alliance-antd-auth-mono-input.ant-input-affix-wrapper input.ant-input,
+.alliance-antd-auth-mono-input.ant-input {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  letter-spacing: 0.02em;
+}
+
+.alliance-auth-reset-form .alliance-antd-auth-primary-button.ant-btn,
+.alliance-auth-reset-form .alliance-antd-auth-primary-button.ant-btn:hover,
+.alliance-auth-reset-form .alliance-antd-auth-primary-button.ant-btn:focus {
+  margin-top: -1px !important;
+}
+
+@media (max-width: 480px) {
+  .alliance-auth-page {
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-top: 30px;
+  }
+
+  .alliance-auth-card {
+    padding: 30px 32px !important;
+  }
+}

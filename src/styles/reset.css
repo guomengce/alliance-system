@@ -55,8 +55,8 @@
 .ant-input-affix-wrapper,
 .ant-input-number {
   align-items: center !important;
-  height: 62px !important;
-  min-height: 62px !important;
+  height: 52px !important;
+  min-height: 52px !important;
 }
 
 .ant-input:not(textarea) {
@@ -109,8 +109,8 @@
 
 /* Select reset: base dark single-select control and dropdown option states. */
 .ant-select-single:not(.ant-select-customize-input) {
-  height: 62px !important;
-  min-height: 62px !important;
+  height: 52px !important;
+  min-height: 52px !important;
 }
 
 .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
@@ -122,8 +122,8 @@
   color: #ffffff !important;
   display: flex !important;
   font-size: 12px;
-  height: 62px !important;
-  min-height: 62px !important;
+  height: 52px !important;
+  min-height: 52px !important;
   padding: 14px !important;
 }
 

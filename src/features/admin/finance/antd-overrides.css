@@ -271,3 +271,7 @@
 .alliance-antd-finance-export-button.ant-btn:hover {
   background: rgba(207, 188, 255, 0.15) !important;
 }
+
+.alliance-antd-admin-finance-segmented.ant-segmented {
+  margin-bottom: 20px;
+}

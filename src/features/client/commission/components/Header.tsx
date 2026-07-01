@@ -22,6 +22,7 @@ export default function Header({
         </Tag>
 
         <Button
+          className="alliance-antd-commission-limit-button"
           icon={<Zap className="w-4 h-4 fill-current" />}
           onClick={onIncreaseLimit}
           type="primary"
@@ -30,7 +31,7 @@ export default function Header({
         </Button>
 
         <Button
-          className="text-[#cfbcff]"
+          className="alliance-antd-commission-export-button"
           icon={<Download className="w-4 h-4" />}
           onClick={onExport}
         >

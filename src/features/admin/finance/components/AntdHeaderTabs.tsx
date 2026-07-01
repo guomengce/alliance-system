@@ -1,4 +1,4 @@
-import { Tabs, type TabsProps } from 'antd';
+import { Segmented } from 'antd';
 import { Wallet } from 'lucide-react';
 import type { Dispatch, SetStateAction } from 'react';
 
@@ -17,18 +17,13 @@ const TEXT = {
   ledger: '\u5b8c\u6574\u6536\u652f\u5bf9\u8d26\u6d41\u6c34\u8d26\u7c3f',
 };
 
-const tabs: Array<{ key: FinanceTab; label: string }> = [
-  { key: 'reserves', label: TEXT.reserves },
-  { key: 'wallets', label: TEXT.wallets },
-  { key: 'ledger', label: TEXT.ledger },
+const tabs: Array<{ value: FinanceTab; label: string }> = [
+  { value: 'reserves', label: TEXT.reserves },
+  { value: 'wallets', label: TEXT.wallets },
+  { value: 'ledger', label: TEXT.ledger },
 ];
 
 export default function AntdHeaderTabs({ activeTab, setActiveTab }: HeaderTabsProps) {
-  const items: TabsProps['items'] = tabs.map(tab => ({
-    key: tab.key,
-    label: tab.label,
-  }));
-
   return (
     <>
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
@@ -43,11 +38,11 @@ export default function AntdHeaderTabs({ activeTab, setActiveTab }: HeaderTabsPr
         </div>
       </div>
 
-      <Tabs
-        activeKey={activeTab}
-        className="alliance-antd-finance-tabs"
-        items={items}
-        onChange={(key) => setActiveTab(key as FinanceTab)}
+      <Segmented<FinanceTab>
+        className="alliance-antd-admin-segmented-tabs alliance-antd-admin-finance-segmented"
+        options={tabs}
+        value={activeTab}
+        onChange={setActiveTab}
       />
     </>
   );

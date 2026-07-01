@@ -1,4 +1,4 @@
-import '../../shared/antd/commission-overrides.css';
+import './commission-overrides.css';
 import PageView from '../../../shared/components/PageView';
 import AlertBanner from '../../../shared/components/AlertBanner';
 import Header from './components/Header';

@@ -243,6 +243,10 @@
   scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
 
+.table-font-size {
+  font-size: 14px;
+}
+
 .alliance-antd-queue-manual-tag.ant-tag {
   background: rgba(251, 191, 36, 0.1);
   border-color: rgba(251, 191, 36, 0.15);

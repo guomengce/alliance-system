@@ -17,14 +17,14 @@ export default function ProfileCard({
 
       <div className="flex flex-col md:flex-row items-center gap-6 w-full">
         <div className="relative">
-          <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-[#6750a4] to-[#cfbcff] p-1 shadow-lg">
-            <Avatar className="w-full h-full bg-[#141218] border border-[#cfbcff]/20" size={88}>
-              <span className="text-3xl font-black text-[#cfbcff] tracking-tight">
+          <div className="alliance-antd-member-profile-avatar-wrap">
+            <Avatar className="alliance-antd-member-profile-avatar" size={82}>
+              <span className="alliance-antd-member-profile-avatar-text">
                 {nickname ? nickname.slice(0, 2).toUpperCase() : 'US'}
               </span>
             </Avatar>
           </div>
-          <div className="absolute -bottom-1 -right-1 bg-[#cfbcff] text-[#381e72] w-7 h-7 rounded-lg flex items-center justify-center shadow-lg">
+          <div className="alliance-antd-member-profile-badge">
             <ShieldCheck className="w-4.5 h-4.5" />
           </div>
         </div>

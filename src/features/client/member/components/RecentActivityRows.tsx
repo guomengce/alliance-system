@@ -10,7 +10,7 @@ export function RecentActivityDesktopRow({ activity }: RecentActivityRowProps) {
         <span className="font-semibold text-white/95">{activity.uid}</span>
       </div>
     ),
-    action: <Tag className="alliance-antd-member-activity-tag">{activity.action}</Tag>,
+    action: <span className="alliance-antd-member-activity">{activity.action}</span>,
     time: <span className="text-xs text-[#cbc4d2] font-mono opacity-60">{activity.time}</span>,
   };
 }
@@ -25,7 +25,7 @@ export function RecentActivityMobileCard({ activity }: RecentActivityRowProps) {
           <p className="text-xs text-[#cbc4d2]/60 font-mono mt-0.5">{activity.time}</p>
         </div>
       </div>
-      <Tag className="alliance-antd-member-activity-tag">{activity.action}</Tag>
+      <span className="alliance-antd-member-activity">{activity.action}</span>
     </div>
   );
 }

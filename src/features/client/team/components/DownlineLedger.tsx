@@ -45,7 +45,7 @@ export default function DownlineLedger({
       key: 'volume',
       align: 'right',
       render: (volume: number) => (
-        <span className="font-bold text-white alliance-antd-table-fontSize font-mono whitespace-nowrap">USDT {volume.toLocaleString()}</span>
+        <span className="font-bold text-white table-font-size font-mono whitespace-nowrap">USDT {volume.toLocaleString()}</span>
       ),
     },
   ];

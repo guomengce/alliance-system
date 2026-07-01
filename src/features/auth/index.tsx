@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'motion/react';
 
 import AlertBanner from '../../shared/components/AlertBanner';
+import './antd-overrides.css';
 import Background from './components/Background';
 import BrandHeader from './components/BrandHeader';
 import FooterInfo from './components/FooterInfo';
@@ -79,15 +80,15 @@ export default function LoginView({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="flex min-h-screen items-center justify-center p-4 relative bg-[#09070d] w-full select-none"
+      className="alliance-auth-page flex min-h-screen items-center justify-center p-4 relative bg-[#09070d] w-full select-none"
     >
       <Background />
 
-      <div className="w-full max-w-sm flex flex-col items-center relative z-10 space-y-7">
+      <div className="alliance-auth-shell w-full max-w-sm flex flex-col items-center relative z-10 space-y-7">
         <BrandHeader />
 
         {/* Central interactive Glass Login card */}
-        <div className="w-full bg-[#16131c]/90 border border-white/[0.06] p-7 md:p-8 rounded-[24px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] backdrop-blur-xl relative">
+        <div className="alliance-auth-card w-full bg-[#16131c]/90 border border-white/[0.06] p-7 md:p-8 rounded-[24px] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] backdrop-blur-xl relative">
           {/* Action Alerts and Interactive Feedbacks */}
           <AnimatePresence mode="wait">
             {errorMsg && (
@@ -95,7 +96,7 @@ export default function LoginView({
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
-                className="mb-5 overflow-hidden"
+                className={`alliance-auth-alert-wrap is-${alertType} mb-5 overflow-hidden`}
               >
                 <AlertBanner
                   message={errorMsg}

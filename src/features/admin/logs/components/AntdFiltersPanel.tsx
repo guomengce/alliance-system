@@ -1,4 +1,4 @@
-import { Button, Input, Select } from 'antd';
+import { Input, Segmented, Select } from 'antd';
 import { Filter, Search } from 'lucide-react';
 
 import type { WorkspaceProps } from '../types';
@@ -77,16 +77,13 @@ export default function AntdFiltersPanel({
               <Filter className="w-3 h-3 text-[#cfbcff]" />
               {TEXT.level}
             </span>
-            <div className="hidden sm:flex bg-[#201b2a] rounded-xl p-0.5 border border-white/5 shrink-0">
-              {severityOptions.map((option) => (
-                <Button
-                  key={option.value}
-                  className={`alliance-antd-logs-filter-button ${selectedSeverity === option.value ? 'is-active' : ''}`}
-                  onClick={() => setSelectedSeverity(option.value)}
-                >
-                  {option.label}
-                </Button>
-              ))}
+            <div className="hidden sm:block shrink-0">
+              <Segmented<string>
+                className="alliance-antd-admin-segmented-tabs"
+                options={severityOptions}
+                value={selectedSeverity}
+                onChange={setSelectedSeverity}
+              />
             </div>
 
             <div className="block sm:hidden flex-1">

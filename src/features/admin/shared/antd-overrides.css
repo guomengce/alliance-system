@@ -143,4 +143,33 @@
 .alliance-antd-button-ghost.ant-btn:active,
 .alliance-antd-button-submit.ant-btn:active {
   transform: scale(0.95);
+.alliance-antd-admin-segmented-tabs.ant-segmented {
+  background: #100d14;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.alliance-antd-admin-segmented-tabs.ant-segmented .ant-segmented-item {
+  border-radius: 8px;
+  color: rgba(203, 196, 210, 0.6);
+  font-size: 12px;
+  font-weight: 800;
+  min-height: 28px;
+  padding: 0 10px;
+  transition: color 160ms ease;
+}
+
+.alliance-antd-admin-segmented-tabs.ant-segmented .ant-segmented-item:hover {
+  color: var(--color-text-main);
+}
+
+.alliance-antd-admin-segmented-tabs.ant-segmented .ant-segmented-item-selected {
+  background: var(--color-primary-light) !important;
+  color: #210c44 !important;
+}
+
+.alliance-antd-admin-segmented-tabs.ant-segmented .ant-segmented-thumb {
+  background: var(--color-primary-light) !important;
+  border-radius: 8px;
 }

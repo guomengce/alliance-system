@@ -4,10 +4,10 @@
 }
 
 .alliance-antd-member-account-tag.ant-tag {
-  background: rgba(207, 188, 255, 0.1);
-  border-color: rgba(207, 188, 255, 0.2);
+  background: rgba(207, 188, 255, 0.1) !important;
+  border-color: rgba(207, 188, 255, 0.2) !important;
   border-radius: 4px;
-  color: var(--color-primary-light);
+  color: var(--color-primary-light) !important;
   font-size: 12px;
   font-weight: 900;
   line-height: 18px;
@@ -15,6 +15,51 @@
   padding: 0 10px;
   text-transform: uppercase;
   width: fit-content;
+}
+
+.alliance-antd-member-profile-avatar-wrap {
+  align-items: center;
+  background: #141218;
+  border: 4px solid rgba(207, 188, 255, 0.76);
+  border-radius: 999px;
+  box-shadow: 0 0 0 1px rgba(207, 188, 255, 0.12), 0 14px 34px rgba(103, 80, 164, 0.24);
+  display: flex;
+  height: 88px;
+  justify-content: center;
+  width: 88px;
+}
+
+.alliance-antd-member-profile-avatar.ant-avatar {
+  align-items: center;
+  background: #141218 !important;
+  border: 0;
+  color: #cfbcff;
+  display: inline-flex;
+  justify-content: center;
+}
+
+.alliance-antd-member-profile-avatar-text {
+  color: #cfbcff;
+  font-size: 29px;
+  font-weight: 950;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.alliance-antd-member-profile-badge {
+  align-items: center;
+  background: #cfbcff;
+  border: 2px solid #141218;
+  border-radius: 8px;
+  bottom: -1px;
+  box-shadow: 0 8px 18px rgba(103, 80, 164, 0.34);
+  color: #381e72;
+  display: flex;
+  height: 26px;
+  justify-content: center;
+  position: absolute;
+  right: -4px;
+  width: 26px;
 }
 
 .alliance-antd-member-edit-button.ant-btn,
@@ -35,16 +80,19 @@
 }
 
 .alliance-antd-member-credit-progress.ant-progress .ant-progress-circle-trail {
-  stroke: #36343a;
+  stroke: #36343a !important;
 }
 
 .alliance-antd-member-credit-progress.ant-progress .ant-progress-circle-path {
-  filter: drop-shadow(0 0 6px rgba(207, 188, 255, 0.2));
+  filter: drop-shadow(0 0 8px rgba(207, 188, 255, 0.28));
+  stroke: #cfbcff !important;
 }
 
 .alliance-antd-member-credit-button.ant-btn,
 .alliance-antd-member-credit-button.ant-btn:hover,
 .alliance-antd-member-credit-button.ant-btn:focus {
+  color: #381E72 !important;
+  font-weight: 900 !important;
   height: 40px !important;
   min-height: 40px !important;
 }
@@ -56,13 +104,8 @@
   font-weight: 900;
 }
 
-.alliance-antd-member-activity-tag.ant-tag {
-  background: transparent;
-  border: 0;
-  color: #e7c365;
-  font-size: 12px;
+.alliance-antd-member-activity {
+  color: #e7c365 !important;
+  font-size: 14px;
   font-weight: 700;
-  margin-inline-end: 0;
-  padding: 0;
 }
-

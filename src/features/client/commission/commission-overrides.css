@@ -44,7 +44,7 @@
   border-radius: 10px;
   color: var(--color-primary-light);
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 500;
   line-height: 18px;
   margin-inline-end: 0;
   padding: 0 8px;
@@ -360,19 +360,25 @@
   font-size: 12px;
   font-weight: 900;
   gap: 6px;
-  line-height: 18px;
+  height: 22px;
+  line-height: 20px;
   margin-inline-end: 0;
-  padding: 0 9px;
+  padding: 0 10px;
 }
 
 .alliance-antd-commission-status-tag.is-success,
 .alliance-antd-queue-status-tag.is-success {
-  background: rgba(16, 185, 129, 0.1);
-  border-color: rgba(16, 185, 129, 0.25);
-  color: #34d399;
+  background: rgba(0, 230, 118, 0.1);
+  border-color: rgba(0, 230, 118, 0.24);
+  color: #00e676;
 }
 
-.alliance-antd-commission-status-tag.is-pending,
+.alliance-antd-commission-status-tag.is-pending {
+  background: rgba(103, 80, 164, 0.24) !important;
+  border-color: rgba(207, 188, 255, 0.24) !important;
+  color: #cfbcff !important;
+}
+
 .alliance-antd-queue-status-tag.is-warning {
   background: rgba(245, 158, 11, 0.1);
   border-color: rgba(245, 158, 11, 0.25);
@@ -381,21 +387,66 @@
 
 .alliance-antd-commission-status-tag.is-danger {
   background: rgba(248, 113, 113, 0.1);
-  border-color: rgba(248, 113, 113, 0.25);
-  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.26);
+  color: #ff6b8a;
 }
 
 .alliance-antd-commission-live-tag.ant-tag {
   align-items: center;
-  background: rgba(16, 185, 129, 0.1);
-  border-color: rgba(16, 185, 129, 0.2);
-  border-radius: 999px;
-  color: #34d399;
+  background: rgba(0, 230, 118, 0.08) !important;
+  border-color: rgba(0, 230, 118, 0.2) !important;
+  border-radius: 10px !important;
+  color: #00e676 !important;
   display: inline-flex;
   font-size: 12px;
   font-weight: 900;
   gap: 8px;
-  height: 34px;
+  height: 38px;
   margin-inline-end: 0;
-  padding: 0 12px;
+  padding: 0 16px;
+}
+
+.alliance-antd-commission-limit-button.ant-btn,
+.alliance-antd-commission-limit-button.ant-btn:hover,
+.alliance-antd-commission-limit-button.ant-btn:focus {
+  align-items: center;
+  background: linear-gradient(90deg, #6750a4, #cfbcff) !important;
+  border: 0 !important;
+  border-radius: 10px;
+  box-shadow: 0 10px 22px rgba(103, 80, 164, 0.22);
+  color: #160f22 !important;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 900;
+  gap: 6px;
+  height: 38px;
+  padding: 0 18px;
+}
+
+.alliance-antd-commission-limit-button.ant-btn:hover,
+.alliance-antd-commission-limit-button.ant-btn:focus {
+  filter: brightness(1.04);
+}
+
+.alliance-antd-commission-export-button.ant-btn,
+.alliance-antd-commission-export-button.ant-btn:hover,
+.alliance-antd-commission-export-button.ant-btn:focus {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(207, 188, 255, 0.22) !important;
+  border-radius: 10px;
+  box-shadow: none;
+  color: #cfbcff !important;
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 900;
+  gap: 7px;
+  height: 38px;
+  padding: 0 17px;
+}
+
+.alliance-antd-commission-export-button.ant-btn:hover,
+.alliance-antd-commission-export-button.ant-btn:focus {
+  background: rgba(207, 188, 255, 0.08) !important;
+  border-color: rgba(207, 188, 255, 0.34) !important;
 }

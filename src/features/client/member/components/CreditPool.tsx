@@ -21,6 +21,8 @@ export default function CreditPool({
           percent={CREDIT_POOL_PROGRESS_PERCENT}
           size={192}
           strokeWidth={6}
+          strokeColor="#cfbcff"
+          trailColor="#36343a"
           showInfo={false}
           className="alliance-antd-member-credit-progress"
         />

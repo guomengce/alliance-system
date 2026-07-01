@@ -17,9 +17,9 @@ export default function LoginForm({
 }: LoginFormProps) {
   return (
     <>
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-base font-bold text-white tracking-wide">账户安全登录</h2>
-        <span className="text-[10px] text-[#cfbcff]/80 bg-[#6750a4]/20 border border-[#6750a4]/40 px-2 py-0.5 rounded-full font-bold font-sans">
+      <div className="alliance-auth-login-header flex justify-between items-center mb-6">
+        <h2 className="alliance-auth-login-title text-base font-bold text-white tracking-wide">账户安全登录</h2>
+        <span className="alliance-auth-login-badge text-[10px] text-[#cfbcff]/80 bg-[#6750a4]/20 border border-[#6750a4]/40 px-2 py-0.5 rounded-full font-bold font-sans">
           智能识别模式
         </span>
       </div>
@@ -66,7 +66,7 @@ export default function LoginForm({
           />
         </Form.Item>
 
-        <div className="flex items-center justify-between text-[11px] font-bold pt-1">
+        <div className="alliance-auth-login-options flex items-center justify-between text-[11px] font-bold pt-1">
           <Checkbox
             checked={rememberMe}
             onChange={(e) => onRememberMeChange(e.target.checked)}
@@ -92,13 +92,13 @@ export default function LoginForm({
         </Button>
       </Form>
 
-      <div className="relative flex py-4 items-center justify-center">
+      <div className="alliance-auth-login-divider relative flex py-4 items-center justify-center">
         <div className="flex-grow border-t border-white/[0.04]" />
         <span className="flex-shrink mx-3 text-[9px] font-bold text-[#cbc4d2]/15 tracking-widest font-mono">安全加密访问</span>
         <div className="flex-grow border-t border-white/[0.04]" />
       </div>
 
-      <div className="text-center text-xs font-bold">
+      <div className="alliance-auth-register-row text-center text-xs font-bold">
         <span className="text-[#cbc4d2]/40">还没有账户？</span>
         <Button
           type="link"
