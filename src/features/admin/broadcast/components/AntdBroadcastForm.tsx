@@ -26,12 +26,10 @@ const TARGET_OPTIONS = [
 ];
 
 export default function AntdBroadcastForm({
-  broadcastTarget,
-  setBroadcastTarget,
-  broadcastTitle,
-  setBroadcastTitle,
-  broadcastBody,
-  setBroadcastBody,
+  value,
+  isLoading,
+  isSubmitting,
+  onChange,
   onSendBroadcast,
 }: BroadcastFormProps) {
   return (
@@ -48,16 +46,17 @@ export default function AntdBroadcastForm({
             <Select
               className="alliance-antd-admin-select"
               popupClassName="alliance-antd-admin-select-dropdown"
-              value={broadcastTarget}
+              loading={isLoading}
+              value={value.target}
               options={TARGET_OPTIONS}
-              onChange={setBroadcastTarget}
+              onChange={(nextTarget) => onChange('target', nextTarget)}
             />
           </label>
 
           <div className="flex flex-col gap-1.5">
             <span className="font-semibold text-white">{TEXT.category}</span>
             <span className="bg-[#110e16] text-[#cfbcff] border border-white/5 px-3.5 py-2 rounded-xl text-xs font-bold text-left block">
-              {TEXT.categoryValue}
+              {value.categoryLabel || TEXT.categoryValue}
             </span>
           </div>
         </div>
@@ -66,8 +65,9 @@ export default function AntdBroadcastForm({
           <span className="font-semibold text-white">{TEXT.titleLabel}</span>
           <Input
             className="alliance-antd-admin-input"
-            value={broadcastTitle}
-            onChange={(event) => setBroadcastTitle(event.target.value)}
+            disabled={isLoading}
+            value={value.title}
+            onChange={(event) => onChange('title', event.target.value)}
             placeholder={TEXT.titlePlaceholder}
           />
         </label>
@@ -76,14 +76,20 @@ export default function AntdBroadcastForm({
           <span className="font-semibold text-white">{TEXT.bodyLabel}</span>
           <TextArea
             className="alliance-antd-admin-textarea"
+            disabled={isLoading}
             rows={4}
-            value={broadcastBody}
-            onChange={(event) => setBroadcastBody(event.target.value)}
+            value={value.body}
+            onChange={(event) => onChange('body', event.target.value)}
             placeholder={TEXT.bodyPlaceholder}
           />
         </label>
 
-        <Button className="alliance-antd-admin-gradient-button" icon={<Sliders className="w-3.5 h-3.5" />} onClick={onSendBroadcast}>
+        <Button
+          className="alliance-antd-admin-gradient-button"
+          icon={<Sliders className="w-3.5 h-3.5" />}
+          loading={isSubmitting}
+          onClick={onSendBroadcast}
+        >
           {TEXT.send}
         </Button>
       </div>

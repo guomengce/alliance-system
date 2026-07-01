@@ -14,8 +14,10 @@ const TEXT = {
 };
 
 export default function AntdTemplatePanel({
-  notificationTemplate,
-  setNotificationTemplate,
+  value,
+  isLoading,
+  isSaving,
+  onChange,
   onSaveTemplate,
 }: TemplatePanelProps) {
   return (
@@ -28,17 +30,27 @@ export default function AntdTemplatePanel({
           <span className="text-white font-sans text-xs font-bold block">{TEXT.label}</span>
           <TextArea
             className="alliance-antd-admin-textarea"
+            disabled={isLoading}
             rows={4}
-            value={notificationTemplate}
-            onChange={(event) => setNotificationTemplate(event.target.value)}
+            value={value.content}
+            onChange={(event) => onChange('content', event.target.value)}
           />
         </label>
       </div>
 
       <div className="mt-6">
-        <Button className="alliance-antd-admin-secondary-button" onClick={onSaveTemplate}>
+        <Button
+          className="alliance-antd-admin-secondary-button"
+          loading={isSaving}
+          onClick={onSaveTemplate}
+        >
           {TEXT.save}
         </Button>
+        {value.updatedAt && (
+          <p className="mt-2 text-xs text-[#cbc4d2]/35 font-mono">
+            更新时间：{value.updatedAt}
+          </p>
+        )}
       </div>
     </AntdCard>
   );

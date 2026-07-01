@@ -1,23 +1,21 @@
 import { describe, expect, it } from 'vitest';
-import { INITIAL_ADMIN_BROADCAST_CONFIG_DTO } from '../../mock/admin/broadcast';
-import { getInitialAdminBroadcastConfig, mapAdminBroadcastConfigDto } from './broadcast';
+import { adminBroadcastApi } from './broadcast';
 
-describe('admin broadcast mappers', () => {
-  it('maps broadcast config DTO into the broadcast config view model', () => {
-    expect(mapAdminBroadcastConfigDto({
-      notificationTemplate: 'Template',
-      broadcastTitle: 'Title',
-      broadcastBody: 'Body',
-      broadcastTarget: 'all'
-    })).toEqual({
-      notificationTemplate: 'Template',
-      broadcastTitle: 'Title',
-      broadcastBody: 'Body',
-      broadcastTarget: 'all'
+describe('admin broadcast api', () => {
+  it('returns the broadcast draft as one object', async () => {
+    await expect(adminBroadcastApi.getDraft()).resolves.toMatchObject({
+      target: 'all',
+      category: 'official_notice',
     });
   });
 
-  it('returns the initial broadcast config from mock DTO data', () => {
-    expect(getInitialAdminBroadcastConfig()).toEqual(INITIAL_ADMIN_BROADCAST_CONFIG_DTO);
+  it('updates the template through the simulated api store', async () => {
+    await expect(adminBroadcastApi.updateTemplate({ content: 'New template' })).resolves.toMatchObject({
+      content: 'New template',
+    });
+
+    await expect(adminBroadcastApi.getTemplate()).resolves.toMatchObject({
+      content: 'New template',
+    });
   });
 });

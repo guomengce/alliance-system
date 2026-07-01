@@ -1,5 +1,4 @@
 import './antd-overrides.css';
-import '../shared/antd-overrides.css';
 import AntdDetailModal from './components/AntdDetailModal';
 import AntdFiltersPanel from './components/AntdFiltersPanel';
 import AntdHeaderActions from './components/AntdHeaderActions';
