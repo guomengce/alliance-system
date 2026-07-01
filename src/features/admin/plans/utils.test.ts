@@ -1,6 +1,14 @@
 import { describe, expect, it, vi } from 'vitest';
 import type { Plan } from './types';
-import { createPlanFromForm, togglePlanStatus, updatePlanFromForm } from './utils';
+import {
+  createPlanDraft,
+  createPlanFromForm,
+  createPlansResponse,
+  getPlansFromResponse,
+  savePlanDraftToResponse,
+  togglePlanStatus,
+  updatePlanFromForm
+} from './utils';
 
 const plans: Plan[] = [
   {
@@ -27,6 +35,40 @@ const form = {
 };
 
 describe('admin plan utils', () => {
+  it('keeps plans inside a backend-like response object', () => {
+    const response = createPlansResponse(plans);
+
+    expect(response).toEqual({
+      requestId: 'mock-admin-plans',
+      data: {
+        plans
+      }
+    });
+    expect(getPlansFromResponse(response)).toBe(plans);
+  });
+
+  it('creates one editable draft object from the selected plan', () => {
+    expect(createPlanDraft(plans[0])).toEqual({
+      name: 'Basic',
+      price: 1000,
+      giftRatio: 1,
+      buyRatio: 40,
+      queueRatio: 60,
+      commissionLimit: 4000,
+      description: 'Starter'
+    });
+  });
+
+  it('saves a plan draft back into the backend-like response object', () => {
+    const response = createPlansResponse(plans);
+
+    expect(savePlanDraftToResponse(response, 'plan-101', form).data.plans[0]).toEqual({
+      id: 'plan-101',
+      ...form,
+      status: 'enabled'
+    });
+  });
+
   it('creates a plan from editor form values', () => {
     const createId = vi.fn(() => 'plan-999');
 

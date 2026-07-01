@@ -27,7 +27,7 @@ export default function AntdReservesMobile({
         </div>
       ) : (
         pendingWithdrawals.map(withdrawal => (
-          <AntdCard key={withdrawal.id} className="alliance-antd-finance-mobile-card">
+          <AntdCard key={withdrawal.id} className="alliance-antd-mobile-card alliance-antd-finance-mobile-card">
             <div className="flex justify-between items-start border-b border-white/5 pb-2">
               <div>
                 <span className="font-mono text-white font-extrabold text-[#cfbcff]">{withdrawal.id}</span>

@@ -1,5 +1,5 @@
-import './antd-overrides.css';
 import '../shared/antd-overrides.css';
+import './antd-overrides.css';
 import AntdBroadcastForm from './components/AntdBroadcastForm';
 import AntdTemplatePanel from './components/AntdTemplatePanel';
 import { useBroadcastState } from './hooks/useBroadcastState';

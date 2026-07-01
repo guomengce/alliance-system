@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import '../shared/antd-overrides.css';
+>>>>>>> c08379431388dd69adbb45bddd14776bdafbdc34
 import './antd-overrides.css';
 import AntdDetailModal from './components/AntdDetailModal';
 import AntdFiltersPanel from './components/AntdFiltersPanel';
