@@ -1,3 +1,4 @@
+import '../shared/antd-overrides.css';
 import './antd-overrides.css';
 import { AntdEditorModal } from './components/AntdEditorModal';
 import { AntdList } from './components/AntdList';
@@ -8,21 +9,10 @@ export default function AdminPlansView() {
   const {
     adminPlans,
     editingPlan,
-    formBuyRatio,
-    formCommissionLimit,
-    formDescription,
-    formGiftRatio,
-    formName,
-    formPrice,
-    formQueueRatio,
     isModalOpen,
-    setFormBuyRatio,
-    setFormCommissionLimit,
-    setFormDescription,
-    setFormGiftRatio,
-    setFormName,
-    setFormPrice,
-    setFormQueueRatio,
+    planDraft,
+    plansResponse,
+    setPlanDraft,
     setIsModalOpen,
     handleOpenCreateModal,
     handleOpenEditModal,
@@ -34,6 +24,14 @@ export default function AdminPlansView() {
     <div id="admin_plans_view" className="space-y-6 animate-fadeIn select-none flex-grow flex flex-col md:min-h-[calc(100vh-140px)] pb-4">
       <div className="glass-card p-5 md:p-6 rounded-2xl border border-white/5 bg-[#141119] space-y-6 flex-grow flex flex-col">
         <Toolbar onOpenCreateModal={handleOpenCreateModal} />
+        <div className="rounded-xl border border-[#cfbcff]/15 bg-[#cfbcff]/5 px-4 py-3 text-xs text-[#cbc4d2]/70">
+          <span className="font-semibold text-[#cfbcff]">数据流：</span>
+          <span className="font-mono"> plansResponse[{plansResponse.requestId}] </span>
+          <span>→</span>
+          <span className="font-mono"> data.plans </span>
+          <span>→</span>
+          <span className="font-mono"> AntdList.plans ({adminPlans.length})</span>
+        </div>
         <AntdList plans={adminPlans} onOpenEditModal={handleOpenEditModal} onTogglePlanStatus={handleTogglePlanStatus} />
       </div>
 
@@ -41,20 +39,8 @@ export default function AdminPlansView() {
       {isModalOpen && (
         <AntdEditorModal
           editingPlan={editingPlan}
-          formName={formName}
-          formPrice={formPrice}
-          formGiftRatio={formGiftRatio}
-          formBuyRatio={formBuyRatio}
-          formQueueRatio={formQueueRatio}
-          formCommissionLimit={formCommissionLimit}
-          formDescription={formDescription}
-          setFormName={setFormName}
-          setFormPrice={setFormPrice}
-          setFormGiftRatio={setFormGiftRatio}
-          setFormBuyRatio={setFormBuyRatio}
-          setFormQueueRatio={setFormQueueRatio}
-          setFormCommissionLimit={setFormCommissionLimit}
-          setFormDescription={setFormDescription}
+          planDraft={planDraft}
+          setPlanDraft={setPlanDraft}
           onClose={() => setIsModalOpen(false)}
           onSaveOrUpdatePlan={handleSaveOrUpdatePlan}
         />

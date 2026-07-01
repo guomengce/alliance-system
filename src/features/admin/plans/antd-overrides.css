@@ -1,39 +1,14 @@
 ﻿/* Module-scoped Ant Design styles for this feature. */
-.alliance-antd-plan-card.ant-card {
-  border-radius: 16px;
+.alliance-antd-plan-card {
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.alliance-antd-plan-card.ant-card.is-enabled {
-  background: linear-gradient(135deg, rgba(28, 24, 37, 0.9), rgba(18, 15, 24, 0.95));
-  border: 1px solid rgba(207, 188, 255, 0.2);
-  box-shadow: 0 10px 15px -8px rgba(0, 0, 0, 0.55);
-}
-
-.alliance-antd-plan-card.ant-card.is-disabled {
-  background: rgba(20, 17, 25, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+.alliance-antd-plan-card.is-disabled {
   opacity: 0.72;
 }
 
-.alliance-antd-plan-card.ant-card.is-disabled:hover {
+.alliance-antd-plan-card.is-disabled:hover {
   opacity: 1;
-}
-
-.alliance-antd-plan-card .ant-card-body {
-  padding: 20px;
-}
-
-@media (min-width: 640px) {
-  .alliance-antd-plan-card .ant-card-body {
-    padding: 24px;
-  }
-}
-
-@media (min-width: 768px) {
-  .alliance-antd-plan-card .ant-card-body {
-    padding: 28px;
-  }
 }
 
 .alliance-antd-plan-status-tag.ant-tag {
@@ -200,33 +175,12 @@
   }
 }
 
-.alliance-antd-plan-guide-card.ant-card {
-  background: rgba(207, 188, 255, 0.02);
-  border: 1px solid rgba(207, 188, 255, 0.1);
-  border-radius: 12px;
-  color: #cbc4d2;
-  font-size: 12px;
-}
-
-.alliance-antd-plan-guide-card .ant-card-body {
-  padding: 16px;
-}
-
 .alliance-antd-plan-modal-root .ant-modal-mask {
   background: rgba(0, 0, 0, 0.85) !important;
   backdrop-filter: blur(12px);
 }
 
-.alliance-antd-plan-modal.ant-modal {
-  color: #cbc4d2;
-}
-
 .alliance-antd-plan-modal.ant-modal .ant-modal-content {
-  background: #181421 !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  border-radius: 24px !important;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75) !important;
-  color: #cbc4d2 !important;
   padding: 24px !important;
 }
 
@@ -236,19 +190,9 @@
   }
 }
 
-.alliance-antd-plan-modal.ant-modal .ant-modal-body {
-  background: transparent !important;
-  color: #cbc4d2 !important;
-}
-
 .alliance-antd-plan-modal.ant-modal .ant-modal-close {
-  color: rgba(203, 196, 210, 0.6) !important;
   inset-inline-end: 16px !important;
   top: 16px !important;
-}
-
-.alliance-antd-plan-modal.ant-modal .ant-modal-close:hover {
-  color: #ffffff !important;
 }
 
 .alliance-antd-plan-modal.ant-modal .ant-modal-close-x {
@@ -256,51 +200,11 @@
 }
 
 .alliance-antd-plan-form {
-  color: #cbc4d2;
-  font-family: var(--font-sans);
   padding: 24px 0 0;
 }
 
 .alliance-antd-plan-form .ant-form-item {
   margin-bottom: 16px;
-}
-
-.alliance-antd-plan-form .ant-form-item-label {
-  padding-bottom: 6px;
-}
-
-.alliance-antd-plan-form .ant-form-item-label > label {
-  color: rgba(203, 196, 210, 0.7) !important;
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
-.alliance-antd-plan-form .ant-input,
-.alliance-antd-plan-form .ant-input-number,
-.alliance-antd-plan-form .ant-select-selector {
-  background: #110e16 !important;
-  border-color: rgba(255, 255, 255, 0.1) !important;
-  border-radius: 12px !important;
-  box-shadow: none !important;
-  color: #ffffff !important;
-  font-size: 12px;
-  min-height: 42px;
-}
-
-.alliance-antd-plan-form .ant-input:hover,
-.alliance-antd-plan-form .ant-input:focus,
-.alliance-antd-plan-form .ant-input-number:hover,
-.alliance-antd-plan-form .ant-input-number-focused,
-.alliance-antd-plan-form .ant-select-selector:hover,
-.alliance-antd-plan-form .ant-select-focused .ant-select-selector {
-  border-color: rgba(207, 188, 255, 0.45) !important;
-}
-
-.alliance-antd-plan-form .ant-input::placeholder,
-.alliance-antd-plan-form .ant-input-number-input::placeholder {
-  color: rgba(203, 196, 210, 0.3) !important;
 }
 
 .alliance-antd-plan-form .ant-input-number,
@@ -309,11 +213,8 @@
 }
 
 .alliance-antd-plan-form .ant-input-number-input {
-  color: #ffffff !important;
   font-family: var(--font-mono);
-  font-size: 12px;
   font-weight: 700;
-  height: 42px;
 }
 
 .alliance-antd-plan-form .ant-input-number.is-success .ant-input-number-input {
@@ -334,100 +235,12 @@
   font-weight: 800;
 }
 
-.alliance-antd-plan-form .ant-select-arrow {
-  color: rgba(207, 188, 255, 0.75);
-}
-
-.alliance-antd-plan-select-dropdown {
-  background: #181421 !important;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-}
-
-.alliance-antd-plan-select-dropdown .ant-select-item {
-  color: rgba(203, 196, 210, 0.82) !important;
-  font-size: 12px;
-}
-
-.alliance-antd-plan-select-dropdown .ant-select-item-option-active,
-.alliance-antd-plan-select-dropdown .ant-select-item-option-selected {
-  background: rgba(207, 188, 255, 0.12) !important;
-  color: #cfbcff !important;
-}
-
 .alliance-antd-plan-modal-cancel.ant-btn {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border-color: transparent !important;
-  border-radius: 12px;
-  color: #ffffff !important;
   flex: 1;
-  font-size: 12px;
-  font-weight: 700;
   height: 44px;
-}
-
-.alliance-antd-plan-modal-cancel.ant-btn:hover,
-.alliance-antd-plan-modal-cancel.ant-btn:focus {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #ffffff !important;
 }
 
 .alliance-antd-plan-modal-submit.ant-btn {
-  background: linear-gradient(90deg, #10b981, #2dd4bf) !important;
-  border-color: transparent !important;
-  border-radius: 12px;
-  color: #110e16 !important;
   flex: 2;
-  font-size: 12px;
-  font-weight: 900;
   height: 44px;
 }
-
-.alliance-antd-plan-modal-submit.ant-btn:hover,
-.alliance-antd-plan-modal-submit.ant-btn:focus {
-  background: linear-gradient(90deg, #10b981, #2dd4bf) !important;
-  color: #110e16 !important;
-  filter: brightness(1.1);
-}
-
-/* Plan modal button variants moved out of shared Ant Design overrides. */
-/* Alliance Ant Design semantic variants and legacy feature helpers.
- * Base component resets live in ./reset.css and should use native .ant-* selectors.
- */
-.alliance-antd-button-ghost.ant-btn {
-  background: rgba(255, 255, 255, 0.05) !important;
-  border-color: transparent !important;
-  border-radius: 12px;
-  color: #ffffff !important;
-  font-weight: 700;
-}
-
-.alliance-antd-button-ghost.ant-btn:hover,
-.alliance-antd-button-ghost.ant-btn:focus {
-  background: rgba(255, 255, 255, 0.1) !important;
-  color: #ffffff !important;
-}
-
-.alliance-antd-button-submit.ant-btn {
-  background: linear-gradient(90deg, #10b981, #2dd4bf) !important;
-  border-color: transparent !important;
-  border-radius: 12px;
-  color: #110e16 !important;
-  font-weight: 900;
-}
-
-.alliance-antd-button-submit.ant-btn:hover,
-.alliance-antd-button-submit.ant-btn:focus {
-  background: linear-gradient(90deg, #10b981, #2dd4bf) !important;
-  color: #110e16 !important;
-  filter: brightness(1.1);
-}
-
-.alliance-antd-button-ghost.ant-btn:active,
-.alliance-antd-button-submit.ant-btn:active,
-.alliance-antd-button-accent.ant-btn:active,
-.alliance-antd-button-danger.ant-btn:active,
-.alliance-antd-button-success.ant-btn:active {
-  transform: scale(0.95);
-}
-

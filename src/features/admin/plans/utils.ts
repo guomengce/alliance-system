@@ -1,4 +1,4 @@
-import type { Plan } from './types';
+import type { Plan, PlanDraft } from './types';
 
 export const createPlanId = () => `plan-${Math.floor(100 + Math.random() * 900)}`;
 
@@ -11,6 +11,32 @@ export interface PlanFormValues {
   commissionLimit: number;
   description: string;
 }
+
+export interface AdminPlansResponse {
+  requestId: string;
+  data: {
+    plans: Plan[];
+  };
+}
+
+export const createPlansResponse = (plans: Plan[]): AdminPlansResponse => ({
+  requestId: 'mock-admin-plans',
+  data: {
+    plans
+  }
+});
+
+export const getPlansFromResponse = (response: AdminPlansResponse): Plan[] => response.data.plans;
+
+export const createPlanDraft = (plan?: Plan | null): PlanDraft => ({
+  name: plan?.name ?? '',
+  price: plan?.price ?? 1000,
+  giftRatio: plan?.giftRatio ?? 1.0,
+  buyRatio: plan?.buyRatio ?? 40,
+  queueRatio: plan?.queueRatio ?? 60,
+  commissionLimit: plan?.commissionLimit ?? 5000,
+  description: plan?.description ?? ''
+});
 
 export const createPlanFromForm = (
   values: PlanFormValues,
@@ -45,6 +71,18 @@ export const updatePlanFromForm = (
       }
     : plan
 ));
+
+export const savePlanDraftToResponse = (
+  response: AdminPlansResponse,
+  planId: string,
+  values: PlanDraft
+): AdminPlansResponse => ({
+  ...response,
+  data: {
+    ...response.data,
+    plans: updatePlanFromForm(response.data.plans, planId, values)
+  }
+});
 
 export const togglePlanStatus = (
   plans: Plan[],

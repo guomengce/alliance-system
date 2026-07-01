@@ -1,4 +1,4 @@
-import './antd-overrides.css';
+import '../shared/antd-overrides.css';
 import AntdDetailsPanel from './detail/AntdDetailsPanel';
 import { useUsersState } from './hooks/useUsersState';
 import List from './list';

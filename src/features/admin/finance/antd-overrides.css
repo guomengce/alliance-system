@@ -45,47 +45,9 @@
   display: none;
 }
 
-.alliance-antd-finance-reserve-card.ant-card {
-  border-radius: 16px;
-  color: #cbc4d2;
-  font-family: var(--font-sans);
+.alliance-antd-finance-reserve-card {
   overflow: hidden;
   position: relative;
-}
-
-.alliance-antd-finance-reserve-card.ant-card.is-usdt {
-  background: linear-gradient(135deg, #1b1527, #14101e);
-  border: 1px solid rgba(207, 188, 255, 0.15);
-}
-
-.alliance-antd-finance-reserve-card.ant-card.is-troo {
-  background: linear-gradient(135deg, #1f1915, #151210);
-  border: 1px solid rgba(245, 158, 11, 0.15);
-}
-
-.alliance-antd-finance-reserve-card.ant-card.is-users {
-  background: #1c1824;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.alliance-antd-finance-reserve-card .ant-card-body {
-  padding: 20px;
-}
-
-.alliance-antd-finance-table.ant-table-wrapper .ant-table {
-  font-size: 12px;
-}
-
-.alliance-antd-finance-table.ant-table-wrapper .ant-table-thead > tr > th {
-  background: rgba(255, 255, 255, 0.01) !important;
-  color: rgba(203, 196, 210, 0.5) !important;
-  font-size: 12px;
-  font-weight: 800;
-  padding: 12px 16px !important;
-}
-
-.alliance-antd-finance-table.ant-table-wrapper .ant-table-tbody > tr > td {
-  padding: 14px 16px !important;
 }
 
 .alliance-antd-finance-mini-button.ant-btn,
@@ -142,21 +104,6 @@
 .alliance-antd-finance-mini-button.ant-btn:active,
 .alliance-antd-finance-action-button.ant-btn:active {
   transform: scale(0.95);
-}
-
-.alliance-antd-finance-mobile-card.ant-card {
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  color: #cbc4d2;
-  font-family: var(--font-sans);
-}
-
-.alliance-antd-finance-mobile-card .ant-card-body {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 16px;
 }
 
 .alliance-antd-finance-mobile-button.ant-btn,
@@ -228,27 +175,27 @@
 }
 
 .alliance-antd-finance-status-tag.is-success {
-  background: rgba(16, 185, 129, 0.1);
-  border-color: rgba(16, 185, 129, 0.12);
-  color: #34d399;
+  background: rgba(16, 185, 129, 0.1) !important;
+  border-color: rgba(16, 185, 129, 0.12) !important;
+  color: #34d399 !important;
 }
 
 .alliance-antd-finance-status-tag.is-warning {
-  background: rgba(245, 158, 11, 0.1);
-  border-color: rgba(245, 158, 11, 0.12);
-  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1) !important;
+  border-color: rgba(245, 158, 11, 0.12) !important;
+  color: #f59e0b !important;
 }
 
 .alliance-antd-finance-status-tag.is-danger {
-  background: rgba(239, 68, 68, 0.1);
-  border-color: rgba(239, 68, 68, 0.12);
-  color: #f87171;
+  background: rgba(239, 68, 68, 0.1) !important;
+  border-color: rgba(239, 68, 68, 0.12) !important;
+  color: #f87171 !important;
 }
 
 .alliance-antd-finance-status-tag.is-purple {
-  background: rgba(207, 188, 255, 0.1);
-  border-color: rgba(207, 188, 255, 0.12);
-  color: #cfbcff;
+  background: rgba(207, 188, 255, 0.1) !important;
+  border-color: rgba(207, 188, 255, 0.12) !important;
+  color: #cfbcff !important;
 }
 
 .alliance-antd-finance-mobile-full-button.ant-btn,
@@ -324,4 +271,3 @@
 .alliance-antd-finance-export-button.ant-btn:hover {
   background: rgba(207, 188, 255, 0.15) !important;
 }
-
